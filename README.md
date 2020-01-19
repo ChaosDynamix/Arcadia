@@ -1,6 +1,6 @@
 # Andromeda
 ![badge-archlinux](https://img.shields.io/badge/Distribution-Arch%20Linux-blue?style=flat-square)
-![badge-bspwm](https://img.shields.io/badge/Windows%20manager-BSPWM-blueviolet?style=flat-square)
+![badge-bspwm](https://img.shields.io/badge/Window%20manager-BSPWM-blueviolet?style=flat-square)
 ![badge-polybar](https://img.shields.io/badge/Panel-Polybar-red?style=flat-square)
 
 ## About
