@@ -27,6 +27,6 @@
 
 <p align="center">
 	<a href="https://github.com/ChaosDynamix/Andromeda/projects">
-		<img src="https://img.shields.io/badge/-Show progress-yellow?style=for-the-badge" alt="Progress link button" />
+		<img src="https://img.shields.io/badge/-Show progress-orange?style=for-the-badge" alt="Progress link button" />
 	</a>
 </p>
