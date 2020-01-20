@@ -8,4 +8,6 @@
 	<img src="https://img.shields.io/badge/-Xorg-lightgrey?style=flat-square" alt="Xorg badge" />
 </p>
 
-This personal project aims to be a guide to install and configure Arch Linux and its packages for my daily use. This guide is one of the many ways to install and configure this distribution, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configurations used.
+<p align="center">
+	This personal project aims to be a guide to install and configure Arch Linux and its packages for my daily use. This guide is one of the many ways to install and configure this distribution, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configurations used.
+</p>
