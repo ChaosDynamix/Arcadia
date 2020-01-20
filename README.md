@@ -6,6 +6,7 @@
 	<img src="https://img.shields.io/badge/-Polybar-red?style=flat-square" alt="Polybar badge" />
 	<img src="https://img.shields.io/badge/-Grub-brightgreen?style=flat-square" alt="Grub badge" />
 	<img src="https://img.shields.io/badge/-Xorg-lightgrey?style=flat-square" alt="Xorg badge" />
+	<img src="https://img.shields.io/badge/-Rofi-yellow?style=flat-square" alt="Rofi badge" />
 </p>
 
 <p align="center">
