@@ -19,6 +19,8 @@
 	</a>
 </p>
 
+<h2 align="center">Status</h2>
+
 <p align="center">
 	This project is in progress and not finished, for more information click the button below.
 </p>
