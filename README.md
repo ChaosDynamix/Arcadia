@@ -15,6 +15,16 @@
 
 <p align="center">
 	<a href="https://github.com/ChaosDynamix/Andromeda/wiki">
-		<img src="https://img.shields.io/badge/-Getting%20started-brightgreen?style=for-the-badge" alt="Getting started button" />
+		<img src="https://img.shields.io/badge/-Getting%20started-brightgreen?style=for-the-badge" alt="Getting started link button" />
+	</a>
+</p>
+
+<p align="center">
+	This project is in progress and not finished, for more information click the button below.
+</p>
+
+<p align="center">
+	<a href="https://github.com/ChaosDynamix/Andromeda/projects">
+		<img src="https://img.shields.io/badge/-Progress-yellow?style=for-the-badge" alt="Progress link button" />
 	</a>
 </p>
