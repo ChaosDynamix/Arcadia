@@ -10,6 +10,6 @@
 
 <p align="center">
 	<a href="https://github.com/ChaosDynamix/wiki">
-		<img src="https://img.shields.io/badge/-Getting%20started-brightgreen&style=for-the-badge" alt="Getting started button" />
+		<img src="https://img.shields.io/badge/-Getting%20started-brightgreen?style=for-the-badge" alt="Getting started button" />
 	</a>
 </p>
