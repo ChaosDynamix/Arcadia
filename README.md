@@ -8,8 +8,8 @@
 	This personal project aims to be a guide to install and configure Arch Linux and its packages for my daily use. This guide is one of the many ways to install and configure this distribution, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configurations used.
 </p>
 
-<div align="center">
-	<h4>
-		<a href="https://github.com/ChaosDynamix/wiki">Documentation</a>
-	</h4>
-</div>
+<p align="center">
+	<a href="https://github.com/ChaosDynamix/wiki">
+		<img src="https://img.shields.io/badge/-Getting%20started-brightgreen&style=for-the-badge" alt="Getting started button" />
+	</a>
+</p>
