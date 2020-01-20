@@ -1,5 +1,10 @@
 <p align="center">
-	<img src="https://img.shields.io/github/last-commit/ChaosDynamix/Andromeda?label=Last%20update&logo=github&style=for-the-badge" alt="Last update" />
+	<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
+		<img src="https://img.shields.io/badge/Last configuration update-01-20-2020-brightgreen?style=for-the-badge" alt="Last configuration update" />
+	</a>
+	<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
+		<img src="https://img.shields.io/badge/Last wiki update-01-20-2020-brightgreen?style=for-the-badge" alt="Last wiki update" />
+	</a>
 </p>
 
 <h1 align="center">Andromeda</h1>
