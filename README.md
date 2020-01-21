@@ -1,34 +1,37 @@
-<h1 align="center">Andromeda</h1>
+<div align="center">
+	<h1>Andromeda</h1>
+	<p>This personal project aims to be a guide to install and configure Arch Linux and its packages for my needs. This guide is one of the many ways to install and configure this distribution, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
+	</p>
+	<p>
+		<a href="https://github.com/ChaosDynamix/Andromeda/wiki">
+			<img src="https://img.shields.io/badge/-Getting%20started-brightgreen?style=for-the-badge" alt="Getting started link button" />
+		</a>
+	</p>
+</div>
 
-<p align="center">
-	This personal project aims to be a guide to install and configure Arch Linux and its packages for my daily use. This guide is one of the many ways to install and configure this distribution, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configurations used.
-</p>
+<div align="center">
+	<h2>How it works</h2>
+	<p>The amazing arch wiki show you how it works, i will show you how i use it for my setup. For every step, i will say what i do, and explain it when the arch wiki dont. Every steps displayed in this guide will be sourced, if i dont explain how it works, the arch wiki already did it.
+	</p>
+</div>
 
-<p align="center">
-	<a href="https://github.com/ChaosDynamix/Andromeda/wiki">
-		<img src="https://img.shields.io/badge/-Getting%20started-brightgreen?style=for-the-badge" alt="Getting started link button" />
-	</a>
-</p>
+<div align="left">
+	<h2 align="center">Changelog</h2>
+	<p align="center">
+		<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
+			<img src="https://img.shields.io/badge/-code changelog-blue?style=for-the-badge" alt="code changelog" />
+		</a>
+		<a href="https://github.com/ChaosDynamix/Andromeda/wiki/_history">
+			<img src="https://img.shields.io/badge/-wiki changelog-blue?style=for-the-badge" alt="wiki changelog" />
+		</a>
+	</p>
+</div>
 
-<h2 align="center">Changelog</h2>
-
-<p align="center">
-	<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
-		<img src="https://img.shields.io/badge/-code changelog-blue?style=for-the-badge" alt="code changelog" />
-	</a>
-	<a href="https://github.com/ChaosDynamix/Andromeda/wiki/_history">
-		<img src="https://img.shields.io/badge/-wiki changelog-blue?style=for-the-badge" alt="wiki changelog" />
-	</a>
-</p>
-
-<h2 align="center">Status</h2>
-
-<p align="center">
-	This project is in progress and not finished, for more information click the button below.
-</p>
-
-<p align="center">
-	<a href="https://github.com/ChaosDynamix/Andromeda/projects">
-		<img src="https://img.shields.io/badge/-Show progress-orange?style=for-the-badge" alt="Progress link button" />
-	</a>
-</p>
+<div align="right">
+	<h2 align="center">This project is in early stage</h2>
+	<p align="center">
+		<a href="https://github.com/ChaosDynamix/Andromeda/projects">
+			<img src="https://img.shields.io/badge/-Show progress-orange?style=for-the-badge" alt="Progress link button" />
+		</a>
+	</p>
+</div>
