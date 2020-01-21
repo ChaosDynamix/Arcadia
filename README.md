@@ -4,19 +4,21 @@
 	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/wiki">
-			<img src="https://img.shields.io/badge/-Getting%20started-brightgreen?style=for-the-badge" alt="Getting started link button" />
+			<img src="https://img.shields.io/badge/-Show the guide-brightgreen?style=for-the-badge" alt="Guide page link" />
 		</a>
 	</p>
 </div>
 
 <div align="center">
 	<h2>How it works</h2>
-	<p>The amazing arch wiki show you how it works, i will show you how i use it for my setup. Every steps displayed in this guide will be sourced, if i dont explain how it works, the arch wiki already did it.
+	<p>The amazing arch wiki show you how it works, i will show you how i use it in my setup. Every steps displayed in this guide will be sourced, if i dont explain how it works, the arch wiki already did it.
 	</p>
 </div>
 
 <div align="center">
 	<h2>Changelog</h2>
+	<p>All the files changes related to the guide are logged in the with normal commits. All the guide commits are logged in the wiki history. 
+	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
 			<img src="https://img.shields.io/badge/-code changelog-blue?style=for-the-badge" alt="code changelog" />
@@ -31,7 +33,7 @@
 	<h2>This project is in early stage</h2>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/projects">
-			<img src="https://img.shields.io/badge/-Show progress-orange?style=for-the-badge" alt="Progress link button" />
+			<img src="https://img.shields.io/badge/-Show progress-orange?style=for-the-badge" alt="Progress page link" />
 		</a>
 	</p>
 </div>
