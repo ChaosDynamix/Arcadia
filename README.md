@@ -1,6 +1,6 @@
 <div align="center">
 	<h1>Andromeda</h1>
-	<p>This personal project aims to be a guide to install and configure Arch Linux and its packages for my needs. This guide is one of the many ways to install and configure this distribution, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
+	<p>Andromeda is one of the many guide to install and configure Arch Linux, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
 	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/wiki">
@@ -11,7 +11,9 @@
 
 <div align="center">
 	<h2>How it works</h2>
-	<p>The amazing arch wiki show you how it works, i will show you how i use it in my setup. Every steps displayed in this guide will be sourced, if i dont explain how it works, the arch wiki already did it.
+	<p>This guide (displayed in the wiki part of this repository) will show you the steps needed for complete the installation of my setup. If the Arch wiki have informations related to a step, i will not explain it and link the related Arch wiki page.
+	</p>
+	<p>In short, the amazing Arch wiki will show you how it works, i will show you how i use it.
 	</p>
 </div>
 
