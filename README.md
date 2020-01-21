@@ -17,7 +17,7 @@
 
 <div align="center">
 	<h2>Changelog</h2>
-	<p>All the files changes related to the guide are logged in the with normal commits. All the guide commits are logged in the wiki history. 
+	<p>All the files modifications are logged in the code commits. All the guide modifications are logged in the wiki history. 
 	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
