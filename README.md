@@ -2,7 +2,7 @@
 
 <p align="center">
 	<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
-		<img src="https://img.shields.io/badge/last configuration update-01--20--2020-blue?style=flat-square" alt="Last configuration update" />
+		<img src="https://img.shields.io/badge/last code update-01--20--2020-blue?style=flat-square" alt="Last configuration update" />
 	</a>
 	<a href="https://github.com/ChaosDynamix/Andromeda/wiki/_history">
 		<img src="https://img.shields.io/badge/last wiki update-01--20--2020-blue?style=flat-square" alt="Last wiki update" />
