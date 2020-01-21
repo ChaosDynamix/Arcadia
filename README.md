@@ -11,13 +11,13 @@
 
 <div align="center">
 	<h2>How it works</h2>
-	<p>The amazing arch wiki show you how it works, i will show you how i use it for my setup. For every step, i will say what i do, and explain it when the arch wiki dont. Every steps displayed in this guide will be sourced, if i dont explain how it works, the arch wiki already did it.
+	<p>The amazing arch wiki show you how it works, i will show you how i use it for my setup. Every steps displayed in this guide will be sourced, if i dont explain how it works, the arch wiki already did it.
 	</p>
 </div>
 
-<div align="left">
-	<h2 align="center">Changelog</h2>
-	<p align="center">
+<div align="center">
+	<h2>Changelog</h2>
+	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/commits/master">
 			<img src="https://img.shields.io/badge/-code changelog-blue?style=for-the-badge" alt="code changelog" />
 		</a>
@@ -27,9 +27,9 @@
 	</p>
 </div>
 
-<div align="right">
-	<h2 align="center">This project is in early stage</h2>
-	<p align="center">
+<div align="center">
+	<h2>This project is in early stage</h2>
+	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/projects">
 			<img src="https://img.shields.io/badge/-Show progress-orange?style=for-the-badge" alt="Progress link button" />
 		</a>
