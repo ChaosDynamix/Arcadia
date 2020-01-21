@@ -1,6 +1,6 @@
 <div align="center">
 	<h1>Andromeda</h1>
-	<p>Andromeda is one of the many guide to install and configure Arch Linux, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
+	<p>Andromeda is one of the many guides to install and configure Arch Linux, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
 	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Andromeda/wiki">
