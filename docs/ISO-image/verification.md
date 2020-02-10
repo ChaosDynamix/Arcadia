@@ -1,0 +1,56 @@
+---
+layout: default
+title: Verification
+nav_order: 2
+has_children: true
+parent: ISO image
+permalink: /iso-image/verification/
+has_toc: false
+---
+
+# ISO image verification
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+1. TOC
+{:toc}
+
+---
+
+## Public key cryptography
+
+Public-key cryptography, or asymmetric cryptography, is a cryptographic system that uses pairs of keys :
+
+- public keys which may be disseminated widely
+- private keys which are known only to the owner
+
+Effective security only requires keeping the private key private. The public key can be openly distributed without compromising security.
+
+---
+
+## Public key cryptography best-known usage
+
+### Public key encryption
+
+A message is encrypted with a recipient's public key. The message cannot be decrypted by anyone who does not possess the matching private key, who is thus presumed to be the owner of that key and the person associated with the public key. This is used in an attempt to ensure confidentiality.
+
+### Digital signatures
+
+A message is signed with the sender's private key and can be verified by anyone who has access to the sender's public key. This verification proves that the sender had access to the private key, and therefore is likely to be the person associated with the public key.
+
+This also ensures that the message has not been tampered with, as a signature is mathematically bound to the message it originally was made with, and verification will fail for practically any other message, no matter how similar to the original message.
+
+### Sources
+- [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+- [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
+
+---
+
+## Download the signature file
+
+**Warning** : Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site instead of from the Arch Linux download page.
+
+1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
+1. Under the HTTP Direct Downloads section, click on the PGP signature link.
