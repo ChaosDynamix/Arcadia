@@ -18,21 +18,6 @@ permalink: /iso-image/download/mirror-site/
 
 ---
 
-## About
-
-Mirror sites or mirrors are replicas of other websites or any network node. Such sites have different URLs than the original site, but host identical or near-identical content. Mirror sites are often located in a different geographic region than the original, or upstream site.
-
-The purpose of mirrors is to reduce network traffic, improve access speed, ensure availability of the original site for technical or political reasons, or provide a real-time backup of the original site.
-
-In our context, the mirror sites linked on the Arch Linux website provide packages and installation files for all the users.
-
-### References 
-{: .no_toc .text-delta .pt-5}
-
-- [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-
----
-
 ## Download Arch Linux ISO image
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
