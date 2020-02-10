@@ -15,5 +15,5 @@ This section will show you how to properly download and verify a Arch Linux ISO 
 ## Steps
 {: .text-delta}
 
-1. [Download](http://localhost:4000/iso-image/download/)
-1. [Verification](http://localhost:4000/iso-image/verification/)
+1. [Download](https://chaosdynamix.github.io/Andromeda/iso-image/download/)
+1. [Verification](https://chaosdynamix.github.io/Andromeda/iso-image/verification/)
