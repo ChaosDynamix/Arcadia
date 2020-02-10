@@ -11,6 +11,6 @@ has_toc: false
 # ISO image download
 
 <span class="fs-5">
-[Using BitTorrent](http://localhost:4000/iso-image/download/bittorrent/){: .btn .btn-green .mr-4}
-[Using a Mirror site](http://localhost:4000/iso-image/download/mirror-site/){: .btn .btn-purple}
+[Using BitTorrent](https://chaosdynamix.github.io/Andromeda/iso-image/download/bittorrent/){: .btn .btn-green .mr-4}
+[Using a Mirror site](https://chaosdynamix.github.io/Andromeda/iso-image/download/mirror-site/){: .btn .btn-purple}
 </span>
