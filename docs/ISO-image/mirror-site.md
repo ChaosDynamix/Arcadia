@@ -1,9 +1,7 @@
 ---
 layout: default
 title: Mirror site
-parent: Download
-grand_parent: ISO image
-nav_exclude: true 
+nav_exclude: true
 permalink: /iso-image/download/mirror-site/
 ---
 

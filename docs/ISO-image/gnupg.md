@@ -1,8 +1,6 @@
 ---
 layout: default
 title: GnuPG
-parent: Verification
-grand_parent: ISO image
 nav_exclude: true
 permalink: /iso-image/verification/gnupg/
 ---

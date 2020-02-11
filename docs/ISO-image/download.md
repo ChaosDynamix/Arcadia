@@ -2,7 +2,6 @@
 layout: default
 title: Download
 nav_order: 1
-has_children: true
 parent: ISO image
 permalink: /iso-image/download/
 has_toc: false
@@ -20,7 +19,7 @@ has_toc: false
 ---
 
 ## BitTorrent
- 
+
 BitTorrent  is a communication protocol for peer-to-peer file sharing (P2P). Rather than downloading a file from a single source server, the  BitTorrent protocol allows users to join a "swarm" of hosts to upload  to/download from each other simultaneously.
 
 **Warning !** BitTorrent does not, on its own, offer its users anonymity.  One can usually see the IP addresses of all peers in a swarm in one's own client or firewall program.
@@ -31,7 +30,7 @@ BitTorrent  is a communication protocol for peer-to-peer file sharing (P2P). Rat
 The file being distributed is divided into segments called "pieces".  Each piece is protected by a cryptographic hash contained in the torrent descriptor. This ensures that any modification of the piece can be reliably detected, and thus prevents both accidental and malicious modifications of any of the pieces received at other nodes.
 
 The BitTorrent protocol also can be used to reduce the server and network impact of distributing large files. Arch Linux mirrors servers can benefit from that solution as there are less solicited.
- 
+
 ### References
 {: .no_toc .text-delta .pt-5}
 
@@ -47,7 +46,7 @@ The purpose of mirrors is to reduce network traffic, improve access speed, ensur
 
 In our context, the mirror sites linked on the Arch Linux website provide packages and installation files for all the users.
 
-### References 
+### References
 {: .no_toc .text-delta .pt-5}
 
 - [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)

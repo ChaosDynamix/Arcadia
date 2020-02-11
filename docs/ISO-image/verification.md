@@ -2,7 +2,6 @@
 layout: default
 title: Verification
 nav_order: 2
-has_children: true
 parent: ISO image
 permalink: /iso-image/verification/
 has_toc: false
@@ -51,4 +50,3 @@ This also ensures that the message has not been tampered with, as a signature is
 - [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
 
 ---
-
