@@ -1,12 +1,12 @@
 ---
 layout: default
 title: Live environment
-nav_order: 3
+nav_order: 4
 has_children: true
 has_toc: false
 permalink: /live-environment/
 ---
-  
+
 # Live environment
 
 This section cover the setup of the live environment in order to install Arch Linux.
@@ -19,4 +19,3 @@ This section cover the setup of the live environment in order to install Arch Li
 1. [Firmware interface](/Andromeda/live-environment/firmware-interface/)
 1. [Internet connection](/Andromeda/live-environment/internet-connection/)
 1. [System clock](/Andromeda/live-environment/system-clock/)
-

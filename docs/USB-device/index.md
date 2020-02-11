@@ -1,7 +1,7 @@
 ---
 layout: default
 title: USB device
-nav_order: 2
+nav_order: 3
 has_children: true
 has_toc: false
 permalink: /usb-device/
@@ -16,4 +16,3 @@ This section cover the preparation of a USB flash device for the Arch Linux ISO 
 {: .text-delta}
 
 1. [Preparation](/Andromeda/usb-device/preparation/)
-
