@@ -3,12 +3,12 @@ layout: default
 title: GnuPG
 parent: Verification
 grand_parent: ISO image
-nav_order: 1
+nav_exclude: true
 permalink: /iso-image/verification/gnupg/
 ---
 
 # USB device preparation with GnuPG
-{: .no_toc} 
+{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -42,7 +42,7 @@ GnuPG supports the RSA public key algorithm which is used to sign the Arch Linux
 ---
 
 ## Verify ISO image with the signature file
- 
+
 This part assume that you are in possession of this two files in the same folder
 
 | File                                    | Description    |
