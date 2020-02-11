@@ -51,8 +51,3 @@ In our context, the mirror sites linked on the Arch Linux website provide packag
 {: .no_toc .text-delta .pt-5}
 
 - [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-
-<span class="fs-5">
-[Using BitTorrent](https://chaosdynamix.github.io/Andromeda/iso-image/download/bittorrent/){: .btn .btn-green .mr-4}
-[Using a Mirror site](https://chaosdynamix.github.io/Andromeda/iso-image/download/mirror-site/){: .btn .btn-purple}
-</span>

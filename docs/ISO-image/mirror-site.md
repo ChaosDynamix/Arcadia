@@ -18,7 +18,7 @@ permalink: /iso-image/download/mirror-site/
 
 ---
 
-## Download Arch Linux ISO image
+## Download the ISO image
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, click on a mirror server located in your country
@@ -26,30 +26,20 @@ permalink: /iso-image/download/mirror-site/
 
 ---
 
-## Verify the ISO image integrity
-
-The Arch Linux developers use two cryptographic hash functions for generate a checksum of their image, **MD5** and **SHA-1**.
-
-A cryptographic hash function is a hash function that is suitable for use in cryptography. It is a mathematical algorithm that maps data of arbitrary size (the "message") to a bit string of a fixed size (the "checksum" or "message digest").
-
-**in our context, the "message" is the Arch Linux ISO image.**
-
-For verify the integrity of the downloaded image, we need to generate a checksum with MD5 or SHA-1 and compare it with the appropriate checksum provided by Arch Linux.
-
-### Download the checksum
-{: .no_toc}
+## Download the ISO image checksum
 
 **Warning !** Checksums must be downloaded from the Arch Linux download page. The checksums could be manipulated if it is downloaded from a mirror site instead of from The Arch Linux website.
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, copy the checksum of your choice (MD5 or SHA-1)
 
-### Create a text file
-{: .no_toc}
+---
+
+## Create a text file for the checksum
+
+Replace the checksum and the filename accordingly
 
 ```bash
-## Replace the checksum and the filename accordingly
-
 archlinux-checksum-md5.txt
 --------------------------------------------------------------------
 00000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
@@ -59,17 +49,19 @@ archlinux-checksum-sha1.txt
 0000000000000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
 ```
 
-### Use the appropriate tool to verify your image
-{: .no_toc}
+---
 
-#### Using md5sum or sha1sum
-{: .no_toc}
+## Verify the ISO image integrity with the checksum file
+
+The Arch Linux developers use two cryptographic hash functions for generate a checksum of their image, **MD5** and **SHA-1**.
+
+For verify the integrity of the downloaded image, we need to generate a checksum with MD5 or SHA-1 and compare it with the appropriate checksum provided by Arch Linux.
 
 ```bash
-## MD5 checksum
+# MD5 checksum
 md5sum -c archlinux-checksum-md5.txt
 
-## SHA-1 checksum
+# SHA-1 checksum
 sha1sum -c archlinux-checksum-sha1.txt
 ```
 
@@ -78,8 +70,6 @@ The success of one of these commands confirms that your ISO image was properly d
 ### References
 {: .no_toc .text-delta .pt-5}
 
-- [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
-- [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 - [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
 - [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
 - [Manual - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)

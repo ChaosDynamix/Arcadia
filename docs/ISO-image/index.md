@@ -10,10 +10,10 @@ permalink: /iso-image/
 # ISO image
 
 This section will show you how to properly download and verify a Arch Linux ISO image.
-{: .fs-6}
+{: .fs-5}
 
 ## Steps
 {: .text-delta}
 
-1. [Download](https://chaosdynamix.github.io/Andromeda/iso-image/download/)
-1. [Verification](https://chaosdynamix.github.io/Andromeda/iso-image/verification/)
+1. [Download](/Andromeda/iso-image/download/)
+1. [Verification](/Andromeda/iso-image/verification/)

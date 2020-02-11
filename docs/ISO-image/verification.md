@@ -52,9 +52,3 @@ This also ensures that the message has not been tampered with, as a signature is
 
 ---
 
-## Download the signature file
-
-**Warning** : Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site instead of from the Arch Linux download page.
-
-1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, click on the PGP signature link.
