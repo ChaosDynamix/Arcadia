@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Preparation
+title: Boot
 nav_order: 2
 has_children: true
 parent: USB device
