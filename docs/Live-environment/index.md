@@ -19,3 +19,4 @@ This section cover the setup of the live environment in order to install Arch Li
 1. [Firmware interface](/Andromeda/live-environment/firmware-interface/)
 1. [Internet connection](/Andromeda/live-environment/internet-connection/)
 1. [System clock](/Andromeda/live-environment/system-clock/)
+1. [Mirrorlist](/Andromeda/live-environment/mirrorlist/)
