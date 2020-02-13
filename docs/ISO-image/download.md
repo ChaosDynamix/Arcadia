@@ -24,7 +24,7 @@ Downloading The Arch Linux ISO image can be done with ether BitTorrent protocol 
 
 ---
 
-## BitTorrent
+## With BitTorrent
 
 Recommended
 {: .label .label-green .mx-0}
@@ -49,7 +49,7 @@ BitTorrent does not, on its own, offer its users anonymity.  One can usually see
 
 ---
 
-## Mirror sites
+## With a mirror site
 
 Mirror sites or mirrors are replicas of other websites or any network node. Such sites have different URLs than the original site, but host identical or near-identical content. Mirror sites are often located in a different geographic region than the original, or upstream site.
 
