@@ -20,24 +20,14 @@ has_toc: false
 
 ## About public key cryptography
 
-Public-key cryptography, or asymmetric cryptography, is a cryptographic system that uses pairs of keys :
+Public-key cryptography, or asymmetric cryptography, is a cryptographic system that uses pairs of keys
 
 - public keys which may be disseminated widely
 - private keys which are known only to the owner
 
 Effective security only requires keeping the private key private. The public key can be openly distributed without compromising security.
 
----
-
-### Public key cryptography best-known usage
-{: .no_toc}
-
-#### Public key encryption
-{: .no_toc}
-
-A message is encrypted with a recipient's public key. The message cannot be decrypted by anyone who does not possess the matching private key, who is thus presumed to be the owner of that key and the person associated with the public key. This is used in an attempt to ensure confidentiality.
-
-#### Digital signatures
+### Public key cryptography for digital signatures
 {: .no_toc}
 
 A message is signed with the sender's private key and can be verified by anyone who has access to the sender's public key. This verification proves that the sender had access to the private key, and therefore is likely to be the person associated with the public key.
@@ -45,7 +35,7 @@ A message is signed with the sender's private key and can be verified by anyone 
 This also ensures that the message has not been tampered with, as a signature is mathematically bound to the message it originally was made with, and verification will fail for practically any other message, no matter how similar to the original message.
 
 ### References
-{: .no_toc .text-delta}
+{: .no_toc .text-delta .pt-4}
 
 - [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
 - [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
