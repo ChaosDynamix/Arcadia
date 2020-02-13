@@ -58,7 +58,10 @@ GnuPG supports the RSA public key algorithm which is used to sign the Arch Linux
 
 ## Download the signature file
 
-**Warning** : Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site instead of from the Arch Linux download page.
+Warning
+{: .label .label-red .mx-0}
+**Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site.**
+{: .text-red-200}
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, click on the PGP signature link.

@@ -28,7 +28,10 @@ permalink: /iso-image/download/mirror-site/
 
 ## Download the ISO image checksum
 
-**Warning !** Checksums must be downloaded from the Arch Linux download page. The checksums could be manipulated if it is downloaded from a mirror site instead of from The Arch Linux website.
+Warning
+{: .label .label-red .mx-0}
+**Checksum must be downloaded from the Arch Linux download page. The checksum could be manipulated if it is downloaded from a mirror site.**
+{: .text-red-200}
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, copy the checksum of your choice (MD5 or SHA-1)
