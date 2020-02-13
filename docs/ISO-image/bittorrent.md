@@ -1,7 +1,9 @@
 ---
 layout: default
 title: BitTorrent
-nav_exclude: true
+parent: Download
+grand_parent: ISO image
+nav_order: 1
 permalink: /iso-image/download/bittorrent/
 ---
 
