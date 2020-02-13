@@ -21,7 +21,7 @@ has_toc: false
 
 ## About
 
-The firmware interface is the very first program that is executed once the system is switched on. Depending of what it is and its configuration, it will look for a specific place in order to launch the boot loader.
+The firmware interface is the very first program that is executed once the system is switched on. Depending of what it is and the configuration, it is looking for a specific location to launch the boot loader.
 
 | Firmware interface | requirement   |
 | ------------------ | ------------- |
@@ -53,7 +53,7 @@ ls /sys/firmware/efi/efivars
 efivar -l
 ```
 
-Knowing the boot mode allow us to create the proper partition setup and that will be very important for the next section.
+Knowing the boot mode allow us to define the proper partition layout and configuration. This information is very important for the next section.
 
 ### References
 {: .no_toc .text-delta .pt-5}
