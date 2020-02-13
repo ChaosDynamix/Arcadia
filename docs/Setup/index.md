@@ -15,7 +15,7 @@ This section cover the setup of system previously installed.
 ## Steps
 {: .text-delta}
 
-1. [Filesystem file](/Andromeda/live-environment/keyboard-layout/)
+1. [Filesystem table](/Andromeda/live-environment/keyboard-layout/)
 1. [Time zone](/Andromeda/live-environment/firmware-interface/)
 1. [Localization](/Andromeda/live-environment/internet-connection/)
 1. [Network](/Andromeda/live-environment/system-clock/)

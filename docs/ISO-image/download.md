@@ -25,11 +25,16 @@ BitTorrent  is a communication protocol for peer-to-peer file sharing (P2P). Rat
 **Warning !** BitTorrent does not, on its own, offer its users anonymity.  One can usually see the IP addresses of all peers in a swarm in one's own client or firewall program.
 
 ### Why this is recommended ?
-{: .no_toc}
+{: .no_toc .pt-5}
 
 The file being distributed is divided into segments called "pieces".  Each piece is protected by a cryptographic hash contained in the torrent descriptor. This ensures that any modification of the piece can be reliably detected, and thus prevents both accidental and malicious modifications of any of the pieces received at other nodes.
 
 The BitTorrent protocol also can be used to reduce the server and network impact of distributing large files. Arch Linux mirrors servers can benefit from that solution as there are less solicited.
+
+### Guides
+{: .no_toc .text-delta .pt-5}
+
+[Download Arch Linux with BitTorrent](/Andromeda/iso-image/download/bittorrent/){: .btn .btn-green}
 
 ### References
 {: .no_toc .text-delta .pt-5}
@@ -45,6 +50,11 @@ Mirror sites or mirrors are replicas of other websites or any network node. Such
 The purpose of mirrors is to reduce network traffic, improve access speed, ensure availability of the original site for technical or political reasons, or provide a real-time backup of the original site.
 
 In our context, the mirror sites linked on the Arch Linux website provide packages and installation files for all the users.
+
+### Guides
+{: .no_toc .text-delta .pt-5}
+
+[Download Arch Linux with a mirror site](/Andromeda/iso-image/download/mirror-site){: .btn .btn-purple}
 
 ### References
 {: .no_toc .text-delta .pt-5}
