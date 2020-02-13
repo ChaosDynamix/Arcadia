@@ -4,6 +4,7 @@ title: Download
 nav_order: 1
 parent: ISO image
 permalink: /iso-image/download/
+has_children: true
 has_toc: false
 ---
 
