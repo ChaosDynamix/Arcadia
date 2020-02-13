@@ -32,7 +32,7 @@ The file being distributed is divided into segments called "pieces".  Each piece
 
 The BitTorrent protocol also can be used to reduce the server and network impact of distributing large files. Arch Linux mirrors servers can benefit from that solution as there are less solicited.
 
-[Download Arch Linux with BitTorrent](/Andromeda/iso-image/download/bittorrent/){: .btn .btn-green .pt-5}
+[Download Arch Linux with BitTorrent](/Andromeda/iso-image/download/bittorrent/){: .btn .btn-green}
 
 ### References
 {: .no_toc .text-delta .pt-5}
@@ -49,7 +49,7 @@ The purpose of mirrors is to reduce network traffic, improve access speed, ensur
 
 In our context, the mirror sites linked on the Arch Linux website provide packages and installation files for all the users.
 
-[Download Arch Linux with a mirror site](/Andromeda/iso-image/download/mirror-site){: .btn .btn-purple .pt-5}
+[Download Arch Linux with a mirror site](/Andromeda/iso-image/download/mirror-site){: .btn .btn-purple}
 
 ### References
 {: .no_toc .text-delta .pt-5}
