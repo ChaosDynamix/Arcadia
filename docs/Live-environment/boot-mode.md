@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Firmware interface
+title: Boot mode
 nav_order: 2
 has_children: false
 parent: Live environment
-permalink: /live-environment/firmware-interface/
+permalink: /live-environment/boot-mode/
 has_toc: false
 ---
 
-# Live environment Firmware interface
+# Live environment boot mode
 {: .no_toc}
 
 ## Table of contents
@@ -21,13 +21,18 @@ has_toc: false
 
 ## About
 
-The firmware interface is the very first program that is executed once the system is switched on. Depending of what it is and the configuration, it is looking for a specific location to launch the boot loader.
+When your computer starts, the firmware search for a specific location in order to launch your boot loader.
 
-| Firmware interface | requirement   |
-| ------------------ | ------------- |
-| BIOS               | Boot sector   |
-| UEFI               | EFI partition |
-| UEFI with CSM      | Boot sector   |
+| Firmware                     | requirement   |
+| ---------------------------- | ------------- |
+| BIOS                         | Boot sector   |
+| UEFI compliant               | EFI partition |
+| UEFI compliant with CSM mode | Boot sector   |
+
+### CSM mode
+{: .no_toc}
+
+To ensure backward compatibility, most UEFI compliant firmwares also support booting in legacy BIOS mode from MBR-partitioned disks, through the Compatibility Support Module (CSM) that provides legacy BIOS compatibility. In this scenario, booting is performed in the same way as on legacy BIOS-based systems, by ignoring the partition table and relying on the content of a boot sector.
 
 ### References
 {: .no_toc .text-delta .pt-5}
