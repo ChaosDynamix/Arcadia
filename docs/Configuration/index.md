@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Setup
-nav_order: 7
+title: Configuration
+nav_order: 8
 has_children: true
 has_toc: false
-permalink: /setup/
+permalink: /configuration/
 ---
 
-# Setup
+# Configuration
 
 This section cover the setup of system previously installed.
 {: .fs-5}
