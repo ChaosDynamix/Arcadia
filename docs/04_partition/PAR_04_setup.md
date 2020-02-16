@@ -19,63 +19,89 @@ has_children: true
 
 ---
 
-## Select a scenario
+## Basic partition setup
 
-### Basic
+### Format the partitions
 {: .no_toc}
 
-#### UEFI/GPT
+#### Ext4 filesystem
 {: .no_toc}
 
-```
-+----------------------+----------------------+------------+------------+
-| EFI system partition | Linux root (x86-64)  | Linux swap | Linux home |
-|                      |                      |            |            |
-| /efi                 | /                    |            | /home      |
-| /dev/sda1            | /dev/sda2            | /dev/sda3  | /dev/sda4  |
-|----------------------+----------------------+------------+------------+
+```bash
+mkfs.ext4 -L ROOT /dev/sdXY
+mkfs.ext4 -L HOME /dev/sdXY
 ```
 
-[Basic scenario](/Andromeda/encryption/lvm/){: .btn .btn-purple .d-inline-block .mt-4}
+#### EFI filesystem
+{: .no_toc}
+
+```bash
+mkfs.fat -F32 -n EFI /dev/sdXY
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
+- [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
 
 ---
 
-### LVM on LUKS
+### Setup the swap partition
 {: .no_toc}
 
-#### UEFI/GPT
-{: .no_toc}
-```
-+-----------------------------------------------------------------------+ +----------------+
-| Logical volume 1      | Logical volume 2      | Logical volume 3      | | Boot partition |
-|                       |                       |                       | |                |
-| [SWAP]                | /                     | /home                 | | /boot          |
-|                       |                       |                       | |                |
-| /dev/MyVolGroup/swap  | /dev/MyVolGroup/root  | /dev/MyVolGroup/home  | |                |
-|_ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _|_ _ _ _ _ _ _ _ _ _ _ _| | (may be on     |
-|                                                                       | | other device)  |
-|                         LUKS2 encrypted partition                     | |                |
-|                           /dev/sda1                                   | | /dev/sdb1      |
-+-----------------------------------------------------------------------+ +----------------+
+```bash
+mkswap -L SWAP /dev/sdXY
+swapon /dev/sdXY
 ```
 
-[LVM on LUKS](/Andromeda/encryption/lvm/){: .btn .btn-purple .d-inline-block .mt-4}
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
 
 ---
 
-### BTRFS on LUKS
+### Mount the file systems
 {: .no_toc}
 
-#### UEFI/GPT
+#### Root partition
 {: .no_toc}
-```
-+----------------------+----------------------+
-| EFI system partition | System partition     |
-| unencrypted          | LUKS1-encrypted      |
-|                      |                      |
-| /efi                 | /                    |
-| /dev/sda1            | /dev/sda2            |
-|----------------------+----------------------+
+
+```bash
+mount /dev/sdXY /mnt
 ```
 
-[BTRFS on LUKS](/Andromeda/encryption/btrfs/){: .btn .btn-purple .d-inline-block .mt-4}
+#### Home partition
+{: .no_toc}
+
+```bash
+mkdir /mnt/home
+mount /dev/sdXY /mnt/home
+```
+
+#### EFI partition
+{: .no_toc}
+
+```bash
+mkdir /mnt/boot
+mount /dev/sdXY /mnt/boot
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Mount the file systems](https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems)
+- [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
+
+---
+
+## LVM on LUKS
+
+[LVM on LUKS](/Andromeda/partition/setup/lvm/){: .btn .btn-purple .d-inline-block .mt-4}
+
+---
+
+## BTRFS on LUKS
+
+[BTRFS on LUKS](/Andromeda/partition/setup/btrfs/){: .btn .btn-purple .d-inline-block .mt-4}

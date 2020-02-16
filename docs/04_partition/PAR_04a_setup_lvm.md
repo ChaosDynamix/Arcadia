@@ -3,7 +3,7 @@ layout: default
 title: PAR_LVM on LUKS
 parent: PAR_Setup
 grand_parent: Partition
-nav_order: 2
+nav_order: 1
 permalink: /partition/setup/lvm/
 has_toc: false
 ---

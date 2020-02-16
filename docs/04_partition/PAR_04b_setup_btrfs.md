@@ -3,7 +3,7 @@ layout: default
 title: PAR_BTRFS on LUKS
 parent: PAR_Setup
 grand_parent: Partition
-nav_order: 3
+nav_order: 2
 permalink: /partition/setup/btrfs/
 has_toc: false
 ---
