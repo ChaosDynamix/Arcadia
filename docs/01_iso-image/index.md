@@ -8,9 +8,10 @@ permalink: /iso-image/
 ---
 
 # ISO image
+{: .d-inline-block}
 
 ISO
-{: .label .mx-0}
+{: .label .mx-2}
 
 This section will show you how to properly download and verify a Arch Linux ISO image.
 {: .fs-5}

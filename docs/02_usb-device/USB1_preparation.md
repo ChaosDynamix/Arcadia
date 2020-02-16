@@ -25,9 +25,10 @@ In order to instal Arch Linux on the storage space of our choice, we need to cop
 ---
 
 ## With dd
+{: .d-inline-block}
 
 Console
-{: .label .mx-0}
+{: .label .mx-2}
 
 dd copies a file (from standard input to standard output, by default) with a changeable I/O block size, while optionally performing conversions on it.
 
@@ -48,9 +49,10 @@ $ dd bs=4M if=path/to/archlinux.iso of=/dev/sdX status=progress oflag=sync
 ---
 
 ## With Etcher
+{: .d-inline-block}
 
 Graphical
-{: .label .mx-0}
+{: .label .mx-2}
 
 Etcher is a powerful OS image flasher built with web technologies to ensure flashing an SDCard or USB drive is a pleasant and safe experience. It protects you from accidentally writing to your hard-drives, ensures every byte of data was written correctly and much more.
 

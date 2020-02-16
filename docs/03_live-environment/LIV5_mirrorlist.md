@@ -58,10 +58,10 @@ pacman -Sy archlinux-keyring
 Use one of the two solutions below
 
 ### Using Pacman-contrib
-{: .no_toc .pt-4}
+{: .no_toc .pt-4 .d-inline-block}
 
-Personal procedure
-{: .label .label-yellow .mx-0}
+Experimental
+{: .label .label-yellow .mx-2}
 
 The `pacman-contrib` package provides a Bash script, `/usr/bin/rankmirrors`, which can be used to rank the mirrors according to their connection and opening speeds to take advantage of using the fastest local mirror.
 

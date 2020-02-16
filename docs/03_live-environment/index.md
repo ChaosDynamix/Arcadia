@@ -8,9 +8,10 @@ permalink: /live-environment/
 ---
 
 # Live environment
+{: .d-inline-block}
 
 LIV
-{: .label .mx-0}
+{: .label .mx-2}
 
 This section cover the setup of the live environment in order to install Arch Linux.
 {: .fs-5}

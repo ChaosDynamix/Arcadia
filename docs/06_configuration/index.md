@@ -8,9 +8,10 @@ permalink: /configuration/
 ---
 
 # Configuration
+{: .d-inline-block}
 
 CON
-{: .label .mx-0}
+{: .label .mx-2}
 
 This section cover the setup of system previously installed.
 {: .fs-5}

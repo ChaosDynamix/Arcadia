@@ -57,9 +57,11 @@ GnuPG supports the RSA public key algorithm which is used to sign the Arch Linux
 ---
 
 ## Download the signature file
+{: .d-inline-block}
 
 Warning
-{: .label .label-red .mx-0}
+{: .label .label-red .mx-2}
+
 **Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site.**
 {: .text-red-200}
 

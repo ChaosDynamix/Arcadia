@@ -55,10 +55,10 @@ The Arch Linux installation guide recommend the `ls` command but it might be eas
 - The second command search a specific keymap
 
 ### With localectl
-{: .no_toc .pt-3}
+{: .no_toc .pt-3 .d-inline-block}
 
 Not recommended
-{: .label .label-yellow .mx-0}
+{: .label .label-red .mx-2}
 
 ```bash
 localectl list-keymaps
@@ -66,10 +66,10 @@ localectl list-keymaps | grep -i search_term
 ```
 
 ### With LS
-{: .no_toc .pt-3}
+{: .no_toc .pt-3 .d-inline-block}
 
 Recommended
-{: .label .label-green .mx-0}
+{: .label .label-green .mx-2}
 
 ```bash
 ls /usr/share/kbd/keymaps/**/*.map.gz | less

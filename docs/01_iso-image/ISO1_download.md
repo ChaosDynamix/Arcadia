@@ -24,12 +24,13 @@ Downloading The Arch Linux ISO image can be done with ether BitTorrent protocol 
 ---
 
 ## About BitTorrent
+{: .d-inline-block}
 
 Recommended
-{: .label .label-green .mx-0}
+{: .label .label-green .mx-2}
 
 No anonymity
-{: .label .label-yellow}
+{: .label .label-red .mx-0}
 
 BitTorrent  is a communication protocol for peer-to-peer file sharing (P2P). Rather than downloading a file from a single source server, the  BitTorrent protocol allows users to join a "swarm" of hosts to upload  to/download from each other simultaneously.
 

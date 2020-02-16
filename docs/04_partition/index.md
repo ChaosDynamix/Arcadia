@@ -8,9 +8,10 @@ permalink: /partition/
 ---
 
 # Partition
+{: .d-inline-block}
 
 PAR
-{: .label .mx-0}
+{: .label .mx-2}
 
 This section cover the configuration of the storage space.
 {: .fs-5}

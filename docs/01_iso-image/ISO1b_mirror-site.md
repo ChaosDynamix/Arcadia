@@ -27,9 +27,11 @@ permalink: /iso-image/download/mirror-site/
 ---
 
 ## Download the ISO image checksum
+{: .d-inline-block}
 
 Warning
-{: .label .label-red .mx-0}
+{: .label .label-red .mx-2}
+
 **Checksum must be downloaded from the Arch Linux download page. The checksum could be manipulated if it is downloaded from a mirror site.**
 {: .text-red-200}
 

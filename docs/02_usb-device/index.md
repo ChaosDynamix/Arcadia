@@ -8,9 +8,10 @@ permalink: /usb-device/
 ---
 
 # USB device
+{: .d-inline-block}
 
 USB
-{: .label .mx-0}
+{: .label .mx-2}
 
 This section cover the preparation of a USB flash device for the Arch Linux ISO image.
 {: .fs-5}
