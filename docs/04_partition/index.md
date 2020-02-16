@@ -18,8 +18,6 @@ This section cover the configuration of the storage space.
 1. [Table](/Andromeda/partition/table/)
 1. [Layout](/Andromeda/partition/layout/)
 1. [Creation](/Andromeda/partition/creation/)
-1. [Encryption](/Andromeda/partition/encryption/)
-1. [Setup](/Andromeda/partition/setup/)
 
 ---
 

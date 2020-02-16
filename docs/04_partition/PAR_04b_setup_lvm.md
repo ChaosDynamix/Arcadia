@@ -1,9 +1,11 @@
 ---
 layout: default
-title: LVM
-parent: Encryption
-nav_order: 1
-permalink: /encryption/lvm/
+title: PAR_LVM on LUKS
+parent: PAR_Setup
+grand_parent: Partition
+nav_order: 2
+permalink: /partition/setup/lvm/
+has_toc: false
 ---
 
 # Encryption for LVM
@@ -16,6 +18,12 @@ permalink: /encryption/lvm/
 {:toc}
 
 ---
+
+## Create the container
+```bash
+cryptsetup luksFormat /dev/sdXY
+cryptsetup open /dev/sdXY lvm
+```
 
 ## Create the physical volume
 ```bash

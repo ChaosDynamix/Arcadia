@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Verification
+title: ISO_Verification
 nav_order: 2
 parent: ISO image
 permalink: /iso-image/verification/

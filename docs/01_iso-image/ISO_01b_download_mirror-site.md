@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Mirror site
-parent: Download
+title: ISO_Mirror site
+parent: ISO_Download
 grand_parent: ISO image
 nav_order: 2
 permalink: /iso-image/download/mirror-site/

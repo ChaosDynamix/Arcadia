@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Layout
+title: PAR_Layout
 nav_order: 2
 parent: Partition
 permalink: /partition/layout/
@@ -72,7 +72,7 @@ A BIOS boot partition is only required when using GRUB for BIOS booting from a G
 
 ---
 
-### LVM with encryption
+### LVM on LUKS
 {: .pt-4}
 
 #### UEFI/GPT
@@ -85,7 +85,7 @@ A BIOS boot partition is only required when using GRUB for BIOS booting from a G
 
 ---
 
-### BTRFS with encryption
+### BTRFS on LUKS
 {: .pt-4}
 
 #### UEFI/GPT

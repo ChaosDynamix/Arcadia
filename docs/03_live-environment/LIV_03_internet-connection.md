@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Internet connection
+title: LIV_Internet connection
 nav_order: 3
 has_children: false
 parent: Live environment

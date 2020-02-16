@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Creation
+title: PAR_Creation
 nav_order: 3
 parent: Partition
 permalink: /partition/creation/

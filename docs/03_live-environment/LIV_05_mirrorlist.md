@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Mirrorlist
+title: LIV_Mirrorlist
 nav_order: 5
 has_children: false
 parent: Live environment

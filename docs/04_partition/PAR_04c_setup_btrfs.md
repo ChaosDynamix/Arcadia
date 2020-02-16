@@ -1,9 +1,11 @@
 ---
 layout: default
-title: BTRFS
-parent: Encryption
-nav_order: 2
-permalink: /encryption/btrfs/
+title: PAR_BTRFS on LUKS
+parent: PAR_Setup
+grand_parent: Partition
+nav_order: 3
+permalink: /partition/setup/btrfs/
+has_toc: false
 ---
 
 # Encryption for BTRFS
@@ -16,6 +18,12 @@ permalink: /encryption/btrfs/
 {:toc}
 
 ---
+
+## Create the container
+```bash
+cryptsetup --type luks1 luksFormat /dev/sdXY
+cryptsetup open /dev/sdXY btrfs
+```
 
 ## Setup mapped device
 ```bash

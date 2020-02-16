@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Table
+title: PAR_Table
 nav_order: 1
 parent: Partition
 permalink: /partition/table/

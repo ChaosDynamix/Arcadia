@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Boot mode
+title: LIV_Boot mode
 nav_order: 2
 has_children: false
 parent: Live environment
