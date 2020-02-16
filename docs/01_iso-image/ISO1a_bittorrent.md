@@ -5,10 +5,10 @@ nav_exclude: true
 permalink: /iso-image/download/bittorrent/
 ---
 
+[Return to ISO image download](/Andromeda/iso-image/download/){: .btn .d-inline-block}
+
 # ISO image download with BitTorrent
 {: .no_toc}
-
-[Return to ISO image download](/Andromeda/iso-image/download/){: .btn .btn-purple .d-inline-block .mt-4}
 
 ## Table of contents
 {: .no_toc .text-delta}

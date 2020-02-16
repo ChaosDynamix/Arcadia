@@ -6,10 +6,10 @@ permalink: /partition/setup/lvm/
 has_toc: false
 ---
 
+[Return to Partition setup](/Andromeda/partition/setup/){: .btn .d-inline-block}
+
 # Partition setup for LVM on LUKS
 {: .no_toc}
-
-[Return to Partition setup](/Andromeda/partition/setup/){: .btn .btn-purple .d-inline-block .mt-4}
 
 ## Table of contents
 {: .no_toc .text-delta}

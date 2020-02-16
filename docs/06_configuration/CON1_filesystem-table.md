@@ -3,7 +3,7 @@ layout: default
 title: CON1 Filesystem table
 nav_order: 1
 parent: 06 Configuration
-permalink: /configuration/filezystem-table/
+permalink: /configuration/filesystem-table/
 has_children: true
 has_toc: false
 ---

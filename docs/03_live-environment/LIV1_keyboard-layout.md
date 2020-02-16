@@ -24,7 +24,7 @@ has_toc: false
 A keyboard layout is any specific mechanical, visual, or functional arrangement of the keys, legends, or key-meaning associations (respectively) of a computer, typewriter, or other typographic keyboard.
 
 | Layout     | Description                                           |
-| ---------- | ----------------------------------------------------- |
+| :--------- | :---------------------------------------------------- |
 | Mecanical  | Placements and keys of a keyboard                     |
 | Visual     | Symbols printed on the physical keycaps               |
 | Functional | Mapping between the physical keys and software events |

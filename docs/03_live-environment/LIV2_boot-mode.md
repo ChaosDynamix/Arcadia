@@ -24,7 +24,7 @@ has_toc: false
 When your computer starts, the firmware search for a specific location in order to launch your boot loader.
 
 | Firmware                     | requirement   |
-| ---------------------------- | ------------- |
+| :--------------------------- | :------------ |
 | BIOS                         | Boot sector   |
 | UEFI compliant               | EFI partition |
 | UEFI compliant with CSM mode | Boot sector   |

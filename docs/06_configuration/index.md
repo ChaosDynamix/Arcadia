@@ -19,10 +19,10 @@ This section cover the setup of system previously installed.
 ## Steps
 {: .text-delta}
 
-1. [Filesystem table](/Andromeda/live-environment/filesystem-table/)
-1. [Time zone](/Andromeda/live-environment/time-zone/)
-1. [Localization](/Andromeda/live-environment/localization/)
-1. [Network](/Andromeda/live-environment/network/)
-1. [Accounts](/Andromeda/live-environment/accounts/)
-1. [Images](/Andromeda/live-environment/images/)
-1. [Boot loader](/Andromeda/live-environment/boot-loader/)
+1. [Filesystem table](/Andromeda/configuration/filesystem-table/)
+1. [Time zone](/Andromeda/configuration/time-zone/)
+1. [Localization](/Andromeda/configuration/localization/)
+1. [Network](/Andromeda/configuration/network/)
+1. [Accounts](/Andromeda/configuration/accounts/)
+1. [Images](/Andromeda/configuration/images/)
+1. [Boot loader](/Andromeda/configuration/boot-loader/)
