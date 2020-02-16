@@ -1,15 +1,15 @@
 ---
 layout: default
-title: PAR_BTRFS on LUKS
-parent: PAR_Setup
-grand_parent: Partition
-nav_order: 2
+title: PAR4b BTRFS on LUKS
+nav_exclude: true
 permalink: /partition/setup/btrfs/
 has_toc: false
 ---
 
-# Encryption for BTRFS
+# Partition setup for BTRFS on LUKS
 {: .no_toc}
+
+[Return to Partition setup](/Andromeda/partition/setup/){: .btn .btn-purple .d-inline-block .mt-4}
 
 ## Table of contents
 {: .no_toc .text-delta}

@@ -1,15 +1,15 @@
 ---
 layout: default
-title: PAR_LVM on LUKS
-parent: PAR_Setup
-grand_parent: Partition
-nav_order: 1
+title: PAR4a LVM on LUKS
+nav_exclude: true
 permalink: /partition/setup/lvm/
 has_toc: false
 ---
 
-# Encryption for LVM
+# Partition setup for LVM on LUKS
 {: .no_toc}
+
+[Return to Partition setup](/Andromeda/partition/setup/){: .btn .btn-purple .d-inline-block .mt-4}
 
 ## Table of contents
 {: .no_toc .text-delta}

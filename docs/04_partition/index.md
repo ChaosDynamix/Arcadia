@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Partition
+title: 04 Partition
 nav_order: 5
 has_children: true
 has_toc: false
@@ -8,6 +8,9 @@ permalink: /partition/
 ---
 
 # Partition
+
+PAR
+{: .label .mx-0}
 
 This section cover the configuration of the storage space.
 {: .fs-5}

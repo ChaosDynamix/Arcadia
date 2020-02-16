@@ -1,14 +1,14 @@
 ---
 layout: default
-title: ISO_BitTorrent
-parent: ISO_Download
-grand_parent: ISO image
-nav_order: 1
+title: ISO1a BitTorrent
+nav_exclude: true
 permalink: /iso-image/download/bittorrent/
 ---
 
 # ISO image download with BitTorrent
 {: .no_toc}
+
+[Return to ISO image download](/Andromeda/iso-image/download/){: .btn .btn-purple .d-inline-block .mt-4}
 
 ## Table of contents
 {: .no_toc .text-delta}

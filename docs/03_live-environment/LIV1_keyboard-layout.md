@@ -1,9 +1,9 @@
 ---
 layout: default
-title: LIV_Keyboard layout
+title: LIV1 Keyboard layout
 nav_order: 1
 has_children: false
-parent: Live environment
+parent: 03 Live environment
 permalink: /live-environment/keyboard-layout/
 has_toc: false
 ---

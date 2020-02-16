@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Live environment
+title: 03 Live environment
 nav_order: 4
 has_children: true
 has_toc: false
@@ -8,6 +8,9 @@ permalink: /live-environment/
 ---
 
 # Live environment
+
+LIV
+{: .label .mx-0}
 
 This section cover the setup of the live environment in order to install Arch Linux.
 {: .fs-5}

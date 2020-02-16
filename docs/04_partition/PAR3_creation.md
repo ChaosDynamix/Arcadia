@@ -1,8 +1,8 @@
 ---
 layout: default
-title: PAR_Creation
+title: PAR3 Creation
 nav_order: 3
-parent: Partition
+parent: 04 Partition
 permalink: /partition/creation/
 has_toc: false
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Installation
+title: 05 Installation
 nav_order: 7
 has_children: true
 has_toc: false

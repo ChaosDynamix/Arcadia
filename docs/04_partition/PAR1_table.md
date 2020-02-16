@@ -1,8 +1,8 @@
 ---
 layout: default
-title: PAR_Table
+title: PAR1 Table
 nav_order: 1
-parent: Partition
+parent: 04 Partition
 permalink: /partition/table/
 has_toc: false
 ---

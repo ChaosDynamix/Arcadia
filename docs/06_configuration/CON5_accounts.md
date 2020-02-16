@@ -1,14 +1,14 @@
 ---
 layout: default
-title: CON_Localization
-nav_order: 3
-parent: Configuration
-permalink: /configuration/localization/
+title: CON5 Accounts
+nav_order: 5
+parent: 06 Configuration
+permalink: /configuration/accounts/
 has_children: true
 has_toc: false
 ---
 
-# Configuration of the localization
+# Configuration of the accounts
 {: .no_toc}
 
 ## Table of contents

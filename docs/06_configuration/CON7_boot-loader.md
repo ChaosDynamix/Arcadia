@@ -1,14 +1,14 @@
 ---
 layout: default
-title: CON_Time zone
-nav_order: 2
-parent: Configuration
-permalink: /configuration/time-zone/
+title: CON7 Boot loader
+nav_order: 7
+parent: 06 Configuration
+permalink: /configuration/boot-loader/
 has_children: true
 has_toc: false
 ---
 
-# Configuration of the time zone
+# Configuration of the boot loader
 {: .no_toc}
 
 ## Table of contents

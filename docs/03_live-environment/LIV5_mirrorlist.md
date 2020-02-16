@@ -1,9 +1,9 @@
 ---
 layout: default
-title: LIV_Mirrorlist
+title: LIV5 Mirrorlist
 nav_order: 5
 has_children: false
-parent: Live environment
+parent: 03 Live environment
 permalink: /live-environment/mirrorlist/
 has_toc: false
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Configuration
+title: 06 Configuration
 nav_order: 8
 has_children: true
 has_toc: false
@@ -8,6 +8,9 @@ permalink: /configuration/
 ---
 
 # Configuration
+
+CON
+{: .label .mx-0}
 
 This section cover the setup of system previously installed.
 {: .fs-5}

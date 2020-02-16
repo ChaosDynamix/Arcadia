@@ -1,14 +1,14 @@
 ---
 layout: default
-title: CON_Network
-nav_order: 4
-parent: Configuration
-permalink: /configuration/network/
+title: CON6 Images
+nav_order: 6
+parent: 06 Configuration
+permalink: /configuration/images/
 has_children: true
 has_toc: false
 ---
 
-# Configuration of the network
+# Configuration of the images
 {: .no_toc}
 
 ## Table of contents

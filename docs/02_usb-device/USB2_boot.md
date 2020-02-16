@@ -1,9 +1,9 @@
 ---
 layout: default
-title: USB_Boot
+title: USB2 Boot
 nav_order: 2
 has_children: true
-parent: USB device
+parent: 02 USB device
 permalink: /usb-device/boot/
 has_toc: false
 ---

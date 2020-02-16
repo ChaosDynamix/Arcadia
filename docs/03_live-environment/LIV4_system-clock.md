@@ -1,9 +1,9 @@
 ---
 layout: default
-title: LIV_System clock
+title: LIV4 System clock
 nav_order: 4
 has_children: false
-parent: Live environment
+parent: 03 Live environment
 permalink: /live-environment/system-clock/
 has_toc: false
 ---

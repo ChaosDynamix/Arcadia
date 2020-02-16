@@ -1,9 +1,9 @@
 ---
 layout: default
-title: LIV_Boot mode
+title: LIV2 Boot mode
 nav_order: 2
 has_children: false
-parent: Live environment
+parent: 03 Live environment
 permalink: /live-environment/boot-mode/
 has_toc: false
 ---

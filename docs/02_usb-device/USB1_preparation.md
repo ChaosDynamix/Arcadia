@@ -1,9 +1,9 @@
 ---
 layout: default
-title: USB_Preparation
+title: USB1 Preparation
 nav_order: 1
 has_children: true
-parent: USB device
+parent: 02 USB device
 permalink: /usb-device/preparation/
 has_toc: false
 ---

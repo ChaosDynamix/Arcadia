@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CON_Filesystem table
+title: CON1 Filesystem table
 nav_order: 1
-parent: Configuration
+parent: 06 Configuration
 permalink: /configuration/filezystem-table/
 has_children: true
 has_toc: false

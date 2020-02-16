@@ -1,8 +1,8 @@
 ---
 layout: default
-title: ISO_Verification
+title: ISO2 Verification
 nav_order: 2
-parent: ISO image
+parent: 01 ISO image
 permalink: /iso-image/verification/
 has_toc: false
 ---

@@ -1,11 +1,10 @@
 ---
 layout: default
-title: PAR_Setup
+title: PAR4 Setup
 nav_order: 4
-parent: Partition
+parent: 04 Partition
 permalink: /partition/setup/
 has_toc: false
-has_children: true
 ---
 
 # Partition setup
@@ -98,10 +97,10 @@ mount /dev/sdXY /mnt/boot
 
 ## LVM on LUKS
 
-[LVM on LUKS](/Andromeda/partition/setup/lvm/){: .btn .btn-purple .d-inline-block .mt-4}
+[Partition setup for LVM on LUKS](/Andromeda/partition/setup/lvm/){: .btn .btn-purple .d-inline-block .mt-4}
 
 ---
 
 ## BTRFS on LUKS
 
-[BTRFS on LUKS](/Andromeda/partition/setup/btrfs/){: .btn .btn-purple .d-inline-block .mt-4}
+[Partition setup for BTRFS on LUKS](/Andromeda/partition/setup/btrfs/){: .btn .btn-purple .d-inline-block .mt-4}
