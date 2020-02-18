@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 04 Partition
-nav_order: 5
+title: 05 Partition
+nav_order: 6
 has_children: true
 has_toc: false
 permalink: /partition/

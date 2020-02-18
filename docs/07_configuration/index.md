@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 06 Configuration
+title: 07 Configuration
 nav_order: 8
 has_children: true
 has_toc: false
@@ -10,7 +10,7 @@ permalink: /configuration/
 # Configuration
 {: .d-inline-block}
 
-CON
+CFG
 {: .label .mx-2}
 
 This section cover the setup of system previously installed.

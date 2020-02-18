@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 02 USB device
-nav_order: 3
+title: 03 USB device
+nav_order: 4
 has_children: true
 has_toc: false
 permalink: /usb-device/

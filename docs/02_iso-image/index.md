@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 01 ISO image
-nav_order: 2
+title: 02 ISO image
+nav_order: 3
 has_children: true
 has_toc: false
 permalink: /iso-image/
