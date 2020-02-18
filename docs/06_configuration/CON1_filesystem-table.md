@@ -18,3 +18,15 @@ has_toc: false
 {:toc}
 
 ---
+
+## Generate Fstab
+
+```bash
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Fstab](https://wiki.archlinux.org/index.php/Installation_guide#Fstab)
+- [ArchWiki - Fstab](https://wiki.archlinux.org/index.php/Fstab)

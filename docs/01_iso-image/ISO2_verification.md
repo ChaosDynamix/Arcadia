@@ -75,7 +75,7 @@ Warning
 This part assume that you are in possession of this two files in the same folder
 
 | File                                    | Description    |
-| --------------------------------------- | -------------- |
+| :-------------------------------------- | :------------- |
 | archlinux-year.day.month-x86_64.iso     | ISO Image      |
 | archlinux-year.day.month-x86_64.iso.sig | Signature file |
 

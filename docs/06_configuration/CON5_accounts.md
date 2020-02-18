@@ -18,3 +18,24 @@ has_toc: false
 {:toc}
 
 ---
+
+## Root
+
+```bash
+passwd
+```
+
+## User
+
+```bash
+useradd -m -G wheel,realtime,users -s /bin/bash username
+passwd username
+```
+
+## Sudo
+
+```bash
+EDITOR=vim visudo
+--------------------
+%wheel ALL=(ALL) ALL
+```
