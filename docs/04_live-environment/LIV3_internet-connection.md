@@ -3,7 +3,7 @@ layout: default
 title: LIV3 Internet connection
 nav_order: 3
 has_children: false
-parent: 03 Live environment
+parent: 04 Live environment
 permalink: /live-environment/internet-connection/
 has_toc: false
 ---

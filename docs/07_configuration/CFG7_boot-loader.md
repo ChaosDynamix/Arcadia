@@ -2,7 +2,7 @@
 layout: default
 title: CON7 Boot loader
 nav_order: 7
-parent: 06 Configuration
+parent: 07 Configuration
 permalink: /configuration/boot-loader/
 has_children: true
 has_toc: false

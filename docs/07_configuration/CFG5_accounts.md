@@ -2,7 +2,7 @@
 layout: default
 title: CON5 Accounts
 nav_order: 5
-parent: 06 Configuration
+parent: 07 Configuration
 permalink: /configuration/accounts/
 has_children: true
 has_toc: false

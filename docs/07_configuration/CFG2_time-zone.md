@@ -2,7 +2,7 @@
 layout: default
 title: CON2 Time zone
 nav_order: 2
-parent: 06 Configuration
+parent: 07 Configuration
 permalink: /configuration/time-zone/
 has_children: true
 has_toc: false

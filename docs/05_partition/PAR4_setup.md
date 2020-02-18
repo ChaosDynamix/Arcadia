@@ -2,7 +2,7 @@
 layout: default
 title: PAR4 Setup
 nav_order: 4
-parent: 04 Partition
+parent: 05 Partition
 permalink: /partition/setup/
 has_toc: false
 ---

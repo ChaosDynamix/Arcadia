@@ -2,7 +2,7 @@
 layout: default
 title: PKG2 Installation
 nav_order: 2
-parent: 05 Package
+parent: 06 Package
 permalink: /package/installation/
 has_toc: false
 ---

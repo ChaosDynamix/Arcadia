@@ -2,7 +2,7 @@
 layout: default
 title: CON3 Localization
 nav_order: 3
-parent: 06 Configuration
+parent: 07 Configuration
 permalink: /configuration/localization/
 has_children: true
 has_toc: false

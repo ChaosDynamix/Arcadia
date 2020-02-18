@@ -3,7 +3,7 @@ layout: default
 title: LIV2 Boot mode
 nav_order: 2
 has_children: false
-parent: 03 Live environment
+parent: 04 Live environment
 permalink: /live-environment/boot-mode/
 has_toc: false
 ---

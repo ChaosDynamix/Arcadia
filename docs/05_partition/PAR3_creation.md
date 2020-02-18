@@ -2,7 +2,7 @@
 layout: default
 title: PAR3 Creation
 nav_order: 3
-parent: 04 Partition
+parent: 05 Partition
 permalink: /partition/creation/
 has_toc: false
 ---

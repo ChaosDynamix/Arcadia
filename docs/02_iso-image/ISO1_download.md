@@ -2,7 +2,7 @@
 layout: default
 title: ISO1 Download
 nav_order: 1
-parent: 01 ISO image
+parent: 02 ISO image
 permalink: /iso-image/download/
 has_toc: false
 ---

@@ -2,7 +2,7 @@
 layout: default
 title: PAR2 Layout
 nav_order: 2
-parent: 04 Partition
+parent: 05 Partition
 permalink: /partition/layout/
 has_toc: false
 ---

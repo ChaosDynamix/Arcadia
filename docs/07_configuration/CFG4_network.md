@@ -2,7 +2,7 @@
 layout: default
 title: CON4 Network
 nav_order: 4
-parent: 06 Configuration
+parent: 07 Configuration
 permalink: /configuration/network/
 has_children: true
 has_toc: false
