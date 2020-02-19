@@ -19,68 +19,54 @@ has_toc: false
 
 ---
 
-## Default
+## Install grub
 
 #### BIOS
+{: .no_toc .pt-4}
 
 ```bash
-pacman -S grub
-
-grub-install --target=i386-pc --bootloader-id=GRUB --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+$ pacman -S grub
 ```
 
-## Lvm
+#### UEFi
+{: .no_toc .pt-4}
 
-#### Install grub and efibootmgr
 ```bash
-pacman -S grub efibootmgr
+$ pacman -S grub efibootmgr
 ```
 
-#### Edit grub configuration
+---
+
+## Install grub on the boot partition
+
+#### BIOS
+{: .no_toc .pt-4}
+
 ```bash
-vim /etc/default/grub
----------------------------------------------------------------------------------------------------
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm root=/dev/grp/root loglevel=3 quiet"
+$ grub-install --target=i386-pc --bootloader-id=GRUB --recheck /dev/sda
 ```
 
-#### Install grub on the boot partition and generate the configuration
+#### UEFi
+{: .no_toc .pt-4}
+
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
+$ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
 ```
 
-## Btrfs
+---
 
-#### Mounting the boot partition
+## generate the configuration
+
 ```bash
-mkdir /efi
-mount /dev/sda1 /efi
+$ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### Install grub and efibootmgr
-```bash
-pacman -S grub efibootmgr
-```
-
-#### Edit grub configuration
-```bash
-vim /etc/default/grub
-----------------------------------------------------------------------------------
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs loglevel=3 quiet"
-GRUB_ENABLE_CRYPTODISK=y
-```
-
-#### Install grub on the boot partition and generate the configuration
-```bash
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck
-grub-mkconfig -o /boot/grub/grub.cfg
-```
+---
 
 ## Reboot
 
 ```bash
-exit
-umount -R /mnt
-reboot
+$ exit
+$ umount -R /mnt
+$ reboot
 ```

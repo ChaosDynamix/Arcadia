@@ -8,8 +8,6 @@ permalink: /partition/setup/btrfs/
 has_toc: false
 ---
 
-[Return to Partition setup](/Andromeda/partition/setup/){: .btn .d-inline-block}
-
 # Partition setup for BTRFS on LUKS
 {: .no_toc}
 
