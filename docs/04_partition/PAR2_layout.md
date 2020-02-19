@@ -5,6 +5,7 @@ nav_order: 2
 parent: 04 Partition
 permalink: /partition/layout/
 has_toc: false
+has_children: true
 ---
 
 # Partition layout
@@ -70,37 +71,7 @@ A swap partition is not strictly required, but recommended for systems with low 
 A BIOS boot partition is only required when using GRUB for BIOS booting from a GPT disk. The partition has nothing to do with /boot, and it must not be formatted with a file system or mounted.
 {: .fs-2 }
 
----
-
-### LVM on LUKS
-{: .pt-4}
-
-#### UEFI/GPT
-{: .no_toc .pt-2}
-
-| Partition | Mounting point | Partition type            | Size     |
-| :-------- | :------------- | :------------------------ | :------- |
-| /dev/sda1 | /boot          | 01 - EFI system partition | 512M     |
-| /dev/sda2 | -              | 31 - Linux LVM            | 100%FREE |
-
----
-
-### BTRFS on LUKS
-{: .pt-4}
-
-#### UEFI/GPT
-{: .no_toc .pt-2}
-
-| Partition | Mounting point | Partition type            | Size     |
-| :-------- | :------------- | :------------------------ | :------- |
-| /dev/sda1 | -              | 01 - EFI system partition | 512M     |
-| /dev/sda2 | -              | 20 - Linux filesystem     | 100%FREE |
-
----
-
 ### References
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki Partitioning - Example layouts](https://wiki.archlinux.org/index.php/Partitioning#Example_layouts)
-- [ArchWiki - Dm-crypt/Encrypting an entire system - LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
-- [ArchWiki - Dm-crypt/Encrypting an entire system - Btrfs subvolumes with swap](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Btrfs_subvolumes_with_swap)

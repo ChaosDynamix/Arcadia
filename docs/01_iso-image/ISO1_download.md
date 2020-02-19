@@ -5,6 +5,7 @@ nav_order: 1
 parent: 01 ISO image
 permalink: /iso-image/download/
 has_toc: false
+has_children: true
 ---
 
 # ISO image download

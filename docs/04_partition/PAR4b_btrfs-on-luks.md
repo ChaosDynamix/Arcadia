@@ -1,7 +1,9 @@
 ---
 layout: default
 title: PAR4b BTRFS on LUKS
-nav_exclude: true
+grand_parent: 04 Partition
+parent: PAR4 Setup
+nav_order: 2
 permalink: /partition/setup/btrfs/
 has_toc: false
 ---

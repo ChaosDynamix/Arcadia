@@ -1,7 +1,9 @@
 ---
 layout: default
 title: PAR4a LVM on LUKS
-nav_exclude: true
+grand_parent: 04 Partition
+parent: PAR4 Setup
+nav_order: 1
 permalink: /partition/setup/lvm/
 has_toc: false
 ---
