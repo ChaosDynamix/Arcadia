@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON3 Localization
+title: CFG3 Localization
 nav_order: 3
 parent: 06 Configuration
 permalink: /configuration/localization/

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON1 Filesystem table
+title: CFG1 Filesystem table
 nav_order: 1
 parent: 06 Configuration
 permalink: /configuration/filesystem-table/

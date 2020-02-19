@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON2 Time zone
+title: CFG2 Time zone
 nav_order: 2
 parent: 06 Configuration
 permalink: /configuration/time-zone/

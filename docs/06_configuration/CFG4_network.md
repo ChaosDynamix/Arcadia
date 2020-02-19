@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON4 Network
+title: CFG4 Network
 nav_order: 4
 parent: 06 Configuration
 permalink: /configuration/network/

@@ -21,28 +21,22 @@ has_toc: false
 ## Basic partition setup
 
 ### Format the partitions
-{: .no_toc}
+{: .no_toc .pt-4}
 
 #### Ext4 filesystem
-{: .no_toc}
+{: .no_toc .pt-4}
 
 ```bash
-mkfs.ext4 -L ROOT /dev/sdXY
-mkfs.ext4 -L HOME /dev/sdXY
+$ mkfs.ext4 -L ROOT /dev/sdXY
+$ mkfs.ext4 -L HOME /dev/sdXY
 ```
 
 #### EFI filesystem
-{: .no_toc}
+{: .no_toc .pt-4}
 
 ```bash
-mkfs.fat -F32 -n EFI /dev/sdXY
+$ mkfs.fat -F32 -n EFI /dev/sdXY
 ```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-- [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
-- [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
 
 ---
 
@@ -50,14 +44,9 @@ mkfs.fat -F32 -n EFI /dev/sdXY
 {: .no_toc}
 
 ```bash
-mkswap -L SWAP /dev/sdXY
-swapon /dev/sdXY
+$ mkswap -L SWAP /dev/sdXY
+$ swapon /dev/sdXY
 ```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-- [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
 
 ---
 
@@ -65,33 +54,46 @@ swapon /dev/sdXY
 {: .no_toc}
 
 #### Root partition
-{: .no_toc}
+{: .no_toc .pt-4}
 
 ```bash
-mount /dev/sdXY /mnt
+$ mount /dev/sdXY /mnt
 ```
 
 #### Home partition
-{: .no_toc}
+{: .no_toc .pt-4}
 
 ```bash
-mkdir /mnt/home
-mount /dev/sdXY /mnt/home
+# Create the directory
+$ mkdir /mnt/home
+
+# Mount the partition
+$ mount /dev/sdXY /mnt/home
 ```
 
 #### EFI partition
-{: .no_toc}
+{: .no_toc .pt-4}
 
 ```bash
-mkdir /mnt/boot
-mount /dev/sdXY /mnt/boot
+# Create the directory
+$ mkdir /mnt/boot
+
+# Mount the partition
+$ mount /dev/sdXY /mnt/boot
 ```
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
+- [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
 - [ArchWiki - Installation guide - Mount the file systems](https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems)
 - [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
+- [Manual - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
+- [Manual - mkfs.fat](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/dosfstools/mkfs.fat.8.en)
+- [Manual - mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
+- [Manual - swapon](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/swapon.2.en)
+- [Manual - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
+- [Manual - mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mount.8.en)
 
 ---
 

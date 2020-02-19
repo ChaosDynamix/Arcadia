@@ -20,6 +20,5 @@ This section will show you how to properly download and verify a Arch Linux ISO 
 {: .text-delta}
 
 1. [Download](/Andromeda/iso-image/download/)
-  - [BitTorrent](/Andromeda/iso-image/download/bittorrent/)
-  - [Mirror site](/Andromeda/iso-image/download/mirror-site/)
-1. [Verification](/Andromeda/iso-image/verification/)
+1. [Integrity](/Andromeda/iso-image/integrity/)
+1. [Authenticity](/Andromeda/iso-image/authenticity/)

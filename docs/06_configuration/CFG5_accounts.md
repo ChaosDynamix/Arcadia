@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON5 Accounts
+title: CFG5 Accounts
 nav_order: 5
 parent: 06 Configuration
 permalink: /configuration/accounts/

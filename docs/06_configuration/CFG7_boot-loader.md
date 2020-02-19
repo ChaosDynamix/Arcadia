@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON7 Boot loader
+title: CFG7 Boot loader
 nav_order: 7
 parent: 06 Configuration
 permalink: /configuration/boot-loader/

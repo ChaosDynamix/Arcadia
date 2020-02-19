@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CON6 Images
+title: CFG6 Images
 nav_order: 6
 parent: 06 Configuration
 permalink: /configuration/images/

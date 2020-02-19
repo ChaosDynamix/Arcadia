@@ -1,13 +1,13 @@
 ---
 layout: default
-title: ISO2 Verification
-nav_order: 2
+title: ISO3 Authenticity
+nav_order: 3
 parent: 01 ISO image
-permalink: /iso-image/verification/
+permalink: /iso-image/authenticity/
 has_toc: false
 ---
 
-# ISO image verification
+# ISO image authenticity
 {: .no_toc}
 
 ## Table of contents
