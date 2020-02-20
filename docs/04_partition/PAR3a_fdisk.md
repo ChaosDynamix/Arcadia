@@ -23,6 +23,34 @@ has_toc: false
 
 fdisk is a dialog-driven program for creation and manipulation of partition tables. It understands GPT, MBR, Sun, SGI and BSD partition tables.
 
+### Partition types
+{: .no_toc}
+
+#### GPT
+{: .no_toc .pt-4}
+
+| fdisk partition type id | Description                        |
+| ----------------------- | :--------------------------------- |
+| 1                       | EFI System partition               |
+| 4                       | BIOS boot partition                |
+| 19                      | Linux Swap partition               |
+| 20                      | Linux Filesystem                   |
+| 24                      | Linux Root partition (x86-64)      |
+| 28                      | Linux Home partition               |
+| 29                      | Linux RAID partition               |
+| 30                      | Linux Logical Volume Manager (LVM) |
+
+
+#### MBR
+{: .no_toc .pt-4}
+
+| fdisk partition type id | Description                        |
+| ----------------------- | :--------------------------------- |
+| 82                      | Linux Swap partition               |
+| 83                      | Linux Filesystem                   |
+| 8e                      | Linux Logical Volume Manager (LVM) |
+| fd                      | Linux RAID                         |
+
 ---
 
 ## Open fdisk

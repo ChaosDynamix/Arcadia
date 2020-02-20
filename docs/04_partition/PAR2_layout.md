@@ -42,34 +42,34 @@ A swap partition is not strictly required, but recommended for systems with low 
 #### UEFI/GPT
 {: .no_toc .pt-4}
 
-| Partition | Mounting point | Partition type            | Size     |
-| :-------- | :------------- | :------------------------ | :------- |
-| /dev/sda1 | /boot          | 01 - EFI system partition | 260M     |
-| /dev/sda2 | /              | 24 - Linux root (x86-64)  | 23 - 32G |
-| /dev/sda3 | [SWAP]         | 19 - Linux swap           | > 512M   |
-| /dev/sda4 | /home          | 28 - Linux home           | 100%FREE |
+| Partition | Mounting point | Partition type                | Size     |
+| :-------- | :------------- | :---------------------------- | :------- |
+| /dev/sda1 | /boot          | EFI system partition          | 260M     |
+| /dev/sda2 | /              | Linux Root partition (x86-64) | 23 - 32G |
+| /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
+| /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
+
+#### BIOS/GPT
+{: .no_toc .pt-4}
+
+A BIOS boot partition is only required when using GRUB for BIOS booting from a GPT disk. The partition has nothing to do with /boot, and it must not be formatted with a file system or mounted.
+{: .fs-2 }
+
+| Partition | Mounting point | Partition type                | Size     |
+| :-------- | :------------- | :---------------------------- | :------- |
+| /dev/sda1 |                | BIOS boot partition           | 1M       |
+| /dev/sda2 | /              | Linux Root partition (x86-64) | 23 - 32G |
+| /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
+| /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
 
 #### BIOS/MBR
 {: .no_toc .pt-4}
 
 | Partition | Mounting point | Partition type            | Size     | Boot flag |
 | :-------- | :------------- | :------------------------ | :------- | :-------- |
-| /dev/sda1 | /              | 83 - Linux                | 23 - 32G | yes       |
-| /dev/sda2 | [SWAP]         | 82 - Linux swap           | > 512M   | No        |
-| /dev/sda3 | /home          | 83 - Linux                | 100%FREE | No        |
-
-#### BIOS/GPT
-{: .no_toc .pt-4}
-
-| Partition | Mounting point | Partition type            | Size     |
-| :-------- | :------------- | :------------------------ | :------- |
-| /dev/sda1 | -              | 04 - BIOS boot            | 1M       |
-| /dev/sda2 | /              | 24 - Linux root (x86-64)  | 23 - 32G |
-| /dev/sda3 | [SWAP]         | 19 - Linux swap           | > 512M   |
-| /dev/sda4 | /home          | 28 - Linux home           | 100%FREE |
-
-A BIOS boot partition is only required when using GRUB for BIOS booting from a GPT disk. The partition has nothing to do with /boot, and it must not be formatted with a file system or mounted.
-{: .fs-2 }
+| /dev/sda1 | /              | Linux Filesystem          | 23 - 32G | yes       |
+| /dev/sda2 | [SWAP]         | Linux Swap partition      | > 512M   | No        |
+| /dev/sda3 | /home          | Linux Filesystem          | 100%FREE | No        |
 
 ### References
 {: .no_toc .text-delta .pt-4}

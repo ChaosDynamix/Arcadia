@@ -22,10 +22,10 @@ has_toc: false
 #### UEFI/GPT
 {: .no_toc .pt-2}
 
-| Partition | Mounting point | Partition type            | Size     |
-| :-------- | :------------- | :------------------------ | :------- |
-| /dev/sda1 | -              | 01 - EFI system partition | 512M     |
-| /dev/sda2 | -              | 20 - Linux filesystem     | 100%FREE |
+| Partition | Mounting point | Partition type       | Size     |
+| :-------- | :------------- | :------------------- | :------- |
+| /dev/sda1 |                | EFI system partition | 512M     |
+| /dev/sda2 |                | Linux Filesystem     | 100%FREE |
 
 ### References
 {: .no_toc .text-delta .pt-4}
