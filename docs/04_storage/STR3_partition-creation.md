@@ -1,13 +1,13 @@
 ---
 layout: default
-title: PAR1 Table
-nav_order: 1
-parent: 04 Partition
-permalink: /partition/table/
+title: STR3 Partition creation
+nav_order: 3
+parent: 04 Storage
+permalink: /storage/partition-creation/
 has_toc: false
 ---
 
-# Partition table
+# Storage partition creation
 {: .no_toc}
 
 ## Table of contents
@@ -18,9 +18,9 @@ has_toc: false
 
 ---
 
-## Master Boot Record (MBR)
+## Linux Partition types
 
-### Partition types
+### Master Boot Record (MBR)
 {: .no_toc}
 
 | Partition id | Description                        |
@@ -31,19 +31,7 @@ has_toc: false
 | E8h          | Linux Unified Key Setup (LUKS)     |
 | FDh          | Linux RAID                         |
 
-The other linux partition types have been ommited because there are not used in this guide.
-{: .fs-2}
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-- [Wikipedia - Partition type](https://en.wikipedia.org/wiki/Partition_type)
-
----
-
-## Guid Partition Table (GPT)
-
-### Partition types
+### Guid Partition Table (GPT)
 {: .no_toc}
 
 | Partition guid                       | Description                        |
@@ -60,12 +48,58 @@ The other linux partition types have been ommited because there are not used in 
 | 7FFEC5C9-2D00-49B7-8941-3EA10A5586B7 | Linux Plain dm-crypt partition     |
 | A19D880F-05FC-4D3B-A006-743F0F84911E | Linux RAID partition               |
 
-The other linux partition types have been ommited because there are not used in this guide.
-{: .fs-2}
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [Wikipedia - Partition type](https://en.wikipedia.org/wiki/Partition_type)
+- [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
+
+---
+
+## With fdisk
+
+fdisk is a dialog-driven program for creation and manipulation of partition tables. It understands GPT, MBR, Sun, SGI and BSD partition tables.
+
+### Open fdisk
+{: .no_toc}
+
+```bash
+$ fdisk /dev/sdX
+```
+
+### Create a partition table
+{: .no_toc .pt-2}
+
+| Command | Action                                 |
+| :------ | :------------------------------------- |
+| g       | Create a new empty GPT partition table |
+| o       | Create a new empty MBR partition table |
+
+### Create a partition
+{: .no_toc .pt-2}
+
+| Command | Action              |
+| :------ | :------------------ |
+| n       | Add a new partition |
+| d       | Delete a partition  |
+
+### Change the partition type
+{: .no_toc .pt-2}
+
+| Command        | Action                                            |
+| :------------- | :------------------------------------------------ |
+| l              | List the partition types for your partition table |
+| t              | Change a partition type                           |
+
+### Save & exit
+{: .no_toc .pt-2}
+
+| Command        | Action                       |
+| :------------- | :--------------------------- |
+| w              | Write table to disk and exit |
+| q              | Quit without saving changes  |
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
-
----
+- [ArchWiki - fdisk](https://wiki.archlinux.org/index.php/Fdisk)

@@ -17,13 +17,12 @@ Andromeda is one of the many guides to install and configure Arch Linux.
 
 | Step | Section          | Namespace |
 | :--- | :--------------- | :-------- |
-| 01   | Concept          | CON       |
-| 02   | ISO image        | ISO       |
-| 03   | USB device       | USB       |
-| 04   | Live environment | LIV       |
-| 05   | Partition        | PAR       |
-| 06   | Package          | PKG       |
-| 07   | Configuration    | CFG       |
+| 01   | ISO image        | ISO       |
+| 02   | USB device       | USB       |
+| 03   | Live environment | LIV       |
+| 04   | Storage          | STR       |
+| 05   | Package          | PKG       |
+| 06   | Configuration    | CFG       |
 
 ---
 

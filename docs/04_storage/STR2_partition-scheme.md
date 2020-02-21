@@ -1,14 +1,13 @@
 ---
 layout: default
-title: PAR2 Layout
+title: STR2 Partition scheme
 nav_order: 2
-parent: 04 Partition
-permalink: /partition/layout/
+parent: 04 Storage
+permalink: /storage/partition-scheme/
 has_toc: false
-has_children: true
 ---
 
-# Partition layout
+# Storage partition scheme
 {: .no_toc}
 
 ## Table of contents
@@ -31,15 +30,18 @@ A swap partition is not strictly required, but recommended for systems with low 
 | 64G        | At least 4GB           | Hibernation not recommended     |
 
 ### References
-{: .no_toc .text-delta .pt-5}
+{: .no_toc .text-delta .pt-4}
 
 - [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
 
 ---
 
-## Select a partition layout
+## Select a partition scheme
 
-#### UEFI/GPT
+### UEFI / GPT
+{: .no_toc .pt-4}
+
+#### EXT4
 {: .no_toc .pt-4}
 
 | Partition | Mounting point | Partition type                | Size     |
@@ -49,11 +51,27 @@ A swap partition is not strictly required, but recommended for systems with low 
 | /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
 | /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
 
-#### BIOS/GPT
+#### LVM
 {: .no_toc .pt-4}
 
-A BIOS boot partition is only required when using GRUB for BIOS booting from a GPT disk. The partition has nothing to do with /boot, and it must not be formatted with a file system or mounted.
-{: .fs-2 }
+| Partition | Mounting point | Partition type                     | Size     |
+| :-------- | :------------- | :--------------------------------- | :------- |
+| /dev/sda1 | /boot          | EFI system partition               | 512M     |
+| /dev/sda2 |                | Linux Logical Volume Manager (LVM) | 100%FREE |
+
+#### BTRFS
+{: .no_toc .pt-4}
+
+| Partition | Mounting point | Partition type       | Size     |
+| :-------- | :------------- | :------------------- | :------- |
+| /dev/sda1 |                | EFI system partition | 512M     |
+| /dev/sda2 |                | Linux Filesystem     | 100%FREE |
+
+### BIOS
+{: .no_toc .pt-4}
+
+#### GPT / EXT4
+{: .no_toc .pt-4}
 
 | Partition | Mounting point | Partition type                | Size     |
 | :-------- | :------------- | :---------------------------- | :------- |
@@ -62,7 +80,10 @@ A BIOS boot partition is only required when using GRUB for BIOS booting from a G
 | /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
 | /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
 
-#### BIOS/MBR
+A BIOS boot partition is only required when using GRUB for BIOS booting from a GPT disk. The partition has nothing to do with /boot, and it must not be formatted with a file system or mounted.
+{: .fs-2}
+
+#### MBR / EXT4
 {: .no_toc .pt-4}
 
 | Partition | Mounting point | Partition type            | Size     | Boot flag |
@@ -75,3 +96,5 @@ A BIOS boot partition is only required when using GRUB for BIOS booting from a G
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki Partitioning - Example layouts](https://wiki.archlinux.org/index.php/Partitioning#Example_layouts)
+- [ArchWiki - Dm-crypt/Encrypting an entire system - LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+- [ArchWiki - Dm-crypt/Encrypting an entire system - Btrfs subvolumes with swap](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Btrfs_subvolumes_with_swap)

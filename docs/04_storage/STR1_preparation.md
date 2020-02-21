@@ -1,14 +1,13 @@
 ---
 layout: default
-title: PAR3 Creation
-nav_order: 3
-parent: 04 Partition
-permalink: /partition/creation/
+title: STR1 Preparation
+nav_order: 1
+parent: 04 Storage
+permalink: /storage/preparation/
 has_toc: false
-has_children: true
 ---
 
-# Partition creation
+# Storage preparation
 {: .no_toc}
 
 ## Table of contents
@@ -37,6 +36,6 @@ $ cryptsetup close to_be_wiped
 ```
 
 ### References
-{: .no_toc .text-delta .pt-5}
+{: .no_toc .text-delta .pt-4}
 
 - [ArchWiki dm-crypt/Drive preparation - Secure erasure of the hard disk drive](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)
