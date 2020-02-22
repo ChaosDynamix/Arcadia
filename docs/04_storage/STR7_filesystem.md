@@ -1,13 +1,13 @@
 ---
 layout: default
-title: STR5 Partition setup
-nav_order: 5
+title: STR7 Filesystem
+nav_order: 7
 parent: 04 Storage
-permalink: /storage/partition-setup/
+permalink: /storage/filesystem/
 has_toc: false
 ---
 
-# Storage partition setup
+# Storage filesystem
 {: .no_toc}
 
 ## Table of contents
@@ -24,136 +24,122 @@ has_toc: false
 {: .no_toc .pt-4}
 
 ```bash
+# Root partition
 $ mkfs.ext4 -L ROOT /dev/sdXY
+
+# Home partition
 $ mkfs.ext4 -L HOME /dev/sdXY
 ```
 
-#### UEFI / GPT
+#### LVM
 {: .no_toc .pt-4}
 
 ```bash
-$ mkfs.fat -F32 -n EFI /dev/sdXY
-```
+# Root partition
+$ mkfs.ext4 -L ROOT /dev/grp/root
 
-### Setup the swap partition
-{: .no_toc .pt-4}
-
-```bash
-$ mkswap -L SWAP /dev/sdXY
-$ swapon /dev/sdXY
+# Home partition
+$ mkfs.ext4 -L HOME /dev/grp/home
 ```
 
 ### Mount the partitions
 {: .no_toc .pt-4}
 
 ```bash
-# Create the home directory
-$ mkdir /mnt/home
-
-# Mount the partitions
+# Root partition
 $ mount /dev/sdXY /mnt
+
+# Home partition
+$ mkdir /mnt/home
 $ mount /dev/sdXY /mnt/home
 ```
 
-#### UEFI / GPT
+#### LVM
 {: .no_toc .pt-4}
 
 ```bash
-# Create the boot directory
-$ mkdir /mnt/boot
+# Root partition
+$ mount /dev/grp/root /mnt
 
-# Mount the partition
-$ mount /dev/sdXY /mnt/boot
+# Home partition
+$ mkdir /mnt/home
+$ mount /dev/grp/home /mnt/home
 ```
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
-- [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
-- [Manual - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
-- [Manual - mkfs.fat](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/dosfstools/mkfs.fat.8.en)
-- [Manual - mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
-- [Manual - swapon](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/swapon.2.en)
 - [ArchWiki - Installation guide - Mount the file systems](https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems)
-- [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
+- [Manual - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
 - [Manual - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
 - [Manual - mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mount.8.en)
 
 ---
 
-## Lvm
+## Swap
 
-### Create the physical volume
-{: .no_toc}
-
-```bash
-$ pvcreate /dev/sda2
-```
-
-#### LUKS
+### Format the Swap partition
 {: .no_toc .pt-4}
 
 ```bash
-$ pvcreate /dev/mapper/lvm
+$ mkswap -L SWAP /dev/sdXY
 ```
 
-### Create the volume group
-{: .no_toc}
-
-```bash
-$ vgcreate grp /dev/sda2
-```
-
-#### LUKS
+#### LVM
 {: .no_toc .pt-4}
 
 ```bash
-$ vgcreate grp /dev/mapper/lvm
+$ mkswap -L SWAP /dev/grp/swap
 ```
 
-### Create the logical volumes
-{: .no_toc}
+### Activate the Swap partition
+{: .no_toc .pt-4}
 
 ```bash
-$ lvcreate -L 8G grp -n swap
-$ lvcreate -L 32G grp -n root
-$ lvcreate -l 100%FREE grp -n home
+$ swapon /dev/sdXY
 ```
 
-### Formating logical volumes
-{: .no_toc}
+#### LVM
+{: .no_toc .pt-4}
 
 ```bash
-$ mkfs.ext4 /dev/grp/root
-$ mkfs.ext4 /dev/grp/home
-```
-
-### Setup Swap
-{: .no_toc}
-
-```bash
-$ mkswap /dev/grp/swap
 $ swapon /dev/grp/swap
 ```
 
-### Mounting logical volumes
-{: .no_toc}
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
+- [Manual - mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
+- [Manual - swapon](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/swapon.2.en)
+
+---
+
+## Fat32
+
+### Format the EFI partition
+{: .no_toc .pt-4}
 
 ```bash
-$ mount /dev/grp/root /mnt
-$ mkdir /mnt/home
-$ mount /dev/grp/home /mnt/home
+$ mkfs.fat -F32 -n EFI /dev/sda1
 ```
 
-### Setup the boot partition
-{: .no_toc}
+### Mount the EFI partition
+{: .no_toc .pt-4}
 
 ```bash
-$ mkfs.fat -F32 /dev/sda1
 $ mkdir /mnt/boot
 $ mount /dev/sda1 /mnt/boot
 ```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
+- [Manual - mkfs.fat](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/dosfstools/mkfs.fat.8.en)
+- [Manual - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
+- [Manual - mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mount.8.en)
 
 ---
 
@@ -203,11 +189,4 @@ btrfs subvolume create /mnt/var/cache/pacman/pkg
 btrfs subvolume create /mnt/var/abs
 btrfs subvolume create /mnt/var/tmp
 btrfs subvolume create /mnt/srv
-```
-
-### Formating the boot partition
-{: .no_toc}
-
-```bash
-mkfs.fat -F32 /dev/sda1
 ```

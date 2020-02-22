@@ -51,6 +51,16 @@ A swap partition is not strictly required, but recommended for systems with low 
 | /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
 | /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
 
+#### RAID 1
+{: .no_toc .pt-4}
+
+| Partition | Mounting point | Partition type       | Size            |
+| :-------- | :------------- | :------------------- | :-------------- |
+| /dev/sda1 |                | Linux RAID partition | 512M            |
+| /dev/sda2 |                | Linux RAID partition | 100%FREE - 100M |
+| /dev/sdb1 |                | Linux RAID partition | 512M            |
+| /dev/sdb2 |                | Linux RAID partition | 100%FREE - 100M |
+
 #### LVM
 {: .no_toc .pt-4}
 
