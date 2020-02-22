@@ -56,7 +56,25 @@ has_toc: false
 
 ---
 
-## With fdisk
+## Swap partition size recommendations
+
+A swap partition is not strictly required, but recommended for systems with low RAM. If you want to use hibernation, you will need a swap partition. The following table has recommendations for swap partition size.
+
+| System RAM | Recommended swap space | Swap space if using hibernation |
+| :--------- | :--------------------- | :------------------------------ |
+| < 2GB      | 2x the amount of RAM   | 3x the amount of RAM            |
+| 2 - 8G     | Equal to amount of RAM | 2x the amount of RAM            |
+| 8 - 64G    | At least 4GB           | 1.5x the amount of RAM          |
+| 64G        | At least 4GB           | Hibernation not recommended     |
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
+
+---
+
+## Partitionning with fdisk
 
 fdisk is a dialog-driven program for creation and manipulation of partition tables. It understands GPT, MBR, Sun, SGI and BSD partition tables.
 
@@ -67,37 +85,20 @@ fdisk is a dialog-driven program for creation and manipulation of partition tabl
 $ fdisk /dev/sdX
 ```
 
-### Create a partition table
+### List of commands
 {: .no_toc .pt-2}
 
-| Command | Action                                 |
-| :------ | :------------------------------------- |
-| g       | Create a new empty GPT partition table |
-| o       | Create a new empty MBR partition table |
+| Command | Action                                            |
+| :------ | :------------------------------------------------ |
+| g       | Create a new empty GPT partition table            |
+| o       | Create a new empty MBR partition table            |
+| n       | Add a new partition                               |
+| d       | Delete a partition                                |
+| l       | List the partition types for your partition table |
+| t       | Change a partition type                           |
+| w       | Write table to disk and exit                      |
+| q       | Quit without saving changes                       |
 
-### Create a partition
-{: .no_toc .pt-2}
-
-| Command | Action              |
-| :------ | :------------------ |
-| n       | Add a new partition |
-| d       | Delete a partition  |
-
-### Change the partition type
-{: .no_toc .pt-2}
-
-| Command        | Action                                            |
-| :------------- | :------------------------------------------------ |
-| l              | List the partition types for your partition table |
-| t              | Change a partition type                           |
-
-### Save & exit
-{: .no_toc .pt-2}
-
-| Command        | Action                       |
-| :------------- | :--------------------------- |
-| w              | Write table to disk and exit |
-| q              | Quit without saving changes  |
 
 ### References
 {: .no_toc .text-delta .pt-4}

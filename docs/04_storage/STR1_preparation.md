@@ -18,11 +18,14 @@ has_toc: false
 
 ---
 
-## Secure erase
+## Encryption
+{: .d-inline-block}
 
-This part is not strictly required but it is very recommended for encryption scenarios.
+IRREVERSIBLE DATA ERASE
+{: .label .label-red .mx-2}
 
-**Warning : Make appropriate backups of valuable data prior to starting !**
+### Secure erase
+{: .no_toc}
 
 ```bash
 # Open a container

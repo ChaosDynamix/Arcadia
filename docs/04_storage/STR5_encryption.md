@@ -36,6 +36,12 @@ $ cryptsetup --type luks1 luksFormat /dev/sdXY
 $ cryptsetup open /dev/sdXY btrfs
 ```
 
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - LVM on LUKS - Preparing the disk](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_disk_2)
+- [ArchWiki - BTRFS on LUKS - Preparing the system partition](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_system_partition)
+
 ---
 
 ## Full disk encryption
@@ -53,3 +59,8 @@ $ cryptsetup --cipher=aes-xts-plain64 --offset=0 --key-file=/dev/sdc --key-size=
 ```bash
 $ cryptsetup --cipher=aes-xts-plain64 --offset=0 --key-file=/dev/sdc --key-size=512 open --type plain /dev/sda btrfs
 ```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Full disk encryption - Preparing the non boot partition](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_non-boot_partitions)

@@ -24,12 +24,19 @@ has_toc: false
 $ pvcreate /dev/sda2
 ```
 
-#### LUKS
+#### Encryption
 {: .no_toc .pt-4}
 
 ```bash
 $ pvcreate /dev/mapper/lvm
 ```
+
+#### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
+
+---
 
 ## Create the volume group
 
@@ -37,12 +44,19 @@ $ pvcreate /dev/mapper/lvm
 $ vgcreate grp /dev/sda2
 ```
 
-#### LUKS
+#### Encryption
 {: .no_toc .pt-4}
 
 ```bash
 $ vgcreate grp /dev/mapper/lvm
 ```
+
+#### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
+
+---
 
 ## Create the logical volumes
 
@@ -51,3 +65,8 @@ $ lvcreate -L 8G grp -n swap
 $ lvcreate -L 32G grp -n root
 $ lvcreate -l 100%FREE grp -n home
 ```
+
+#### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)

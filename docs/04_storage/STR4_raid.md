@@ -20,10 +20,10 @@ has_toc: false
 
 ## Build the arrays
 
-### UEFI / GPT
+### Scenario
 {: .no_toc}
 
-#### Raid 1
+#### UEFI / GPT / Raid1
 {: .no_toc .pt-4}
 
 ```bash
@@ -34,10 +34,27 @@ $ mdadm --create --verbose --level=1 --metadata=1.0 --raid-devices=2 /dev/md/efi
 $ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/root /dev/sda2 /dev/sdb2
 ```
 
+### Check the arrays
+{: .no_toc}
+
+```bash
+$ cat /proc/mdstat
+```
+
+#### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - RAID - Build the array](https://wiki.archlinux.org/index.php/RAID#Build_the_array)
+
+---
+
 ## Update configuration file
 
 ```bash
 $ mdadm --detail --scan >> /etc/mdadm.conf
 ```
 
----
+#### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - RAID - Build the array](https://wiki.archlinux.org/index.php/RAID#Update_configuration_file)

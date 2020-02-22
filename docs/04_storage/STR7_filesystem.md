@@ -21,7 +21,7 @@ has_toc: false
 ## Ext4
 
 ### Format the partitions
-{: .no_toc .pt-4}
+{: .no_toc}
 
 ```bash
 # Root partition
@@ -80,7 +80,7 @@ $ mount /dev/grp/home /mnt/home
 ## Swap
 
 ### Format the Swap partition
-{: .no_toc .pt-4}
+{: .no_toc}
 
 ```bash
 $ mkswap -L SWAP /dev/sdXY
@@ -119,7 +119,7 @@ $ swapon /dev/grp/swap
 ## Fat32
 
 ### Format the EFI partition
-{: .no_toc .pt-4}
+{: .no_toc}
 
 ```bash
 $ mkfs.fat -F32 -n EFI /dev/sda1

@@ -20,9 +20,11 @@ This section cover the configuration of the storage space.
 {: .text-delta}
 
 1. [Preparation](/Andromeda/storage/preparation/)
-1. [Partition scheme](/Andromeda/storage/partition-scheme/)
-1. [Partition creation](/Andromeda/storage/partition-creation/)
+1. [Scenario](/Andromeda/storage/scenario/)
+1. [Partition](/Andromeda/storage/partition/)
+1. [Raid](/Andromeda/storage/raid/)
 1. [Encryption](/Andromeda/storage/encryption/)
-1. [Partition setup](/Andromeda/storage/partition-setup/)
+1. [LVM](/Andromeda/storage/lvm/)
+1. [Filesystem](/Andromeda/storage/filesystem/)
 
 ---
