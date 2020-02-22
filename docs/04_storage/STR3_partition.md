@@ -1,13 +1,13 @@
 ---
 layout: default
-title: STR3 Partition creation
+title: STR3 Partition
 nav_order: 3
 parent: 04 Storage
-permalink: /storage/partition-creation/
+permalink: /storage/partition/
 has_toc: false
 ---
 
-# Storage partition creation
+# Storage partition
 {: .no_toc}
 
 ## Table of contents

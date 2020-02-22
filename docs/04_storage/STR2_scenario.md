@@ -1,13 +1,13 @@
 ---
 layout: default
-title: STR2 Partition scheme
+title: STR2 Scenario
 nav_order: 2
 parent: 04 Storage
-permalink: /storage/partition-scheme/
+permalink: /storage/scenario/
 has_toc: false
 ---
 
-# Storage partition scheme
+# Storage scenario
 {: .no_toc}
 
 ## Table of contents
