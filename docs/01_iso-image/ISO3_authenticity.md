@@ -49,7 +49,7 @@ GnuPG is a complete and free implementation of the OpenPGP standard as defined b
 GnuPG supports the RSA public key algorithm which is used to sign the Arch Linux ISO image.
 
 ### References
-{: .no_toc .text-delta .pt-5}
+{: .no_toc .text-delta .pt-4}
 
 - [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
 - [Wikipedia - RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
@@ -62,7 +62,7 @@ GnuPG supports the RSA public key algorithm which is used to sign the Arch Linux
 Warning
 {: .label .label-red .mx-2}
 
-**Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site.**
+Signature must be downloaded from the Arch Linux download page. The signature could be manipulated if it is downloaded from a mirror site.
 {: .text-red-200}
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
@@ -85,6 +85,6 @@ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_
 ```
 
 ### References
-{: .no_toc .text-delta .pt-5}
+{: .no_toc .text-delta .pt-4}
 
 - [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)

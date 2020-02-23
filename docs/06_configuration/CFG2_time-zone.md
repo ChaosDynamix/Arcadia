@@ -19,11 +19,11 @@ has_toc: false
 
 ---
 
-## Time zone
+## Create a symbolic link
 
 ```bash
+# Edit the time zone directory accordingly
 ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
-hwclock --systohc --utc
 ```
 
 ### References
@@ -31,4 +31,17 @@ hwclock --systohc --utc
 
 - [ArchWiki - Installation guide - Time zone](https://wiki.archlinux.org/index.php/Installation_guide#Time_zone)
 - [Man - ln](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/ln.1.en)
+
+---
+
+## Synchronize the hardware clock with the system clock
+
+```bash
+hwclock --systohc --utc
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Time zone](https://wiki.archlinux.org/index.php/Installation_guide#Time_zone)
 - [Man - hwclock](https://jlk.fjfi.cvut.cz/arch/manpages/man/hwclock.8)

@@ -24,7 +24,7 @@ has_toc: false
 Warning
 {: .label .label-red .mx-2}
 
-**Checksum must be downloaded from the Arch Linux download page. The checksum could be manipulated if it is downloaded from a mirror site.**
+Checksum must be downloaded from the Arch Linux download page. The checksum could be manipulated if it is downloaded from a mirror site.
 {: .text-red-200}
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)

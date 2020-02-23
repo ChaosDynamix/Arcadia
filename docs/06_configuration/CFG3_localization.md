@@ -19,37 +19,66 @@ has_toc: false
 
 ---
 
-## Localization
+## Select needed locales
 
-#### Select needed locales
+Uncomment the needed locales in `locale.gen`
+
+#### /etc/locale.gen
+{: .no_toc .pt-2}
 
 ```bash
-vim /etc/locale.gen
--------------------
 fr_FR.UTF-8 UTF-8
 en_US.UTF-8 UTF-8
 ```
 
-#### Generate locales
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Localization](https://wiki.archlinux.org/index.php/Installation_guide#Localization)
+
+---
+
+## Generate locales
 
 ```bash
 locale-gen
 ```
 
-#### Setup system locale
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Localization](https://wiki.archlinux.org/index.php/Installation_guide#Localization)
+
+---
+
+## Set the system locale
+
+#### /etc/locale.conf
+{: .no_toc .pt-4}
 
 ```bash
-vim /etc/locale.conf
---------------------
 LANG=fr_FR.UTF-8
 LC_COLLATE=C
 ```
 
-#### Setup console locale
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Localization](https://wiki.archlinux.org/index.php/Installation_guide#Localization)
+
+---
+
+## Set the console locale
+
+#### With localectl
+{: .no_toc .pt-4}
 
 ```bash
-localectl set-keymap --no-convert keymap
+localectl set-keymap --no-convert fr-latin9
 ```
+
+#### With the vconsole.conf file
+{: .no_toc .pt-4}
 
 ```bash
 echo KEYMAP=fr-latin9 > /etc/vconsole.conf
@@ -59,4 +88,5 @@ echo KEYMAP=fr-latin9 > /etc/vconsole.conf
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki - Installation guide - Localization](https://wiki.archlinux.org/index.php/Installation_guide#Localization)
-- [Man - echo](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/echo.1.en)
+- [Manual - localectl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/localectl.1.en)
+- [Manual - echo](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/echo.1.en)

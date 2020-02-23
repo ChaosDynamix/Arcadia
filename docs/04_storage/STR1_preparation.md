@@ -25,7 +25,7 @@ IRREVERSIBLE DATA ERASE
 {: .label .label-red .mx-2}
 
 ### Secure erase
-{: .no_toc}
+{: .no_toc .mt-0}
 
 ```bash
 # Open a container

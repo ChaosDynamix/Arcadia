@@ -20,6 +20,8 @@ has_toc: false
 
 ## Select a partition scheme
 
+You can use a Swap file instead of the Swap partition. See [the configuration of the filesystems](/Andromeda/configuration/filesystems/) for more info.
+
 #### UEFI / EXT4
 {: .no_toc .pt-4}
 
@@ -43,18 +45,18 @@ has_toc: false
 #### UEFI / LVM
 {: .no_toc .pt-4}
 
-| Partition | Partition type                     | Size     |
-| :-------- | :--------------------------------- | :------- |
-| /dev/sda1 | EFI system partition               | 512M     |
-| /dev/sda2 | Linux Logical Volume Manager (LVM) | 100%FREE |
+| Partition | Mounting point  | Partition type                     | Size     |
+| :-------- | :-------------  | :--------------------------------- | :------- |
+| /dev/sda1 | /efi            | EFI system partition               | 512M     |
+| /dev/sda2 |                 | Linux Logical Volume Manager (LVM) | 100%FREE |
 
 #### UEFI / BTRFS
 {: .no_toc .pt-4}
 
-| Partition | Partition type       | Size     |
-| :-------- | :------------------- | :------- |
-| /dev/sda1 | EFI system partition | 512M     |
-| /dev/sda2 | Linux Filesystem     | 100%FREE |
+| Partition | Mounting point  | Partition type       | Size     |
+| :-------- | :-------------  | :------------------- | :------- |
+| /dev/sda1 | /efi            | EFI system partition | 512M     |
+| /dev/sda2 |                 | Linux Filesystem     | 100%FREE |
 
 #### BIOS / GPT / EXT4
 {: .no_toc .pt-4}

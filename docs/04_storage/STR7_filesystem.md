@@ -148,7 +148,7 @@ $ mount /dev/sda1 /mnt/boot
 ### Setup mapped device
 {: .no_toc}
 
-#### LUKS
+#### Encryption
 {: .no_toc .pt-4}
 
 ```bash
