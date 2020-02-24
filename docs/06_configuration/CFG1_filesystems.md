@@ -33,6 +33,19 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 ---
 
+## Enter the system
+
+```bash
+arch-chroot /mnt
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+- [ArchWiki - Installation guide - Chroot](https://wiki.archlinux.org/index.php/Installation_guide#Chroot)
+
+---
+
 ## Swap file
 
 If you decided to use a Swap file instead of a Swap partition, create it and add it to the `fstab` file.
@@ -85,7 +98,7 @@ $ swapon /swapfile
 $ swapon /.swap/swapfile
 ```
 
-### Edit the fstab and add the Swap file
+### Edit /etc/fstab and add the Swap file
 {: .no_toc .pt-4}
 
 ```bash

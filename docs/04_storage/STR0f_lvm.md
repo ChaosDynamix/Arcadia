@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR6 LVM
-nav_order: 6
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/lvm/
 has_toc: false
 ---

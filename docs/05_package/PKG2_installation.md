@@ -20,44 +20,23 @@ has_toc: false
 
 ## Installation
 
-### Examples
-{: .no_toc}
-
-#### Ext4
-{: .no_toc .pt-4}
+### Example
+{: .no_toc .pt-2}
 
 ```bash
 pacstrap /mnt base base-devel linux linux-firmware vim man-db man-pages
 ```
 
-#### Lvm
+### Utilities for accessing the storage
 {: .no_toc .pt-4}
 
-```bash
-pacstrap /mnt base base-devel linux linux-firmware lvm2 vim man-db man-pages
-```
-
-#### Btrfs
-{: .no_toc .pt-4}
-
-```bash
-pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim man-db man-pages
-```
+| System | Package     |
+| :----- | :---------- |
+| RAID   | mdadm       |
+| LVM    | lvm2        |
+| BTRFS  | btrfs-progs |
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
-
----
-
-## Enter the system
-
-```bash
-arch-chroot /mnt
-```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-- [ArchWiki - Installation guide - Chroot](https://wiki.archlinux.org/index.php/Installation_guide#Chroot)

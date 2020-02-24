@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR4 Raid
-nav_order: 4
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/raid/
 has_toc: false
 ---

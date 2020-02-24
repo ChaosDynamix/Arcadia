@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR3 Partition
-nav_order: 3
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/partition/
 has_toc: false
 ---

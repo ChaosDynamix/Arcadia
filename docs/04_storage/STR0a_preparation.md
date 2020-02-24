@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR1 Preparation
-nav_order: 1
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/preparation/
 has_toc: false
 ---

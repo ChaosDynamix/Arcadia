@@ -18,7 +18,7 @@ has_toc: false
 
 ---
 
-## Keyfile for encrypted boot
+## Initramfs embedded keyfile
 
 ### Create keyfile
 {: .no_toc .pt-2}
@@ -46,12 +46,19 @@ $ cryptsetup luksAddKey /dev/sda2 /crypto_keyfile.bin
 
 ## Edit the configuration
 
+Open `/etc/mkinitcpio.conf`
+
+#### RAID1 / EXT4
+{: .no_toc .pt-4}
+
+```bash
+HOOKS=(base udev autodetect modconf block mdadm_udev filesystems keyboard fsck)
+```
+
 #### LVM / encryption
 {: .no_toc .pt-4}
 
 ```bash
-/etc/mkinitcpio.conf
-----------------------------------------------------------------------------------------
 FILES=(/crypto_keyfile.bin)
 HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 ```
@@ -60,8 +67,6 @@ HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keym
 {: .no_toc .pt-4}
 
 ```bash
-/etc/mkinitcpio.conf
------------------------------------------------------------------------------------
 BINARIES=(/usr/bin/btrfs)
 FILES=(/crypto_keyfile.bin)
 HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard keymap fsck)

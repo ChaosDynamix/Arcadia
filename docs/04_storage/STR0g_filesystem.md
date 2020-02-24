@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR7 Filesystem
-nav_order: 7
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/filesystem/
 has_toc: false
 ---
@@ -24,21 +23,22 @@ has_toc: false
 {: .no_toc}
 
 ```bash
-# Root partition
 $ mkfs.ext4 -L ROOT /dev/sdXY
-
-# Home partition
 $ mkfs.ext4 -L HOME /dev/sdXY
+```
+
+#### RAID1
+{: .no_toc .pt-4}
+
+```bash
+$ mkfs.ext4 -L ROOTARRAY /dev/mdX
 ```
 
 #### LVM
 {: .no_toc .pt-4}
 
 ```bash
-# Root partition
 $ mkfs.ext4 -L ROOT /dev/grp/root
-
-# Home partition
 $ mkfs.ext4 -L HOME /dev/grp/home
 ```
 
@@ -46,22 +46,23 @@ $ mkfs.ext4 -L HOME /dev/grp/home
 {: .no_toc .pt-4}
 
 ```bash
-# Root partition
 $ mount /dev/sdXY /mnt
-
-# Home partition
 $ mkdir /mnt/home
 $ mount /dev/sdXY /mnt/home
+```
+
+#### RAID1
+{: .no_toc .pt-4}
+
+```bash
+$ mount /dev/mdX /mnt
 ```
 
 #### LVM
 {: .no_toc .pt-4}
 
 ```bash
-# Root partition
 $ mount /dev/grp/root /mnt
-
-# Home partition
 $ mkdir /mnt/home
 $ mount /dev/grp/home /mnt/home
 ```
@@ -125,12 +126,26 @@ $ swapon /dev/grp/swap
 $ mkfs.fat -F32 -n EFI /dev/sda1
 ```
 
+#### RAID1
+{: .no_toc .pt-4}
+```bash
+$ mkfs.fat -F32 -n EFIARRAY /dev/mdX
+```
+
 ### Mount the EFI partition
 {: .no_toc .pt-4}
 
 ```bash
 $ mkdir /mnt/boot
 $ mount /dev/sda1 /mnt/boot
+```
+
+#### RAID1
+{: .no_toc .pt-4}
+
+```bash
+$ mkdir /mnt/boot
+$ mount /dev/mdX /mnt/boot
 ```
 
 ### References

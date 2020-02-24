@@ -21,5 +21,3 @@ This section cover the selection and installation of the package for Arch Linux.
 
 1. [Selection](/Andromeda/package/selection/)
 1. [Installation](/Andromeda/package/installation/)
-
----

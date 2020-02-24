@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR2 Scenario
-nav_order: 2
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/scenario/
 has_toc: false
 ---

@@ -19,7 +19,7 @@ This section cover the setup of system previously installed.
 ## Steps
 {: .text-delta}
 
-1. [Filesystem table](/Andromeda/configuration/filesystem-table/)
+1. [Filesystems](/Andromeda/configuration/filesystems/)
 1. [Time zone](/Andromeda/configuration/time-zone/)
 1. [Localization](/Andromeda/configuration/localization/)
 1. [Network](/Andromeda/configuration/network/)

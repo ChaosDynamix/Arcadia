@@ -70,14 +70,7 @@ LC_COLLATE=C
 
 ## Set the console locale
 
-#### With localectl
-{: .no_toc .pt-4}
-
-```bash
-localectl set-keymap --no-convert fr-latin9
-```
-
-#### With the vconsole.conf file
+#### vconsole.conf
 {: .no_toc .pt-4}
 
 ```bash

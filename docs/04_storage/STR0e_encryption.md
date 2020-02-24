@@ -1,8 +1,7 @@
 ---
 layout: default
 title: STR5 Encryption
-nav_order: 5
-parent: 04 Storage
+nav_exclude: true
 permalink: /storage/encryption/
 has_toc: false
 ---

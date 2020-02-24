@@ -42,7 +42,14 @@ $ pacman -S grub
 {: .no_toc .pt-4}
 
 ```bash
-$ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
+$ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck /dev/sda
+```
+
+#### UEFI / RAID
+{: .no_toc .pt-4}
+
+```bash
+$ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck /dev/mdX
 ```
 
 #### UEFI / Encryption
@@ -81,18 +88,8 @@ GRUB_ENABLE_CRYPTODISK=y
 
 ---
 
-## generate the configuration
+## Generate the configuration
 
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-## BTRFS on LUKS
-
-### Mounting the boot partition
-{: .no_toc .pt-4}
-
-```bash
-mkdir /efi
-mount /dev/sda1 /efi
 ```
