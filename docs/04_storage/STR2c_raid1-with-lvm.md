@@ -1,12 +1,12 @@
 ---
 layout: default
-title: STR4 Raid
+title: STR2a RAID1 with LVM
 nav_exclude: true
-permalink: /storage/raid/
+permalink: /storage/scenarios/raid1-with-lvm/
 has_toc: false
 ---
 
-# Storage Raid
+# Storage scenario for RAID1 with LVM
 {: .no_toc}
 
 ## Table of contents

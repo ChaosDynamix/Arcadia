@@ -19,17 +19,6 @@ has_toc: false
 
 ## Linux Partition types
 
-### Master Boot Record (MBR)
-{: .no_toc}
-
-| Partition id | Description                        |
-| :----------- | :--------------------------------- |
-| 82h          | Linux Swap partition               |
-| 83h          | Linux file system                  |
-| 8Eh          | Linux Logical Volume Manager (LVM) |
-| E8h          | Linux Unified Key Setup (LUKS)     |
-| FDh          | Linux RAID                         |
-
 ### Guid Partition Table (GPT)
 {: .no_toc}
 

@@ -1,7 +1,8 @@
 ---
 layout: default
 title: STR1 Preparation
-nav_exclude: true
+nav_order: 1
+parent: 04 Storage
 permalink: /storage/preparation/
 has_toc: false
 ---
@@ -17,14 +18,11 @@ has_toc: false
 
 ---
 
-## Encryption
+## Secure erase
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
 {: .label .label-red .mx-2}
-
-### Secure erase
-{: .no_toc .mt-0}
 
 ```bash
 # Open a container
@@ -41,18 +39,3 @@ $ cryptsetup close to_be_wiped
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki dm-crypt/Drive preparation - Secure erasure of the hard disk drive](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)
-
----
-
-## Raid
-
-### Erase any old RAID configuration information
-{: .no_toc}
-
-```bash
-# For a drive
-$ mdadm --misc --zero-superblock /dev/<drive>
-
-# For a partition
-$ mdadm --misc --zero-superblock /dev/<partition>
-```

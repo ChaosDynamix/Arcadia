@@ -48,14 +48,7 @@ $ cryptsetup luksAddKey /dev/sda2 /crypto_keyfile.bin
 
 Open `/etc/mkinitcpio.conf`
 
-#### RAID1 / EXT4
-{: .no_toc .pt-4}
-
-```bash
-HOOKS=(base udev autodetect modconf block mdadm_udev filesystems keyboard fsck)
-```
-
-#### LVM / encryption
+#### LVM
 {: .no_toc .pt-4}
 
 ```bash
@@ -63,7 +56,7 @@ FILES=(/crypto_keyfile.bin)
 HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 ```
 
-#### BTRFS / encryption
+#### BTRFS
 {: .no_toc .pt-4}
 
 ```bash
