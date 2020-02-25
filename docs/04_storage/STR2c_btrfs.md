@@ -1,12 +1,14 @@
 ---
 layout: default
-title: STR2a BTRFS on 1 device
-nav_exclude: true
-permalink: /storage/scenarios/btrfs-on-1-device/
+title: STR2 BTRFS
+grand_parent: 04 Storage
+parent: STR2 Scenarios
+nav_order: 3
+permalink: /storage/scenarios/btrfs/
 has_toc: false
 ---
 
-# Storage scenario for BTRFS on 1 device
+# Storage scenario for BTRFS
 {: .no_toc}
 
 ## Table of contents
@@ -16,6 +18,21 @@ has_toc: false
 {:toc}
 
 ---
+
+```
+subvolid=5 (/dev/mapper/btrfs)
+   |
+   ├── @ (mounted as /)
+   |       ├── /bin (directory)
+   |       ├── /home (mounted @home subvolume)
+   |       ├── /usr (directory)
+   |       ├── /.snapshots (mounted @snapshots subvolume)
+   |       ├── /var/cache/pacman/pkg (nested subvolume)
+   |       ├── ... (other directories and nested subvolumes)
+   ├── @snapshots (mounted as /.snapshots)
+   ├── @home (mounted as /home)
+   └── @... (additional subvolumes you wish to use as mount points)
+```
 
 ## Partition encryption
 

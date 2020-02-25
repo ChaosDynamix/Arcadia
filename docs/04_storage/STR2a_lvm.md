@@ -1,31 +1,24 @@
 ---
 layout: default
-title: STR2a LVM on 1 device
+title: STR2 LVM
 grand_parent: 04 Storage
 parent: STR2 Scenarios
 nav_order: 1
-permalink: /storage/scenarios/lvm-on-1-device/
+permalink: /storage/scenarios/lvm/
 has_toc: false
 ---
 
-# Storage scenario for LVM on 1 device
+# Storage scenario for LVM
 {: .no_toc}
 
 ```
-+----------------+ +-----------------------------------------------------------------------+
-| EFI partition  | | Logical volume 1      | Logical volume 2      | Logical volume 3      |
-| /efi           | | [SWAP]                | /                     | /home                 |
-|                | | /dev/grp/swap         | /dev/grp/root         | /dev/grp/home         |
-|                | +-----------------------+-----------------------+-----------------------+
-|                | |                             Group volume                              |
-|                | |                               /dev/grp/                               |
-|                | +-----------------------------------------------------------------------+
-|                | |                            Physical volume                            |
-|                | |                            /dev/mapper/lvm                            |
-|                | +-----------------------------------------------------------------------+
-|                | |                       LUKS1 encrypted partition                       |
-| /dev/sda1      | |                              /dev/sda2                                |
-+----------------+-+-----------------------------------------------------------------------+
++------------------------------------------------+------------------------------------------------+
+| EFI system partition                           | LUKS1 encrypted partition                      |
+| /efi                                           | /dev/mapper/lvm                                |
+|                                                +------------------------------------------------+
+|                                                |                                                |
+| /dev/sda1                                      | /dev/sda2                                      |
++------------------------------------------------+------------------------------------------------+
 ```
 
 ## Table of contents
@@ -80,6 +73,20 @@ $ cryptsetup open /dev/sdXY lvm
 ---
 
 ## Logical Volume Manager
+
+```
++-------------------------------+-------------------------------+---------------------------------+
+| Logical volume 1              | Logical volume 2              | Logical volume 3                |
+| [SWAP]                        | /                             | /home                           |
+| /dev/grp/swap                 | /dev/grp/root                 | /dev/grp/home                   |
++-------------------------------+-------------------------------+---------------------------------+
+|                                         Group volume                                            |
+|                                           /dev/grp/                                             |
++-------------------------------------------------------------------------------------------------+
+|                                        Physical volume                                          |
+|                                        /dev/mapper/lvm                                          |
++-------------------------------------------------------------------------------------------------+
+```
 
 #### Swap partition size recommendations
 {: .no_toc .pt-4}

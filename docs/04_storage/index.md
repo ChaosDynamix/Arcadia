@@ -16,9 +16,12 @@ STR
 This section cover the configuration of the storage space.
 {: .fs-5}
 
-## Solutions
+## Steps
 {: .text-delta}
 
-- [Raid](/Andromeda/storage/raid/)
-- [Lvm](/Andromeda/storage/lvm/)
-- [Btrfs](/Andromeda/storage/btrfs/)
+1. [Preparation](/Andromeda/storage/preparation/)
+1. [Scenarios](/Andromeda/storage/scenarios/)
+  - [LVM](/Andromeda/storage/scenarios/lvm/)
+  - [LVM on RAID1](/Andromeda/storage/scenarios/lvm-on-raid1/)
+  - [BTRFS](/Andromeda/storage/scenarios/btrfs/)
+  - [BTRFS on RAID1](/Andromeda/storage/scenarios/btrfs-on-raid1/)
