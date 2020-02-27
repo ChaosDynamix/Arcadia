@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFG4 Network
-nav_order: 4
-parent: 06 Configuration
+title: 03 Network
+nav_order: 3
+parent: 05 Configuration
 permalink: /configuration/network/
 has_children: true
 has_toc: false

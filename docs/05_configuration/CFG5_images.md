@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFG6 Images
-nav_order: 6
-parent: 06 Configuration
+title: 05 Images
+nav_order: 5
+parent: 05 Configuration
 permalink: /configuration/images/
 has_toc: false
 ---
@@ -18,32 +18,6 @@ has_toc: false
 
 ---
 
-## Initramfs embedded keyfile
-
-### Create keyfile
-{: .no_toc .pt-2}
-
-```bash
-$ dd bs=512 count=4 if=/dev/random of=/crypto_keyfile.bin iflag=fullblock
-```
-
-### Change permissions
-{: .no_toc .pt-4}
-
-```bash
-$ chmod 600 /crypto_keyfile.bin
-$ chmod 600 /boot/initramfs-linux*
-```
-
-### Add keyfile to cryptsetup
-{: .no_toc .pt-4}
-
-```bash
-$ cryptsetup luksAddKey /dev/sda2 /crypto_keyfile.bin
-```
-
----
-
 ## Edit the configuration
 
 Open `/etc/mkinitcpio.conf`
@@ -52,7 +26,7 @@ Open `/etc/mkinitcpio.conf`
 {: .no_toc .pt-4}
 
 ```bash
-FILES=(/crypto_keyfile.bin)
+FILES=(/etc/luks-keys/root)
 HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 ```
 
@@ -61,7 +35,7 @@ HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keym
 
 ```bash
 BINARIES=(/usr/bin/btrfs)
-FILES=(/crypto_keyfile.bin)
+FILES=(/etc/luks-keys/root)
 HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard keymap fsck)
 ```
 

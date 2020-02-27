@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LIV1 Keyboard layout
+title: 01 Keyboard layout
 nav_order: 1
 has_children: false
 parent: 03 Live environment

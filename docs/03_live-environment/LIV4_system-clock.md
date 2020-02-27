@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LIV4 System clock
+title: 04 System clock
 nav_order: 4
 has_children: false
 parent: 03 Live environment

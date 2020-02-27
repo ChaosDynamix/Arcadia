@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFG2 Time zone
-nav_order: 2
-parent: 06 Configuration
+title: 01 Time zone
+nav_order: 1
+parent: 05 Configuration
 permalink: /configuration/time-zone/
 has_children: true
 has_toc: false

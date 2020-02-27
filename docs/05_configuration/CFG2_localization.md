@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFG3 Localization
-nav_order: 3
-parent: 06 Configuration
+title: 02 Localization
+nav_order: 2
+parent: 05 Configuration
 permalink: /configuration/localization/
 has_children: true
 has_toc: false

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ISO1 Download
+title: 01 Download
 nav_order: 1
 parent: 01 ISO image
 permalink: /iso-image/download/

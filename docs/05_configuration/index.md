@@ -1,7 +1,7 @@
 ---
 layout: default
-title: 06 Configuration
-nav_order: 7
+title: 05 Configuration
+nav_order: 6
 has_children: true
 has_toc: false
 permalink: /configuration/

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ISO3 Authenticity
+title: 03 Authenticity
 nav_order: 3
 parent: 01 ISO image
 permalink: /iso-image/authenticity/

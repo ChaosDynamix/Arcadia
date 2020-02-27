@@ -1,6 +1,6 @@
 ---
 layout: default
-title: USB2 Boot
+title: 02 Boot
 nav_order: 2
 has_children: true
 parent: 02 USB device

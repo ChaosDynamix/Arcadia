@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFG7 Boot loader
-nav_order: 7
-parent: 06 Configuration
+title: 06 Boot loader
+nav_order: 6
+parent: 05 Configuration
 permalink: /configuration/boot-loader/
 has_toc: false
 ---
@@ -28,7 +28,7 @@ $ pacman -S grub efibootmgr
 
 ## Edit grub configuration
 
-Open `/etc/defaults/grub`
+Open `/etc/default/grub`
 
 #### LVM
 {: .no_toc .pt-4}

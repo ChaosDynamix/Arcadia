@@ -1,16 +1,16 @@
 ---
 layout: default
-title: 05 Package
-nav_order: 6
+title: 04 Installation
+nav_order: 5
 has_children: true
 has_toc: false
-permalink: /package/
+permalink: /installation/
 ---
 
 # Package
 {: .d-inline-block}
 
-PKG
+INS
 {: .label .mx-2}
 
 This section cover the selection and installation of the package for Arch Linux.

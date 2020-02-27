@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ISO2 Integrity
+title: 02 Integrity
 nav_order: 2
 parent: 01 ISO image
 permalink: /iso-image/integrity/

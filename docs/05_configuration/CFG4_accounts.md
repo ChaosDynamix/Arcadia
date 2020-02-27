@@ -1,8 +1,8 @@
 ---
 layout: default
-title: CFG5 Accounts
-nav_order: 5
-parent: 06 Configuration
+title: 04 Accounts
+nav_order: 4
+parent: 05 Configuration
 permalink: /configuration/accounts/
 has_children: true
 has_toc: false
