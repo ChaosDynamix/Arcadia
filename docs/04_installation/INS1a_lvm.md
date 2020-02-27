@@ -4,7 +4,6 @@ title: LVM
 nav_order: 1
 parent: 04 Installation
 permalink: /installation/lvm/
-has_toc: false
 ---
 
 UEFI
@@ -101,9 +100,9 @@ $ cryptsetup close to_be_wiped
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
-- [ArchWiki - Partitioning - Partitioning tools](https://wiki.archlinux.org/index.php/Partitioning#Partitioning_tools)
-- [ArchWiki - EFI system partition - Create the partition](https://wiki.archlinux.org/index.php/EFI_system_partition#Create_the_partition)
+1. [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
+1. [ArchWiki - Partitioning - Partitioning tools](https://wiki.archlinux.org/index.php/Partitioning#Partitioning_tools)
+1. [ArchWiki - EFI system partition - Create the partition](https://wiki.archlinux.org/index.php/EFI_system_partition#Create_the_partition)
 
 ---
 
