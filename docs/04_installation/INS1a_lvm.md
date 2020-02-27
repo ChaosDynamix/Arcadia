@@ -24,33 +24,33 @@ EXT4
 | /dev/sda2 |                 | Linux Logical Volume Manager (LVM) | 100%FREE |
 
 ```
-+----------------------+---------------------------------+
-| EFI system partition | LUKS1 encrypted partition       |
-| /efi                 | /dev/mapper/lvm                 |
-|                      +---------------------------------+
-|                      |                                 |
-| /dev/sda1            | /dev/sda2                       |
-+----------------------+---------------------------------+
++------------------------+-------------------------------------------------+
+| EFI system partition   | LUKS1 encrypted partition                       |
+| /efi                   | /dev/mapper/lvm                                 |
+|                        +-------------------------------------------------+
+|                        |                                                 |
+| /dev/sda1              | /dev/sda2                                       |
++------------------------+-------------------------------------------------+
 ```
 
 ```
-+--------------------------------------------------------+
-|                     Physical volume                    |
-|                     /dev/mapper/lvm                    |
-+--------------------------------------------------------+
-|                      Group volume                      |
-|                        /dev/grp/                       |
-+------------------+------------------+------------------+
-| Logical volume 1 | Logical volume 2 | Logical volume 3 |
-| [SWAP]           | /                | /home            |
-| /dev/grp/swap    | /dev/grp/root    | /dev/grp/home    |
-+------------------+------------------+------------------+
++--------------------------------------------------------------------------+
+|                             Physical volume                              |
+|                             /dev/mapper/lvm                              |
++--------------------------------------------------------------------------+
+|                              Group volume                                |
+|                                /dev/grp/                                 |
++------------------------+------------------------+------------------------+
+| Logical volume 1       | Logical volume 2       | Logical volume 3       |
+| [SWAP]                 | /                      | /home                  |
+| /dev/grp/swap          | /dev/grp/root          | /dev/grp/home          |
++------------------------+------------------------+------------------------+
 ```
 
 ---
 
 ## Table of contents
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .mt-6}
 
 1. TOC
 {:toc}
@@ -70,13 +70,13 @@ Before setting up disk encryption on a (part of a) disk, consider securely wipin
 
 ```bash
 # Open the container
-$ cryptsetup open --type plain -d /dev/urandom /dev/sdX to_be_wiped
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda erase_drive
 
 # Secure erase the drive
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+$ dd if=/dev/zero of=/dev/mapper/erase_drive status=progress
 
 # Close the container
-$ cryptsetup close to_be_wiped
+$ cryptsetup close erase_drive
 ```
 
 ### References

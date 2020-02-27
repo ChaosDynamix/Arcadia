@@ -29,34 +29,36 @@ EXT4
 | 2      | /dev/sdb2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
 
 ```
-+----------------------+------------------------+ +----------------------+------------------------+
-| EFI system partition | Logical Volume Manager | | EFI system partition | Logical Volume Manager |
-| /efi                 |                        | | /efi2                |                        |
-|                      |                        | |                      |                        |
-|                      |                        | |                      |                        |
-| /dev/sda1            | /dev/sda2              | | /dev/sdb1            | /dev/sdb2              |
-+----------------------+------------------------+ +--------------------- +------------------------+
++------------+----------------------+  +------------+----------------------+
+| EFI system | Logical Volume       |  | EFI system | Logical Volume       |
+| partition  | Manager              |  | partition  | Manager              |
+|            |                      |  |            |                      |
+|            |                      |  |            |                      |
+| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
++------------+----------------------+  +------------+----------------------+
 ```
 
 ```
-+-------------------------------------------------------------------------------------------------+
-|                                        Physical volume                                          |
-|                                      /dev/sda2 /dev/sdb2                                        |
-+-------------------------------------------------------------------------------------------------+
-|                                         Group volume                                            |
-|                                           /dev/grp/                                             |
-+-------------------------------+-------------------------------+---------------------------------+
-| Logical volume 1              | Logical volume 2              | Logical volume 3                |
-| /dev/grp/swap                 | /dev/grp/root                 | /dev/grp/home                   |
-+-------------------------------+-------------------------------+---------------------------------+
-| Encrypted volume              | LUKS1 encrypted volume        | LUKS2 encrypted volume          |
-| [SWAP]                        | /                             | /home                           |
-| /dev/mapper/swap              | /dev/mapper/root              | /dev/mapper/home                |
-+-------------------------------+-------------------------------+---------------------------------+
++--------------------------------------------------------------------------+
+|                             Physical volume                              |
+|                           /dev/sda2 /dev/sdb2                            |
++--------------------------------------------------------------------------+
+|                               Group volume                               |
+|                                 /dev/grp/                                |
++------------------------+----------------------- +------------------------+
+| Logical volume 1       | Logical volume 2       | Logical volume 3       |
+| /dev/grp/swap          | /dev/grp/root          | /dev/grp/home          |
++------------------------+----------------------- +------------------------+
+| Encrypted volume       | LUKS1 encrypted volume | LUKS2 encrypted volume |
+| [SWAP]                 | /                      | /home                  |
+| /dev/mapper/swap       | /dev/mapper/root       | /dev/mapper/home       |
++------------------------+----------------------- +------------------------+
 ```
+
+---
 
 ## Table of contents
-{: .no_toc .text-delta}
+{: .no_toc .text-delta .mt-6}
 
 1. TOC
 {:toc}
@@ -75,14 +77,17 @@ Before setting up disk encryption on a (part of a) disk, consider securely wipin
 - Prevent disclosure of usage patterns on the encrypted drive
 
 ```bash
-# Open the container
-$ cryptsetup open --type plain -d /dev/urandom /dev/sdX to_be_wiped
+# Open the containers
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda erase_sda
+$ cryptsetup open --type plain -d /dev/urandom /dev/sdb erase_sdb
 
-# Secure erase the drive
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+# Secure erase the drives
+$ dd if=/dev/zero of=/dev/mapper/erase_sda status=progress
+$ dd if=/dev/zero of=/dev/mapper/erase_sdb status=progress
 
-# Close the container
-$ cryptsetup close to_be_wiped
+# Close the containers
+$ cryptsetup close erase_sda
+$ cryptsetup close erase_sdb
 ```
 
 ### References
