@@ -7,7 +7,7 @@ permalink: /installation/lvm-with-raid1/
 ---
 
 UEFI
-{: .label .label-purple .ml-4}
+{: .label .label-purple .ml-0}
 
 LUKS1
 {: .label .label-purple}
@@ -19,7 +19,7 @@ EXT4
 {: .label .label-purple}
 
 # Installation guide for LVM with RAID1
-{: .no_toc}
+{: .no_toc .mt-2}
 
 | Device | Partition | Partition type                     | Size            |
 | :----- | :-------- | :--------------------------------- | :-------------- |
@@ -88,7 +88,7 @@ $ cryptsetup close to_be_wiped
 ### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki dm-crypt/Drive preparation - Secure erasure of the hard disk drive](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)
+1. [ArchWiki - Dm-crypt - Drive preparation - Secure erasure of the hard disk drive](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)
 1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
 1. [Man page - dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
 
@@ -145,7 +145,7 @@ $ lvcreate --type raid1 --mirrors 1 -l 100%FREE -n crypthome grp /dev/sda2 /dev/
 #### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
+1. [ArchWiki - Dm-crypt - Encrypting an entire system - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
 1. [ArchWiki - LVM - Volume operations](https://wiki.archlinux.org/index.php/LVM#Volume_operations)
 1. [ArchWiki - Partitioning - Discrete partitions](https://wiki.archlinux.org/index.php/Partitioning#Discrete_partitions)
 1. [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
@@ -168,7 +168,7 @@ $ cryptsetup open /dev/grp/cryptroot root
 ### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - Encrypting an entire system - LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+1. [ArchWiki - Dm-crypt - Encrypting an entire system - LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
 1. [ArchWiki - GRUB - Encrypted /boot](https://wiki.archlinux.org/index.php/GRUB#Encrypted_/boot)
 1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
 
@@ -196,10 +196,10 @@ $ mkfs.fat -F32 -n EFI /dev/sdb1
 $ mount /dev/mapper/root /mnt
 
 # Create directories
-$ mkdir /mnt/{efi,efi2}
+$ mkdir /mnt/{efi1,efi2}
 
 # Mount the efi partitions
-$ mount /dev/sda1 /mnt/efi
+$ mount /dev/sda1 /mnt/efi1
 $ mount /dev/sdb1 /mnt/efi2
 ```
 
@@ -246,31 +246,18 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 ---
 
-## Configuring fstab and crypttab for Swap
-/etc/crypttab
-{: .fs-3 .mb-0}
-```bash
-swap	/dev/MyVolGroup/cryptswap	/dev/urandom	swap,cipher=aes-xts-plain64,size=256
-```
-
-/etc/fstab
-{: .fs-3 .pt-2 .mb-0}
-```bash
-/dev/mapper/swap        none    swap            sw              0       0
-```
-
----
+## Create the keys for root and home partitions
 
 ### Create the keyfiles
 {: .no_toc .pt-2}
 
 ```bash
-# Create the keys directory with read/write/execution permissions for root
+# Create the keys directory with read/write/execution permissions
 $ mkdir -m 700 /etc/luks-keys
 
 # Create the keys
 $ dd if=/dev/random of=/etc/luks-keys/root bs=512 count=4 iflag=fullblock
-$ dd if=/dev/random of=/etc/luks-keys/home bs=1 count=256 status=progress
+$ dd if=/dev/random of=/etc/luks-keys/home bs=512 count=4 iflag=fullblock
 ```
 
 ### Change permissions
@@ -292,7 +279,7 @@ $ cryptsetup luksAddKey /dev/mapper/root /etc/luks-keys/root
 ### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - Device encryption - Unlocking the root partition at boot](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption#Unlocking_the_root_partition_at_boot)
+1. [ArchWiki - Dm-crypt - Device encryption - Unlocking the root partition at boot](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption#Unlocking_the_root_partition_at_boot)
 1. [Man page - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
 1. [Man page - dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
 1. [Man page - chmod](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/chmod.1.en)
@@ -301,3 +288,51 @@ $ cryptsetup luksAddKey /dev/mapper/root /etc/luks-keys/root
 ---
 
 ## Encrypting Home logical volume
+
+```bash
+# Create the container
+$ cryptsetup luksFormat -v /dev/MyVolGroup/crypthome /etc/luks-keys/home
+
+# Open the container
+$ cryptsetup -d /etc/luks-keys/home open /dev/MyVolGroup/crypthome home
+
+# Format with Ext4 filesystem
+$ mkfs.ext4 /dev/mapper/home
+
+# Mount home
+$ mount /dev/mapper/home /home
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - Dm-crypt - Encrypting an entire system - Encrypting home logical volume](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Encrypting_logical_volume_/home)
+1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
+1. [Man page - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
+1. [Man page - mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mount.8.en)
+
+---
+
+## Configuring fstab and crypttab
+
+/etc/crypttab
+{: .fs-3 .mb-0}
+
+```bash
+swap      /dev/grp/cryptswap      /dev/urandom	             swap,cipher=aes-xts-plain64,size=256
+home      /dev/grp/crypthome      /etc/luks-keys/home
+```
+
+/etc/fstab
+{: .fs-3 .pt-2 .mb-0}
+
+```bash
+/dev/mapper/swap      none        swap        sw              0 0
+/dev/mapper/home      /home       ext4        defaults        0 2
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - Dm-crypt - System configuration - crypttab](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#crypttab)
+1. [ArchWiki - Fstab](https://wiki.archlinux.org/index.php/Fstab)
