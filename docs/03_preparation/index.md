@@ -67,8 +67,6 @@ $ ls /sys/firmware/efi/efivars
 ### References
 {: .no_toc .text-delta .pt-4}
 
-1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
-1. [Wikipedia - Boot sector](https://en.wikipedia.org/wiki/Boot_sector)
 1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
 1. [Wikipedia - EFI system partition](https://en.wikipedia.org/wiki/EFI_system_partition)
 1. [ArchWiki - Installation guide - Verify the boot mode](https://wiki.archlinux.org/index.php/Installation_guide#Verify_the_boot_mode)
@@ -81,21 +79,15 @@ $ ls /sys/firmware/efi/efivars
 {: .no_toc .pt-2}
 
 ```bash
-ip link
+$ ip link
 ```
-
-{: .fs-3 .mt-0}
-The UP in <BROADCAST,MULTICAST,UP,LOWER_UP> is what indicates the interface is up.
 
 ### Check connectivity
 {: .no_toc .pt-4}
 
 ```bash
-ping -c 3 archlinux.org
+$ ping -c 3 archlinux.org
 ```
-
-{: .fs-3 .mt-0}
--c option limit the ping attempts to the number append to it
 
 ### References
 {: .no_toc .text-delta .pt-5}
@@ -111,21 +103,21 @@ ping -c 3 archlinux.org
 {: .no_toc .pt-2}
 
 ```bash
-## Activate the NTP service
-timedatectl set-ntp true
+# Activate the NTP service
+$ timedatectl set-ntp true
 
-## Check the current system clock time, NTP service and the RTC
-timedatectl
+# Check the current system clock time, NTP service and the RTC
+$ timedatectl
 ```
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [Wikipedia - System time](https://en.wikipedia.org/wiki/System_time)
-- [Wikipedia - Real time clock](https://en.wikipedia.org/wiki/Real-time_clock)
-- [Wikipedia - Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol)
-- [ArchWiki - Installation guide - Update the system clock](https://wiki.archlinux.org/index.php/Installation_guide#Update_the_system_clock)
-- [ArchWiki - System time](https://wiki.archlinux.org/index.php/System_time)
+1. [Wikipedia - System time](https://en.wikipedia.org/wiki/System_time)
+1. [Wikipedia - Real time clock](https://en.wikipedia.org/wiki/Real-time_clock)
+1. [Wikipedia - Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol)
+1. [ArchWiki - Installation guide - Update the system clock](https://wiki.archlinux.org/index.php/Installation_guide#Update_the_system_clock)
+1. [ArchWiki - System time](https://wiki.archlinux.org/index.php/System_time)
 
 ---
 
@@ -135,7 +127,7 @@ timedatectl
 {: .no_toc .pt-2}
 
 ```bash
-pacman -Sy archlinux-keyring
+$ pacman -Sy archlinux-keyring
 ```
 
 ### Generate a mirrorlist
@@ -152,8 +144,8 @@ $ reflector --country France --age 15 --protocol https --sort rate --save /etc/p
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [ArchWiki - Installation guide - Select the mirrors](https://wiki.archlinux.org/index.php/Installation_guide#Select_the_mirrors)
-- [ArchWiki - Pacman - Installing packages](https://wiki.archlinux.org/index.php/Pacman#Installing_packages)
-- [ArchWiki - Pacman - Troubleshooting](https://wiki.archlinux.org/index.php/Pacman#Signature_from_%22User_%3Cemail@example.org%3E%22_is_unknown_trust,_installation_failed)
-- [ArchWiki - Mirrors - Sorting mirrors](https://wiki.archlinux.org/index.php/Mirrors#Sorting_mirrors)
-- [ArchWiki - Reflector](https://wiki.archlinux.org/index.php/Reflector)
+1. [ArchWiki - Installation guide - Select the mirrors](https://wiki.archlinux.org/index.php/Installation_guide#Select_the_mirrors)
+1. [ArchWiki - Pacman - Installing packages](https://wiki.archlinux.org/index.php/Pacman#Installing_packages)
+1. [ArchWiki - Pacman - Troubleshooting](https://wiki.archlinux.org/index.php/Pacman#Signature_from_%22User_%3Cemail@example.org%3E%22_is_unknown_trust,_installation_failed)
+1. [ArchWiki - Mirrors - Sorting mirrors](https://wiki.archlinux.org/index.php/Mirrors#Sorting_mirrors)
+1. [ArchWiki - Reflector](https://wiki.archlinux.org/index.php/Reflector)

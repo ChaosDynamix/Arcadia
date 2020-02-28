@@ -7,9 +7,7 @@ permalink: /media/
 ---
 
 # Media
-{: .d-inline-block}
+{: .d-inline-block .mb-0}
 
 MED
 {: .label .mx-2}
-
----

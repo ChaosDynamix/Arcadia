@@ -1,14 +1,23 @@
 ---
 layout: default
 title: Btrfs
-nav_order: 3
+nav_order: 4
 parent: 04 Installation
 permalink: /installation/btrfs/
 has_toc: false
 ---
 
+UEFI
+{: .label .label-purple .ml-0}
+
+LUKS1
+{: .label .label-purple}
+
+WORK IN PROGRESS
+{: .label .label-yellow}
+
 # Installation guide for BTRFS
-{: .no_toc}
+{: .no_toc .mt-2}
 
 ## Table of contents
 {: .no_toc .text-delta}

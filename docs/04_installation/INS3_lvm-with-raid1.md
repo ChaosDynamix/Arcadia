@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Lvm with Raid1
-nav_order: 2
+nav_order: 3
 parent: 04 Installation
 permalink: /installation/lvm-with-raid1/
 ---
@@ -14,6 +14,9 @@ LUKS1
 
 EXT4
 {: .label .label-purple}
+
+WORK IN PROGRESS
+{: .label .label-yellow}
 
 # Installation guide for LVM with RAID1
 {: .no_toc .mt-2}
@@ -29,7 +32,6 @@ EXT4
 +------------+----------------------+  +------------+----------------------+
 | EFI system | Logical Volume       |  | EFI system | Logical Volume       |
 | partition  | Manager              |  | partition  | Manager              |
-|            |                      |  |            |                      |
 |            |                      |  |            |                      |
 | /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
 +------------+----------------------+  +------------+----------------------+
@@ -98,14 +100,22 @@ $ cryptsetup close erase_sdb
 
 ## Partition the drives
 
-1. Open the tool of your choice on `/dev/sda`
-1. Create a GPT partition table
-1. Create a partition of 512MiB
-1. Change the type of the partition to EFI system `C12A7328-F81F-11D2-BA4B-00A0C93EC93B`
-1. Create a partition of all the remaining space of your drive minus 100 MiB [3]
-1. Change the type of the partition to Linux LVM `E6D6D379-F507-44C2-A23C-238F2A3DF928`
+| Partition guid                       | Description                        |
+| :----------------------------------- | :--------------------------------- |
+| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
+| E6D6D379-F507-44C2-A23C-238F2A3DF928 | Linux Logical Volume Manager (LVM) |
 
-### Clone the disk partitioning setup to `/dev/sdb`
+1. Open the tool of your choice
+1. Create a GPT partition table
+1. Efi partition
+   1. Create a new partition of 512MiB
+   1. Change the type of the partition to `EFI system`
+1. Lvm partition
+   1. Create a new partition with all the remaining space of your drive minus 100MiB
+   1. Change the type of the partition to `Linux LVM`
+1. Save and exit
+
+### Clone the disk partitioning setup of `/dev/sda` to `/dev/sdb`
 {: .no_toc .pt-4}
 
 ```bash

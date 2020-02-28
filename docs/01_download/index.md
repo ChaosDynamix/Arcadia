@@ -7,9 +7,7 @@ permalink: /download/
 ---
 
 # Download
-{: .d-inline-block}
+{: .d-inline-block .mb-0}
 
 DOW
 {: .label .mx-2}
-
----

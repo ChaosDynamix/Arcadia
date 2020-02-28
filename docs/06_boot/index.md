@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 04 Installation
-nav_order: 5
+title: 06 Boot
+nav_order: 7
 has_children: true
-permalink: /installation/
+permalink: /boot/
 ---
 
-# Installation
+# Boot
 {: .d-inline-block .mb-0}
 
-INS
+BOO
 {: .label .mx-2}

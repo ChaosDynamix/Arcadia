@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Lvm
-nav_order: 1
+nav_order: 2
 parent: 04 Installation
 permalink: /installation/lvm/
 ---
@@ -90,12 +90,20 @@ $ cryptsetup close erase_drive
 
 ## Partitioning
 
+| Partition guid                       | Description                        |
+| :----------------------------------- | :--------------------------------- |
+| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
+| E6D6D379-F507-44C2-A23C-238F2A3DF928 | Linux Logical Volume Manager (LVM) |
+
 1. Open the tool of your choice
 1. Create a GPT partition table
-1. Create a partition of 512MiB
-1. Change the type of the partition to EFI system `C12A7328-F81F-11D2-BA4B-00A0C93EC93B`
-1. Create a partition of all the remaining space of your drive
-1. Change the type of the partition to Linux LVM `E6D6D379-F507-44C2-A23C-238F2A3DF928`
+1. Efi partition
+   1. Create a new partition of 512MiB
+   1. Change the type of the partition to `EFI system`
+1. Lvm partition
+   1. Create a new partition with all the remaining space of your drive
+   1. Change the type of the partition to `Linux LVM`
+1. Save and exit
 
 ### References
 {: .no_toc .text-delta .pt-4}
@@ -255,7 +263,7 @@ arch-chroot /mnt
 
 ## Create a key for the root partition
 
-This section cover the creation of a specially named keyfile that will be embedded in the initramfs and picked up by the encrypt hook to unlock the root filesystem (cryptdevice) automatically avoiding us to enter two passphrases during boot.
+This section cover the creation of a specially named keyfile that will be embedded in the initramfs and picked up by the encrypt hook to unlock the root filesystem (cryptdevice) automatically. This step avoid us to enter two passphrases during boot.
 
 ### Create the keyfile
 {: .no_toc .pt-2}
