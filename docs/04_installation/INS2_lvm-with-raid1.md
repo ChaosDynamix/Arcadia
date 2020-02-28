@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LVM with RAID1
+title: Lvm with Raid1
 nav_order: 2
 parent: 04 Installation
 permalink: /installation/lvm-with-raid1/

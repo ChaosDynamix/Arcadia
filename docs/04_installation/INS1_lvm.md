@@ -1,6 +1,6 @@
 ---
 layout: default
-title: LVM
+title: Lvm
 nav_order: 1
 parent: 04 Installation
 permalink: /installation/lvm/

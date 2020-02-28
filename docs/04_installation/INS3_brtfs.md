@@ -1,6 +1,6 @@
 ---
 layout: default
-title: BTRFS
+title: Btrfs
 nav_order: 3
 parent: 04 Installation
 permalink: /installation/btrfs/
