@@ -12,9 +12,6 @@ UEFI
 LUKS1
 {: .label .label-purple}
 
-LUKS2
-{: .label .label-purple}
-
 EXT4
 {: .label .label-purple}
 
@@ -49,7 +46,7 @@ EXT4
 | Logical volume 1       | Logical volume 2       | Logical volume 3       |
 | /dev/grp/swap          | /dev/grp/root          | /dev/grp/home          |
 +------------------------+----------------------- +------------------------+
-| Encrypted volume       | LUKS1 encrypted volume | LUKS2 encrypted volume |
+| Encrypted volume       | LUKS1 encrypted volume | LUKS1 encrypted volume |
 | [SWAP]                 | /                      | /home                  |
 | /dev/mapper/swap       | /dev/mapper/root       | /dev/mapper/home       |
 +------------------------+----------------------- +------------------------+
@@ -65,7 +62,7 @@ EXT4
 
 ---
 
-## Secure erase
+## Secure erase the drives
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
@@ -99,7 +96,7 @@ $ cryptsetup close erase_sdb
 
 ---
 
-## Partitioning
+## Partition the drives
 
 1. Open the tool of your choice on `/dev/sda`
 1. Create a GPT partition table
@@ -130,7 +127,7 @@ $ sfdisk /dev/sdb < sda.dump
 
 ---
 
-## Logical Volume Manager
+## Setup the Logical Volume Manager
 
 See [3] and [4] references for size recommendations
 
@@ -160,7 +157,7 @@ $ lvcreate --type raid1 --mirrors 1 -l 100%FREE -n crypthome grp /dev/sda2 /dev/
 
 ---
 
-## Root encryption
+## Encrypting Root logical volume
 
 ```bash
 # Create the container
@@ -179,7 +176,7 @@ $ cryptsetup open /dev/grp/cryptroot root
 
 ---
 
-## Partitions setup
+## Configuring the logical volumes
 
 ### Format the partitions
 {: .no_toc .pt-2}
@@ -221,7 +218,7 @@ $ mount /dev/sdb1 /mnt/efi2
 
 ---
 
-## Arch Linux installation
+## Install Arch Linux essential packages
 
 install packages to the specified new root directory.
 
