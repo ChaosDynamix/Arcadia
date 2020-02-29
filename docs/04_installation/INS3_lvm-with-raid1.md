@@ -6,20 +6,10 @@ parent: 04 Installation
 permalink: /installation/lvm-with-raid1/
 ---
 
-UEFI
-{: .label .label-purple .ml-0}
+# Installation for LVM with RAID1
+{: .no_toc}
 
-LUKS1
-{: .label .label-purple}
-
-EXT4
-{: .label .label-purple}
-
-WORK IN PROGRESS
-{: .label .label-yellow}
-
-# Installation guide for LVM with RAID1
-{: .no_toc .mt-2}
+---
 
 | Device | Partition | Partition type                     | Size            |
 | :----- | :-------- | :--------------------------------- | :-------------- |

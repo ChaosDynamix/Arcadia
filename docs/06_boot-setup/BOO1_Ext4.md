@@ -2,8 +2,8 @@
 layout: default
 title: Ext4
 nav_order: 1
-parent: 06 Boot
-permalink: /boot/ext4/
+parent: 06 Boot setup
+permalink: /boot-setup/ext4/
 ---
 
 # Boot setup for EXT4

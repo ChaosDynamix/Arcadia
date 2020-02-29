@@ -2,8 +2,8 @@
 layout: default
 title: Btrfs
 nav_order: 3
-parent: 06 Boot
-permalink: /boot/btrfs/
+parent: 06 Boot setup
+permalink: /boot-setup/btrfs/
 ---
 
 # Boot setup for BTRFS

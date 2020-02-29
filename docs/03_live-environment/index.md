@@ -1,15 +1,17 @@
 ---
 layout: default
-title: 03 Preparation
+title: 03 Live environment
 nav_order: 4
-permalink: /preparation/
+permalink: /live-environment/
 ---
 
-# Preparation
-{: .no_toc .d-inline-block}
+# Live environment
+{: .no_toc .d-inline-block .mb-0}
 
-PRE
+LIV
 {: .label .mx-2}
+
+---
 
 ## Table of contents
 {: .no_toc .text-delta}

@@ -6,10 +6,12 @@ permalink: /configuration/
 ---
 
 # Configuration
-{: .no_toc .d-inline-block}
+{: .no_toc .d-inline-block .mb-0}
 
 CFG
 {: .label .mx-2}
+
+---
 
 ## Table of contents
 {: .no_toc .text-delta}

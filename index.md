@@ -8,7 +8,7 @@ Andromeda is one of the many guides to install and configure Arch Linux.
 {: .fs-8}
 
 <span class="fs-6">
-[Getting started](/Andromeda/iso-image/){: .btn .btn-green}
+[Getting started](/Andromeda/download/){: .btn .btn-green}
 </span>
 
 ---
@@ -17,12 +17,12 @@ Andromeda is one of the many guides to install and configure Arch Linux.
 
 | Step | Section          | Namespace |
 | :--- | :--------------- | :-------- |
-| 01   | ISO image        | ISO       |
-| 02   | USB device       | USB       |
+| 01   | Download         | DOW       |
+| 02   | Preparation      | PRE       |
 | 03   | Live environment | LIV       |
-| 04   | Storage          | STR       |
-| 05   | Package          | PKG       |
-| 06   | Configuration    | CFG       |
+| 04   | Installation     | INS       |
+| 05   | Configuration    | CFG       |
+| 06   | Boot setup       | BOO       |
 
 ---
 

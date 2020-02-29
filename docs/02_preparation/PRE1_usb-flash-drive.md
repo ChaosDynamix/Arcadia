@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Usb drive
-parent: 02 Media
+title: USB flash drive
+parent: 02 Preparation
 nav_order: 1
-permalink: /media/usb-drive/
+permalink: /preparation/usb-flash-drive/
 ---
 
-# Media preparation for USB drive
+# Preparation of the USB flash drive
 {: .no_toc}
 
 ## Table of contents

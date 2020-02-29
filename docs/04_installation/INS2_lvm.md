@@ -6,22 +6,15 @@ parent: 04 Installation
 permalink: /installation/lvm/
 ---
 
-UEFI
-{: .label .label-purple .ml-0}
+# Installation for LVM
+{: .no_toc}
 
-LUKS1
-{: .label .label-purple}
+---
 
-EXT4
-{: .label .label-purple}
-
-# Installation guide for LVM
-{: .no_toc .mt-2}
-
-| Partition | Mounting point  | Partition type                     | Size     |
-| :-------- | :-------------  | :--------------------------------- | :------- |
-| /dev/sda1 | /efi            | EFI system partition               | 512M     |
-| /dev/sda2 |                 | Linux Logical Volume Manager (LVM) | 100%FREE |
+| Partition | Mounting point | Partition type                     | Size     |
+| :-------- | :------------- | :--------------------------------- | :------- |
+| /dev/sda1 | /efi           | EFI system partition               | 512M     |
+| /dev/sda2 |                | Linux Logical Volume Manager (LVM) | 100%FREE |
 
 ```
 +------------------------+-------------------------------------------------+

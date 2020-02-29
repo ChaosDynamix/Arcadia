@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 02 Media
-nav_order: 3
+title: 06 Boot setup
+nav_order: 7
 has_children: true
-permalink: /media/
+permalink: /boot-setup/
 ---
 
-# Media
+# Boot setup
 {: .d-inline-block .mb-0}
 
-MED
+BOO
 {: .label .mx-2}

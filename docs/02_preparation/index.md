@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 06 Boot
-nav_order: 7
+title: 02 Preparation
+nav_order: 3
 has_children: true
-permalink: /boot/
+permalink: /preparation/
 ---
 
-# Boot
+# Preparation
 {: .d-inline-block .mb-0}
 
-BOO
+PRE
 {: .label .mx-2}

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Lvm with raid1
-nav_order: 3
-parent: 06 Boot
-permalink: /boot/lvm-with-raid1/
+title: Lvm
+nav_order: 2
+parent: 06 Boot setup
+permalink: /boot-setup/lvm/
 ---
 
-# Boot setup for LVM with RAID1
+# Boot setup for LVM
 {: .no_toc}
 
 ## Table of contents
@@ -27,7 +27,7 @@ permalink: /boot/lvm-with-raid1/
 
 ```bash
 FILES=(/etc/luks-keys/root)
-HOOKS=(base udev autodetect modconf block lvm2 encrypt filesystems keyboard keymap fsck)
+HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 ```
 
 ### Generate the images
@@ -64,7 +64,7 @@ $ pacman -S grub efibootmgr
 {: .fs-3 .pt-2 .mb-0}
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):root cryptkey=rootfs:/etc/luks-keys/root root=/dev/mapper/root loglevel=3 quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm cryptkey=rootfs:/etc/luks-keys/root root=/dev/grp/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
@@ -92,12 +92,6 @@ $ grub-mkconfig -o /boot/grub/grub.cfg
 1. [Man pages - pacman](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/pacman/pacman.8.en)
 1. [Man pages - grub-install](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grub/grub-install.8.en)
 1. [Man pages - grub-mkconfig](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grub/grub-mkconfig.8.en)
-
----
-
-## EFI configuration
-
-TODO
 
 ---
 

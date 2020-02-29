@@ -7,17 +7,10 @@ permalink: /installation/btrfs/
 has_toc: false
 ---
 
-UEFI
-{: .label .label-purple .ml-0}
+# Installation for BTRFS
+{: .no_toc}
 
-LUKS1
-{: .label .label-purple}
-
-WORK IN PROGRESS
-{: .label .label-yellow}
-
-# Installation guide for BTRFS
-{: .no_toc .mt-2}
+---
 
 ## Table of contents
 {: .no_toc .text-delta}

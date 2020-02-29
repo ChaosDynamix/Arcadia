@@ -6,11 +6,10 @@ parent: 04 Installation
 permalink: /installation/ext4/
 ---
 
-UEFI
-{: .label .label-purple .ml-0}
+# Installation for EXT4
+{: .no_toc}
 
-# Installation guide for EXT4
-{: .no_toc .mt-2}
+---
 
 | Partition | Mounting point | Partition type                | Size     |
 | :-------- | :------------- | :---------------------------- | :------- |
