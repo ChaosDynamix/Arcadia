@@ -6,7 +6,7 @@ parent: 06 Boot
 permalink: /boot/lvm/
 ---
 
-# Boot configuration for LVM
+# Boot setup for LVM
 {: .no_toc}
 
 ## Table of contents

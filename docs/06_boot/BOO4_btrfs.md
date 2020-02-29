@@ -6,7 +6,7 @@ parent: 06 Boot
 permalink: /boot/btrfs/
 ---
 
-# Boot configuration for BTRFS
+# Boot setup for BTRFS
 {: .no_toc}
 
 ## Table of contents

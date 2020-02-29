@@ -6,7 +6,7 @@ parent: 06 Boot
 permalink: /boot/lvm-with-raid1/
 ---
 
-# Boot configuration for LVM with RAID1
+# Boot setup for LVM with RAID1
 {: .no_toc}
 
 ## Table of contents

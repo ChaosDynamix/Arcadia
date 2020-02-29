@@ -48,21 +48,21 @@ UEFI
 | 0657FD6D-A4AB-43C4-84E5-0933C84B4F4F | Linux Swap partition               |
 | 933AC7E1-2EB4-4F13-B844-0E14E2AEF915 | Linux Home partition               |
 
-1. Open the tool of your choice
+1. Open the partitioning tool of your choice
 1. Create a GPT partition table
 1. Efi partition
-   1. Create a new partition with appropriate size
+   1. Create a new partition of 260MiB
    1. Change the type of the partition to `EFI system`
 1. Root partition
-   1. Create a new partition with appropriate size
+   1. Create a new partition with appropriate size [2]
    1. Change the type of the partition to `Linux Root partition (x86-64)`
 1. Swap partition
-   1. Create a new partition with appropriate size
+   1. Create a new partition with appropriate size [5]
    1. Change the type of the partition to `Linux Swap partition`
 1. Home partition
    1. Create a new partition with all the remaining space of your drive
    1. Change the type of the partition to `Linux Home partition`
-1. Save and exit
+1. Write and exit
 
 ### References
 {: .no_toc .text-delta .pt-4}
@@ -71,6 +71,7 @@ UEFI
 1. [ArchWiki - Partitioning - Partition scheme](https://wiki.archlinux.org/index.php/Partitioning#Partition_scheme)
 1. [ArchWiki - Partitioning - Partitioning tools](https://wiki.archlinux.org/index.php/Partitioning#Partitioning_tools)
 1. [ArchWiki - EFI system partition - Create the partition](https://wiki.archlinux.org/index.php/EFI_system_partition#Create_the_partition)
+1. [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
 
 ---
 

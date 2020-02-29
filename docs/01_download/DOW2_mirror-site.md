@@ -17,27 +17,24 @@ permalink: /download/mirror-site/
 
 ---
 
-## With a Mirror site
-
-Mirror sites or mirrors are replicas of other websites or any network node. Such sites have different URLs than the original site, but host identical or near-identical content. Mirror sites are often located in a different geographic region than the original, or upstream site.
-
-### Download the ISO image
-{: .no_toc .pt-4}
+## Download the Arch Linux ISO image
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, click on a mirror server located in your country
+1. Under the HTTP Direct Downloads section, click on a mirror server (close to your location)
 1. Download the Arch Linux ISO image `archlinux-year.day.month-x86_64.iso`
 
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
 
 ---
 
-## Download the ISO image checksum
-{: .d-inline-block}
+## Verify the integrity of the downloaded file
+
+### Download the checksum
+{: .no_toc .mt-0 .d-inline-block}
 
 Warning
 {: .label .label-red .mx-2}
@@ -48,36 +45,44 @@ Checksum must be downloaded from the Arch Linux download page. The checksum coul
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, copy the checksum of your choice (MD5 or SHA-1)
 
----
+### Create a text file
+{: .no_toc .pt-4}
 
-## Create a text file for the checksum
-
-Replace the checksum and the filename accordingly
+archlinux-checksum-md5.txt
+{: .fs-3 .mb-0}
 
 ```bash
-archlinux-checksum-md5.txt
---------------------------------------------------------------------
+# Replace the checksum and the filename accordingly
 00000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
+```
 
 archlinux-checksum-sha1.txt
-----------------------------------------------------------------------------
+{: .fs-3 .pt-2 .mb-0}
+
+```bash
+# Replace the checksum and the filename accordingly
 0000000000000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
 ```
 
----
+### Verify the ISO image
+{: .no_toc .pt-4}
 
-## Verify the ISO image integrity with the checksum file
-
-The Arch Linux developers use two cryptographic hash functions for generate a checksum of their image, **MD5** and **SHA-1**.
+The Arch Linux developers use two cryptographic hash functions for generate a checksum of their ISO images, **MD5** and **SHA-1**.
 
 For verify the integrity of the downloaded image, we need to generate a checksum with MD5 or SHA-1 and compare it with the appropriate checksum provided by Arch Linux.
 
-```bash
-# MD5 checksum
-md5sum -c archlinux-checksum-md5.txt
+#### MD5
+{: .no_toc .pt-2}
 
-# SHA-1 checksum
-sha1sum -c archlinux-checksum-sha1.txt
+```bash
+$ md5sum -c archlinux-checksum-md5.txt
+```
+
+#### SHA-1
+{: .no_toc .pt-2}
+
+```bash
+$ sha1sum -c archlinux-checksum-sha1.txt
 ```
 
 The success of one of these commands confirms that your ISO image was properly downloaded and that your local file is an exact copy of the file present on the mirror server. An error during the download could result in a corrupted file and trigger random issues during the installation.
@@ -85,53 +90,18 @@ The success of one of these commands confirms that your ISO image was properly d
 ### References
 {: .no_toc .text-delta .pt-5}
 
-- [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
-- [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
-- [Manual - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
-- [Manual - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
+1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+1. [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
+1. [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
+1. [Man pages - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
+1. [Man pages - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
 
 ---
 
-## About public key cryptography
+## Verify the authenticity of the downloaded file
 
-Public-key cryptography, or asymmetric cryptography, is a cryptographic system that uses pairs of keys
-
-- public keys which may be disseminated widely
-- private keys which are known only to the owner
-
-Effective security only requires keeping the private key private. The public key can be openly distributed without compromising security.
-
-### Public key cryptography for digital signatures
-{: .no_toc}
-
-A message is signed with the sender's private key and can be verified by anyone who has access to the sender's public key. This verification proves that the sender had access to the private key, and therefore is likely to be the person associated with the public key.
-
-This also ensures that the message has not been tampered with, as a signature is mathematically bound to the message it originally was made with, and verification will fail for practically any other message, no matter how similar to the original message.
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-- [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
-- [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
-
----
-
-## About GnuPG
-
-GnuPG is a complete and free implementation of the OpenPGP standard as defined by RFC4880 (also known as PGP). GnuPG allows you to encrypt and sign your data and communications. It also can be used for verify signatures.
-
-GnuPG supports the RSA public key algorithm which is used to sign the Arch Linux ISO image.
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-- [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
-- [Wikipedia - RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
-
----
-
-## Download the signature file
-{: .d-inline-block}
+### Download the signature file
+{: .no_toc .mt-0 .d-inline-block}
 
 Warning
 {: .label .label-red .mx-2}
@@ -142,11 +112,10 @@ Signature must be downloaded from the Arch Linux download page. The signature co
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, click on the PGP signature link.
 
----
+### Verify ISO image with GnuPG
+{: .no_toc .pt-4}
 
-## Verify ISO image with the signature file
-
-This part assume that you are in possession of this two files in the same folder
+If your operating system is Windows, you can install [Gpg4win](https://en.wikipedia.org/wiki/Gpg4win) wich implement GnuPG. This part assume that you are in possession of this two files in the same folder.
 
 | File                                    | Description    |
 | :-------------------------------------- | :------------- |
@@ -154,11 +123,17 @@ This part assume that you are in possession of this two files in the same folder
 | archlinux-year.day.month-x86_64.iso.sig | Signature file |
 
 ```bash
-## Replace the name of the file accordingly
-gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
+# Replace the name of the file accordingly
+$ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
 ```
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
+1. [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
+1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
+1. [Wikipedia - RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+1. [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
+1. [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
+1. [ArchWiki - GnuPG](https://wiki.archlinux.org/index.php/GnuPG)
+1. [Man pages - gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)

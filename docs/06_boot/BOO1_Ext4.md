@@ -6,7 +6,7 @@ parent: 06 Boot
 permalink: /boot/ext4/
 ---
 
-# Boot configuration for EXT4
+# Boot setup for EXT4
 {: .no_toc}
 
 ## Table of contents

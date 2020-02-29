@@ -95,7 +95,7 @@ $ cryptsetup close erase_drive
 | C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
 | E6D6D379-F507-44C2-A23C-238F2A3DF928 | Linux Logical Volume Manager (LVM) |
 
-1. Open the tool of your choice
+1. Open the partitioning tool of your choice
 1. Create a GPT partition table
 1. Efi partition
    1. Create a new partition of 512MiB
@@ -103,7 +103,7 @@ $ cryptsetup close erase_drive
 1. Lvm partition
    1. Create a new partition with all the remaining space of your drive
    1. Change the type of the partition to `Linux LVM`
-1. Save and exit
+1. Write and exit
 
 ### References
 {: .no_toc .text-delta .pt-4}

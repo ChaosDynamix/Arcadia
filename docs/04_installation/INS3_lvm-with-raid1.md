@@ -105,7 +105,7 @@ $ cryptsetup close erase_sdb
 | C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
 | E6D6D379-F507-44C2-A23C-238F2A3DF928 | Linux Logical Volume Manager (LVM) |
 
-1. Open the tool of your choice
+1. Open the partitioning tool of your choice
 1. Create a GPT partition table
 1. Efi partition
    1. Create a new partition of 512MiB
@@ -113,16 +113,16 @@ $ cryptsetup close erase_sdb
 1. Lvm partition
    1. Create a new partition with all the remaining space of your drive minus 100MiB
    1. Change the type of the partition to `Linux LVM`
-1. Save and exit
+1. Write and exit
 
 ### Clone the disk partitioning setup of `/dev/sda` to `/dev/sdb`
 {: .no_toc .pt-4}
 
 ```bash
-# Dump the partitions of a device in a format that is usable as input to sfdisk
+# Dump the partitions of /dev/sda
 $ sfdisk -d /dev/sda > sda.dump
 
-# Create the partitions with /dev/sda dump
+# Create the partitions of /dev/sdb with /dev/sda dump
 $ sfdisk /dev/sdb < sda.dump
 ```
 
@@ -154,7 +154,7 @@ $ lvcreate --type raid1 --mirrors 1 -L 20G -n cryptroot grp /dev/sda2 /dev/sdb2
 $ lvcreate --type raid1 --mirrors 1 -l 100%FREE -n crypthome grp /dev/sda2 /dev/sdb2
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Dm-crypt - Encrypting an entire system - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
