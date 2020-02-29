@@ -11,12 +11,13 @@ permalink: /installation/ext4/
 
 ---
 
-| Partition | Mounting point | Partition type                | Size     |
-| :-------- | :------------- | :---------------------------- | :------- |
-| /dev/sda1 | /boot          | EFI system partition          | 260M     |
-| /dev/sda2 | /              | Linux Root partition (x86-64) | 23 - 32G |
-| /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
-| /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
+## Table of contents
+{: .no_toc .text-delta .mt-6}
+
+1. TOC
+{:toc}
+
+---
 
 ```
 +-----------------+-----------------+-----------------+-----------------+
@@ -30,15 +31,14 @@ permalink: /installation/ext4/
 
 ---
 
-## Table of contents
-{: .no_toc .text-delta .mt-6}
+## Partition the drive
 
-1. TOC
-{:toc}
-
----
-
-## Partitioning
+| Partition | Mounting point | Partition type                | Size     |
+| :-------- | :------------- | :---------------------------- | :------- |
+| /dev/sda1 | /boot          | EFI system partition          | 260M     |
+| /dev/sda2 | /              | Linux Root partition (x86-64) | 23 - 32G |
+| /dev/sda3 | [SWAP]         | Linux Swap partition          | > 512M   |
+| /dev/sda4 | /home          | Linux Home partition          | 100%FREE |
 
 | Partition guid                       | Description                        |
 | :----------------------------------- | :--------------------------------- |
@@ -74,7 +74,7 @@ permalink: /installation/ext4/
 
 ---
 
-## Partitions setup
+## Configuring the partitions
 
 ### Format the partitions
 {: .no_toc .pt-2}
@@ -129,7 +129,7 @@ $ mount /dev/sda4 /mnt/home
 
 ---
 
-## Arch Linux installation
+## Install Arch Linux essential packages
 
 install packages to the specified new root directory.
 
@@ -169,5 +169,3 @@ arch-chroot /mnt
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Chroot](https://wiki.archlinux.org/index.php/Installation_guide#Chroot)
-
----

@@ -9,6 +9,8 @@ permalink: /download/mirror-site/
 # Download Arch Linux with a mirror site
 {: .no_toc}
 
+---
+
 ## Table of contents
 {: .no_toc .text-delta}
 

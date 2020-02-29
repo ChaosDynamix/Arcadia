@@ -9,11 +9,54 @@ permalink: /boot-setup/lvm/
 # Boot setup for LVM
 {: .no_toc}
 
+---
+
 ## Table of contents
 {: .no_toc .text-delta}
 
 1. TOC
 {:toc}
+
+---
+
+## Create a key for the root container
+
+This section cover the creation of a specially named keyfile that will be embedded in the initramfs and picked up by the encrypt hook to unlock the root filesystem (cryptdevice) automatically. This step avoid us to enter two passphrases during boot.
+
+### Create the keyfile
+{: .no_toc .pt-2}
+
+```bash
+# Create the keys directory with read/write/execution permissions for root
+$ mkdir -m 700 /etc/luks-keys
+
+# Create the key
+$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/root iflag=fullblock
+```
+
+### Change permissions
+{: .no_toc .pt-4}
+
+```bash
+$ chmod 600 /etc/luks-keys/root
+$ chmod 600 /boot/initramfs-linux*
+```
+
+### Add the keyfile to cryptsetup
+{: .no_toc .pt-4}
+
+```bash
+$ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/root
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - Device encryption - Unlocking the root partition at boot](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption#Unlocking_the_root_partition_at_boot)
+1. [Man page - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
+1. [Man page - dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
+1. [Man page - chmod](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/chmod.1.en)
+1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
 
 ---
 

@@ -9,6 +9,8 @@ permalink: /boot-setup/ext4/
 # Boot setup for EXT4
 {: .no_toc}
 
+---
+
 ## Table of contents
 {: .no_toc .text-delta}
 

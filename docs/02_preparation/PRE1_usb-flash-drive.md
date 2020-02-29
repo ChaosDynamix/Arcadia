@@ -17,13 +17,10 @@ permalink: /preparation/usb-flash-drive/
 
 ---
 
-In order to instal Arch Linux on the storage space of our choice, we need to copy the Arch Linux ISO image on a USB device. **This will irrevocably destroy all data on your USB device**
-{: .fs-5}
+## Flash your USB flash drive with the Arch Linux ISO
 
----
-
-## With dd
-{: .d-inline-block}
+### With dd
+{: .no_toc .pt-2 .d-inline-block}
 
 Console
 {: .label .mx-2}
@@ -38,16 +35,8 @@ $ fdisk -l
 $ dd bs=4M if=path/to/archlinux.iso of=/dev/sdX status=progress oflag=sync
 ```
 
-### References
-{: .no_toc .text-delta .pt-5}
-
-- [ArchWiki - USB flash installation media](https://wiki.archlinux.org/index.php/USB_flash_installation_media)
-- [GNU - dd documentation](https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html#dd-invocation)
-
----
-
-## With Etcher
-{: .d-inline-block}
+### With Etcher
+{: .no_toc .pt-4 .d-inline-block}
 
 Graphical
 {: .label .mx-2}
@@ -64,41 +53,14 @@ Etcher is a powerful OS image flasher built with web technologies to ensure flas
     1. Flash !
 
 ### References
-{: .no_toc .text-delta .pt-5}
+{: .no_toc .text-delta .pt-4}
 
 - [ArchWiki - USB flash installation media](https://wiki.archlinux.org/index.php/USB_flash_installation_media)
+- [GNU - dd documentation](https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html#dd-invocation)
 
 ---
 
-## About firmware
-
-The firmware is a software that provides the low-level control for the device's specific hardware. The firmware is the very first program that is executed once the system is switched on.
-
-The most common computer Firmwares are :
-- **BIOS**
-- **UEFI** compliant firmware
-
-### References
-{: .no_toc .text-delta .pt-5}
-
-- [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
-
----
-
-## About firmware setup utility
-
-The firmware setup utility allow the user to configure and monitor your computer hardware.
-
-A modern firmware setup utility has a menu-based user interface (UI) accessed by pressing a certain key on the keyboard when the computer starts. Usually, the key is advertised for short time during the early startup. The actual key depends on specific hardware.
-
-### References
-{: .no_toc .text-delta .pt-5}
-
-- [Wikipedia - BIOS - Configuration](https://en.wikipedia.org/wiki/BIOS#Configuration)
-
----
-
-## Boot on the USB device
+## Boot your computer on the USB flash drive
 
 In order to boot on the USB device, we need to modify the firmware configuration with the firmware setup utility.
 
@@ -113,4 +75,6 @@ If asked (by pressing a key), you can temporarily select and boot on a device. Y
 ### References
 {: .no_toc .text-delta .pt-5}
 
+- [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
+- [Wikipedia - BIOS - Configuration](https://en.wikipedia.org/wiki/BIOS#Configuration)
 - [ArchWiki - Installation guide - Boot the live environment](https://wiki.archlinux.org/index.php/Installation_guide#Boot_the_live_environment)

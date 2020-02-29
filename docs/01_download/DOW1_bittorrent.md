@@ -6,14 +6,10 @@ nav_order: 1
 permalink: /download/bittorrent/
 ---
 
-Recommended
-{: .label .label-green .mx-0}
-
-No anonymity
-{: .label .label-red}
-
 # Download Arch Linux with BitTorrent
-{: .no_toc .mt-0}
+{: .no_toc}
+
+---
 
 ## Table of contents
 {: .no_toc .text-delta}

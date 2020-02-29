@@ -11,12 +11,13 @@ permalink: /installation/lvm-with-raid1/
 
 ---
 
-| Device | Partition | Partition type                     | Size            |
-| :----- | :-------- | :--------------------------------- | :-------------- |
-| 1      | /dev/sda1 | EFI system partition               | 512M            |
-| 1      | /dev/sda2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
-| 2      | /dev/sdb1 | EFI system partition               | 512M            |
-| 2      | /dev/sdb2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
+## Table of contents
+{: .no_toc .text-delta .mt-6}
+
+1. TOC
+{:toc}
+
+---
 
 ```
 +------------+----------------------+  +------------+----------------------+
@@ -43,14 +44,6 @@ permalink: /installation/lvm-with-raid1/
 | /dev/mapper/swap       | /dev/mapper/root       | /dev/mapper/home       |
 +------------------------+----------------------- +------------------------+
 ```
-
----
-
-## Table of contents
-{: .no_toc .text-delta .mt-6}
-
-1. TOC
-{:toc}
 
 ---
 
@@ -89,6 +82,13 @@ $ cryptsetup close erase_sdb
 ---
 
 ## Partition the drives
+
+| Drive  | Partition | Partition type                     | Size            |
+| :----- | :-------- | :--------------------------------- | :-------------- |
+| 1      | /dev/sda1 | EFI system partition               | 512M            |
+| 1      | /dev/sda2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
+| 2      | /dev/sdb1 | EFI system partition               | 512M            |
+| 2      | /dev/sdb2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
 
 | Partition guid                       | Description                        |
 | :----------------------------------- | :--------------------------------- |
@@ -248,93 +248,13 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 ---
 
-## Create the keys for root and home partitions
-
-### Create the keyfiles
-{: .no_toc .pt-2}
+## Enter the system
 
 ```bash
-# Create the keys directory with read/write/execution permissions
-$ mkdir -m 700 /etc/luks-keys
-
-# Create the keys
-$ dd if=/dev/random of=/etc/luks-keys/root bs=512 count=4 iflag=fullblock
-$ dd if=/dev/random of=/etc/luks-keys/home bs=512 count=4 iflag=fullblock
-```
-
-### Change permissions
-{: .no_toc .pt-4}
-
-```bash
-$ chmod 600 /etc/luks-keys/root
-$ chmod 600 /etc/luks-keys/home
-$ chmod 600 /boot/initramfs-linux*
-```
-
-### Add the root keyfile to cryptsetup
-{: .no_toc .pt-4}
-
-```bash
-$ cryptsetup luksAddKey /dev/mapper/root /etc/luks-keys/root
+arch-chroot /mnt
 ```
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - Dm-crypt - Device encryption - Unlocking the root partition at boot](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption#Unlocking_the_root_partition_at_boot)
-1. [Man page - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
-1. [Man page - dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
-1. [Man page - chmod](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/chmod.1.en)
-1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
-
----
-
-## Encrypting Home logical volume
-
-```bash
-# Create the container
-$ cryptsetup luksFormat -v /dev/MyVolGroup/crypthome /etc/luks-keys/home
-
-# Open the container
-$ cryptsetup -d /etc/luks-keys/home open /dev/MyVolGroup/crypthome home
-
-# Format with Ext4 filesystem
-$ mkfs.ext4 /dev/mapper/home
-
-# Mount home
-$ mount /dev/mapper/home /home
-```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-1. [ArchWiki - Dm-crypt - Encrypting an entire system - Encrypting home logical volume](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Encrypting_logical_volume_/home)
-1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
-1. [Man page - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
-1. [Man page - mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mount.8.en)
-
----
-
-## Configuring fstab and crypttab
-
-/etc/crypttab
-{: .fs-3 .mb-0}
-
-```bash
-swap      /dev/grp/cryptswap      /dev/urandom	             swap,cipher=aes-xts-plain64,size=256
-home      /dev/grp/crypthome      /etc/luks-keys/home
-```
-
-/etc/fstab
-{: .fs-3 .pt-2 .mb-0}
-
-```bash
-/dev/mapper/swap      none        swap        sw              0 0
-/dev/mapper/home      /home       ext4        defaults        0 2
-```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-1. [ArchWiki - Dm-crypt - System configuration - crypttab](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#crypttab)
-1. [ArchWiki - Fstab](https://wiki.archlinux.org/index.php/Fstab)
+1. [ArchWiki - Installation guide - Chroot](https://wiki.archlinux.org/index.php/Installation_guide#Chroot)
