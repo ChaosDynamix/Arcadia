@@ -81,7 +81,7 @@ HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard keymap fs
 $ mkinitcpio -p linux
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Arch boot process - Initramfs](https://wiki.archlinux.org/index.php/Arch_boot_process#initramfs)
@@ -101,13 +101,30 @@ $ pacman -S grub efibootmgr
 ```
 
 ### Edit grub configuration
-{: .no_toc .pt-4}
+{: .no_toc .pt-4 .mt-0 .d-inline-block}
+
+Warning
+{: .label .label-red .mx-2}
+
+Before enabling TRIM on a drive, make sure the device fully supports TRIM commands, or data loss can occur.
+{: .text-red-200}
 
 /etc/default/grub
-{: .fs-3 .pt-2 .mb-0}
+{: .fs-3 .pt-2}
+
+#### NO TRIM
+{: .no_toc .pt-2}
 
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs cryptkey=rootfs:/etc/luks-keys/root loglevel=3 quiet"
+GRUB_ENABLE_CRYPTODISK=y
+```
+
+#### TRIM
+{: .no_toc .pt-2}
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs:allow-discards cryptkey=rootfs:/etc/luks-keys/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
@@ -125,10 +142,11 @@ $ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --r
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Dm-crypt - Encrypting an entire system - Btrfs subvolumes with Swap](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Btrfs_subvolumes_with_swap)
+1. [ArchWiki - Dm-crypt - Specialties - Discad/TRIM support for SSD](https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Discard/TRIM_support_for_solid_state_drives_(SSD))
 1. [ArchWiki - GRUB - UEFI systems](https://wiki.archlinux.org/index.php/GRUB#UEFI_systems)
 1. [ArchWiki - GRUB - Configuration](https://wiki.archlinux.org/index.php/GRUB#Configuration)
 1. [ArchWiki - GRUB - Encrypted boot](https://wiki.archlinux.org/index.php/GRUB#Encrypted_/boot)
@@ -146,7 +164,7 @@ $ umount -R /mnt
 $ reboot
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Reboot](https://wiki.archlinux.org/index.php/Installation_guide#Reboot)

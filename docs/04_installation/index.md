@@ -84,33 +84,6 @@ Drive 1                                 Drive 2
 
 ---
 
-## LVM with full drive encryption
-{: .d-inline-block}
-
-UEFI
-{: .label .label-purple .ml-2}
-
-LUKS
-{: .label .label-purple}
-
-EXT4
-{: .label .label-purple}
-
-WORK IN PROGRESS
-{: .label .label-yellow}
-
-```
-Drive                                                          USB key
-+----------------------------------------------------------+   +------------+
-| /dev/mapper/lvm                                          |   | EFI system |
-| LUKS1 encrypted drive                                    |   | partition  |
-+----------------------------------------------------------+   |            |
-| /dev/sda                                                 |   | /dev/sdb1  |
-+----------------------------------------------------------+   +------------+
-```
-
----
-
 ## [BTRFS](/Andromeda/installation/btrfs/)
 {: .d-inline-block}
 
@@ -131,4 +104,29 @@ WORK IN PROGRESS
 |                        |                                                  |
 | /dev/sda1              | /dev/sda2                                        |
 +------------------------+--------------------------------------------------+
+```
+
+---
+
+## BTRFS with RAID1
+{: .d-inline-block}
+
+UEFI
+{: .label .label-purple .ml-2}
+
+LUKS
+{: .label .label-purple}
+
+WORK IN PROGRESS
+{: .label .label-yellow}
+
+```
+Drive 1                                 Drive 2
++------------+----------------------+   +------------+----------------------+
+| EFI system | LUKS1 encrypted      |   | EFI system | LUKS1 encrypted      |
+| partition  | partition            |   | partition  | partition            |
+|            | /dev/mapper/btrfs1   |   |            | /dev/mapper/btrfs2   |
+|            +----------------------+   |            +----------------------+
+| /dev/sda1  | /dev/sda2            |   | /dev/sdb1  | /dev/sdb2            |
++------------+----------------------+   +------------+----------------------+
 ```

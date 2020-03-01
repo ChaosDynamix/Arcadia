@@ -35,14 +35,14 @@ subvolid=5 (/dev/mapper/btrfs)
    |
    ├── @ (mounted as /)
    |       |
-   |       ├── /home (mounted @home subvolume)
-   |       ├── /.snapshots (mounted @snapshots subvolume)
-   |       ├── /.swap (mounted @swap subvolume)
+   |       ├── /home                  (mounted @home subvolume)
+   |       ├── /.snapshots            (mounted @snapshots subvolume)
+   |       ├── /.swap                 (mounted @swap subvolume)
    |       |
-   |       ├── /var/cache/pacman/pkg (nested subvolume)
-   |       ├── /var/abs (nested subvolume)
-   |       ├── /var/tmp (nested subvolume)
-   |       ├── /srv (nested subvolume)
+   |       ├── /var/cache/pacman/pkg  (nested subvolume)
+   |       ├── /var/abs               (nested subvolume)
+   |       ├── /var/tmp               (nested subvolume)
+   |       ├── /srv                   (nested subvolume)
    |       |
    ├── @home (mounted as /home)
    ├── @snapshots (mounted as /.snapshots)
