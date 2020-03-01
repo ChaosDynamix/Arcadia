@@ -64,7 +64,7 @@ $ cryptsetup luksAddKey /dev/mapper/root /etc/luks-keys/root
 
 ```bash
 # Create the container
-$ cryptsetup luksFormat -v /dev/MyVolGroup/crypthome /etc/luks-keys/home
+$ cryptsetup luksFormat -v /dev/grp/crypthome /etc/luks-keys/home
 
 # Open the container
 $ cryptsetup -d /etc/luks-keys/home open /dev/MyVolGroup/crypthome home
@@ -167,7 +167,7 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .pt-4}
 
 ```bash
-$ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck
+$ grub-install --target=x86_64-efi --efi-directory=/efi1 --bootloader-id=GRUB --recheck
 ```
 
 ### Generate the configuration

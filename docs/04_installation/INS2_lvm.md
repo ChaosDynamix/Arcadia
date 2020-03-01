@@ -128,16 +128,24 @@ $ cryptsetup open /dev/sdXY lvm
 
 ## Setup the Logical Volume Manager
 
-See [3] and [4] references for size recommendations
+### Physical volume
+{: .no_toc .pt-2}
 
 ```bash
-# Physical volume
 $ pvcreate /dev/mapper/lvm
+```
 
-# Volume group
+### Volume group
+{: .no_toc .pt-4}
+
+```bash
 $ vgcreate grp /dev/mapper/lvm
+```
 
-# Logical volumes
+### Logical volumes
+{: .no_toc .pt-4}
+
+```bash
 $ lvcreate -L 8G grp -n swap
 $ lvcreate -L 20G grp -n root
 $ lvcreate -l 100%FREE grp -n home
@@ -222,8 +230,8 @@ pacstrap /mnt base base-devel linux linux-firmware lvm2 vim man-db man-pages
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
-- [Man page - pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
+1. [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
+1. [Man page - pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
 
 ---
 

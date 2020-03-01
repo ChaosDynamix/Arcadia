@@ -37,7 +37,7 @@ permalink: /installation/lvm-with-raid1/
 |                                 /dev/grp/                                |
 +------------------------+----------------------- +------------------------+
 | Logical volume 1       | Logical volume 2       | Logical volume 3       |
-| /dev/grp/swap          | /dev/grp/root          | /dev/grp/home          |
+| /dev/grp/cryptswap     | /dev/grp/cryptroot     | /dev/grp/crypthome     |
 +------------------------+----------------------- +------------------------+
 | Encrypted volume       | LUKS1 encrypted volume | LUKS1 encrypted volume |
 | [SWAP]                 | /                      | /home                  |
@@ -129,16 +129,24 @@ $ sfdisk /dev/sdb < sda.dump
 
 ## Setup the Logical Volume Manager
 
-See [3] and [4] references for size recommendations
+### Physical volume
+{: .no_toc .pt-2}
 
 ```bash
-# Physical volume
 $ pvcreate /dev/sda2 /dev/sdb2
+```
 
-# Volume group
+### Volume group
+{: .no_toc .pt-4}
+
+```bash
 $ vgcreate grp /dev/sda2 /dev/sdb2
+```
 
-# Logical volumes
+### Logical volumes
+{: .no_toc .pt-4}
+
+```bash
 $ lvcreate --type raid1 --mirrors 1 -L 8G -n cryptswap grp /dev/sda2 /dev/sdb2
 $ lvcreate --type raid1 --mirrors 1 -L 20G -n cryptroot grp /dev/sda2 /dev/sdb2
 $ lvcreate --type raid1 --mirrors 1 -l 100%FREE -n crypthome grp /dev/sda2 /dev/sdb2
@@ -229,8 +237,8 @@ pacstrap /mnt base base-devel linux linux-firmware lvm2 vim man-db man-pages
 ### References
 {: .no_toc .text-delta .pt-4}
 
-- [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
-- [Man page - pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
+1. [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
+1. [Man page - pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
 
 ---
 
