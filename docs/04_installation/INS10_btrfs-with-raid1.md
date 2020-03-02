@@ -1,13 +1,12 @@
 ---
 layout: default
-title: Btrfs
-nav_order: 4
-parent: 04 Installation
-permalink: /installation/btrfs/
+title: Btrfs with Raid1
+nav_exclude: true
+permalink: /installation/btrfs-with-raid1/
 has_toc: false
 ---
 
-# Installation for BTRFS
+# Installation for BTRFS with RAID1
 {: .no_toc}
 
 ---
@@ -21,17 +20,18 @@ has_toc: false
 ---
 
 ```
-+------------------------+-------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                       |
-| /efi                   | /dev/mapper/btrfs                               |
-|                        +-------------------------------------------------+
-|                        |                                                 |
-| /dev/sda1              | /dev/sda2                                       |
-+------------------------+-------------------------------------------------+
+Drive 1                                 Drive 2
++------------+----------------------+   +------------+----------------------+
+| EFI system | LUKS1 encrypted      |   | EFI system | LUKS1 encrypted      |
+| partition  | partition            |   | partition  | partition            |
+|            | /dev/mapper/btrfs1   |   |            | /dev/mapper/btrfs2   |
+|            +----------------------+   |            +----------------------+
+| /dev/sda1  | /dev/sda2            |   | /dev/sdb1  | /dev/sdb2            |
++------------+----------------------+   +------------+----------------------+
 ```
 
 ```
-subvolid=5 (/dev/mapper/btrfs)
+subvolid=5 (/dev/mapper/btrfs1 /dev/mapper/btrfs2)
    |
    ├── @ (mounted as /)
    |       |
@@ -82,12 +82,14 @@ $ cryptsetup close erase_drive
 
 ---
 
-## Partition the drive
+## Partition the drives
 
-| Partition | Mounting point | Partition type       | Size     |
-| :-------- | :------------- | :------------------- | :------- |
-| /dev/sda1 | /efi           | EFI system partition | 512M     |
-| /dev/sda2 |                | Linux Filesystem     | 100%FREE |
+| Drive  | Partition | Partition type       | Size            |
+| :----- | :-------- | :------------------- | :-------------- |
+| 1      | /dev/sda1 | EFI system partition | 512M            |
+| 1      | /dev/sda2 | Linux Filesystem     | 100%FREE - 100M |
+| 2      | /dev/sdb1 | EFI system partition | 512M            |
+| 2      | /dev/sdb2 | Linux Filesystem     | 100%FREE - 100M |
 
 | Partition guid                       | Description                        |
 | :----------------------------------- | :--------------------------------- |
@@ -100,27 +102,44 @@ $ cryptsetup close erase_drive
    1. Create a new partition of 512MiB
    1. Change the type of the partition to `EFI system`
 1. Lvm partition
-   1. Create a new partition with all the remaining space of your drive
+   1. Create a new partition with all the remaining space of your drive minus 100MiB
    1. Change the type of the partition to `Linux Filesystem`
 1. Write and exit
+
+### Clone the disk partitioning setup of `/dev/sda` to `/dev/sdb`
+{: .no_toc .pt-4}
+
+```bash
+# Dump the partitions of /dev/sda
+$ sfdisk -d /dev/sda > sda.dump
+
+# Create the partitions of /dev/sdb with /dev/sda dump
+$ sfdisk /dev/sdb < sda.dump
+```
+
+If the script fail at line 7, remove the `sector-size` line and make sure that sfdisk automatically selected the good size itself when executing the script.
 
 ### References
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
 1. [ArchWiki - Partitioning - Partitioning tools](https://wiki.archlinux.org/index.php/Partitioning#Partitioning_tools)
+1. [ArchWiki - RAID - Partition the devices - Tip](https://wiki.archlinux.org/index.php/RAID#Partition_the_devices)
 1. [ArchWiki - EFI system partition - Create the partition](https://wiki.archlinux.org/index.php/EFI_system_partition#Create_the_partition)
+1. [Man pages - sfdisk](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/sfdisk.8.en)
 
 ---
 
-## Encrypting the partition
+## Encrypting the partitions
 
 ```bash
-# Create the container
+# Create the containers
 $ cryptsetup --type luks1 luksFormat /dev/sda2
+$ cryptsetup --type luks1 luksFormat /dev/sdb2
 
-# Open the container
-$ cryptsetup open /dev/sda2 btrfs
+# Open the containers
+$ cryptsetup open /dev/sda2 btrfs1
+$ cryptsetup open /dev/sdb2 btrfs2
 ```
 
 ### References
@@ -138,18 +157,19 @@ $ cryptsetup open /dev/sda2 btrfs
 {: .no_toc .pt-2}
 
 ```bash
-# Format the BTRFS filesystem partition
-$ mkfs.btrfs -L BTRFS /dev/mapper/btrfs
+# Format the BTRFS filesystem partitions
+$ mkfs.btrfs -L BTRFS -m raid1 -d raid1 /dev/mapper/btrfs1 /dev/mapper/btrfs2
 
-# Format the FAT32 filesystem partition
+# Format the FAT32 filesystem partitions
 $ mkfs.fat -F32 -n EFI /dev/sda1
+$ mkfs.fat -F32 -n EFI /dev/sdb1
 ```
 
-### Mount the partition
+### Mount the partitions
 {: .no_toc .pt-4}
 
 ```bash
-$ mount -o compress=zstd /dev/mapper/btrfs /mnt
+$ mount -o compress=zstd /dev/mapper/btrfs1 /mnt
 ```
 
 ### References
@@ -180,16 +200,16 @@ $ btrfs subvolume create /mnt/@swap
 
 ```bash
 # Umount /mnt
-$ umount /dev/mapper/btrfs /mnt
+$ umount /dev/mapper/btrfs1 /mnt
 
 # Create the directories
 $ mkdir /mnt/{home,.snapshots,.swap}
 
 # Mount the subvolumes
-$ mount -o compress=zstd,subvol=@ /dev/mapper/btrfs /mnt
-$ mount -o compress=zstd,subvol=@home /dev/mapper/btrfs /mnt/home
-$ mount -o compress=zstd,subvol=@snapshots /dev/mapper/btrfs /mnt/.snapshots
-$ mount -o compress=zstd,subvol=@swap /dev/mapper/btrfs /mnt/.swap
+$ mount -o compress=zstd,subvol=@ /dev/mapper/btrfs1 /mnt
+$ mount -o compress=zstd,subvol=@home /dev/mapper/btrfs1 /mnt/home
+$ mount -o compress=zstd,subvol=@snapshots /dev/mapper/btrfs1 /mnt/.snapshots
+$ mount -o compress=zstd,subvol=@swap /dev/mapper/btrfs1 /mnt/.swap
 ```
 
 ### Create nested subvolumes
@@ -221,14 +241,15 @@ $ btrfs subvolume list -p /mnt
 
 ---
 
-## Mount the EFI partition
+## Mount the EFI partitions
 
 ```bash
-# Create directory
-$ mkdir /mnt/efi
+# Create directories
+$ mkdir /mnt/{efi1,efi2}
 
-# Mount the EFI partition
-$ mount /dev/sda1 /mnt/efi
+# Mount the EFI partitions
+$ mount /dev/sda1 /mnt/efi1
+$ mount /dev/sdb1 /mnt/efi2
 ```
 
 ### References

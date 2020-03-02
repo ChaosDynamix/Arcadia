@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Btrfs
-nav_order: 3
+nav_order: 4
 parent: 06 Boot setup
 permalink: /boot-setup/btrfs/
 ---

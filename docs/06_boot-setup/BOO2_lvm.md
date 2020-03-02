@@ -31,14 +31,14 @@ This section cover the creation of a specially named keyfile that will be embedd
 $ mkdir -m 700 /etc/luks-keys
 
 # Create the key
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/root iflag=fullblock
+$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/lvm iflag=fullblock
 ```
 
 ### Change permissions
 {: .no_toc .pt-4}
 
 ```bash
-$ chmod 600 /etc/luks-keys/root
+$ chmod 600 /etc/luks-keys/lvm
 $ chmod 600 /boot/initramfs-linux*
 ```
 
@@ -46,7 +46,7 @@ $ chmod 600 /boot/initramfs-linux*
 {: .no_toc .pt-4}
 
 ```bash
-$ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/root
+$ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/lvm
 ```
 
 ### References
@@ -69,7 +69,7 @@ $ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/root
 {: .fs-3 .pt-2 .mb-0}
 
 ```bash
-FILES=(/etc/luks-keys/root)
+FILES=(/etc/luks-keys/lvm)
 HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 ```
 
@@ -116,7 +116,7 @@ Before enabling TRIM on a drive, make sure the device fully supports TRIM comman
 {: .no_toc .pt-2}
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm cryptkey=rootfs:/etc/luks-keys/root root=/dev/grp/root loglevel=3 quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm cryptkey=rootfs:/etc/luks-keys/lvm root=/dev/grp/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
@@ -124,7 +124,7 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .pt-2}
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm:allow-discards cryptkey=rootfs:/etc/luks-keys/root root=/dev/grp/root loglevel=3 quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm:allow-discards cryptkey=rootfs:/etc/luks-keys/lvm root=/dev/grp/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 

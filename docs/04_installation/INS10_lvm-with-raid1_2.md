@@ -1,18 +1,18 @@
 ---
 layout: default
-title: Lvm with raid1
-nav_order: 3
-parent: 04 Installation
-permalink: /installation/lvm-with-raid1/
+title: Lvm with Raid1 2
+nav_exclude: true
+permalink: /installation/btrfs-with-raid12/
+has_toc: false
 ---
 
-# Installation for LVM with RAID1
+# Installation for LVM with RAID1 2
 {: .no_toc}
 
 ---
 
 ## Table of contents
-{: .no_toc .text-delta .mt-6}
+{: .no_toc .text-delta}
 
 1. TOC
 {:toc}
@@ -20,23 +20,20 @@ permalink: /installation/lvm-with-raid1/
 ---
 
 ```
-Drive 1                                Drive 2
-+----------- +--------------------- +  +----------- +----------------------+
-| EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
-| partition  | volume               |  | partition  | volume               |
-| /efi1      | /dev/mapper/lvm      |  | /efi2      | /dev/mapper/lvm      |
-|            +--------------------- +  |            +----------------------+
-|            | RAID1 array (part 1) |  |            | RAID1 array (part 2) |
-|            | /dev/md/cryptlvm     |  |            | /dev/md/cryptlvm     |
-|            +--------------------- +  |            +----------------------+
-| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
-+----------- +--------------------- +  +----------- +----------------------+
+Drive 1                                 Drive 2
++------------+----------------------+   +------------+----------------------+
+| EFI system | LUKS1 encrypted      |   | EFI system | LUKS1 encrypted      |
+| partition  | partition            |   | partition  | partition            |
+|            | /dev/mapper/lvm1     |   |            | /dev/mapper/lvm2     |
+|            +----------------------+   |            +----------------------+
+| /dev/sda1  | /dev/sda2            |   | /dev/sdb1  | /dev/sdb2            |
++------------+----------------------+   +------------+----------------------+
 ```
 
 ```
 +--------------------------------------------------------------------------+
 |                             Physical volume                              |
-|                             /dev/mapper/lvm                              |
+|                   /dev/mapper/lvm1 /dev/mapper/lvm2                      |
 +--------------------------------------------------------------------------+
 |                              Group volume                                |
 |                                /dev/grp/                                 |
@@ -61,15 +58,15 @@ Before setting up disk encryption on a (part of a) disk, consider securely wipin
 - Prevent disclosure of usage patterns on the encrypted drive
 
 ```bash
-# Open the containers
+# Open the container
 $ cryptsetup open --type plain -d /dev/urandom /dev/sda erase_drive1
 $ cryptsetup open --type plain -d /dev/urandom /dev/sdb erase_drive2
 
-# Secure erase the drives
+# Secure erase the drive
 $ dd if=/dev/zero of=/dev/mapper/erase_drive1 status=progress
 $ dd if=/dev/zero of=/dev/mapper/erase_drive2 status=progress
 
-# Close the containers
+# Close the container
 $ cryptsetup close erase_drive1
 $ cryptsetup close erase_drive2
 ```
@@ -83,19 +80,19 @@ $ cryptsetup close erase_drive2
 
 ---
 
-## Partition the drive
+## Partition the drives
 
-| Device | Partition | Partition type       | Size            |
-| :----- | :-------- | :------------------- | :-------------- |
-| 1      | /dev/sda1 | EFI system partition | 512M            |
-| 1      | /dev/sda2 | Linux RAID partition | 100%FREE - 100M |
-| 2      | /dev/sdb1 | EFI system partition | 512M            |
-| 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
+| Drive  | Partition | Partition type                     | Size            |
+| :----- | :-------- | :--------------------------------- | :-------------- |
+| 1      | /dev/sda1 | EFI system partition               | 512M            |
+| 1      | /dev/sda2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
+| 2      | /dev/sdb1 | EFI system partition               | 512M            |
+| 2      | /dev/sdb2 | Linux Logical Volume Manager (LVM) | 100%FREE - 100M |
 
-| Partition guid                       | Description          |
-| :----------------------------------- | :--------------------|
-| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition |
-| A19D880F-05FC-4D3B-A006-743F0F84911E | Linux RAID partition |
+| Partition guid                       | Description                        |
+| :----------------------------------- | :--------------------------------- |
+| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
+| E6D6D379-F507-44C2-A23C-238F2A3DF928 | Linux Logical Volume Manager (LVM) |
 
 1. Open the partitioning tool of your choice
 1. Create a GPT partition table
@@ -104,7 +101,7 @@ $ cryptsetup close erase_drive2
    1. Change the type of the partition to `EFI system`
 1. Lvm partition
    1. Create a new partition with all the remaining space of your drive minus 100MiB
-   1. Change the type of the partition to `Linux RAID`
+   1. Change the type of the partition to `Linux LVM`
 1. Write and exit
 
 ### Clone the disk partitioning setup of `/dev/sda` to `/dev/sdb`
@@ -125,24 +122,22 @@ If the script fail at line 7, remove the `sector-size` line and make sure that s
 
 1. [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
 1. [ArchWiki - Partitioning - Partitioning tools](https://wiki.archlinux.org/index.php/Partitioning#Partitioning_tools)
+1. [ArchWiki - RAID - Partition the devices - Tip](https://wiki.archlinux.org/index.php/RAID#Partition_the_devices)
 1. [ArchWiki - EFI system partition - Create the partition](https://wiki.archlinux.org/index.php/EFI_system_partition#Create_the_partition)
+1. [Man pages - sfdisk](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/sfdisk.8.en)
 
 ---
 
-## Setup RAID array
+## Encrypting the partitions
 
 ```bash
-$ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/cryptlvm /dev/sda2 /dev/sdb2
-```
+# Create the containers
+$ cryptsetup --type luks1 luksFormat /dev/sda2
+$ cryptsetup --type luks1 luksFormat /dev/sdb2
 
-## Encrypting the partition
-
-```bash
-# Create the container
-$ cryptsetup --type luks1 luksFormat /dev/md/cryptlvm
-
-# Open the container
-$ cryptsetup open /dev/md/cryptlvm lvm
+# Open the containers
+$ cryptsetup open /dev/sda2 lvm1
+$ cryptsetup open /dev/sdb2 lvm2
 ```
 
 ### References
@@ -160,29 +155,29 @@ $ cryptsetup open /dev/md/cryptlvm lvm
 {: .no_toc .pt-2}
 
 ```bash
-$ pvcreate /dev/mapper/lvm
+$ pvcreate /dev/mapper/lvm1 /dev/mapper/lvm2
 ```
 
 ### Volume group
 {: .no_toc .pt-4}
 
 ```bash
-$ vgcreate grp /dev/mapper/lvm
+$ vgcreate grp /dev/mapper/lvm1 /dev/mapper/lvm2
 ```
 
 ### Logical volumes
 {: .no_toc .pt-4}
 
 ```bash
-$ lvcreate -L 8G grp -n swap
-$ lvcreate -L 20G grp -n root
-$ lvcreate -l 100%FREE grp -n home
+$ lvcreate --type raid1 --mirrors 1 -L 8G -n swap grp /dev/mapper/lvm1 /dev/mapper/lvm2
+$ lvcreate --type raid1 --mirrors 1 -L 20G -n root grp /dev/mapper/lvm1 /dev/mapper/lvm2
+$ lvcreate --type raid1 --mirrors 1 -l 100%FREE -n home grp /dev/mapper/lvm1 /dev/mapper/lvm2
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
+1. [ArchWiki - Dm-crypt - Encrypting an entire system - LVM on LUKS - Preparing the logical volumes](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes)
 1. [ArchWiki - LVM - Volume operations](https://wiki.archlinux.org/index.php/LVM#Volume_operations)
 1. [ArchWiki - Partitioning - Discrete partitions](https://wiki.archlinux.org/index.php/Partitioning#Discrete_partitions)
 1. [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
@@ -242,8 +237,6 @@ $ mount /dev/sdb1 /mnt/efi2
 1. [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
 1. [Man page - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
 1. [Man page - mkfs.fat](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/dosfstools/mkfs.fat.8.en)
-1. [Man page - mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
-1. [Man page - swapon](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/swapon.2.en)
 1. [Man page - mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
 1. [Man page - mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mount.8.en)
 
@@ -254,7 +247,7 @@ $ mount /dev/sdb1 /mnt/efi2
 install packages to the specified new root directory.
 
 ```bash
-pacstrap /mnt base base-devel linux linux-firmware lvm2 mdadm vim man-db man-pages
+$ pacstrap /mnt base base-devel linux linux-firmware lvm2 vim man-db man-pages
 ```
 
 ### References
@@ -268,7 +261,7 @@ pacstrap /mnt base base-devel linux linux-firmware lvm2 mdadm vim man-db man-pag
 ## Generate static information about the filesystems
 
 ```bash
-genfstab -U /mnt >> /mnt/etc/fstab
+$ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
 ### References
@@ -282,7 +275,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ## Enter the system
 
 ```bash
-arch-chroot /mnt
+$ arch-chroot /mnt
 ```
 
 ### References

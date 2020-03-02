@@ -46,18 +46,17 @@ EXT4
 {: .label .label-purple}
 
 ```
-+------------------------+--------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                        |
-| /efi                   | /dev/mapper/lvm                                  |
-|                        +--------------------------------------------------+
-|                        |                                                  |
-| /dev/sda1              | /dev/sda2                                        |
-+------------------------+--------------------------------------------------+
++------------------------+-------------------------------------------------+
+| EFI system partition   | LUKS1 encrypted partition                       |
+| /efi                   | /dev/mapper/lvm                                 |
+|                        +-------------------------------------------------+
+| /dev/sda1              | /dev/sda2                                       |
++------------------------+-------------------------------------------------+
 ```
 
 ---
 
-## [LVM with RAID1](/Andromeda/installation/lvm-with-raid1/)
+## LVM with RAID1
 {: .d-inline-block}
 
 UEFI
@@ -69,17 +68,21 @@ LUKS
 EXT4
 {: .label .label-purple}
 
-WORK IN PROGRESS
-{: .label .label-yellow}
+EXPERIMENTAL
+{: .label .label-red}
 
 ```
-Drive 1                                 Drive 2
-+------------+----------------------+   +------------+----------------------+
-| EFI system | Logical Volume       |   | EFI system | Logical Volume       |
-| partition  | Manager              |   | partition  | Manager              |
-|            |                      |   |            |                      |
-| /dev/sda1  | /dev/sda2            |   | /dev/sdb1  | /dev/sdb2            |
-+------------+----------------------+   +------------+----------------------+
+Drive 1                                Drive 2
++----------- +--------------------- +  +----------- +----------------------+
+| EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
+| partition  | volume               |  | partition  | volume               |
+| /efi1      | /dev/mapper/lvm      |  | /efi2      | /dev/mapper/lvm      |
+|            +--------------------- +  |            +----------------------+
+|            | RAID1 array (part 1) |  |            | RAID1 array (part 2) |
+|            | /dev/md/cryptlvm     |  |            | /dev/md/cryptlvm     |
+|            +--------------------- +  |            +----------------------+
+| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
++----------- +--------------------- +  +----------- +----------------------+
 ```
 
 ---
@@ -97,13 +100,12 @@ WORK IN PROGRESS
 {: .label .label-yellow}
 
 ```
-+------------------------+--------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                        |
-| /efi                   | /dev/mapper/btrfs                                |
-|                        +--------------------------------------------------+
-|                        |                                                  |
-| /dev/sda1              | /dev/sda2                                        |
-+------------------------+--------------------------------------------------+
++------------------------+-------------------------------------------------+
+| EFI system partition   | LUKS1 encrypted partition                       |
+| /efi                   | /dev/mapper/btrfs                               |
+|                        +-------------------------------------------------+
+| /dev/sda1              | /dev/sda2                                       |
++------------------------+-------------------------------------------------+
 ```
 
 ---
@@ -117,16 +119,19 @@ UEFI
 LUKS
 {: .label .label-purple}
 
-WORK IN PROGRESS
-{: .label .label-yellow}
+EXPERIMENTAL
+{: .label .label-red}
 
 ```
-Drive 1                                 Drive 2
-+------------+----------------------+   +------------+----------------------+
-| EFI system | LUKS1 encrypted      |   | EFI system | LUKS1 encrypted      |
-| partition  | partition            |   | partition  | partition            |
-|            | /dev/mapper/btrfs1   |   |            | /dev/mapper/btrfs2   |
-|            +----------------------+   |            +----------------------+
-| /dev/sda1  | /dev/sda2            |   | /dev/sdb1  | /dev/sdb2            |
-+------------+----------------------+   +------------+----------------------+
+Drive 1                                Drive 2
++----------- +--------------------- +  +----------- +----------------------+
+| EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
+| partition  | volume               |  | partition  | volume               |
+| /efi1      | /dev/mapper/btrfs    |  | /efi2      | /dev/mapper/btrfs    |
+|            +--------------------- +  |            +----------------------+
+|            | RAID1 array (part 1) |  |            | RAID1 array (part 2) |
+|            | /dev/md/cryptbtrfs   |  |            | /dev/md/cryptbtrfs   |
+|            +--------------------- +  |            +----------------------+
+| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
++----------- +--------------------- +  +----------- +----------------------+
 ```
