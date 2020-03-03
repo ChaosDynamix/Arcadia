@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Lvm
+title: Luks-Lvm
 nav_order: 2
 parent: 04 Installation
-permalink: /installation/lvm/
+permalink: /installation/luks-lvm/
 ---
 
-# Installation for LVM
+# Installation for Luks-Lvm
 {: .no_toc}
 
 ---

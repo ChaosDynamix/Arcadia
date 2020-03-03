@@ -1,19 +1,18 @@
 ---
 layout: default
-title: Btrfs
-nav_order: 4
+title: Raid1-Luks-Btrfs
+nav_order: 5
 parent: 04 Installation
-permalink: /installation/btrfs/
-has_toc: false
+permalink: /installation/raid1-luks-btrfs/
 ---
 
-# Installation for BTRFS
+# Installation for Raid1-Luks-Btrfs
 {: .no_toc}
 
 ---
 
 ## Table of contents
-{: .no_toc .text-delta}
+{: .no_toc .text-delta .mt-6}
 
 1. TOC
 {:toc}
@@ -21,13 +20,17 @@ has_toc: false
 ---
 
 ```
-+------------------------+-------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                       |
-| /efi                   | /dev/mapper/btrfs                               |
-|                        +-------------------------------------------------+
-|                        |                                                 |
-| /dev/sda1              | /dev/sda2                                       |
-+------------------------+-------------------------------------------------+
+Drive 1                                Drive 2
++------------+--------------------- +  +------------+----------------------+
+| EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
+| partition  | volume               |  | partition  | volume               |
+| /efi1      | /dev/mapper/btrfs    |  | /efi2      | /dev/mapper/btrfs    |
+|            +--------------------- +  |            +----------------------+
+|            | RAID1 array (part 1) |  |            | RAID1 array (part 2) |
+|            | /dev/md/cryptbtrfs   |  |            | /dev/md/cryptbtrfs   |
+|            +--------------------- +  |            +----------------------+
+| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
++------------+--------------------- +  +------------+----------------------+
 ```
 
 ```
@@ -51,7 +54,7 @@ subvolid=5 (/dev/mapper/btrfs)
 
 ---
 
-## Secure erase the drive
+## Secure erase the drives
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
@@ -63,14 +66,17 @@ Before setting up disk encryption on a (part of a) disk, consider securely wipin
 - Prevent disclosure of usage patterns on the encrypted drive
 
 ```bash
-# Open the container
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erase_drive
+# Open the containers
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda erase_drive1
+$ cryptsetup open --type plain -d /dev/urandom /dev/sdb erase_drive2
 
-# Secure erase the drive
-$ dd if=/dev/zero of=/dev/mapper/erase_drive status=progress
+# Secure erase the drives
+$ dd if=/dev/zero of=/dev/mapper/erase_drive1 status=progress
+$ dd if=/dev/zero of=/dev/mapper/erase_drive2 status=progress
 
-# Close the container
-$ cryptsetup close erase_drive
+# Close the containers
+$ cryptsetup close erase_drive1
+$ cryptsetup close erase_drive2
 ```
 
 ### References
@@ -82,27 +88,42 @@ $ cryptsetup close erase_drive
 
 ---
 
-## Partition the drive
+## Partition the drives
 
-| Partition | Mounting point | Partition type       | Size     |
-| :-------- | :------------- | :------------------- | :------- |
-| /dev/sda1 | /efi           | EFI system partition | 512M     |
-| /dev/sda2 |                | Linux Filesystem     | 100%FREE |
+| Device | Partition | Partition type       | Size            |
+| :----- | :-------- | :------------------- | :-------------- |
+| 1      | /dev/sda1 | EFI system partition | 512M            |
+| 1      | /dev/sda2 | Linux RAID partition | 100%FREE - 100M |
+| 2      | /dev/sdb1 | EFI system partition | 512M            |
+| 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
 
-| Partition guid                       | Description                        |
-| :----------------------------------- | :--------------------------------- |
-| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
-| 0FC63DAF-8483-4772-8E79-3D69D8477DE4 | Linux Filesystem                   |
+| Partition guid                       | Description          |
+| :----------------------------------- | :--------------------|
+| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition |
+| A19D880F-05FC-4D3B-A006-743F0F84911E | Linux RAID partition |
 
 1. Open the partitioning tool of your choice
 1. Create a GPT partition table
-1. Efi partition
+1. EFI partition
    1. Create a new partition of 512MiB
    1. Change the type of the partition to `EFI system`
-1. Lvm partition
-   1. Create a new partition with all the remaining space of your drive
-   1. Change the type of the partition to `Linux Filesystem`
+1. RAID partition
+   1. Create a new partition with all the remaining space of your drive minus 100MiB
+   1. Change the type of the partition to `Linux RAID`
 1. Write and exit
+
+### Clone the disk partitioning setup from `/dev/sda` to `/dev/sdb`
+{: .no_toc .pt-4}
+
+```bash
+# Dump the partitions of /dev/sda
+$ sfdisk -d /dev/sda > sda.dump
+
+# Create the partitions of /dev/sdb with /dev/sda dump
+$ sfdisk /dev/sdb < sda.dump
+```
+
+If the script fail at line 7, remove the `sector-size` line and make sure that sfdisk automatically selected the good size itself when executing the script.
 
 ### References
 {: .no_toc .text-delta .pt-4}
@@ -113,14 +134,37 @@ $ cryptsetup close erase_drive
 
 ---
 
+## Setup RAID array
+
+### Create a RAID1 array
+{: .no_toc .pt-2}
+
+```bash
+$ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/cryptbtrfs /dev/sda2 /dev/sdb2
+```
+
+### Check the synchronization of the array
+{: .no_toc .pt-2}
+
+```bash
+$ cat /proc/mdstat
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - RAID](https://wiki.archlinux.org/index.php/RAID)
+
+---
+
 ## Encrypting the partition
 
 ```bash
 # Create the container
-$ cryptsetup --type luks1 luksFormat /dev/sda2
+$ cryptsetup --type luks1 luksFormat /dev/md/cryptbtrfs
 
 # Open the container
-$ cryptsetup open /dev/sda2 btrfs
+$ cryptsetup open /dev/md/cryptbtrfs btrfs
 ```
 
 ### References
@@ -141,8 +185,9 @@ $ cryptsetup open /dev/sda2 btrfs
 # Format the BTRFS filesystem partition
 $ mkfs.btrfs -L BTRFS /dev/mapper/btrfs
 
-# Format the FAT32 filesystem partition
+# Format the FAT32 filesystem partitions
 $ mkfs.fat -F32 -n EFI /dev/sda1
+$ mkfs.fat -F32 -n EFI /dev/sdb1
 ```
 
 ### Mount the partition
@@ -182,11 +227,13 @@ $ btrfs subvolume create /mnt/@swap
 # Umount
 $ umount /dev/mapper/btrfs /mnt
 
+# Mount the main subvolume
+$ mount -o compress=zstd,subvol=@ /dev/mapper/btrfs /mnt
+
 # Create the directories
 $ mkdir /mnt/{home,.snapshots,.swap}
 
 # Mount the subvolumes
-$ mount -o compress=zstd,subvol=@ /dev/mapper/btrfs /mnt
 $ mount -o compress=zstd,subvol=@home /dev/mapper/btrfs /mnt/home
 $ mount -o compress=zstd,subvol=@snapshots /dev/mapper/btrfs /mnt/.snapshots
 $ mount -o compress=zstd,subvol=@swap /dev/mapper/btrfs /mnt/.swap
@@ -225,10 +272,11 @@ $ btrfs subvolume list -p /mnt
 
 ```bash
 # Create directory
-$ mkdir /mnt/efi
+$ mkdir /mnt/{efi1,efi2}
 
-# Mount the EFI partition
-$ mount /dev/sda1 /mnt/efi
+# Mount the EFI partitions
+$ mount /dev/sda1 /mnt/efi1
+$ mount /dev/sdb1 /mnt/efi2
 ```
 
 ### References
@@ -246,7 +294,7 @@ $ mount /dev/sda1 /mnt/efi
 install packages to the specified new root directory.
 
 ```bash
-$ pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim man-db man-pages
+pacstrap /mnt base base-devel linux linux-firmware btrfs-progs mdadm vim man-db man-pages
 ```
 
 ### References
@@ -260,7 +308,7 @@ $ pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim man-db man-
 ## Generate static information about the filesystems
 
 ```bash
-$ genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
 ### References
@@ -274,7 +322,7 @@ $ genfstab -U /mnt >> /mnt/etc/fstab
 ## Enter the system
 
 ```bash
-$ arch-chroot /mnt
+arch-chroot /mnt
 ```
 
 ### References

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Lvm with raid1
+title: Luks-Btrfs
 nav_order: 3
 parent: 06 Boot setup
-permalink: /boot-setup/lvm-with-raid1/
+permalink: /boot-setup/luks-btrfs/
 ---
 
-# Boot setup for LVM with RAID1
+# Boot setup for Luks-Btrfs
 {: .no_toc}
 
 ---
@@ -31,7 +31,7 @@ This section cover the creation of a specially named keyfile that will be embedd
 $ mkdir -m 700 /etc/luks-keys
 
 # Create the key
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/lvm iflag=fullblock
+$ dd if=/dev/random of=/etc/luks-keys/root bs=512 count=4 iflag=fullblock
 ```
 
 ### Change permissions
@@ -46,7 +46,7 @@ $ chmod 600 /boot/initramfs-linux*
 {: .no_toc .pt-4}
 
 ```bash
-$ cryptsetup luksAddKey /dev/md/cryptlvm /etc/luks-keys/lvm
+$ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/root
 ```
 
 ### References
@@ -69,8 +69,9 @@ $ cryptsetup luksAddKey /dev/md/cryptlvm /etc/luks-keys/lvm
 {: .fs-3 .pt-2 .mb-0}
 
 ```bash
-FILES=(/etc/luks-keys/lvm)
-HOOKS=(base udev autodetect modconf block encrypt mdadm_udev lvm2 filesystems keyboard keymap fsck)
+BINARIES=(/usr/bin/btrfs)
+FILES=(/etc/luks-keys/root)
+HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard keymap fsck)
 ```
 
 ### Generate the images
@@ -80,13 +81,12 @@ HOOKS=(base udev autodetect modconf block encrypt mdadm_udev lvm2 filesystems ke
 $ mkinitcpio -p linux
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Arch boot process - Initramfs](https://wiki.archlinux.org/index.php/Arch_boot_process#initramfs)
 1. [ArchWiki - Mkinitcpio - Image creation and activation](https://wiki.archlinux.org/index.php/Mkinitcpio#Image_creation_and_activation)
-1. [ArchWiki - Dm-crypt - Encrypting an entire system - LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
-1. [ArchWiki - Dm-crypt - Encrypting an entire system - Encrypted boot partition with GRUB](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Encrypted_boot_partition_(GRUB))
+1. [ArchWiki - Dm-crypt - Encrypting an entire system - Btrfs subvolumes with Swap](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Btrfs_subvolumes_with_swap)
 1. [ArchWiki - Dm-crypt/Device encryption - Unlocking the root partition at boot](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption#Unlocking_the_root_partition_at_boot)
 
 ---
@@ -116,8 +116,8 @@ Before enabling TRIM on a drive, make sure the device fully supports TRIM comman
 {: .no_toc .pt-2}
 
 ```bash
-# cryptdevice=/dev/md127
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm cryptkey=rootfs:/etc/luks-keys/lvm root=/dev/grp/root loglevel=3 quiet"
+# cryptdevice=/dev/sda2
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs cryptkey=rootfs:/etc/luks-keys/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
@@ -125,8 +125,8 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .pt-2}
 
 ```bash
-# cryptdevice=/dev/md127
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm:allow-discards cryptkey=rootfs:/etc/luks-keys/lvm root=/dev/grp/root loglevel=3 quiet"
+# cryptdevice=/dev/sda2
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs:allow-discards cryptkey=rootfs:/etc/luks-keys/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
@@ -144,10 +144,10 @@ $ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --r
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - Dm-crypt - Encrypting an entire system - LVM on LUKS](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+1. [ArchWiki - Dm-crypt - Encrypting an entire system - Btrfs subvolumes with Swap](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#Btrfs_subvolumes_with_swap)
 1. [ArchWiki - Dm-crypt - Specialties - Discad/TRIM support for SSD](https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Discard/TRIM_support_for_solid_state_drives_(SSD))
 1. [ArchWiki - GRUB - UEFI systems](https://wiki.archlinux.org/index.php/GRUB#UEFI_systems)
 1. [ArchWiki - GRUB - Configuration](https://wiki.archlinux.org/index.php/GRUB#Configuration)
@@ -155,12 +155,6 @@ $ grub-mkconfig -o /boot/grub/grub.cfg
 1. [Man pages - pacman](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/pacman/pacman.8.en)
 1. [Man pages - grub-install](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grub/grub-install.8.en)
 1. [Man pages - grub-mkconfig](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grub/grub-mkconfig.8.en)
-
----
-
-## EFI configuration
-
-TODO
 
 ---
 
@@ -172,7 +166,7 @@ $ umount -R /mnt
 $ reboot
 ```
 
-#### References
+### References
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Reboot](https://wiki.archlinux.org/index.php/Installation_guide#Reboot)

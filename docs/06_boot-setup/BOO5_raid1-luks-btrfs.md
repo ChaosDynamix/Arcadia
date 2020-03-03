@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Btrfs with Raid1
+title: Raid1-Luks-Btrfs
 nav_order: 5
 parent: 06 Boot setup
-permalink: /boot-setup/btrfs-with-raid1/
+permalink: /boot-setup/raid1-luks-btrfs/
 ---
 
-# Boot setup for BTRFS with RAID1
+# Boot setup for Raid1-Luks-Btrfs
 {: .no_toc}
 
 ---
@@ -160,7 +160,17 @@ $ grub-mkconfig -o /boot/grub/grub.cfg
 
 ## EFI configuration
 
-TODO
+### Displaying the current settings
+{: .no_toc .pt-2}
+
+```bash
+$ efibootmgr
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - UEFI - Efibootmgr](https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface#efibootmgr)
 
 ---
 

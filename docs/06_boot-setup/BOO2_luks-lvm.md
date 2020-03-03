@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Lvm
+title: Luks-Lvm
 nav_order: 2
 parent: 06 Boot setup
-permalink: /boot-setup/lvm/
+permalink: /boot-setup/luks-lvm/
 ---
 
-# Boot setup for LVM
+# Boot setup for Luks-Lvm
 {: .no_toc}
 
 ---

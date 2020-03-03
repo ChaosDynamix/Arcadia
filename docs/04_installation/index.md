@@ -15,7 +15,7 @@ INS
 
 ---
 
-## [EXT4](/Andromeda/installation/ext4/)
+## [Ext4](/Andromeda/installation/ext4/)
 {: .d-inline-block}
 
 UEFI
@@ -33,17 +33,11 @@ UEFI
 
 ---
 
-## [LVM](/Andromeda/installation/lvm/)
+## [Luks / Lvm](/Andromeda/installation/lvm/)
 {: .d-inline-block}
 
 UEFI
 {: .label .label-purple .ml-2}
-
-LUKS
-{: .label .label-purple}
-
-EXT4
-{: .label .label-purple}
 
 ```
 +------------------------+-------------------------------------------------+
@@ -56,20 +50,31 @@ EXT4
 
 ---
 
-## [LVM with RAID1](/Andromeda/installation/lvm-with-raid1/)
+## [Luks / Btrfs](/Andromeda/installation/btrfs/)
 {: .d-inline-block}
 
 UEFI
 {: .label .label-purple .ml-2}
 
-LUKS
-{: .label .label-purple}
+```
++------------------------+-------------------------------------------------+
+| EFI system partition   | LUKS1 encrypted partition                       |
+| /efi                   | /dev/mapper/btrfs                               |
+|                        +-------------------------------------------------+
+| /dev/sda1              | /dev/sda2                                       |
++------------------------+-------------------------------------------------+
+```
 
-EXT4
-{: .label .label-purple}
+---
 
-EXPERIMENTAL
-{: .label .label-red}
+## [Raid1 / Luks / Lvm](/Andromeda/installation/lvm-with-raid1/)
+{: .d-inline-block}
+
+UEFI
+{: .label .label-purple .ml-2}
+
+WORK IN PROGRESS
+{: .label .label-yellow}
 
 ```
 Drive 1                                Drive 2
@@ -87,40 +92,14 @@ Drive 1                                Drive 2
 
 ---
 
-## [BTRFS](/Andromeda/installation/btrfs/)
+## [Raid1 / Luks / Btrfs](/Andromeda/installation/btrfs-with-raid1/)
 {: .d-inline-block}
 
 UEFI
 {: .label .label-purple .ml-2}
-
-LUKS
-{: .label .label-purple}
 
 WORK IN PROGRESS
 {: .label .label-yellow}
-
-```
-+------------------------+-------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                       |
-| /efi                   | /dev/mapper/btrfs                               |
-|                        +-------------------------------------------------+
-| /dev/sda1              | /dev/sda2                                       |
-+------------------------+-------------------------------------------------+
-```
-
----
-
-## [BTRFS with RAID1](/Andromeda/installation/btrfs-with-raid1/)
-{: .d-inline-block}
-
-UEFI
-{: .label .label-purple .ml-2}
-
-LUKS
-{: .label .label-purple}
-
-EXPERIMENTAL
-{: .label .label-red}
 
 ```
 Drive 1                                Drive 2

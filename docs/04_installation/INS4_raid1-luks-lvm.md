@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Lvm with raid1
-nav_order: 3
+title: Raid1-Luks-Lvm
+nav_order: 4
 parent: 04 Installation
-permalink: /installation/lvm-with-raid1/
+permalink: /installation/raid1-luks-lvm/
 ---
 
-# Installation for LVM with RAID1
+# Installation for Raid1-Luks-Lvm
 {: .no_toc}
 
 ---
