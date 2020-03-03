@@ -2,7 +2,7 @@
 layout: default
 title: Lvm with Raid1
 nav_exclude: true
-permalink: /installation/lvm-with-raid1/
+permalink: /installation/lvm-with-raid13/
 ---
 
 # Installation for LVM with RAID1

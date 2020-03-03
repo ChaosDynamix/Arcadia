@@ -2,7 +2,7 @@
 layout: default
 title: Lvm with raid1
 nav_exclude: true
-permalink: /boot-setup/lvm-with-raid1/
+permalink: /boot-setup/lvm-with-raid13/
 ---
 
 # Boot setup for LVM with RAID1

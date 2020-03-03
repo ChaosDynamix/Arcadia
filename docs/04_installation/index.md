@@ -22,13 +22,13 @@ UEFI
 {: .label .label-purple .ml-2}
 
 ```
-+------------------+------------------+------------------+------------------+
-| EFI system       | Root             | Swap             | Home             |
-| partition        | partition        | partition        | partition        |
-|                  |                  |                  |                  |
-| /boot            | /                | [SWAP]           | /home            |
-| /dev/sda1        | /dev/sda2        | /dev/sda3        | /dev/sda4        |
-+------------------+------------------+------------------+------------------+
++------------------+------------------+------------------+-----------------+
+| EFI system       | Root             | Swap             | Home            |
+| partition        | partition        | partition        | partition       |
+|                  |                  |                  |                 |
+| /boot            | /                | [SWAP]           | /home           |
+| /dev/sda1        | /dev/sda2        | /dev/sda3        | /dev/sda4       |
++------------------+------------------+------------------+-----------------+
 ```
 
 ---
@@ -56,7 +56,7 @@ EXT4
 
 ---
 
-## LVM with RAID1
+## [LVM with RAID1](/Andromeda/installation/lvm-with-raid1/)
 {: .d-inline-block}
 
 UEFI
@@ -110,7 +110,7 @@ WORK IN PROGRESS
 
 ---
 
-## BTRFS with RAID1
+## [BTRFS with RAID1](/Andromeda/installation/btrfs-with-raid1/)
 {: .d-inline-block}
 
 UEFI

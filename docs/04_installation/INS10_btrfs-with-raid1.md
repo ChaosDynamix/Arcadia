@@ -2,7 +2,7 @@
 layout: default
 title: Btrfs with Raid1
 nav_exclude: true
-permalink: /installation/btrfs-with-raid1/
+permalink: /installation/btrfs-with-raid12/
 has_toc: false
 ---
 

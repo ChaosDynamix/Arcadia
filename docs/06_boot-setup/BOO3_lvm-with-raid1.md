@@ -19,7 +19,7 @@ permalink: /boot-setup/lvm-with-raid1/
 
 ---
 
-## Create a key for the root volume
+## Create a key for the LUKS container
 
 This section cover the creation of a specially named keyfile that will be embedded in the initramfs and picked up by the encrypt hook to unlock the root filesystem (cryptdevice) automatically. This step avoid us to enter two passphrases during boot.
 
@@ -116,6 +116,7 @@ Before enabling TRIM on a drive, make sure the device fully supports TRIM comman
 {: .no_toc .pt-2}
 
 ```bash
+# cryptdevice=/dev/md127
 GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm cryptkey=rootfs:/etc/luks-keys/lvm root=/dev/grp/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
@@ -124,6 +125,7 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .pt-2}
 
 ```bash
+# cryptdevice=/dev/md127
 GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):lvm:allow-discards cryptkey=rootfs:/etc/luks-keys/lvm root=/dev/grp/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
@@ -153,6 +155,12 @@ $ grub-mkconfig -o /boot/grub/grub.cfg
 1. [Man pages - pacman](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/pacman/pacman.8.en)
 1. [Man pages - grub-install](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grub/grub-install.8.en)
 1. [Man pages - grub-mkconfig](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grub/grub-mkconfig.8.en)
+
+---
+
+## EFI configuration
+
+TODO
 
 ---
 

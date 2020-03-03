@@ -19,7 +19,7 @@ permalink: /boot-setup/btrfs/
 
 ---
 
-## Create a key for the root container
+## Create a key for the LUKS container
 
 This section cover the creation of a specially named keyfile that will be embedded in the initramfs and picked up by the encrypt hook to unlock the root filesystem (cryptdevice) automatically. This step avoid us to enter two passphrases during boot.
 
@@ -31,7 +31,7 @@ This section cover the creation of a specially named keyfile that will be embedd
 $ mkdir -m 700 /etc/luks-keys
 
 # Create the key
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/root iflag=fullblock
+$ dd if=/dev/random of=/etc/luks-keys/root bs=512 count=4 iflag=fullblock
 ```
 
 ### Change permissions
@@ -116,6 +116,7 @@ Before enabling TRIM on a drive, make sure the device fully supports TRIM comman
 {: .no_toc .pt-2}
 
 ```bash
+# cryptdevice=/dev/sda2
 GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs cryptkey=rootfs:/etc/luks-keys/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
@@ -124,6 +125,7 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .pt-2}
 
 ```bash
+# cryptdevice=/dev/sda2
 GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs:allow-discards cryptkey=rootfs:/etc/luks-keys/root loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```

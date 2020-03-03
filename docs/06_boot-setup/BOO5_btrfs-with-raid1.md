@@ -1,8 +1,9 @@
 ---
 layout: default
-title: Btrfs with raid1
-nav_exclude: true
-permalink: /boot-setup/btrfs-with-raid12/
+title: Btrfs with Raid1
+nav_order: 5
+parent: 06 Boot setup
+permalink: /boot-setup/btrfs-with-raid1/
 ---
 
 # Boot setup for BTRFS with RAID1
@@ -18,11 +19,11 @@ permalink: /boot-setup/btrfs-with-raid12/
 
 ---
 
-## Create a keys for the containers
+## Create a key for the LUKS container
 
 This section cover the creation of a specially named keyfile that will be embedded in the initramfs and picked up by the encrypt hook to unlock the root filesystem (cryptdevice) automatically. This step avoid us to enter two passphrases during boot.
 
-### Create the keyfiles
+### Create the keyfile
 {: .no_toc .pt-2}
 
 ```bash
@@ -30,25 +31,22 @@ This section cover the creation of a specially named keyfile that will be embedd
 $ mkdir -m 700 /etc/luks-keys
 
 # Create the key
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/drive1 iflag=fullblock
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/drive2 iflag=fullblock
+$ dd if=/dev/random of=/etc/luks-keys/btrfs bs=512 count=4 iflag=fullblock
 ```
 
 ### Change permissions
 {: .no_toc .pt-4}
 
 ```bash
-$ chmod 600 /etc/luks-keys/drive1
-$ chmod 600 /etc/luks-keys/drive2
+$ chmod 600 /etc/luks-keys/btrfs
 $ chmod 600 /boot/initramfs-linux*
 ```
 
-### Add the keyfiles to cryptsetup
+### Add the keyfile to cryptsetup
 {: .no_toc .pt-4}
 
 ```bash
-$ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/drive1
-$ cryptsetup luksAddKey /dev/sdb2 /etc/luks-keys/drive2
+$ cryptsetup luksAddKey /dev/md/cryptbtrfs /etc/luks-keys/btrfs
 ```
 
 ### References
@@ -62,22 +60,6 @@ $ cryptsetup luksAddKey /dev/sdb2 /etc/luks-keys/drive2
 
 ---
 
-## Modifying the encrypt hook
-
-```bash
-$ cp /usr/lib/initcpio/install/encrypt /etc/initcpio/install/encrypt2
-$ cp /usr/lib/initcpio/hooks/encrypt  /etc/initcpio/hooks/encrypt2
-$ sed -i "s/cryptdevice/cryptdevice2/" /etc/initcpio/hooks/encrypt2
-$ sed -i "s/cryptkey/cryptkey2/" /etc/initcpio/hooks/encrypt2
-```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-1. [ArchWiki - Dm-crypt - Specialties - Modifying the encrypt hook for multiple partitions](https://wiki.archlinux.org/index.php/Dm-crypt/Specialties#Modifying_the_encrypt_hook_for_multiple_partitions)
-
----
-
 ## Initial RAM filesystem
 
 ### Edit the configuration
@@ -88,8 +70,8 @@ $ sed -i "s/cryptkey/cryptkey2/" /etc/initcpio/hooks/encrypt2
 
 ```bash
 BINARIES=(/usr/bin/btrfs)
-FILES=(/etc/luks-keys/drive1 /etc/luks-keys/drive2)
-HOOKS=(base udev autodetect modconf block encrypt encrypt2 filesystems keyboard keymap fsck)
+FILES=(/etc/luks-keys/btrfs)
+HOOKS=(base udev autodetect modconf block encrypt mdadm_udev filesystems keyboard keymap fsck)
 ```
 
 ### Generate the images
@@ -134,7 +116,8 @@ Before enabling TRIM on a drive, make sure the device fully supports TRIM comman
 {: .no_toc .pt-2}
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs1 cryptkey=rootfs:/etc/luks-keys/drive1 cryptdevice2=UUID=(device-UUID):btrfs2 cryptkey2=rootfs:/etc/luks-keys/drive2 loglevel=3 quiet"
+# cryptdevice=/dev/md127
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs cryptkey=rootfs:/etc/luks-keys/btrfs loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
@@ -142,7 +125,8 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .pt-2}
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs1:allow-discards cryptkey=rootfs:/etc/luks-keys/drive1 cryptdevice2=UUID=(device-UUID):btrfs2:allow-discards cryptkey2=rootfs:/etc/luks-keys/drive2 loglevel=3 quiet"
+# cryptdevice=/dev/md127
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):btrfs:allow-discards cryptkey=rootfs:/etc/luks-keys/btrfs loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 

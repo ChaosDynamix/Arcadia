@@ -21,7 +21,7 @@ permalink: /installation/lvm-with-raid1/
 
 ```
 Drive 1                                Drive 2
-+----------- +--------------------- +  +----------- +----------------------+
++------------+--------------------- +  +------------+----------------------+
 | EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
 | partition  | volume               |  | partition  | volume               |
 | /efi1      | /dev/mapper/lvm      |  | /efi2      | /dev/mapper/lvm      |
@@ -30,7 +30,7 @@ Drive 1                                Drive 2
 |            | /dev/md/cryptlvm     |  |            | /dev/md/cryptlvm     |
 |            +--------------------- +  |            +----------------------+
 | /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
-+----------- +--------------------- +  +----------- +----------------------+
++------------+--------------------- +  +------------+----------------------+
 ```
 
 ```
@@ -49,7 +49,7 @@ Drive 1                                Drive 2
 
 ---
 
-## Secure erase the drive
+## Secure erase the drives
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
@@ -83,7 +83,7 @@ $ cryptsetup close erase_drive2
 
 ---
 
-## Partition the drive
+## Partition the drives
 
 | Device | Partition | Partition type       | Size            |
 | :----- | :-------- | :------------------- | :-------------- |
@@ -99,15 +99,15 @@ $ cryptsetup close erase_drive2
 
 1. Open the partitioning tool of your choice
 1. Create a GPT partition table
-1. Efi partition
+1. EFI partition
    1. Create a new partition of 512MiB
    1. Change the type of the partition to `EFI system`
-1. Lvm partition
+1. RAID partition
    1. Create a new partition with all the remaining space of your drive minus 100MiB
    1. Change the type of the partition to `Linux RAID`
 1. Write and exit
 
-### Clone the disk partitioning setup of `/dev/sda` to `/dev/sdb`
+### Clone the disk partitioning setup from `/dev/sda` to `/dev/sdb`
 {: .no_toc .pt-4}
 
 ```bash
@@ -131,9 +131,26 @@ If the script fail at line 7, remove the `sector-size` line and make sure that s
 
 ## Setup RAID array
 
+### Create a RAID1 array
+{: .no_toc .pt-2}
+
 ```bash
-$ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/cryptlvm /dev/sda2 /dev/sdb2
+$ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/cryptbtrfs /dev/sda2 /dev/sdb2
 ```
+
+### Check the synchronization of the array
+{: .no_toc .pt-2}
+
+```bash
+$ cat /proc/mdstat
+```
+
+### References
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - RAID](https://wiki.archlinux.org/index.php/RAID)
+
+---
 
 ## Encrypting the partition
 
