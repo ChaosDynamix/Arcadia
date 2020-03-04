@@ -1,7 +1,7 @@
 ---
 layout: home
 title: Home
-nav_order: 1
+nav_exclude: true
 ---
 
 Andromeda is one of the many guides to install and configure Arch Linux.

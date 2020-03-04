@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Netboot with UEFI
+title: Netboot
 parent: 02 Preparation
 nav_order: 2
-permalink: /preparation/netboot-with-uefi/
+permalink: /preparation/netboot/
 ---
 
 # Preparation of the netboot
