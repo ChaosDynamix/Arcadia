@@ -25,7 +25,6 @@ has_toc: false
 | EFI system partition   | LUKS1 encrypted partition                       |
 | /efi                   | /dev/mapper/btrfs                               |
 |                        +-------------------------------------------------+
-|                        |                                                 |
 | /dev/sda1              | /dev/sda2                                       |
 +------------------------+-------------------------------------------------+
 ```

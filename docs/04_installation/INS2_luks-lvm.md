@@ -24,7 +24,6 @@ permalink: /installation/luks-lvm/
 | EFI system partition   | LUKS1 encrypted partition                       |
 | /efi                   | /dev/mapper/lvm                                 |
 |                        +-------------------------------------------------+
-|                        |                                                 |
 | /dev/sda1              | /dev/sda2                                       |
 +------------------------+-------------------------------------------------+
 ```

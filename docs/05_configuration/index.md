@@ -148,8 +148,13 @@ $ systemctl enable NetworkManager
 
 ## Accounts
 
-### Change the root password
+### About passwords stength
 {: .no_toc .pt-2}
+
+Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
+
+### Change the root password
+{: .no_toc .pt-4}
 
 ```bash
 $ passwd
@@ -177,9 +182,20 @@ visudo
 %wheel ALL=(ALL) ALL
 ```
 
+### Enforcing strong passwords using pam_cracklib
+{: .no_toc .pt-4}
+
+/etc/pam.d/passwd
+{: .fs-3 .mb-0}
+
+```bash
+password required pam_cracklib.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1
+```
+
 ### References
 {: .no_toc .text-delta .pt-4}
 
+1. [ArchWiki - Security - Passwords](https://wiki.archlinux.org/index.php/Security#Passwords)
 1. [ArchWiki - Installation guide - Root password](https://wiki.archlinux.org/index.php/Installation_guide#Root_password)
 1. [ArchWiki - Users and groups - User management](https://wiki.archlinux.org/index.php/Users_and_groups#User_management)
 1. [ArchWiki - Sudo](https://wiki.archlinux.org/index.php/Sudo)
