@@ -93,11 +93,12 @@ The success of one of these commands confirms that your ISO image was properly d
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+1. [Wikipedia - Comparison of file verification software](https://en.wikipedia.org/wiki/Comparison_of_file_verification_software)
 1. [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
 1. [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [Man page - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
 1. [Man page - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
@@ -142,12 +143,12 @@ $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x8
 1. [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
 
 ### GUIDES
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
 1. [ArchWiki - GnuPG - Verify a signature](https://wiki.archlinux.org/index.php/GnuPG#Verify_a_signature)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [Man page - gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)

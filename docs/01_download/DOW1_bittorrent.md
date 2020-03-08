@@ -65,12 +65,12 @@ $ transmission-remote --exit
 1. [Wikipedia - Transmission](https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client))
 
 ### GUIDES
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [ArchWiki - Transmission](https://wiki.archlinux.org/index.php/Transmission)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [Man page - transmission-daemon](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/transmission-cli/transmission-daemon.1.en)
 1. [Man page - transmission-remote](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/transmission-cli/transmission-remote.1.en)
@@ -115,12 +115,12 @@ $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x8
 1. [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
 
 ### GUIDES
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
 1. [ArchWiki - GnuPG - Verify a signature](https://wiki.archlinux.org/index.php/GnuPG#Verify_a_signature)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .pt-2}
 
 1. [Man page - gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)

@@ -37,17 +37,25 @@ $ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 $ hwclock --systohc --utc
 ```
 
-### References
+### INFORMATIONS
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Time zone](https://en.wikipedia.org/wiki/Time_zone)
 1. [Wikipedia - System time](https://en.wikipedia.org/wiki/System_time)
 1. [Wikipedia - Real time clock](https://en.wikipedia.org/wiki/Real-time_clock)
+
+### GUIDES
+{: .no_toc .text-delta .pt-2}
+
 1. [ArchWiki - Installation guide - Time zone](https://wiki.archlinux.org/index.php/Installation_guide#Time_zone)
 1. [ArchWiki - System time - Time zone](https://wiki.archlinux.org/index.php/System_time#Time_zone)
 1. [ArchWiki - System time - Hardware clock](https://wiki.archlinux.org/index.php/System_time#Hardware_clock)
-1. [Man pages - ln](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/ln.1.en)
-1. [Man pages - hwclock](https://jlk.fjfi.cvut.cz/arch/manpages/man/hwclock.8)
+
+### MANUALS
+{: .no_toc .text-delta .pt-2}
+
+1. [Man page - ln](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/ln.1.en)
+1. [Man page - hwclock](https://jlk.fjfi.cvut.cz/arch/manpages/man/hwclock.8)
 
 ---
 
@@ -93,7 +101,7 @@ LC_COLLATE=C
 KEYMAP=fr-latin9
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Localization](https://wiki.archlinux.org/index.php/Installation_guide#Localization)
@@ -134,7 +142,7 @@ $ pacman -S networkmanager
 $ systemctl enable NetworkManager
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Network configuration](https://wiki.archlinux.org/index.php/Installation_guide#Network_configuration)
@@ -142,7 +150,11 @@ $ systemctl enable NetworkManager
 1. [ArchWiki - Network configuration - Network managers](https://wiki.archlinux.org/index.php/Network_configuration#Network_managers)
 1. [ArchWiki - NetworkManager](https://wiki.archlinux.org/index.php/NetworkManager)
 1. [ArchWiki - Systemctl - Basic systemctl usage](https://wiki.archlinux.org/index.php/Systemd#Basic_systemctl_usage)
-1. [Man pages - systemctl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/systemctl.1.en)
+
+### MANUALS
+{: .no_toc .text-delta .pt-2}
+
+1. [Man page - systemctl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/systemctl.1.en)
 
 ---
 
@@ -192,12 +204,16 @@ visudo
 password required pam_cracklib.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Security - Passwords](https://wiki.archlinux.org/index.php/Security#Passwords)
 1. [ArchWiki - Installation guide - Root password](https://wiki.archlinux.org/index.php/Installation_guide#Root_password)
 1. [ArchWiki - Users and groups - User management](https://wiki.archlinux.org/index.php/Users_and_groups#User_management)
 1. [ArchWiki - Sudo](https://wiki.archlinux.org/index.php/Sudo)
+
+### MANUALS
+{: .no_toc .text-delta .pt-2}
+
 1. [Man pages - useradd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/shadow/useradd.8.en)
 1. [Man pages - passwd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/shadow/passwd.1.en)

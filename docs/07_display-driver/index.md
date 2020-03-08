@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 07 Display driver
-nav_order: 9
+nav_order: 8
 has_children: true
 permalink: /display-driver/
 has_toc: false
