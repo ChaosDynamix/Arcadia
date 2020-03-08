@@ -97,10 +97,11 @@ $ cryptsetup close erase_drive2
 | 2      | /dev/sdb1 | EFI system partition | 512M            |
 | 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
 
-### SCRIPT
-{: .no_toc .text-delta .pt-2}
+### With sgdisk
+{: .no_toc .pt-4}
 
 ```bash
+# Edit the sizes accordingly
 $ sgdisk -o -n=1:0:+512M -n=2:0:-100M -t=1:ef00 -t=2:fd00 -R=/dev/sdb /dev/sda
 $ sgdisk -G /dev/sdb
 ```

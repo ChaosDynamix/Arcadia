@@ -40,23 +40,36 @@ permalink: /installation/ext4/
 | /dev/sda3 | Linux Swap partition          | > 512M   |
 | /dev/sda4 | Linux Home partition          | 100%FREE |
 
-### SCRIPT
-{: .no_toc .text-delta .pt-2}
+### With sgdisk
+{: .no_toc .pt-4}
 
 ```bash
 # Edit the sizes accordingly
 $ sgdisk -o -n=1:0:+260M -n=2:0:+30G -n=3:0:1G -n=4:0:0 -t=1:ef00 -t=2:8304 -t=3:8200 -t=4:8302 /dev/sda
 ```
 
-### References
+### INFORMATIONS
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - GUID partition table](https://en.wikipedia.org/wiki/GUID_Partition_Table)
+1. [Wikipedia - Paging - Unix and Unix like systems](https://en.wikipedia.org/wiki/Paging#Unix_and_Unix-like_systems)
+1. [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
+
+### GUIDES
+{: .no_toc .text-delta .pt-2}
+
 1. [ArchWiki - Partitioning - Partition scheme](https://wiki.archlinux.org/index.php/Partitioning#Partition_scheme)
 1. [ArchWiki - Partitioning - Partitioning tools](https://wiki.archlinux.org/index.php/Partitioning#Partitioning_tools)
 1. [ArchWiki - EFI system partition - Create the partition](https://wiki.archlinux.org/index.php/EFI_system_partition#Create_the_partition)
 1. [ArchWiki - GPT fdisk](https://wiki.archlinux.org/index.php/GPT_fdisk)
-1. [VOID Linux Partitions Notes - SWAP partitions](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions)
+
+### MANUALS
+{: .no_toc .text-delta .pt-2}
+
+1. [Man page - sgdisk](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/gptfdisk/sgdisk.8.en)
+
+
+
 
 ---
 
@@ -107,12 +120,17 @@ $ mount /dev/sda1 /mnt/boot
 $ mount /dev/sda4 /mnt/home
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
-1. [ArchWiki - Installation guide - Format the partitions](https://wiki.archlinux.org/index.php/Installation_guide#Format_the_partitions)
-1. [ArchWiki - Installation guide - Mount the file systems](https://wiki.archlinux.org/index.php/Installation_guide#Mount_the_file_systems)
 1. [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
+1. [ArchWiki - File systems](https://wiki.archlinux.org/index.php/File_systems)
+1. [ArchWiki - Fat](https://wiki.archlinux.org/index.php/FAT)
+1. [ArchWiki - Ext4](https://wiki.archlinux.org/index.php/Ext4)
+
+### MANUALS
+{: .no_toc .text-delta .pt-2}
+
 1. [Man page - mkfs.ext4](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/mkfs.ext4.8.en)
 1. [Man page - mkfs.fat](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/dosfstools/mkfs.fat.8.en)
 1. [Man page - mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
@@ -130,10 +148,14 @@ install packages to the specified new root directory.
 pacstrap /mnt base base-devel linux linux-firmware vim man-db man-pages
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
 - [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
+
+### MANUALS
+{: .no_toc .text-delta .pt-2}
+
 - [Man page - pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
 
 ---
@@ -144,7 +166,7 @@ pacstrap /mnt base base-devel linux linux-firmware vim man-db man-pages
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Fstab](https://wiki.archlinux.org/index.php/Installation_guide#Fstab)
@@ -158,7 +180,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ```
 
-### References
+### GUIDES
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Installation guide - Chroot](https://wiki.archlinux.org/index.php/Installation_guide#Chroot)
