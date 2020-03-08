@@ -26,7 +26,7 @@ permalink: /download/mirror-site/
 1. Download the Arch Linux ISO image `archlinux-year.day.month-x86_64.iso`
 
 
-### References
+### INFORMATIONS
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
@@ -89,21 +89,25 @@ $ sha1sum -c archlinux-checksum-sha1.txt
 
 The success of one of these commands confirms that your ISO image was properly downloaded and that your local file is an exact copy of the file present on the mirror server. An error during the download could result in a corrupted file and trigger random issues during the installation.
 
-### References
-{: .no_toc .text-delta .pt-5}
+### INFORMATIONS
+{: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 1. [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
 1. [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
-1. [Man pages - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
-1. [Man pages - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
+
+### MANUALS
+{: .no_toc .text-delta .pt-4}
+
+1. [Man page - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
+1. [Man page - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
 
 ---
 
-## Verify the authenticity of the downloaded file
+## Verify the authenticity of the downloaded file with GnuPG
 
 ### Download the signature file
-{: .no_toc .mt-0 .d-inline-block}
+{: .no_toc .mt-2 .d-inline-block}
 
 Warning
 {: .label .label-red .mx-2}
@@ -112,12 +116,12 @@ Signature must be downloaded from the Arch Linux download page. The signature co
 {: .text-red-200}
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, click on the PGP signature link.
+1. Under the HTTP Direct Downloads section, download the PGP signature.
 
-### Verify ISO image with GnuPG
+### Verify ISO image
 {: .no_toc .pt-4}
 
-If your operating system is Windows, you can install [Gpg4win](https://en.wikipedia.org/wiki/Gpg4win) wich implement GnuPG. This part assume that you are in possession of this two files in the same folder.
+This part assume that you are in possession of this two files in the same folder.
 
 | File                                    | Description    |
 | :-------------------------------------- | :------------- |
@@ -129,13 +133,21 @@ If your operating system is Windows, you can install [Gpg4win](https://en.wikipe
 $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
 ```
 
-### References
+### INFORMATIONS
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
 1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
 1. [Wikipedia - RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
 1. [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
+
+### GUIDES
+{: .no_toc .text-delta .pt-4}
+
 1. [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
-1. [ArchWiki - GnuPG](https://wiki.archlinux.org/index.php/GnuPG)
-1. [Man pages - gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)
+1. [ArchWiki - GnuPG - Verify a signature](https://wiki.archlinux.org/index.php/GnuPG#Verify_a_signature)
+
+### MANUALS
+{: .no_toc .text-delta .pt-4}
+
+1. [Man page - gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)
