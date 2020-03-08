@@ -92,33 +92,13 @@ $ cryptsetup close erase_drive2
 | 2      | /dev/sdb1 | EFI system partition | 512M            |
 | 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
 
-| Partition guid                       | Description          |
-| :----------------------------------- | :--------------------|
-| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition |
-| A19D880F-05FC-4D3B-A006-743F0F84911E | Linux RAID partition |
-
-1. Open the partitioning tool of your choice
-1. Create a GPT partition table
-1. EFI partition
-   1. Create a new partition of 512MiB
-   1. Change the type of the partition to `EFI system`
-1. RAID partition
-   1. Create a new partition with all the remaining space of your drive minus 100MiB
-   1. Change the type of the partition to `Linux RAID`
-1. Write and exit
-
-### Clone the disk partitioning setup from `/dev/sda` to `/dev/sdb`
-{: .no_toc .pt-4}
+### SCRIPT
+{: .no_toc .text-delta .pt-2}
 
 ```bash
-# Dump the partitions of /dev/sda
-$ sfdisk -d /dev/sda > sda.dump
-
-# Create the partitions of /dev/sdb with /dev/sda dump
-$ sfdisk /dev/sdb < sda.dump
+$ sgdisk -o -n=1:0:+512M -n=2:0:-100M -t=1:ef00 -t=2:fd00 -R=/dev/sdb /dev/sda
+$ sgdisk -G /dev/sdb
 ```
-
-If the script fail at line 7, remove the `sector-size` line and make sure that sfdisk automatically selected the good size itself when executing the script.
 
 ### References
 {: .no_toc .text-delta .pt-4}

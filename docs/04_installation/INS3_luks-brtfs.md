@@ -83,25 +83,17 @@ $ cryptsetup close erase_drive
 
 ## Partition the drive
 
-| Partition | Mounting point | Partition type       | Size     |
-| :-------- | :------------- | :------------------- | :------- |
-| /dev/sda1 | /efi           | EFI system partition | 512M     |
-| /dev/sda2 |                | Linux Filesystem     | 100%FREE |
+| Partition | Partition type       | Size     |
+| :-------- | :------------------- | :------- |
+| /dev/sda1 | EFI system partition | 512M     |
+| /dev/sda2 | Linux Filesystem     | 100%FREE |
 
-| Partition guid                       | Description                        |
-| :----------------------------------- | :--------------------------------- |
-| C12A7328-F81F-11D2-BA4B-00A0C93EC93B | EFI System partition               |
-| 0FC63DAF-8483-4772-8E79-3D69D8477DE4 | Linux Filesystem                   |
+### SCRIPT
+{: .no_toc .text-delta .pt-2}
 
-1. Open the partitioning tool of your choice
-1. Create a GPT partition table
-1. Efi partition
-   1. Create a new partition of 512MiB
-   1. Change the type of the partition to `EFI system`
-1. Lvm partition
-   1. Create a new partition with all the remaining space of your drive
-   1. Change the type of the partition to `Linux Filesystem`
-1. Write and exit
+```bash
+$ sgdisk -o -n=1:0:+512M -n=2:0:0 -t=1:ef00 -t=2:8300 /dev/sda
+```
 
 ### References
 {: .no_toc .text-delta .pt-4}
