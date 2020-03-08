@@ -122,7 +122,7 @@ $ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/cry
 {: .no_toc .pt-2}
 
 ```bash
-$ cat /proc/mdstat
+$ watch /proc/mdstat
 ```
 
 ### References
@@ -190,6 +190,14 @@ $ lvcreate -l 100%FREE grp -n home
 ---
 
 ## Configuring the logical volumes
+
+| Storage       | Label   | Filesystem | Mounting point |
+| :------------ | :------ | :--------- | :------------- |
+| /dev/sda1     | EFI     | Fat32      | /mnt/efi1      |
+| /dev/sdb1     | EFI     | Fat32      | /mnt/efi2      |
+| /dev/grp/root | ROOT    | Ext4       | /mnt           |
+| /dev/grp/swap | SWAP    | Swap       |                |
+| /dev/grp/home | HOME    | Ext4       | /mnt/home      |
 
 ### Format the partitions
 {: .no_toc .pt-2}

@@ -66,7 +66,7 @@ $ sgdisk -o -n=1:0:+260M -n=2:0:+30G -n=3:0:1G -n=4:0:0 -t=1:ef00 -t=2:8304 -t=3
 | :-------- | :------ | :--------- | :------------- |
 | /dev/sda1 | EFI     | Fat32      | /mnt/boot      |
 | /dev/sda2 | ROOT    | Ext4       | /mnt           |
-| /dev/sda3 | SWAP    | SwaP       |                |
+| /dev/sda3 | SWAP    | Swap       |                |
 | /dev/sda4 | HOME    | Ext4       | /mnt/home      |
 
 ### Format the partitions

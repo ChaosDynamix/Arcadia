@@ -127,7 +127,7 @@ $ mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/cry
 {: .no_toc .pt-2}
 
 ```bash
-$ cat /proc/mdstat
+$ watch /proc/mdstat
 ```
 
 ### References

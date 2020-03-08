@@ -119,6 +119,13 @@ $ cryptsetup open /dev/sdXY lvm
 
 ## Setup the Logical Volume Manager
 
+| Storage       | Label   | Filesystem | Mounting point |
+| :------------ | :------ | :--------- | :------------- |
+| /dev/sda1     | EFI     | Fat32      | /mnt/efi       |
+| /dev/grp/root | ROOT    | Ext4       | /mnt           |
+| /dev/grp/swap | SWAP    | Swap       |                |
+| /dev/grp/home | HOME    | Ext4       | /mnt/home      |
+
 ### Physical volume
 {: .no_toc .pt-2}
 
