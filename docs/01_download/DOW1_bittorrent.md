@@ -19,38 +19,43 @@ permalink: /download/bittorrent/
 
 ---
 
-## Install BitTorrent client
+## Download Arch Linux ISO image with transmission-cli
 
-If you download your BitTorrent client from a website, it is important to verify (if possible) the integrity and the authenticity of your downloaded file.
+### Download the torrent file
+{: .no_toc .pt-2}
 
-1. Open your browser and go to the [Wikipedia BitTorrent clients comparison page](https://en.wikipedia.org/wiki/Comparison_of_BitTorrent_clients)
-1. Select BitTorrent client with
-  - Availability for your operating system
-  - Open source software license
-  - Web-seeding feature (Recommended)
-1. Download the BitTorrent client
-1. Install the BitTorrent client
+1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
+1. Under the BitTorrent Download section, download the Torrent file.
 
-### References
-{: .no_toc .text-delta .pt-4}
+### Launch the transmission daemon
+{: .no_toc .pt-4}
 
-1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
-1. [Wikipedia - Comparison of file verification software](https://en.wikipedia.org/wiki/Comparison_of_file_verification_software)
-1. [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
-1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
-1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+```bash
+$ transmission-daemon
+```
 
----
+### Add the torrent file in transmission
+{: .no_toc .pt-4}
 
-## Download Arch Linux ISO image
+```bash
+$ transmission-remote -a archlinux-2020.03.01-x86_64.iso.torrent
+```
+
+### Check the progress of the download
+{: .no_toc .pt-4}
 
 After finishing the download, please consider sparing the bytes by leaving the client open so you can seed it back.
 
-1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the BitTorrent Download section, click on the Torrent link.
-1. Open the BitTorrent client previously installed
-1. Add the torrent file
-1. Wait until the Arch Linux ISO image is fully downloaded
+```bash
+$ watch transmission-remote -i
+```
+
+### Stop the transmission daemon
+{: .no_toc .pt-4}
+
+```bash
+$ transmission-remote --exit
+```
 
 ### References
 {: .no_toc .text-delta .pt-4}
@@ -59,10 +64,10 @@ After finishing the download, please consider sparing the bytes by leaving the c
 
 ---
 
-## Verify the authenticity of the downloaded file
+## Verify the authenticity of the downloaded file with GnuPG
 
 ### Download the signature file
-{: .no_toc .mt-0 .d-inline-block}
+{: .no_toc .mt-2 .d-inline-block}
 
 Warning
 {: .label .label-red .mx-2}
@@ -71,9 +76,9 @@ Signature must be downloaded from the Arch Linux download page. The signature co
 {: .text-red-200}
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, click on the PGP signature link.
+1. Under the HTTP Direct Downloads section, download the PGP signature.
 
-### Verify ISO image with GnuPG
+### Verify ISO image
 {: .no_toc .pt-4}
 
 This part assume that you are in possession of this two files in the same folder. If your operating system is Windows, you can install [Gpg4win](https://en.wikipedia.org/wiki/Gpg4win) wich implement GnuPG.
