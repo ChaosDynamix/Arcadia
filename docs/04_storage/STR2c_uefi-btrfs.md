@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Btrfs
-permalink: /installation/stage-2/uefi-btrfs/
-parent: Stage 2
-grand_parent: Installation
+permalink: /storage/file-system/uefi-btrfs/
+parent: File system
+grand_parent: Storage
 nav_order: 3
 ---
 
-# Installation stage 2 for Uefi-Btrfs
+# Storage file system for Uefi-Btrfs
 {: .no_toc}
 
 ---

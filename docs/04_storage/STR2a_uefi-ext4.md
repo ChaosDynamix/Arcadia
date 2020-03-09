@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Ext4
-permalink: /installation/stage-2/uefi-ext4/
-parent: Stage 2
-grand_parent: Installation
+permalink: /storage/file-system/uefi-ext4/
+parent: File system
+grand_parent: Storage
 nav_order: 1
 ---
 
-# Installation stage 2 for Uefi-Ext4
+# Storage file system for Uefi-Ext4
 {: .no_toc}
 
 ---

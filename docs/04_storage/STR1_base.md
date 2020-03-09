@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Stage 2
-permalink: /installation/stage-2/
-parent: Installation
-nav_order: 2
+title: Base
+permalink: /storage/base/
+parent: Storage
+nav_order: 1
 has_children: true
 has_toc: false
 ---
 
-# Installation stage 2
+# Storage base
 {: .no_toc}
 
 ---

@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi
-permalink: /installation/stage-1/uefi/
-parent: Stage 1
-grand_parent: Installation
+permalink: /storage/base/uefi/
+parent: Base
+grand_parent: Storage
 nav_order: 1
 ---
 
-# Installation stage 1 for Uefi
+# Storage base for Uefi
 {: .no_toc}
 
 ---

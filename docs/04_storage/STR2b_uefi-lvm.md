@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Lvm
-permalink: /installation/stage-2/uefi-lvm/
-parent: Stage 2
-grand_parent: Installation
+permalink: /storage/file-system/uefi-lvm/
+parent: File system
+grand_parent: Storage
 nav_order: 2
 ---
 
-# Installation stage 2 for Uefi-Lvm
+# Storage file system for Uefi-Lvm
 {: .no_toc}
 
 ---
