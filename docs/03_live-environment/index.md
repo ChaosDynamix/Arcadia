@@ -1,15 +1,13 @@
 ---
 layout: default
-title: 03 Live environment
-nav_order: 4
+title: Live environment
 permalink: /live-environment/
+nav_order: 3
+has_children: true
+has_toc: false
 ---
 
 # Live environment
-{: .no_toc .d-inline-block .mb-0}
-
-LIV
-{: .label .mx-2}
 
 ---
 

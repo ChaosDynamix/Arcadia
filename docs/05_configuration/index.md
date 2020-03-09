@@ -1,15 +1,13 @@
 ---
 layout: default
-title: 05 Configuration
-nav_order: 6
+title: Configuration
 permalink: /configuration/
+nav_order: 5
+has_children: true
+has_toc: false
 ---
 
 # Configuration
-{: .no_toc .d-inline-block .mb-0}
-
-CFG
-{: .label .mx-2}
 
 ---
 

@@ -1,17 +1,13 @@
 ---
 layout: default
-title: 04 Installation
-nav_order: 5
-has_children: true
+title: Installation
 permalink: /installation/
+nav_order: 4
+has_children: true
 has_toc: false
 ---
 
 # Installation
-{: .d-inline-block .mb-0}
-
-INS
-{: .label .mx-2}
 
 ---
 
