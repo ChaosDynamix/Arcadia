@@ -24,18 +24,10 @@ nav_exclude: true
 1. Under the HTTP Direct Downloads section, click on a mirror server (close to your location)
 1. Download the Arch Linux ISO image `archlinux-year.day.month-x86_64.iso`
 
-
-### INFORMATIONS
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-
 ---
 
-## Verify the integrity of the downloaded file
-
-### Download the checksum
-{: .no_toc .mt-0 .d-inline-block}
+## Download the checksum
+{: .d-inline-block}
 
 Warning
 {: .label .label-red .mx-2}
@@ -46,31 +38,38 @@ Checksum must be downloaded from the Arch Linux download page. The checksum coul
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, copy the checksum of your choice (MD5 or SHA-1)
 
-### Create a text file
-{: .no_toc .pt-4}
+---
 
-archlinux-checksum-md5.txt
-{: .fs-3 .mb-0}
+## Create the checksum file
+
+Replace the checksum and the filename accordingly
+
+#### MD5
+{: .no_toc .pt-2}
 
 ```bash
-# Replace the checksum and the filename accordingly
+# archlinux-checksum.txt
 00000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
 ```
 
-archlinux-checksum-sha1.txt
-{: .fs-3 .pt-2 .mb-0}
+#### SHA-1
+{: .no_toc .pt-2}
 
 ```bash
-# Replace the checksum and the filename accordingly
+# archlinux-checksum.txt
 0000000000000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
 ```
 
-### Verify the ISO image
-{: .no_toc .pt-4}
+---
 
-The Arch Linux developers use two cryptographic hash functions for generate a checksum of their ISO images, **MD5** and **SHA-1**.
+## Verify the integrity of the ISO image
 
-For verify the integrity of the downloaded image, we need to generate a checksum with MD5 or SHA-1 and compare it with the appropriate checksum provided by Arch Linux.
+This part assume that you are in possession of this two files in the same folder.
+
+| File                                    | Description |
+| :-------------------------------------- | :---------- |
+| archlinux-year.day.month-x86_64.iso     | ISO Image   |
+| archlinux-checksum.txt                  | Checksum    |
 
 #### MD5
 {: .no_toc .pt-2}
@@ -88,9 +87,12 @@ $ sha1sum -c archlinux-checksum-sha1.txt
 
 The success of one of these commands confirms that your ISO image was properly downloaded and that your local file is an exact copy of the file present on the mirror server. An error during the download could result in a corrupted file and trigger random issues during the installation.
 
+---
+
 ### INFORMATIONS
 {: .no_toc .text-delta .pt-4}
 
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 1. [Wikipedia - Comparison of file verification software](https://en.wikipedia.org/wiki/Comparison_of_file_verification_software)
 1. [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)

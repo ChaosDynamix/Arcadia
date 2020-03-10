@@ -1,6 +1,6 @@
 ---
 layout: default
-title: ISO2 Verification
+title: Verification
 permalink: /iso-image/verification/
 parent: ISO image
 nav_order: 2
@@ -31,7 +31,7 @@ Signature must be downloaded from the Arch Linux download page. The signature co
 
 ---
 
-## Verify ISO image with GnuPG
+## Verify the authenticity of the ISO image
 
 This part assume that you are in possession of this two files in the same folder.
 
@@ -40,8 +40,12 @@ This part assume that you are in possession of this two files in the same folder
 | archlinux-year.day.month-x86_64.iso     | ISO Image      |
 | archlinux-year.day.month-x86_64.iso.sig | Signature file |
 
+### With GnuPG
+{: .no_toc .pt-4}
+
+Replace the name of the file accordingly
+
 ```bash
-# Replace the name of the file accordingly
 $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
 ```
 

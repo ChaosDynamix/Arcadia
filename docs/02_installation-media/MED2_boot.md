@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MED2 Boot
+title: Boot
 permalink: /installation-media/boot/
 parent: Installation media
 nav_order: 2

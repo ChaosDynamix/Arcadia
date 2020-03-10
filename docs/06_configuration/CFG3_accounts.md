@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFG3 Accounts
+title: Accounts
 permalink: /configuration/accounts/
 parent: Configuration
 nav_order: 3

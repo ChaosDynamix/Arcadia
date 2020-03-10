@@ -1,6 +1,6 @@
 ---
 layout: default
-title: MED1 Preparation
+title: Preparation
 permalink: /installation-media/preparation/
 parent: Installation media
 nav_order: 1

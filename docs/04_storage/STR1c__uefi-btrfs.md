@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Btrfs
-permalink: /storage/preparation/uefi-btrfs/
+permalink: /storage/base/uefi-btrfs/
 nav_exclude: true
 ---
 
-[Return to Storage preparation](/Andromeda/storage/preparation/){: .btn .btn-purple }
+[Return to Storage preparation](/Andromeda/storage/base/){: .btn .btn-purple }
 
-# Storage preparation for Uefi-Btrfs
+# Storage base for Uefi-Btrfs
 {: .no_toc}
 
 ## Table of contents

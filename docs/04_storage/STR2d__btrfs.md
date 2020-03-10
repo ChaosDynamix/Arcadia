@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Btrfs
-permalink: /storage/configuration/btrfs/
+permalink: /storage/controller/btrfs/
 nav_exclude: true
 ---
 
-[Return to Storage configuration](/Andromeda/storage/configuration/){: .btn .btn-purple }
+[Return to Storage configuration](/Andromeda/storage/controller/){: .btn .btn-purple }
 
-# Storage configuration for Btrfs
+# Storage controller with Btrfs
 {: .no_toc}
 
 ## Table of contents

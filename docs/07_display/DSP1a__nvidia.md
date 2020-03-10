@@ -7,7 +7,7 @@ nav_exclude: true
 
 [Return to Desktop environment display driver](/Andromeda/desktop-environment/display-driver/){: .btn .btn-purple }
 
-# Desktop environment display driver with Nvidia
+# Display driver for Nvidia
 {: .no_toc}
 
 ## Table of contents

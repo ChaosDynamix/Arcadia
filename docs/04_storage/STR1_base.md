@@ -1,18 +1,18 @@
 ---
 layout: default
-title: STR1 Preparation
-permalink: /storage/preparation/
+title: Base
+permalink: /storage/base/
 parent: Storage
 nav_order: 1
 has_children: true
 has_toc: false
 ---
 
-# Storage preparation
+# Storage base
 
 ---
 
-## [Uefi-Ext4](/Andromeda/storage/preparation/uefi-ext4/)
+## [Uefi-Ext4](/Andromeda/storage/base/uefi-ext4/)
 
 ```
 +--------------+--------------+--------------+--------------+
@@ -24,7 +24,7 @@ has_toc: false
 
 ---
 
-## [Uefi-Lvm](/Andromeda/storage/preparation/uefi-lvm/)
+## [Uefi-Lvm](/Andromeda/storage/base/uefi-lvm/)
 
 ```
 +----------------------+------------------------------------+
@@ -35,7 +35,7 @@ has_toc: false
 
 ---
 
-## [Uefi-Btrfs](/Andromeda/storage/preparation/uefi-btrfs/)
+## [Uefi-Btrfs](/Andromeda/storage/base/uefi-btrfs/)
 
 ```
 +----------------------+------------------------------------+
@@ -46,7 +46,7 @@ has_toc: false
 
 ---
 
-## [Uefi-Luks](/Andromeda/storage/preparation/uefi-luks/)
+## [Uefi-Luks](/Andromeda/storage/base/uefi-luks/)
 
 This scenario includes Luks1 with an encrypted /boot. A key is implemented in the Initramfs avoiding us to enter two passphrases during the boot.
 
@@ -60,7 +60,7 @@ This scenario includes Luks1 with an encrypted /boot. A key is implemented in th
 
 ---
 
-## [Uefi-Raid1-Luks](/Andromeda/storage/preparation/uefi-raid1-luks/)
+## [Uefi-Raid1-Luks](/Andromeda/storage/base/uefi-raid1-luks/)
 
 This scenario includes Luks1 with an encrypted /boot. A key is implemented in the Initramfs avoiding us to enter two passphrases during the boot.
 

@@ -18,7 +18,7 @@ nav_exclude: true
 
 ---
 
-## Download Arch Linux ISO image with transmission-cli
+## Using Transmission-cli
 
 ### Download the torrent file
 {: .no_toc .pt-2}

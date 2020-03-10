@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Ext4
-permalink: /storage/configuration/ext4/
+permalink: /storage/controller/ext4/
 nav_exclude: true
 ---
 
-[Return to Storage configuration](/Andromeda/storage/configuration/){: .btn .btn-purple }
+[Return to Storage configuration](/Andromeda/storage/controller/){: .btn .btn-purple }
 
-# Storage configuration for Ext4
+# Storage controller with Ext4
 {: .no_toc}
 
 ## Table of contents

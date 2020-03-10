@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFG2 Network
+title: Network
 permalink: /configuration/network/
 parent: Configuration
 nav_order: 2

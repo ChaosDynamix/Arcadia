@@ -7,7 +7,7 @@ nav_exclude: true
 
 [Return to Desktop environment display server](/Andromeda/desktop-environment/display-server/){: .btn .btn-purple }
 
-# Desktop environment display server with Xorg
+# Display server with Xorg
 {: .no_toc}
 
 ## Table of contents

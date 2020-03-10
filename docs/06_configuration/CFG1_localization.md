@@ -1,6 +1,6 @@
 ---
 layout: default
-title: CFG1 Localization
+title: Localization
 permalink: /configuration/localization/
 parent: Configuration
 nav_order: 1

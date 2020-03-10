@@ -1,37 +1,36 @@
 ---
 layout: default
-title: STR2 Configuration
-permalink: /storage/configuration/
+title: Controller
+permalink: /storage/controller/
 parent: Storage
 nav_order: 2
 has_children: true
 has_toc: false
 ---
 
-# Storage configuration
+# Storage controller
 
 ---
 
-| Preparation     | Compatible configuration |
-| :-------------- | :----------------------- |
-| Uefi-Ext4       | Ext4                     |
-| Uefi-Lvm        | Lvm, Lvm-Dmcrypt         |
-| Uefi-Btrfs      | Btrfs                    |
-| Uefi-Luks       | Lvm, Btrfs               |
-| Uefi-Raid1-Luks | Lvm, Btrfs               |
+| Base            | Controller       |
+| :-------------- | :--------------- |
+| Uefi-Ext4       | Ext4             |
+| Uefi-Lvm        | Lvm, Lvm-Dmcrypt |
+| Uefi-Btrfs      | Btrfs            |
+| Uefi-Luks       | Lvm, Btrfs       |
+| Uefi-Raid1-Luks | Lvm, Btrfs       |
 
-## [Ext4](/Andromeda/storage/configuration/ext4/)
+## [Ext4](/Andromeda/storage/controller/ext4/)
 
 ```
-+--------------+--------------+--------------+--------------+
-| Partition 1  | Partition 2  | Partition 3  | Partition 4  |
-| EFI          | ROOT         | SWAP         | HOME         |
-+--------------+--------------+--------------+--------------+
++-------------------+-------------------+-------------------+
+| Root partition    | Swap partition    | Home partition    |
++-------------------+-------------------+-------------------+
 ```
 
 ---
 
-## [Lvm](/Andromeda/storage/configuration/lvm/)
+## [Lvm](/Andromeda/storage/controller/lvm/)
 
 ```
 +-----------------------------------------------------------+
@@ -46,7 +45,7 @@ has_toc: false
 
 ---
 
-## [Lvm-Dmcrypt](/Andromeda/storage/configuration/lvm-dmcrypt/)
+## [Lvm-Dmcrypt](/Andromeda/storage/controller/lvm-dmcrypt/)
 
 ```
 +-----------------------------------------------------------+
@@ -63,10 +62,10 @@ has_toc: false
 
 ---
 
-## [Btrfs](/Andromeda/storage/configuration/btrfs/)
+## [Btrfs](/Andromeda/storage/controller/btrfs/)
 
 ```
-subvolid=5 (/dev/mapper/btrfs)
+subvolid=5
    ├── @ (mounted as /)
    |       ├── /home                  (mounted @home subvolume)
    |       ├── /.snapshots            (mounted @snapshots subvolume)

@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Lvm
-permalink: /storage/configuration/lvm/
+permalink: /storage/controller/lvm/
 nav_exclude: true
 ---
 
-[Return to Storage configuration](/Andromeda/storage/configuration/){: .btn .btn-purple }
+[Return to Storage configuration](/Andromeda/storage/controller/){: .btn .btn-purple }
 
-# Storage configuration for Lvm
+# Storage controller with Lvm
 {: .no_toc}
 
 ## Table of contents

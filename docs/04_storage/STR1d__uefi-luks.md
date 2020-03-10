@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Luks
-permalink: /storage/preparation/uefi-luks/
+permalink: /storage/base/uefi-luks/
 nav_exclude: true
 ---
 
-[Return to Storage preparation](/Andromeda/storage/preparation/){: .btn .btn-purple }
+[Return to Storage preparation](/Andromeda/storage/base/){: .btn .btn-purple }
 
-# Storage preparation for Uefi-Luks
+# Storage base for Uefi-Luks
 {: .no_toc}
 
 ---

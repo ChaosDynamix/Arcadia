@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Lvm
-permalink: /storage/preparation/uefi-lvm/
+permalink: /storage/base/uefi-lvm/
 nav_exclude: true
 ---
 
-[Return to Storage preparation](/Andromeda/storage/preparation/){: .btn .btn-purple }
+[Return to Storage preparation](/Andromeda/storage/base/){: .btn .btn-purple }
 
-# Storage preparation for Uefi-Lvm
+# Storage base for Uefi-Lvm
 {: .no_toc}
 
 ## Table of contents

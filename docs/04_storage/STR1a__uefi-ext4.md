@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-ext4
-permalink: /storage/preparation/uefi-ext4/
+permalink: /storage/base/uefi-ext4/
 nav_exclude: true
 ---
 
-[Return to Storage preparation](/Andromeda/storage/preparation/){: .btn .btn-purple }
+[Return to Storage preparation](/Andromeda/storage/base/){: .btn .btn-purple }
 
-# Storage preparation for Uefi-Ext4
+# Storage base for Uefi-Ext4
 {: .no_toc}
 
 ## Table of contents

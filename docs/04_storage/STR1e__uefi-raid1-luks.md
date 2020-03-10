@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Uefi-Raid1-Luks
-permalink: /storage/preparation/uefi-raid1-luks/
+permalink: /storage/base/uefi-raid1-luks/
 nav_exclude: true
 ---
 
-[Return to Storage preparation](/Andromeda/storage/preparation/){: .btn .btn-purple }
+[Return to Storage preparation](/Andromeda/storage/base/){: .btn .btn-purple }
 
-# Storage preparation for Uefi-Raid1-Luks
+# Storage base for Uefi-Raid1-Luks
 {: .no_toc}
 
 ---
@@ -21,17 +21,15 @@ nav_exclude: true
 ---
 
 ```
-Drive 1                                 Drive 2
-+------------+-----------------------+  +------------+-----------------------+
-| EFI system | LUKS1 encrypted       |  | EFI system | LUKS1 encrypted       |
-| partition  | volume                |  | partition  | volume                |
-| /efi1      | /dev/mapper/container |  | /efi2      | /dev/mapper/container |
-|            +-----------------------+  |            +-----------------------+
-|            | RAID1 array (part 1)  |  |            | RAID1 array (part 2)  |
-|            | /dev/md/array         |  |            | /dev/md/array         |
-|            +-----------------------+  |            +-----------------------+
-| /dev/sda1  | /dev/sda2             |  | /dev/sdb1  | /dev/sdb2             |
-+------------+-----------------------+  +------------+-----------------------+
+Drive 1                           Drive 2
++------------+-----------------+  +------------+-----------------+
+| EFI system | LUKS1 encrypted |  | EFI system | LUKS1 encrypted |
+| partition  | volume          |  | partition  | volume          |
+|            +-----------------+  |            +-----------------+
+|            | RAID1 array     |  |            | RAID1 array     |
+|            +-----------------+  |            +-----------------+
+| /dev/sda1  | /dev/sda2       |  | /dev/sdb1  | /dev/sdb2       |
++------------+-----------------+  +------------+-----------------+
 ```
 
 ---
@@ -79,7 +77,7 @@ $ cryptsetup close erase_drive2
 # Create a new partition table, the partitions and clone the setup to the second drive
 $ sgdisk -o -n=1:0:+512M -n=2:0:-100M -t=1:ef00 -t=2:fd00 -R=/dev/sdb /dev/sda
 
-# Create a new partition table for the second drive
+# Create a new partition GUID(s) for the second drive
 $ sgdisk -G /dev/sdb
 ```
 
