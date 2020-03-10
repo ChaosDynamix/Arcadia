@@ -2,9 +2,7 @@
 layout: default
 title: Xorg
 permalink: /desktop-environment/display-server/xorg/
-parent: Display server
-grand_parent: Desktop environment
-nav_order: 1
+nav_exclude: true
 ---
 
 # Desktop environment display server for Nvidia

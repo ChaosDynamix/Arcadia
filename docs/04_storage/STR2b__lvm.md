@@ -1,13 +1,11 @@
 ---
 layout: default
 title: Lvm
-permalink: /storage/file-system/lvm/
-parent: File system
-grand_parent: Storage
-nav_order: 2
+permalink: /storage/configuration/lvm/
+nav_exclude: true
 ---
 
-# Storage Lvm file system
+# Storage configuration for Lvm
 {: .no_toc}
 
 ---

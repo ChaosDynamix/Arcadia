@@ -8,105 +8,108 @@ has_toc: false
 ---
 
 # Installation
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+1. TOC
+{:toc}
 
 ---
 
-## [Ext4](/Andromeda/installation/ext4/)
-{: .d-inline-block}
+## Install Arch Linux essential packages
 
-UEFI
-{: .label .label-purple .ml-2}
+| Utilities | packages    |
+| :-------- | :---------- |
+| Lvm       | lvm2        |
+| raid      | mdadm       |
+| btrfs     | btrfs-progs |
 
-```
-+------------------+------------------+------------------+-----------------+
-| EFI system       | Root             | Swap             | Home            |
-| partition        | partition        | partition        | partition       |
-|                  |                  |                  |                 |
-| /boot            | /                | [SWAP]           | /home           |
-| /dev/sda1        | /dev/sda2        | /dev/sda3        | /dev/sda4       |
-+------------------+------------------+------------------+-----------------+
-```
+### Example
+{: .no_toc .pt-4}
 
----
-
-## [Luks / Lvm](/Andromeda/installation/luks-lvm/)
-{: .d-inline-block}
-
-UEFI
-{: .label .label-purple .ml-2}
-
-```
-+------------------------+-------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                       |
-| /efi                   | /dev/mapper/lvm                                 |
-|                        +-------------------------------------------------+
-| /dev/sda1              | /dev/sda2                                       |
-+------------------------+-------------------------------------------------+
+```bash
+$ pacstrap /mnt base base-devel linux linux-firmware vim man-db man-pages
 ```
 
 ---
 
-## [Luks / Btrfs](/Andromeda/installation/luks-btrfs/)
-{: .d-inline-block}
+## Generate static information about the filesystems
 
-UEFI
-{: .label .label-purple .ml-2}
-
-```
-+------------------------+-------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                       |
-| /efi                   | /dev/mapper/btrfs                               |
-|                        +-------------------------------------------------+
-| /dev/sda1              | /dev/sda2                                       |
-+------------------------+-------------------------------------------------+
+```bash
+$ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
 ---
 
-## [Raid1 / Luks / Lvm](/Andromeda/installation/raid1-luks-lvm/)
-{: .d-inline-block}
+## Enter the system
 
-UEFI
-{: .label .label-purple .ml-2}
-
-WORK IN PROGRESS
-{: .label .label-yellow}
-
-```
-Drive 1                                Drive 2
-+------------+----------------------+  +------------+----------------------+
-| EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
-| partition  | volume               |  | partition  | volume               |
-| /efi1      | /dev/mapper/lvm      |  | /efi2      | /dev/mapper/lvm      |
-|            +----------------------+  |            +----------------------+
-|            | RAID1 array (part 1) |  |            | RAID1 array (part 2) |
-|            | /dev/md/cryptlvm     |  |            | /dev/md/cryptlvm     |
-|            +----------------------+  |            +----------------------+
-| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
-+------------+----------------------+  +------------+----------------------+
+```bash
+$ arch-chroot /mnt
 ```
 
 ---
 
-## [Raid1 / Luks / Btrfs](/Andromeda/installation/raid1-luks-btrfs/)
+## Create the Swap file
 {: .d-inline-block}
 
-UEFI
-{: .label .label-purple .ml-2}
+BTRFS
+{: .label .ml-2}
 
-WORK IN PROGRESS
-{: .label .label-yellow}
+```bash
+$ truncate -s 0 /.swap/swapfile
+$ chattr +C /.swap/swapfile
+$ btrfs property set /.swap/swapfile compression none
 
+$ fallocate -l 2G /.swap/swapfile
+$ chmod 600 /.swap/swapfile
 ```
-Drive 1                                Drive 2
-+------------+----------------------+  +------------+----------------------+
-| EFI system | LUKS1 encrypted      |  | EFI system | LUKS1 encrypted      |
-| partition  | volume               |  | partition  | volume               |
-| /efi1      | /dev/mapper/btrfs    |  | /efi2      | /dev/mapper/btrfs    |
-|            +----------------------+  |            +----------------------+
-|            | RAID1 array (part 1) |  |            | RAID1 array (part 2) |
-|            | /dev/md/cryptbtrfs   |  |            | /dev/md/cryptbtrfs   |
-|            +----------------------+  |            +----------------------+
-| /dev/sda1  | /dev/sda2            |  | /dev/sdb1  | /dev/sdb2            |
-+------------+----------------------+  +------------+----------------------+
+
+### Format the Swap file
+{: .no_toc .pt-4}
+
+```bash
+$ mkswap /.swap/swapfile
 ```
+
+### Activate the Swap file
+{: .no_toc .pt-4}
+
+```bash
+$ swapon /.swap/swapfile
+```
+
+### Add the Swap file to the fstab
+{: .no_toc .pt-4}
+
+/etc/fstab
+{: .fs-3 .mb-0}
+
+```bash
+/.swap/swapfile     none      swap      defaults      0 0
+```
+
+---
+
+## GUIDES
+{: .no_toc .text-delta}
+
+1. [ArchWiki - Installation guide - Install essential packages](https://wiki.archlinux.org/index.php/Installation_guide#Install_essential_packages)
+1. [ArchWiki - Installation guide - Fstab](https://wiki.archlinux.org/index.php/Installation_guide#Fstab)
+1. [ArchWiki - Installation guide - Chroot](https://wiki.archlinux.org/index.php/Installation_guide#Chroot)
+1. [ArchWiki - Fstab](https://wiki.archlinux.org/index.php/Fstab)
+1. [ArchWiki - Swap - Swap file](https://wiki.archlinux.org/index.php/Swap#Swap_file)
+{: .mb-6}
+
+## MANUALS
+{: .no_toc .text-delta}
+
+1. [Man page - pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
+1. [Man page - truncate](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/truncate.1.en)
+1. [Man page - chattr](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/e2fsprogs/chattr.1.en)
+1. [Man page - btrfs](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/btrfs-progs/btrfs.8.en)
+1. [Man page - fallocate](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/fallocate.1.en)
+1. [Man page - chmod](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/chmod.1.en)
+1. [Man page - mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
+1. [Man page - swapon](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/swapon.2.en)

@@ -1,13 +1,11 @@
 ---
 layout: default
 title: Btrfs
-permalink: /storage/file-system/btrfs/
-parent: File system
-grand_parent: Storage
-nav_order: 3
+permalink: /storage/configuration/btrfs/
+nav_exclude: true
 ---
 
-# Storage Btrfs file system
+# Storage configuration for Btrfs
 {: .no_toc}
 
 ---

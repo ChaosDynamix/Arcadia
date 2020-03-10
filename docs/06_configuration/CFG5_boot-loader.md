@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Boot loader
+title: CFG5 Boot loader
 permalink: /configuration/boot-loader/
 parent: Configuration
 nav_order: 5

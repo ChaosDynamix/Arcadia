@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Initramfs
+title: CFG4 Initramfs
 permalink: /configuration/initramfs/
 parent: Configuration
 nav_order: 4

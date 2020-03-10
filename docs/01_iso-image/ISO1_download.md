@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Download
+title: ISO1 Download
 permalink: /iso-image/download/
 parent: ISO image
 nav_order: 1
@@ -9,19 +9,10 @@ has_toc: false
 ---
 
 # ISO image download
-{: .no_toc}
 
 ---
 
-## Table of contents
-{: .no_toc .text-delta}
-
-1. TOC
-{:toc}
-
----
-
-## [ISO image download with BitTorrent](/Andromeda/iso-image/download/bittorrent/)
+## [BitTorrent with Transmission-cli](/Andromeda/iso-image/download/bittorrent/)
 {: .d-inline-block}
 
 Recommended
@@ -41,7 +32,7 @@ Rather than downloading a file from a single source server, the BitTorrent proto
 
 ---
 
-## [ISO image download with a Mirror site](/Andromeda/iso-image/download/mirror-site/)
+## [Mirror site](/Andromeda/iso-image/download/mirror-site/)
 
 Mirror sites or mirrors are replicas of other websites or any network node. The concept of mirroring applies to network services accessible through any protocol, such as HTTP or FTP.
 

@@ -2,15 +2,13 @@
 layout: default
 title: BitTorrent
 permalink: /iso-image/download/bittorrent/
-parent: Download
-grand_parent: ISO image
-nav_order: 1
+nav_exclude: true
 ---
+
+[Return to ISO image download](/Andromeda/iso-image/download/){: .btn .btn-purple }
 
 # ISO image download with BitTorrent
 {: .no_toc}
-
----
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -57,6 +55,8 @@ $ watch transmission-remote -i
 ```bash
 $ transmission-remote --exit
 ```
+
+---
 
 ### INFORMATIONS
 {: .no_toc .text-delta .pt-4}

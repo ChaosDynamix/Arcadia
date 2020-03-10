@@ -1,13 +1,11 @@
 ---
 layout: default
 title: Ext4
-permalink: /storage/file-system/ext4/
-parent: File system
-grand_parent: Storage
-nav_order: 1
+permalink: /storage/configuration/ext4/
+nav_exclude: true
 ---
 
-# Storage Ext4 file system
+# Storage configuration for Ext4
 {: .no_toc}
 
 ---

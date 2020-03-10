@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Verification
+title: ISO2 Verification
 permalink: /iso-image/verification/
 parent: ISO image
 nav_order: 2
@@ -8,8 +8,6 @@ nav_order: 2
 
 # ISO image verification
 {: .no_toc}
-
----
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -19,10 +17,8 @@ nav_order: 2
 
 ---
 
-## Verify the authenticity of the downloaded file with GnuPG
-
-### Download the signature file
-{: .no_toc .mt-2 .d-inline-block}
+## Download the signature file
+{: .d-inline-block}
 
 Warning
 {: .label .label-red .mx-2}
@@ -33,8 +29,9 @@ Signature must be downloaded from the Arch Linux download page. The signature co
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
 1. Under the HTTP Direct Downloads section, download the PGP signature.
 
-### Verify ISO image
-{: .no_toc .pt-4}
+---
+
+## Verify ISO image with GnuPG
 
 This part assume that you are in possession of this two files in the same folder.
 
@@ -47,6 +44,8 @@ This part assume that you are in possession of this two files in the same folder
 # Replace the name of the file accordingly
 $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
 ```
+
+---
 
 ### INFORMATIONS
 {: .no_toc .text-delta .pt-4}

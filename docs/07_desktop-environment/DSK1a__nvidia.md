@@ -2,9 +2,7 @@
 layout: default
 title: Nvidia
 permalink: /desktop-environment/display-driver/nvidia/
-parent: Display driver
-grand_parent: Desktop environment
-nav_order: 1
+nav_exclude: true
 ---
 
 # Desktop environment display driver for Nvidia

@@ -1,13 +1,11 @@
 ---
 layout: default
 title: Uefi with encryption
-permalink: /storage/base/uefi-with-encryption/
-parent: Base
-grand_parent: Storage
-nav_order: 2
+permalink: /storage/preparation/uefi-with-encryption/
+nav_exclude: true
 ---
 
-# Storage base for Uefi with encryption
+# Storage preparation for Uefi with encryption
 {: .no_toc}
 
 ---

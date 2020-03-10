@@ -2,15 +2,13 @@
 layout: default
 title: Mirror site
 permalink: /iso-image/download/mirror-site/
-parent: Download
-grand_parent: ISO image
-nav_order: 2
+nav_exclude: true
 ---
+
+[Return to ISO image download](/Andromeda/iso-image/download/){: .btn .btn-purple }
 
 # ISO image download with a Mirror site
 {: .no_toc}
-
----
 
 ## Table of contents
 {: .no_toc .text-delta}
