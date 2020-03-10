@@ -1,11 +1,13 @@
 ---
 layout: default
-title: Uefi with encryption
-permalink: /storage/preparation/uefi-with-encryption/
+title: Uefi-Raid1-Luks
+permalink: /storage/preparation/uefi-raid1-luks/
 nav_exclude: true
 ---
 
-# Storage preparation for Uefi with encryption
+[Return to Storage preparation](/Andromeda/storage/preparation/){: .btn .btn-purple }
+
+# Storage preparation for Uefi-Raid1-Luks
 {: .no_toc}
 
 ---
@@ -17,48 +19,6 @@ nav_exclude: true
 {:toc}
 
 ---
-
-## Dm-crypt-Luks
-
-```
-+------------------------+---------------------------------------------------+
-| EFI system partition   | LUKS1 encrypted partition                         |
-| /efi                   | /dev/mapper/container                             |
-|                        +---------------------------------------------------+
-| /dev/sda1              | /dev/sda2                                         |
-+------------------------+---------------------------------------------------+
-```
-
-### Partition the drive
-{: .no_toc .pt-2}
-
-| Partition | Partition type       | Size     |
-| :-------- | :------------------- | :------- |
-| /dev/sda1 | EFI system partition | 512M     |
-| /dev/sda2 | Linux LUKS partition | 100%FREE |
-
-#### SGDISK SCRIPT
-{: .no_toc .pt-2}
-
-```bash
-# Edit the sizes accordingly
-$ sgdisk -o -n=1:0:+512M -n=2:0:0 -t=1:ef00 -t=2:8309 /dev/sda
-```
-
-### Encrypt the partition
-{: .no_toc .pt-4}
-
-```bash
-# Create the container
-$ cryptsetup --type luks1 luksFormat /dev/sda2
-
-# Open the container
-$ cryptsetup open /dev/sdXY lvm
-```
-
----
-
-## Dm-crypt-Luks on Raid1
 
 ```
 Drive 1                                 Drive 2
@@ -74,8 +34,36 @@ Drive 1                                 Drive 2
 +------------+-----------------------+  +------------+-----------------------+
 ```
 
-### Partition the drives
-{: .no_toc .pt-2}
+---
+
+## Secure erase the drives
+{: .d-inline-block}
+
+IRREVERSIBLE DATA ERASE
+{: .label .label-red .mx-2}
+
+Before setting up disk encryption on a (part of a) disk, consider securely wiping it first. This consists of overwriting the entire drive or partition with a stream of zero bytes or random bytes, and is done for one or both of the following reasons
+
+- Prevent recovery of previously stored data
+- Prevent disclosure of usage patterns on the encrypted drive
+
+```bash
+# Open the containers
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda erase_drive1
+$ cryptsetup open --type plain -d /dev/urandom /dev/sdb erase_drive2
+
+# Secure erase the drives
+$ dd if=/dev/zero of=/dev/mapper/erase_drive1 status=progress
+$ dd if=/dev/zero of=/dev/mapper/erase_drive2 status=progress
+
+# Close the containers
+$ cryptsetup close erase_drive1
+$ cryptsetup close erase_drive2
+```
+
+---
+
+## Partition the drives
 
 | Device | Partition | Partition type       | Size            |
 | :----- | :-------- | :------------------- | :-------------- |
@@ -84,8 +72,8 @@ Drive 1                                 Drive 2
 | 2      | /dev/sdb1 | EFI system partition | 512M            |
 | 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
 
-#### SGDISK SCRIPT
-{: .no_toc .pt-2}
+### With sgdisk
+{: .no_toc .pt-4}
 
 ```bash
 # Create a new partition table, the partitions and clone the setup to the second drive
@@ -95,8 +83,9 @@ $ sgdisk -o -n=1:0:+512M -n=2:0:-100M -t=1:ef00 -t=2:fd00 -R=/dev/sdb /dev/sda
 $ sgdisk -G /dev/sdb
 ```
 
-### Create the RAID array
-{: .no_toc .pt-4}
+---
+
+## Create the RAID array
 
 ```bash
 # Create a RAID1 array
@@ -106,8 +95,9 @@ $ mdadm --create --level=1 --metadata=1.2 --raid-devices=2 /dev/md/array /dev/sd
 $ watch /proc/mdstat
 ```
 
-### Encrypt the RAID array
-{: .no_toc .pt-4}
+---
+
+## Encrypt the RAID array
 
 ```bash
 # Create the container
@@ -118,5 +108,3 @@ $ cryptsetup open /dev/md/array container
 ```
 
 ---
-
-## Dm-crypt-Plain

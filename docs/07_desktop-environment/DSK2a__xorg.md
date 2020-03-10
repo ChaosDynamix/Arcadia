@@ -5,10 +5,10 @@ permalink: /desktop-environment/display-server/xorg/
 nav_exclude: true
 ---
 
-# Desktop environment display server for Nvidia
-{: .no_toc}
+[Return to Desktop environment display server](/Andromeda/desktop-environment/display-server/){: .btn .btn-purple }
 
----
+# Desktop environment display server with Xorg
+{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}

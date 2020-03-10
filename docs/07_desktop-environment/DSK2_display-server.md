@@ -12,7 +12,7 @@ has_toc: false
 
 ---
 
-## [Xorg](/Andromeda/desktop-environment/display-driver/nvidia/)
+## [Xorg](/Andromeda/desktop-environment/display-server/xorg/)
 
 This page discusses 2 methods on how to create an Arch Linux Installer USB flash drive for booting in BIOS and UEFI systems. The result will be a LiveUSB (LiveCD-like) system that can be used for installing Arch Linux, system maintenance or for recovery purposes etc...
 

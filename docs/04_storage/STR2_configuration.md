@@ -9,13 +9,6 @@ has_toc: false
 ---
 
 # Storage configuration
-{: .no_toc}
-
-## Table of contents
-{: .no_toc .text-delta}
-
-1. TOC
-{:toc}
 
 ---
 
@@ -27,7 +20,7 @@ has_toc: false
 | Uefi-Luks       | Lvm, Btrfs               |
 | Uefi-Raid1-Luks | Lvm, Btrfs               |
 
-## [Ext4](/Andromeda/storage/preparation/uefi-ext4/)
+## [Ext4](/Andromeda/storage/configuration/ext4/)
 
 ```
 +--------------+--------------+--------------+--------------+
@@ -38,7 +31,7 @@ has_toc: false
 
 ---
 
-## [Lvm](/Andromeda/storage/preparation/uefi-ext4/)
+## [Lvm](/Andromeda/storage/configuration/lvm/)
 
 ```
 +-----------------------------------------------------------+
@@ -53,7 +46,7 @@ has_toc: false
 
 ---
 
-## [Lvm-Dmcrypt](/Andromeda/storage/preparation/uefi-ext4/)
+## [Lvm-Dmcrypt](/Andromeda/storage/configuration/lvm-dmcrypt/)
 
 ```
 +-----------------------------------------------------------+
@@ -70,7 +63,7 @@ has_toc: false
 
 ---
 
-## [Btrfs](/Andromeda/storage/preparation/uefi-ext4/)
+## [Btrfs](/Andromeda/storage/configuration/btrfs/)
 
 ```
 subvolid=5 (/dev/mapper/btrfs)

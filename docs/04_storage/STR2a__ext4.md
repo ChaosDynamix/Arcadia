@@ -5,10 +5,10 @@ permalink: /storage/configuration/ext4/
 nav_exclude: true
 ---
 
+[Return to Storage configuration](/Andromeda/storage/configuration/){: .btn .btn-purple }
+
 # Storage configuration for Ext4
 {: .no_toc}
-
----
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -18,8 +18,6 @@ nav_exclude: true
 
 ---
 
-## Configuring the partitions
-
 | Partition | Label   | Filesystem | Mounting point |
 | :-------- | :------ | :--------- | :------------- |
 | /dev/sda1 | EFI     | Fat32      | /mnt/boot      |
@@ -27,20 +25,18 @@ nav_exclude: true
 | /dev/sda3 | SWAP    | Swap       |                |
 | /dev/sda4 | HOME    | Ext4       | /mnt/home      |
 
-### Format the partitions
-{: .no_toc .pt-2}
+---
+
+## Format the partitions
 
 ```bash
-# Format the EXT4 filesystem partitions
 $ mkfs.ext4 -L ROOT /dev/sda2
 $ mkfs.ext4 -L HOME /dev/sda4
-
-# Format the FAT32 filesystem partition
-$ mkfs.fat -F32 -n EFI /dev/sda1
 ```
 
-### Setup the Swap partition
-{: .no_toc .pt-4}
+---
+
+## Setup the Swap partition
 
 ```bash
 # Format the Swap partition
@@ -50,20 +46,41 @@ $ mkswap -L SWAP /dev/sda3
 $ swapon /dev/sda3
 ```
 
-### Mount the partitions
-{: .no_toc .pt-4}
+---
+
+## Mount the partitions
 
 ```bash
 # Mount the root partition
 $ mount /dev/sda2 /mnt
 
-# Create directories
-$ mkdir /mnt/{home,boot}
+# Create the home directory
+$ mkdir /mnt/home
 
-# Mount the home and efi partitions
-$ mount /dev/sda1 /mnt/boot
+# Mount the home partition
 $ mount /dev/sda4 /mnt/home
 ```
+
+---
+
+## Setup the EFI partition
+{: .d-inline-block}
+
+UEFI
+{: .label .label-blue .ml-2}
+
+```bash
+# Format the EFI partition
+$ mkfs.fat -F32 -n EFI /dev/sda1
+
+# Create the boot directory
+$ mkdir /mnt/boot
+
+# Mount the EFI partition
+$ mount /dev/sda1 /mnt/boot
+```
+
+---
 
 ### GUIDES
 {: .no_toc .text-delta .pt-4}

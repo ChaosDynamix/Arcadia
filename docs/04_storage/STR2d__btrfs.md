@@ -5,10 +5,10 @@ permalink: /storage/configuration/btrfs/
 nav_exclude: true
 ---
 
+[Return to Storage configuration](/Andromeda/storage/configuration/){: .btn .btn-purple }
+
 # Storage configuration for Btrfs
 {: .no_toc}
-
----
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -36,3 +36,5 @@ subvolid=5 (/dev/mapper/btrfs)
    ├── @snapshots (mounted as /.snapshots)
    └── @swap (mounted as /.swap)
 ```
+
+---

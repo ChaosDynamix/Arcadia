@@ -12,7 +12,7 @@ has_toc: false
 
 ---
 
-## [BitTorrent with Transmission-cli](/Andromeda/iso-image/download/bittorrent/)
+## [BitTorrent](/Andromeda/iso-image/download/bittorrent/)
 {: .d-inline-block}
 
 Recommended

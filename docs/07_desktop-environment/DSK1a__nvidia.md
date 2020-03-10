@@ -5,10 +5,10 @@ permalink: /desktop-environment/display-driver/nvidia/
 nav_exclude: true
 ---
 
-# Desktop environment display driver for Nvidia
-{: .no_toc}
+[Return to Desktop environment display driver](/Andromeda/desktop-environment/display-driver/){: .btn .btn-purple }
 
----
+# Desktop environment display driver with Nvidia
+{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}

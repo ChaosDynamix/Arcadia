@@ -31,6 +31,8 @@ If asked (by pressing a key), you can temporarily select and boot on a device. Y
 1. Save changes and reboot
 1. Select `boot Arch Linux (X86_64)` or `Arch Linux archiso X86_64 UEFI CD`
 
+---
+
 ### INFORMATIONS
 {: .no_toc .text-delta .pt-4}
 
