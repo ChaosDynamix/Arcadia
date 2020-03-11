@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Lvm-Dmcrypt
-permalink: /storage/controller/lvm-dmcrypt/
+title: Lvm-Dmcrypt-Ext4
+permalink: /storage/controller/lvm-dmcrypt-ext4/
 nav_exclude: true
 ---
 
 [Return to Storage configuration](/Andromeda/storage/controller/){: .btn .btn-purple }
 
-# Storage controller with Lvm-Dmcrypt
+# Storage controller with Lvm-Dmcrypt-Ext4
 {: .no_toc}
 
 ## Table of contents

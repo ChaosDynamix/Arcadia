@@ -75,17 +75,17 @@ This part assume that you are in possession of this two files in the same folder
 {: .no_toc .pt-2}
 
 ```bash
-$ md5sum -c archlinux-checksum-md5.txt
+$ md5sum -c archlinux-checksum.txt
 ```
 
 #### SHA-1
 {: .no_toc .pt-2}
 
 ```bash
-$ sha1sum -c archlinux-checksum-sha1.txt
+$ sha1sum -c archlinux-checksum.txt
 ```
 
-The success of one of these commands confirms that your ISO image was properly downloaded and that your local file is an exact copy of the file present on the mirror server. An error during the download could result in a corrupted file and trigger random issues during the installation.
+The success of one of these commands confirms that your ISO image was properly downloaded and that your local file is an exact copy of the file present on the mirror site. An error during the download could result in a corrupted file.
 
 ---
 

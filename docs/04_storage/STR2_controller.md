@@ -20,17 +20,12 @@ has_toc: false
 | Uefi-Luks       | Lvm, Btrfs       |
 | Uefi-Raid1-Luks | Lvm, Btrfs       |
 
-## [Ext4](/Andromeda/storage/controller/ext4/)
+## Logical Volume Manager
 
-```
-+-------------------+-------------------+-------------------+
-| Root partition    | Swap partition    | Home partition    |
-+-------------------+-------------------+-------------------+
-```
+Logical Volume Manager (LVM) is a device mapper target that provides logical volume management for the Linux kernel.
 
----
-
-## [Lvm](/Andromeda/storage/controller/lvm/)
+### [Lvm-Ext4](/Andromeda/storage/controller/lvm-ext4/)
+{: .no_toc .pt-4}
 
 ```
 +-----------------------------------------------------------+
@@ -43,9 +38,8 @@ has_toc: false
 +-------------------+-------------------+-------------------+
 ```
 
----
-
-## [Lvm-Dmcrypt](/Andromeda/storage/controller/lvm-dmcrypt/)
+### [Lvm-Dmcrypt-Ext4](/Andromeda/storage/controller/lvm-dmcrypt-ext4/)
+{: .no_toc .pt-4}
 
 ```
 +-----------------------------------------------------------+
@@ -62,7 +56,21 @@ has_toc: false
 
 ---
 
-## [Btrfs](/Andromeda/storage/controller/btrfs/)
+## File system
+
+The file system or filesystem (often abbreviated to fs), controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified.
+
+### [Ext4](/Andromeda/storage/controller/ext4/)
+{: .no_toc .pt-2}
+
+```
++-------------------+-------------------+-------------------+
+| Root partition    | Swap partition    | Home partition    |
++-------------------+-------------------+-------------------+
+```
+
+### [Btrfs](/Andromeda/storage/controller/btrfs/)
+{: .no_toc .pt-4}
 
 ```
 subvolid=5
@@ -79,3 +87,5 @@ subvolid=5
    ├── @snapshots (mounted as /.snapshots)
    └── @swap (mounted as /.swap)
 ```
+
+---

@@ -14,9 +14,16 @@ has_toc: false
 
 ## [USB flash drive](/Andromeda/installation-media/preparation/usb-flash-drive/)
 
-This page discusses 2 methods on how to create an Arch Linux Installer USB flash drive for booting in BIOS and UEFI systems. The result will be a LiveUSB (LiveCD-like) system that can be used for installing Arch Linux, system maintenance or for recovery purposes etc...
+A USB flash drive is a data storage device that includes flash memory with an integrated USB interface. It is typically removable, rewritable and much smaller than an optical disc.
 
-### References
-{: .no_toc .text-delta .pt-4}
+Most current PC firmware permits booting from a USB drive, allowing the launch of an operating system from a bootable flash drive. Such a configuration is known as a Live USB. A live USB is a USB flash drive or external hard disk drive containing a full operating system that can be booted.
 
-1. [ArchWiki - USB flash installation media](https://wiki.archlinux.org/index.php/USB_flash_installation_media)
+This page cover the creation of a Live USB with the help of a USB flash drive and a verified Arch Linux ISO image.
+
+---
+
+## REFERENCES
+{: .no_toc .text-delta}
+
+1. [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
+1. [Wikipedia - Live USB](https://en.wikipedia.org/wiki/Live_USB)

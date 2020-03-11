@@ -25,6 +25,11 @@ BitTorrent (abbreviated to BT) is a communication protocol for peer-to-peer file
 
 Rather than downloading a file from a single source server, the BitTorrent protocol allows users to join a "swarm" of hosts to upload to/download from each other simultaneously.
 
+### Anonymity
+{: .no_toc .pt-4}
+
+BitTorrent does not, on its own, offer its users anonymity. One can usually see the IP addresses of all peers in a swarm in one's own client or firewall program. This may expose users with insecure systems to attacks.
+
 ---
 
 ## [Mirror site](/Andromeda/iso-image/download/mirror-site/)
