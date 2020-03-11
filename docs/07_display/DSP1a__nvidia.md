@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Nvidia
-permalink: /desktop-environment/display-driver/nvidia/
+permalink: /display/driver/nvidia/
 nav_exclude: true
 ---
 
-[Return to Desktop environment display driver](/Andromeda/desktop-environment/display-driver/){: .btn .btn-purple }
+[Return to Desktop environment display driver](/Andromeda/display/driver/){: .btn .btn-purple }
 
 # Display driver for Nvidia
 {: .no_toc}

@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Xorg
-permalink: /desktop-environment/display-server/xorg/
+permalink: display/server/xorg/
 nav_exclude: true
 ---
 
-[Return to Desktop environment display server](/Andromeda/desktop-environment/display-server/){: .btn .btn-purple }
+[Return to Desktop environment display server](/Andromeda/display/server/){: .btn .btn-purple }
 
 # Display server with Xorg
 {: .no_toc}

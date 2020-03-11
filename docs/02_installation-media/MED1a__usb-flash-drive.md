@@ -18,7 +18,7 @@ nav_exclude: true
 
 ---
 
-## Flash your USB flash drive with dd
+## Using dd
 
 dd copies a file (from standard input to standard output, by default) with a changeable I/O block size, while optionally performing conversions on it.
 
