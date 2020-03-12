@@ -10,13 +10,18 @@ nav_order: 4
 
 ---
 
-### Update the system clock
+## Update the system clock
+
+### Activate the NTP service
 {: .no_toc .pt-2}
 
 ```bash
-# Activate the NTP service
 $ timedatectl set-ntp true
+```
 
-# Check the current system clock time, NTP service and the RTC
+### Check the current system clock time, NTP service and the RTC
+{: .no_toc .pt-4}
+
+```bash
 $ timedatectl
 ```
