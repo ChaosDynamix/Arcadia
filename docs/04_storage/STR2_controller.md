@@ -12,20 +12,23 @@ has_toc: false
 
 ---
 
-| Base            | Controller       |
-| :-------------- | :--------------- |
-| Uefi-Ext4       | Ext4             |
-| Uefi-Lvm        | Lvm, Lvm-Dmcrypt |
-| Uefi-Btrfs      | Btrfs            |
-| Uefi-Luks       | Lvm, Btrfs       |
-| Uefi-Raid1-Luks | Lvm, Btrfs       |
-
 ## Logical Volume Manager
 
 Logical Volume Manager (LVM) is a device mapper target that provides logical volume management for the Linux kernel.
 
-### [Lvm-Ext4](/Andromeda/storage/controller/lvm-ext4/)
-{: .no_toc .pt-4}
+LVM storage scenarios includes Ext4 file system for the Root and Home partitions.
+
+### [Lvm](/Andromeda/storage/controller/lvm-ext4/)
+{: .no_toc .d-inline-block}
+
+UEFI-LVM
+{: .label .label-blue .ml-2}
+
+UEFI-LUKS
+{: .label .label-blue}
+
+UEFI-RAID1-LUKS
+{: .label .label-blue}
 
 ```
 +-----------------------------------------------------------+
@@ -38,8 +41,11 @@ Logical Volume Manager (LVM) is a device mapper target that provides logical vol
 +-------------------+-------------------+-------------------+
 ```
 
-### [Lvm-Dmcrypt-Ext4](/Andromeda/storage/controller/lvm-dmcrypt-ext4/)
-{: .no_toc .pt-4}
+### [Lvm-Dmcrypt](/Andromeda/storage/controller/lvm-dmcrypt-ext4/)
+{: .no_toc .d-inline-block}
+
+UEFI-LVM
+{: .label .label-blue .ml-2}
 
 ```
 +-----------------------------------------------------------+
@@ -61,7 +67,13 @@ Logical Volume Manager (LVM) is a device mapper target that provides logical vol
 The file system or filesystem (often abbreviated to fs), controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified.
 
 ### [Ext4](/Andromeda/storage/controller/ext4/)
-{: .no_toc .pt-2}
+{: .no_toc .d-inline-block}
+
+UEFI-EXT4
+{: .label .label-blue .ml-2}
+
+BIOS-GPT-EXT4
+{: .label .label-blue}
 
 ```
 +-------------------+-------------------+-------------------+
@@ -70,7 +82,16 @@ The file system or filesystem (often abbreviated to fs), controls how data is st
 ```
 
 ### [Btrfs](/Andromeda/storage/controller/btrfs/)
-{: .no_toc .pt-4}
+{: .no_toc .d-inline-block}
+
+UEFI-BTRFS
+{: .label .label-blue .ml-2}
+
+UEFI-LUKS
+{: .label .label-blue}
+
+UEFI-RAID1-LUKS
+{: .label .label-blue}
 
 ```
 subvolid=5
