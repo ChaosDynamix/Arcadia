@@ -38,3 +38,32 @@ subvolid=5 (/dev/mapper/btrfs)
 ```
 
 ---
+
+## Create the Swap file
+{: .d-inline-block}
+
+BTRFS
+{: .label .ml-2}
+
+```bash
+$ truncate -s 0 /.swap/swapfile
+$ chattr +C /.swap/swapfile
+$ btrfs property set /.swap/swapfile compression none
+
+$ fallocate -l 2G /.swap/swapfile
+$ chmod 600 /.swap/swapfile
+```
+
+### Format the Swap file
+{: .no_toc .pt-4}
+
+```bash
+$ mkswap /.swap/swapfile
+```
+
+### Activate the Swap file
+{: .no_toc .pt-4}
+
+```bash
+$ swapon /.swap/swapfile
+```
