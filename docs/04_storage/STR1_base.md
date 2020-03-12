@@ -12,7 +12,14 @@ has_toc: false
 
 ---
 
-## [Uefi-Ext4](/Andromeda/storage/base/uefi-ext4/)
+## Uefi storage bases
+
+The encrypted bases scenario includes Luks1 with an encrypted /boot. A key is implemented in the Initramfs avoiding us to enter two passphrases during the boot.
+
+It also include a EFI system partition allowing the Uefi-compliant firmwares to load the boot manager.
+
+### [Uefi-Ext4](/Andromeda/storage/base/uefi-ext4/)
+{: .no_toc .pt-2}
 
 ```
 +--------------+--------------+--------------+--------------+
@@ -22,9 +29,8 @@ has_toc: false
 +--------------+--------------+--------------+--------------+
 ```
 
----
-
-## [Uefi-Lvm](/Andromeda/storage/base/uefi-lvm/)
+### [Uefi-Lvm](/Andromeda/storage/base/uefi-lvm/)
+{: .no_toc .pt-4}
 
 ```
 +----------------------+------------------------------------+
@@ -33,9 +39,8 @@ has_toc: false
 +----------------------+------------------------------------+
 ```
 
----
-
-## [Uefi-Btrfs](/Andromeda/storage/base/uefi-btrfs/)
+### [Uefi-Btrfs](/Andromeda/storage/base/uefi-btrfs/)
+{: .no_toc .pt-4}
 
 ```
 +----------------------+------------------------------------+
@@ -44,11 +49,8 @@ has_toc: false
 +----------------------+------------------------------------+
 ```
 
----
-
-## [Uefi-Luks](/Andromeda/storage/base/uefi-luks/)
-
-This scenario includes Luks1 with an encrypted /boot. A key is implemented in the Initramfs avoiding us to enter two passphrases during the boot.
+### [Uefi-Luks](/Andromeda/storage/base/uefi-luks/)
+{: .no_toc .pt-4}
 
 ```
 +----------------------+------------------------------------+
@@ -58,11 +60,8 @@ This scenario includes Luks1 with an encrypted /boot. A key is implemented in th
 +----------------------+------------------------------------+
 ```
 
----
-
-## [Uefi-Raid1-Luks](/Andromeda/storage/base/uefi-raid1-luks/)
-
-This scenario includes Luks1 with an encrypted /boot. A key is implemented in the Initramfs avoiding us to enter two passphrases during the boot.
+### [Uefi-Raid1-Luks](/Andromeda/storage/base/uefi-raid1-luks/)
+{: .no_toc .pt-4}
 
 ```
 Drive 1                           Drive 2
@@ -74,4 +73,21 @@ Drive 1                           Drive 2
 |            +-----------------+  |            +-----------------+
 | /dev/sda1  | /dev/sda2       |  | /dev/sdb1  | /dev/sdb2       |
 +------------+-----------------+  +------------+-----------------+
+```
+
+---
+
+## BIOS storage bases with GUID partition table
+
+BIOS/GPT storage bases include a BIOS boot partition allowing the boot manager to install on it.
+
+### [Bios-Gpt-Ext4](/Andromeda/storage/base/bios-gpt-ext4/)
+{: .no_toc .pt-2}
+
+```
++--------------+--------------+--------------+--------------+
+| BIOS boot    | Root         | Swap         | Home         |
+| partition    | partition    | partition    | partition    |
+| /dev/sda1    | /dev/sda2    | /dev/sda3    | /dev/sda4    |
++--------------+--------------+--------------+--------------+
 ```
