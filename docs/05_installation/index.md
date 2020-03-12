@@ -8,89 +8,37 @@ has_toc: false
 ---
 
 # Installation
-{: .no_toc}
-
-## Table of contents
-{: .no_toc .text-delta}
-
-1. TOC
-{:toc}
 
 ---
 
-## Install Arch Linux essential packages
+## [Essential packages](/Andromeda/installation/essential-packages/)
 
-| Utilities | packages    |
-| :-------- | :---------- |
-| Lvm       | lvm2        |
-| raid      | mdadm       |
-| btrfs     | btrfs-progs |
-
-### Example
-{: .no_toc .pt-4}
-
-```bash
-$ pacstrap /mnt base base-devel linux linux-firmware vim man-db man-pages
-```
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
 
 ---
 
-## Generate static information about the filesystems
+## [Filesystem informations](/Andromeda/installation/filesystem-informations/)
 
-```bash
-$ genfstab -U /mnt >> /mnt/etc/fstab
-```
-
----
-
-## Enter the system
-
-```bash
-$ arch-chroot /mnt
-```
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
 
 ---
 
-## Create the Swap file
-{: .d-inline-block}
+## [Initramfs](/Andromeda/installation/initramfs/)
 
-BTRFS
-{: .label .ml-2}
-
-```bash
-$ truncate -s 0 /.swap/swapfile
-$ chattr +C /.swap/swapfile
-$ btrfs property set /.swap/swapfile compression none
-
-$ fallocate -l 2G /.swap/swapfile
-$ chmod 600 /.swap/swapfile
-```
-
-### Format the Swap file
-{: .no_toc .pt-4}
-
-```bash
-$ mkswap /.swap/swapfile
-```
-
-### Activate the Swap file
-{: .no_toc .pt-4}
-
-```bash
-$ swapon /.swap/swapfile
-```
-
-### Add the Swap file to the fstab
-{: .no_toc .pt-4}
-
-/etc/fstab
-{: .fs-3 .mb-0}
-
-```bash
-/.swap/swapfile     none      swap      defaults      0 0
-```
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
 
 ---
+
+## [Boot loader](/Andromeda/installation/boot-loader/)
+
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
+
+---
+
 
 ## GUIDES
 {: .no_toc .text-delta}
