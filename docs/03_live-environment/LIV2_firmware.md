@@ -10,8 +10,7 @@ nav_order: 2
 
 ---
 
-### Verify the boot mode
-{: .no_toc .pt-2}
+## Verify the boot mode
 
 ```bash
 $ ls /sys/firmware/efi/efivars
