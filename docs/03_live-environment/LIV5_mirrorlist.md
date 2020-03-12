@@ -10,20 +10,26 @@ nav_order: 5
 
 ---
 
-### Update Arch Linux keyring
-{: .no_toc .pt-2}
+## Update Arch Linux keyring
 
 ```bash
 $ pacman -Sy archlinux-keyring
 ```
 
-### Generate a mirrorlist
+---
+
+## Generate a mirrorlist
+
+### Install reflector package
+{: .no_toc .pt-2}
+
+```bash
+$ pacman -S reflector
+```
+
+### Launch the reflector script with your parameters
 {: .no_toc .pt-4}
 
 ```bash
-# Install reflector package
-$ pacman -S reflector
-
-# Launch the reflector script with your parameters
 $ reflector --country France --age 15 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
 ```
