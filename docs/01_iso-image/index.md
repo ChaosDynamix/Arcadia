@@ -23,16 +23,6 @@ This page cover the Arch Linux ISO image download using two remote system
 
 File integrity can be compromised, usually referred to as the file becoming corrupted. In our case, the ISO image can be corrupted on the remote system or during the download.
 
-### File integrity verification with BitTorrent
-{: .no_toc .pt-4}
-
-With BitTorrent, the file being distributed is divided into segments called pieces. Each piece is protected by a cryptographic hash contained in the torrent descriptor. This ensures that any modification of the piece can be reliably detected, and thus prevents both accidental and malicious modifications of any of the pieces received at other nodes.
-
-### File integrity verification with a Mirror site
-{: .no_toc .pt-4}
-
-With a Mirror site, no integrity verification are done, we need to manually copy the cryptographic hash (checksum) provided by Arch Linux and test it againt the file we just downloaded.
-
 ---
 
 ## [Verification](/Andromeda/iso-image/verification/)
@@ -45,11 +35,6 @@ To verify the authenticity, a classical cryptographic hash function is not enoug
 A collision or clash is a situation that occurs when two distinct pieces of data have the same hash value, checksum, fingerprint, or cryptographic digest.
 
 However, if a message is digitally signed, any change in the message after signature invalidates the signature. Furthermore, there is no efficient way to modify a message and its signature to produce a new message with a valid signature, because this is still considered to be computationally infeasible by most cryptographic hash functions.
-
-### Digital signature
-{: .no_toc .pt-4}
-
-A digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents. A valid digital signature, where the prerequisites are satisfied, gives a recipient very strong reason to believe that the message was created by a known sender (authentication), and that the message was not altered in transit (integrity).
 
 This page cover the authenticity verification of your downloaded ISO image with the signature provided by Arch Linux.
 
