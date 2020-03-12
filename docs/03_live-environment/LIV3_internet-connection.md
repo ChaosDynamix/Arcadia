@@ -10,15 +10,15 @@ nav_order: 3
 
 ---
 
-### Ensure your network interface is listed and enabled
-{: .no_toc .pt-2}
+## Ensure your network interface is listed and enabled
 
 ```bash
 $ ip link
 ```
 
-### Check connectivity
-{: .no_toc .pt-4}
+---
+
+## Check connectivity
 
 ```bash
 $ ping -c 3 archlinux.org
