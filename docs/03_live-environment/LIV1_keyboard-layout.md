@@ -10,8 +10,7 @@ nav_order: 1
 
 ---
 
-### Select a keymap
-{: .no_toc .pt-2}
+## Select a keymap
 
 ```bash
 # List all the keymaps
@@ -21,13 +20,16 @@ $ ls /usr/share/kbd/keymaps/**/*.map.gz | less
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | grep -i search_term
 ```
 
-### Load the keymap
-{: .no_toc .pt-4}
+---
+
+## Load the keymap
 
 ```bash
 # Replace fr-latin9 accordingly
 $ loadkeys fr-latin9
 ```
+
+---
 
 ### GUIDES
 {: .no_toc .text-delta .pt-2}
