@@ -25,15 +25,17 @@ BitTorrent (abbreviated to BT) is a communication protocol for peer-to-peer file
 
 Rather than downloading a file from a single source server, the BitTorrent protocol allows users to join a "swarm" of hosts to upload to/download from each other simultaneously.
 
-### File integrity verification with BitTorrent
-{: .no_toc .pt-4}
-
-With BitTorrent, the file being distributed is divided into segments called pieces. Each piece is protected by a cryptographic hash contained in the torrent descriptor. This ensures that any modification of the piece can be reliably detected, and thus prevents both accidental and malicious modifications of any of the pieces received at other nodes.
-
-### Anonymity
-{: .no_toc .pt-4}
+With BitTorrent, the file being distributed is divided into segments called pieces. Each piece is protected by a cryptographic hash (checksum) contained in the torrent descriptor. This ensures that any modification of the piece can be reliably detected, and thus prevents both accidental and malicious modifications of any of the pieces received at other nodes.
 
 BitTorrent does not, on its own, offer its users anonymity. One can usually see the IP addresses of all peers in a swarm in one's own client or firewall program. This may expose users with insecure systems to attacks.
+
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
+
+1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
+1. [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
 
 ---
 
@@ -43,15 +45,12 @@ Mirror sites or mirrors are replicas of other websites or any network node. The 
 
 Such sites have different URLs than the original site, but host identical or near-identical content. Mirror sites are often located in a different geographic region than the original, or upstream site.
 
-### File integrity verification with a Mirror site
-{: .no_toc .pt-4}
+With a Mirror site using HTTP(s) direct download, no integrity verification are done, we need to manually copy the cryptographic hash (checksum) provided by Arch Linux and test it againt the file we just downloaded.
 
-With a Mirror site, no integrity verification are done, we need to manually copy the cryptographic hash (checksum) provided by Arch Linux and test it againt the file we just downloaded.
-
----
-
-### References
+### REFERENCES
 {: .no_toc .text-delta .pt-4}
 
-1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
 1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
+1. [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
