@@ -21,16 +21,19 @@ This page cover the Arch Linux ISO image download using two remote system
 - BitTorrent
 - Mirror site
 
-File integrity can be compromised, usually referred to as the file becoming corrupted. In our case, the ISO image can be corrupted on the remote system or during the download.
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
+
+1. [Wikipedia - Download](https://en.wikipedia.org/wiki/Download)
+1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+
 
 ---
 
 ## [Verification](/Andromeda/iso-image/verification/)
 
-To verify the authenticity, a classical cryptographic hash function is not enough as they are not designed to be collision resistant. It is computationally trivial for an attacker to cause deliberate hash collisions, meaning that a malicious change in the file is not detected by a hash comparison (integrity verification).
-
-### Collision
-{: .no_toc .pt-4}
+Integrity verification performed in the download section is not enough as it is not designed to be collision resistant. It is computationally trivial for an attacker to cause deliberate hash collisions, meaning that a malicious change in the file is not detected by this verification.
 
 A collision or clash is a situation that occurs when two distinct pieces of data have the same hash value, checksum, fingerprint, or cryptographic digest.
 
@@ -38,16 +41,12 @@ However, if a message is digitally signed, any change in the message after signa
 
 This page cover the authenticity verification of your downloaded ISO image with the signature provided by Arch Linux.
 
----
+### REFERENCES
+{: .no_toc .text-delta .pt-4}
 
-## REFERENCES
-{: .no_toc .text-delta}
-
-1. [Wikipedia - Download](https://en.wikipedia.org/wiki/Download)
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
 1. [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
-1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
 1. [Wikipedia - Collision](https://en.wikipedia.org/wiki/Collision_(computer_science))
 1. [Wikipedia - Collision resistance](https://en.wikipedia.org/wiki/Collision_resistance)
 1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
