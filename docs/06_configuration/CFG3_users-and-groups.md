@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Accounts
-permalink: /configuration/accounts/
+title: Users and groups
+permalink: /configuration/users-and-groups/
 parent: Configuration
 nav_order: 3
 has_toc: false
