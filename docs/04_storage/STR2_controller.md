@@ -16,9 +16,7 @@ has_toc: false
 
 Logical Volume Manager (LVM) is a device mapper target that provides logical volume management for the Linux kernel.
 
-LVM storage scenarios includes Ext4 file system for the Root and Home partitions.
-
-### [Lvm for encrypted foundations](/Andromeda/storage/controller/lvm-ext4/)
+### [Lvm for encrypted foundations](/Andromeda/storage/controller/lvm-encrypted-foundations/)
 {: .no_toc .pt-2}
 
 ```
@@ -32,7 +30,7 @@ LVM storage scenarios includes Ext4 file system for the Root and Home partitions
 +-------------------+-------------------+-------------------+
 ```
 
-### [Lvm for non-encrypted foundations](/Andromeda/storage/controller/lvm-dmcrypt-ext4/)
+### [Lvm for non-encrypted foundations](/Andromeda/storage/controller/lvm-non-encrypted-foundations/)
 {: .no_toc .pt-4}
 
 ```
@@ -56,7 +54,7 @@ Btrfs, an abbreviation for b-tree file system is a file system based on the copy
 
 Btrfs is intended to address the lack of pooling, snapshots, checksums, and integral multi-device spanning in Linux file systems.
 
-### [Btrfs for encrypted foundations](/Andromeda/storage/controller/btrfs/)
+### [Btrfs for encrypted foundations](/Andromeda/storage/controller/btrfs-encrypted-foundations/)
 {: .no_toc .pt-2}
 
 ```
