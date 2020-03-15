@@ -21,14 +21,6 @@ This page cover the Arch Linux ISO image download using two remote system
 - BitTorrent
 - Mirror site
 
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Download](https://en.wikipedia.org/wiki/Download)
-1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
-1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-
-
 ---
 
 ## [Verification](/Andromeda/iso-image/verification/)
@@ -41,7 +33,26 @@ However, if a message is digitally signed, any change in the message after signa
 
 This page cover the authenticity verification of your downloaded ISO image with the signature provided by Arch Linux.
 
-### REFERENCES
+---
+
+## References
+
+### DOWNLOAD
+{: .no_toc .text-delta .pt-2}
+
+1. [Wikipedia - Download](https://en.wikipedia.org/wiki/Download)
+
+### BITTORRENT
+{: .no_toc .text-delta .pt-4}
+
+1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+
+### MIRROR SITE
+{: .no_toc .text-delta .pt-4}
+
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+
+### CRYPTOGRAPHY
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
