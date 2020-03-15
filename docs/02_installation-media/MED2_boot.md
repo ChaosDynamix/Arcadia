@@ -19,11 +19,11 @@ has_toc: false
 
 ---
 
-## Boot your computer on the USB flash drive
+## Using USB flash drive
 
 In order to boot on the USB device, we need to modify the firmware configuration with the firmware setup utility.
 
-If asked (by pressing a key), you can temporarily select and boot on a device. You don't have to follow this procedure if you are in this scenario.
+If asked during the boot (by pressing a key), you can temporarily select and boot on a device. Don't follow this procedure if you are in this scenario.
 
 1. Turn on your computer
 1. When asked, press the key to enter your firmware setup utility
@@ -33,13 +33,11 @@ If asked (by pressing a key), you can temporarily select and boot on a device. Y
 
 ---
 
-### INFORMATIONS
+## References
+
+### FIRMWARE
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
 1. [Wikipedia - BIOS - Configuration](https://en.wikipedia.org/wiki/BIOS#Configuration)
-
-### GUIDES
-{: .no_toc .text-delta .pt-2}
-
 1. [ArchWiki - Installation guide - Boot the live environment](https://wiki.archlinux.org/index.php/Installation_guide#Boot_the_live_environment)
