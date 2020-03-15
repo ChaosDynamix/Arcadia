@@ -11,18 +11,18 @@ has_toc: false
 
 ---
 
-## [Base](/Andromeda/storage/base/)
+## [Foundation](/Andromeda/storage/base/)
 
-The storage base represent the partioning (if it's required), the RAID and encryption (for partition or device) setup.
-
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
+The storage foundation. Due to the large differences between the possibilities, this page contain 3 steps together, partitioning, Raid and encryption. This steps are contained in basic scenarios who have there own purposes.
 
 ---
 
 ## [Controller](/Andromeda/storage/controller/)
 
-The storage controller represent the system responsible for the management of the files. It cover Logical Volume Manager and file system.
+The storage controller represent the system responsible for the management of the files on the base you selected in the previous section. It cover Logical Volume Manager and B-Tree file system.
 
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
+The word "controller" is used as an related words for "Logical Volume Manager" and "B-Tree file system". They provide the same "volume" feature used in all the scenarios but are different.
+
+---
+
+## References
