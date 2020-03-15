@@ -21,11 +21,6 @@ This page cover display driver installation for
 
 - Nvidia
 
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Device driver](https://en.wikipedia.org/wiki/Device_driver)
-
 ---
 
 ## [Server](/Andromeda/display/server/)
@@ -36,9 +31,16 @@ This page cover display driver installation for
 
  - Xorg
 
-### REFERENCES
+---
+
+## References
+
+### DEVICE DRIVER
+{: .no_toc .text-delta .pt-2}
+
+ 1. [Wikipedia - Device driver](https://en.wikipedia.org/wiki/Device_driver)
+
+### DISPLAY SERVER
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Display server](https://en.wikipedia.org/wiki/Display_server)
-
----
