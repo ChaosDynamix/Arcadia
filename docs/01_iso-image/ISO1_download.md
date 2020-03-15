@@ -29,14 +29,6 @@ With BitTorrent, the file being distributed is divided into segments called piec
 
 BitTorrent does not, on its own, offer its users anonymity. One can usually see the IP addresses of all peers in a swarm in one's own client or firewall program. This may expose users with insecure systems to attacks.
 
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
-1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
-1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
-1. [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
-
 ---
 
 ## [Mirror site](/Andromeda/iso-image/download/mirror-site/)
@@ -47,10 +39,23 @@ Such sites have different URLs than the original site, but host identical or nea
 
 With a Mirror site using HTTP(s) direct download, no integrity verification are done, we need to manually copy the cryptographic hash (checksum) provided by Arch Linux and test it againt the file we just downloaded.
 
-### REFERENCES
+---
+
+## References
+
+### BITTORRENT
+{: .no_toc .text-delta .pt-2}
+
+1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+
+### MIRROR SITE
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+
+### CRYPTOGRAPHY
+{: .no_toc .text-delta .pt-4}
+
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
 1. [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
