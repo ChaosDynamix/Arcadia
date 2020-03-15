@@ -16,7 +16,7 @@ has_toc: false
 
 In computer networks, download means to receive data from a remote system. This contrasts with uploading, where data is sent to a remote server.
 
-This page cover the Arch Linux ISO image download using two remote system
+This page cover the Arch Linux ISO image download using two remote systems
 
 - BitTorrent
 - Mirror site
