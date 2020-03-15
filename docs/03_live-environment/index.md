@@ -21,12 +21,6 @@ A keyboard layout is any specific mechanical, visual, or functional arrangement 
 
 This page cover the selection of a functional layout (keymap) corresponding to your keyboard visual layout.
 
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - US keyboard layout image](https://en.wikipedia.org/wiki/File:KB_United_States-NoAltGr.svg)
-1. [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
-
 ---
 
 ## [Firmware](/Andromeda/live-environment/firmware/)
@@ -37,14 +31,6 @@ The two most used computer firmwares are
 
 - BIOS firmware
 - UEFI-compliant firmware
-
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
-1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
-1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
-1. [Wikipedia - EFI system partition](https://en.wikipedia.org/wiki/EFI_system_partition)
 
 ---
 
@@ -58,28 +44,28 @@ The system clock (a.k.a. the software clock) keeps track of: time, time zone, an
 
 The initial value of the system clock is calculated from the hardware clock, dependent on the contents of /etc/adjtime. After boot-up has completed, the system clock runs independently of the hardware clock.
 
-### REFERENCES
+---
+
+## References
+
+### KEYBOARD
+{: .no_toc .text-delta .pt-2}
+
+1. [Wikipedia - US keyboard layout image](https://en.wikipedia.org/wiki/File:KB_United_States-NoAltGr.svg)
+1. [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
+
+### FIRMWARE
+{: .no_toc .text-delta .pt-4}
+
+1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
+1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
+1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+1. [Wikipedia - EFI system partition](https://en.wikipedia.org/wiki/EFI_system_partition)
+
+### TIME
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - System time](https://wiki.archlinux.org/index.php/System_time)
 1. [Wikipedia - System time](https://en.wikipedia.org/wiki/System_time)
 1. [Wikipedia - Real time clock](https://en.wikipedia.org/wiki/Real-time_clock)
 1. [Wikipedia - Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol)
-
----
-
-## [Mirrorlist](/Andromeda/live-environment/mirrorlist/)
-
-When downloading packages, pacman uses the mirrors in the order they are listed in /etc/pacman.d/mirrorlist. The order servers appear in the list sets their priority.
-
-It is not optimal to only rank mirrors based on speed since the fastest servers might be out-of-sync. Instead, make a list of mirrors sorted by their speed, then remove those from the list that are out of sync according to their status.
-
-It is recommended to repeat this process before every system upgrade to keep the list of mirrors up-to-date.
-
-### REFERENCES
-{: .no_toc .text-delta .pt-4}
-
-1. [ArchWiki - Mirrors - Sorting mirrors](https://wiki.archlinux.org/index.php/Mirrors#Sorting_mirrors)
-1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-
----
