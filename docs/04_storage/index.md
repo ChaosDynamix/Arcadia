@@ -11,7 +11,7 @@ has_toc: false
 
 ---
 
-## [Foundation](/Andromeda/storage/base/)
+## [Foundation](/Andromeda/storage/foundation/)
 
 The storage foundation. Due to the large differences between the possibilities, this page contain 3 steps together, partitioning, Raid and encryption. This steps are contained in basic scenarios who have there own purposes.
 
