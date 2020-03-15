@@ -5,7 +5,7 @@ permalink: /display/driver/nvidia/
 nav_exclude: true
 ---
 
-[Return to Desktop environment display driver](/Andromeda/display/driver/){: .btn .btn-purple }
+[Return to display driver](/Andromeda/display/driver/){: .btn .btn-purple }
 
 # Display driver for Nvidia
 {: .no_toc}
@@ -23,12 +23,6 @@ nav_exclude: true
 ```bash
 $ lspci -k | grep -A 2 -E "(VGA|3D)"
 ```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-1. [ArchWiki - Nvidia - Installation](https://wiki.archlinux.org/index.php/NVIDIA#Installation)
-1. [Man pages - lspci](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/pciutils/lspci.8.en)
 
 ---
 
@@ -54,12 +48,6 @@ $ pacman -S vulkan-icd-loader lib32-vulkan-icd-loader
 ```bash
 $ pacman -S nvidia lib32-nvidia-utils
 ```
-
-### References
-{: .no_toc .text-delta .pt-4}
-
-1. [ArchWiki - Vulkan - Installation](https://wiki.archlinux.org/index.php/Vulkan#Installation)
-1. [ArchWiki - Nvidia - Installation](https://wiki.archlinux.org/index.php/NVIDIA#Installation)
 
 ---
 
@@ -113,7 +101,26 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-### References
+---
+
+## References
+
+### NVIDIA
+{: .no_toc .text-delta .pt-2}
+
+1. [ArchWiki - Nvidia - Installation](https://wiki.archlinux.org/index.php/NVIDIA#Installation)
+
+### VULKAN
+{: .no_toc .text-delta .pt-4}
+
+1. [ArchWiki - Vulkan - Installation](https://wiki.archlinux.org/index.php/Vulkan#Installation)
+
+### KERNEL MODE SETTING
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Nvidia - DRM Kernel mode setting](https://wiki.archlinux.org/index.php/NVIDIA#DRM_kernel_mode_setting)
+
+### MANUALS
+{: .no_toc .text-delta .pt-4}
+
+1. [Man pages - lspci](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/pciutils/lspci.8.en)
