@@ -26,7 +26,7 @@ nav_exclude: true
 
 ---
 
-## Download the checksum
+## Download the Arch Linux checksum
 {: .d-inline-block}
 
 Warning
@@ -89,17 +89,25 @@ The success of one of these commands confirms that your ISO image was properly d
 
 ---
 
-### INFORMATIONS
-{: .no_toc .text-delta .pt-4}
+## References
+
+### MIRROR SITE
+{: .no_toc .text-delta .pt-2}
 
 1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+
+### CHECKSUM
+{: .no_toc .text-delta .pt-4}
+
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
+1. [Wikipedia - Checksum](https://en.wikipedia.org/wiki/Checksum)
 1. [Wikipedia - Comparison of file verification software](https://en.wikipedia.org/wiki/Comparison_of_file_verification_software)
 1. [Wikipedia - MD5](https://en.wikipedia.org/wiki/MD5)
 1. [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-2}
+{: .no_toc .text-delta .pt-4}
 
 1. [Man page - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
 1. [Man page - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
