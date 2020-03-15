@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Filesystem informations
-permalink: /installation/filesystem-informations/
+title: Filesystem table
+permalink: /installation/filesystem-table/
 parent: Installation
-nav_order: 2
+nav_order: 3
 has_toc: false
 ---
 
-# Installation of the filesystem informations
+# Installation filesystem table
 {: .no_toc}
 
 ## Table of contents
