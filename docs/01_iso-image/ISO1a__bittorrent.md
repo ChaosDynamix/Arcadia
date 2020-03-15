@@ -58,20 +58,22 @@ $ transmission-remote --exit
 
 ---
 
-### INFORMATIONS
-{: .no_toc .text-delta .pt-4}
+## References
+
+### BITTORRENT
+{: .no_toc .text-delta .pt-2}
 
 1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
 1. [Wikipedia - Comparison of BitTorrent clients](https://en.wikipedia.org/wiki/Comparison_of_BitTorrent_clients)
+
+### TRANSMISSION
+{: .no_toc .text-delta .pt-4}
+
 1. [Wikipedia - Transmission](https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client))
-
-### GUIDES
-{: .no_toc .text-delta .pt-2}
-
 1. [ArchWiki - Transmission](https://wiki.archlinux.org/index.php/Transmission)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-2}
+{: .no_toc .text-delta .pt-4}
 
 1. [Man page - transmission-daemon](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/transmission-cli/transmission-daemon.1.en)
 1. [Man page - transmission-remote](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/transmission-cli/transmission-remote.1.en)
