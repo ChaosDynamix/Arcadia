@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Initramfs
-permalink: /installation/initramfs/
+title: Initial ramdisk
+permalink: /installation/initial-ramdisk/
 parent: Installation
-nav_order: 3
+nav_order: 4
 has_toc: false
 ---
 
-# Installation of the initramfs
+# Installation initial ramdisk
 {: .no_toc}
 
 ## Table of contents
