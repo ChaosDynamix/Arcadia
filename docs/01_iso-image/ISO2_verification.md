@@ -40,7 +40,7 @@ This part assume that you are in possession of this two files in the same folder
 | archlinux-year.day.month-x86_64.iso     | ISO Image      |
 | archlinux-year.day.month-x86_64.iso.sig | Signature file |
 
-### With GnuPG
+### Using GnuPG
 {: .no_toc .pt-4}
 
 Replace the name of the file accordingly
@@ -51,21 +51,23 @@ $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x8
 
 ---
 
-### INFORMATIONS
-{: .no_toc .text-delta .pt-4}
+## References
+
+### DIGITAL SIGNATURE
+{: .no_toc .text-delta .pt-2}
 
 1. [Wikipedia - Public key cryptography](https://en.wikipedia.org/wiki/Public-key_cryptography)
 1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
 1. [Wikipedia - RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem))
+
+### GNUPG
+{: .no_toc .text-delta .pt-4}
+
 1. [Wikipedia - GNU Privacy Guard](https://en.wikipedia.org/wiki/GNU_Privacy_Guard)
-
-### GUIDES
-{: .no_toc .text-delta .pt-2}
-
 1. [ArchWiki - Installation guide - Verify signature](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
 1. [ArchWiki - GnuPG - Verify a signature](https://wiki.archlinux.org/index.php/GnuPG#Verify_a_signature)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-2}
+{: .no_toc .text-delta .pt-4}
 
 1. [Man page - gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)
