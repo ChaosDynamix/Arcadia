@@ -18,17 +18,8 @@ Logical Volume Manager (LVM) is a device mapper target that provides logical vol
 
 LVM storage scenarios includes Ext4 file system for the Root and Home partitions.
 
-### [Lvm](/Andromeda/storage/controller/lvm-ext4/)
-{: .no_toc .d-inline-block}
-
-UEFI-LVM
-{: .label .label-blue .ml-2}
-
-UEFI-LUKS
-{: .label .label-blue}
-
-UEFI-RAID1-LUKS
-{: .label .label-blue}
+### [Lvm for encrypted foundations](/Andromeda/storage/controller/lvm-ext4/)
+{: .no_toc .pt-2}
 
 ```
 +-----------------------------------------------------------+
@@ -41,11 +32,8 @@ UEFI-RAID1-LUKS
 +-------------------+-------------------+-------------------+
 ```
 
-### [Lvm-Dmcrypt](/Andromeda/storage/controller/lvm-dmcrypt-ext4/)
-{: .no_toc .d-inline-block}
-
-UEFI-LVM
-{: .label .label-blue .ml-2}
+### [Lvm for non-encrypted foundations](/Andromeda/storage/controller/lvm-dmcrypt-ext4/)
+{: .no_toc .pt-4}
 
 ```
 +-----------------------------------------------------------+
@@ -62,36 +50,14 @@ UEFI-LVM
 
 ---
 
-## File system
+## B-tree filesystem
 
-The file system or filesystem (often abbreviated to fs), controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified.
+Btrfs, an abbreviation for b-tree file system is a file system based on the copy-on-write (COW) principle, initially designed at Oracle Corporation for use in Linux.
 
-### [Ext4](/Andromeda/storage/controller/ext4/)
-{: .no_toc .d-inline-block}
+Btrfs is intended to address the lack of pooling, snapshots, checksums, and integral multi-device spanning in Linux file systems.
 
-UEFI-EXT4
-{: .label .label-blue .ml-2}
-
-BIOS-GPT-EXT4
-{: .label .label-blue}
-
-```
-+-------------------+-------------------+-------------------+
-| Root partition    | Swap partition    | Home partition    |
-+-------------------+-------------------+-------------------+
-```
-
-### [Btrfs](/Andromeda/storage/controller/btrfs/)
-{: .no_toc .d-inline-block}
-
-UEFI-BTRFS
-{: .label .label-blue .ml-2}
-
-UEFI-LUKS
-{: .label .label-blue}
-
-UEFI-RAID1-LUKS
-{: .label .label-blue}
+### [Btrfs for encrypted foundations](/Andromeda/storage/controller/btrfs/)
+{: .no_toc .pt-2}
 
 ```
 subvolid=5
@@ -108,5 +74,3 @@ subvolid=5
    ├── @snapshots (mounted as /.snapshots)
    └── @swap (mounted as /.swap)
 ```
-
----
