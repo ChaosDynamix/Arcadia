@@ -3,11 +3,11 @@ layout: default
 title: Boot loader
 permalink: /installation/boot-loader/
 parent: Installation
-nav_order: 4
+nav_order: 5
 has_toc: false
 ---
 
-# Installation of the boot loader
+# Installation boot loader
 {: .no_toc}
 
 ## Table of contents
