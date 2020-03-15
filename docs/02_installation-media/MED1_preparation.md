@@ -22,8 +22,10 @@ This page cover the creation of a Live USB with the help of a USB flash drive an
 
 ---
 
-## REFERENCES
-{: .no_toc .text-delta}
+## References
+
+### USB flash drive
+{: .no_toc .text-delta .pt-2}
 
 1. [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
 1. [Wikipedia - Live USB](https://en.wikipedia.org/wiki/Live_USB)
