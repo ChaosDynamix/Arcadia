@@ -3,11 +3,11 @@ layout: default
 title: Essential packages
 permalink: /installation/essential-packages/
 parent: Installation
-nav_order: 1
+nav_order: 2
 has_toc: false
 ---
 
-# Installation of the Essential packages
+# Installation essential packages
 {: .no_toc}
 
 ## Table of contents
