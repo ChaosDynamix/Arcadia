@@ -18,7 +18,7 @@ Logical Volume Manager (LVM) is a device mapper target that provides logical vol
 
 ---
 
-## [B-tree filesystem](/Andromeda/storage/foundation/btrfs/)
+## [B-tree filesystem](/Andromeda/storage/controller/btrfs/)
 
 Btrfs, an abbreviation for b-tree file system is a file system based on the copy-on-write (COW) principle, initially designed at Oracle Corporation for use in Linux.
 

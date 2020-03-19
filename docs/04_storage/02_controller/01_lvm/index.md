@@ -18,7 +18,7 @@ nav_order: 1
 
 ---
 
-### [Lvm on Luks](/Andromeda/storage/controller/)
+### [Lvm on Luks](/Andromeda/storage/controller/lvm/lvm-luks/)
 {: .no_toc .pt-2}
 
 ```
@@ -32,7 +32,7 @@ nav_order: 1
 +-------------------+-------------------+-------------------+
 ```
 
-### [Luks on Lvm](/Andromeda/storage/controller/)
+### [Luks on Lvm](/Andromeda/storage/controller/lvm/luks-lvm/)
 {: .no_toc .pt-4}
 
 ```

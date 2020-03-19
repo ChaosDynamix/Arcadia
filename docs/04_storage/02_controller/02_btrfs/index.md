@@ -18,7 +18,7 @@ nav_order: 2
 
 ---
 
-### [Btrfs on Luks](/Andromeda/storage/controller/)
+### [Btrfs on Luks](/Andromeda/storage/controller/btrfs/btrfs-luks/)
 {: .no_toc .pt-2}
 
 ```
