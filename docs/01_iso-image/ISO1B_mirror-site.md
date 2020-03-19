@@ -2,10 +2,10 @@
 layout: default
 title: Mirror site
 permalink: /iso-image/download/mirror-site/
-nav_exclude: true
+grand_parent: ISO image
+parent: Download
+nav_order: 2
 ---
-
-[Return to ISO image download](/Andromeda/iso-image/download/){: .btn .btn-purple }
 
 # ISO image download with a Mirror site
 {: .no_toc}
@@ -18,10 +18,18 @@ nav_exclude: true
 
 ---
 
+## Identify the mirror sites for your location
+
+1. Open your browser and go to the [Arch Linux Pacman Mirrorlist Generator](https://www.archlinux.org/mirrorlist/)
+1. Filter the mirrors site with your country, HTTPS protocol and a mirror status
+1. Generate the list
+
+---
+
 ## Download the Arch Linux ISO image
 
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, click on a mirror server (close to your location)
+1. Under the HTTP Direct Downloads section, select a mirror site of your generated list (HTTPS)
 1. Download the Arch Linux ISO image `archlinux-year.day.month-x86_64.iso`
 
 ---
