@@ -8,6 +8,10 @@ has_toc: false
 ---
 
 # ISO image
+{: .mb-4}
+
+An ISO image is a disk image of an optical disc. In other words, it is an archive file that contains everything that would be written to an optical disc, sector by sector, including the optical disc file system.
+{: .fs-5}
 
 ---
 
@@ -37,22 +41,20 @@ This page cover the authenticity verification of your downloaded ISO image with 
 
 ## References
 
-### DOWNLOAD
+### ISO IMAGE
 {: .no_toc .text-delta .pt-2}
 
+1. [Wikipedia - ISO image](https://en.wikipedia.org/wiki/ISO_image)
+
+
+### DOWNLOAD
+{: .no_toc .text-delta .pt-4}
+
 1. [Wikipedia - Download](https://en.wikipedia.org/wiki/Download)
-
-### BITTORRENT
-{: .no_toc .text-delta .pt-4}
-
 1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
-
-### MIRROR SITE
-{: .no_toc .text-delta .pt-4}
-
 1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
 
-### CRYPTOGRAPHY
+### VERIFICATION
 {: .no_toc .text-delta .pt-4}
 
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
