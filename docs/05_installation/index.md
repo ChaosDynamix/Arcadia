@@ -11,7 +11,7 @@ has_toc: false
 
 ---
 
-## [Mirrorlist](/Andromeda/live-environment/mirrorlist/)
+## [Mirrorlist](/Andromeda/installation/mirrorlist/)
 
 When downloading packages, pacman uses the mirrors in the order they are listed in /etc/pacman.d/mirrorlist. The order servers appear in the list sets their priority.
 
@@ -30,20 +30,6 @@ It is recommended to repeat this process before every system upgrade to keep the
 The fstab (or file systems table) file is a system configuration file on Unix and Unix-like computer systems. In Linux it is part of the util-linux package.
 
 The fstab file typically lists all available disk partitions and other types of file systems and data sources that are not necessarily disk-based, and indicates how they are to be initialized or otherwise integrated into the larger file system structure.
-
----
-
-## [Initial ramdisk](/Andromeda/installation/initial-ramdisk/)
-
-In computing (specifically as regards Linux computing), initrd (initial ramdisk) is a scheme for loading a temporary root file system into memory, which may be used as part of the Linux startup process.
-
-`initrd` and `initramfs` refer to two different methods of achieving this. Both are commonly used to make preparations before the real root file system can be mounted.
-
----
-
-## [Boot loader](/Andromeda/installation/boot-loader/)
-
-Second-stage boot loaders, such as GNU GRUB, rEFInd, BOOTMGR, Syslinux, NTLDR or BootX, are not themselves operating systems, but are able to load an operating system properly and transfer execution to it; the operating system subsequently initializes itself and may load extra device drivers. The second-stage boot loader does not need drivers for its own operation, but may instead use generic storage access methods provided by system firmware such as the BIOS or Open Firmware, though typically with restricted hardware functionality and lower performance.
 
 ---
 
