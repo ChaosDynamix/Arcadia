@@ -9,6 +9,10 @@ has_toc: false
 ---
 
 # ISO image download
+{: .mb-4}
+
+The Arch Linux ISO download step can be achieve using one of the two solutions below.
+{: .fs-5}
 
 ---
 
