@@ -2,12 +2,12 @@
 layout: default
 title: Nvidia
 permalink: /display/driver/nvidia/
-nav_exclude: true
+grand_parent: Display
+parent: Driver
+nav_order: 1
 ---
 
-[Return to display driver](/Andromeda/display/driver/){: .btn .btn-purple }
-
-# Display driver for Nvidia
+# Display driver with Nvidia
 {: .no_toc}
 
 ## Table of contents
