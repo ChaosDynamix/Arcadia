@@ -12,7 +12,7 @@ has_toc: false
 
 ---
 
-## [USB flash drive](/Andromeda/installation-media/preparation/usb-flash-drive/)
+## [USB flash device](/Andromeda/installation-media/preparation/usb-flash-device)
 
 A USB flash drive is a data storage device that includes flash memory with an integrated USB interface. It is typically removable, rewritable and much smaller than an optical disc.
 
@@ -24,7 +24,7 @@ This page cover the creation of a Live USB with the help of a USB flash drive an
 
 ## References
 
-### USB flash drive
+### USB flash device
 {: .no_toc .text-delta .pt-2}
 
 1. [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
