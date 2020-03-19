@@ -1,11 +1,11 @@
 ---
 layout: default
 title: Xorg
-permalink: display/server/xorg/
-nav_exclude: true
+permalink: /display/server/xorg/
+grand_parent: Display
+parent: Server
+nav_order: 1
 ---
-
-[Return to display server](/Andromeda/display/server/){: .btn .btn-purple }
 
 # Display server with Xorg
 {: .no_toc}
