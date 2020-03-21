@@ -8,19 +8,13 @@ nav_order: 1
 ---
 
 # Storage Controller with Lvm
-{: .no_toc}
-
-## Table of contents
-{: .no_toc .text-delta}
-
-1. TOC
-{:toc}
 
 ---
 
-### [Lvm on Luks](/Andromeda/storage/controller/lvm/lvm-luks/)
-{: .no_toc .pt-2}
+## Lvm for encrypted foundation
 
+### [Lvm on Luks](/Andromeda/storage/controller/lvm/lvm-luks/)
+{: .pt-2}
 ```
 +-----------------------------------------------------------+
 |                      Physical volume                      |
@@ -32,9 +26,12 @@ nav_order: 1
 +-------------------+-------------------+-------------------+
 ```
 
-### [Luks on Lvm](/Andromeda/storage/controller/lvm/luks-lvm/)
-{: .no_toc .pt-4}
+---
 
+## Lvm for non-encrypted foundation
+
+### [Luks on Lvm](/Andromeda/storage/controller/lvm/luks-lvm/)
+{: .pt-2}
 ```
 +-----------------------------------------------------------+
 |                      Physical volume                      |
