@@ -5,6 +5,8 @@ permalink: /iso-image/download/bittorrent/transmission-cli/
 nav_exclude: true
 ---
 
+[ISO image download with BitTorrent](/Andromeda/iso-image/download/bittorrent/){: .btn .btn-purple }
+
 # ISO image download with BitTorrent (Transmission-cli)
 {: .no_toc}
 
