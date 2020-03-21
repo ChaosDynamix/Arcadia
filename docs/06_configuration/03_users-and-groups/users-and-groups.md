@@ -18,22 +18,17 @@ has_toc: false
 
 ---
 
-## Accounts
-
-### About passwords stength
-{: .no_toc .pt-2}
+## Change the root password
 
 Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
-
-### Change the root password
-{: .no_toc .pt-4}
 
 ```bash
 $ passwd
 ```
 
-### Create the user and his password
-{: .no_toc .pt-4}
+---
+
+## Create the user and his password
 
 ```bash
 # Account
@@ -43,8 +38,9 @@ $ useradd -m -G wheel -s /bin/bash username
 $ passwd username
 ```
 
-### Allow the wheel group to use sudo
-{: .no_toc .pt-4}
+---
+
+## Allow the wheel group to use sudo
 
 visudo
 {: .fs-3 .mb-0}
@@ -54,8 +50,9 @@ visudo
 %wheel ALL=(ALL) ALL
 ```
 
-### Enforcing strong passwords using pam_cracklib
-{: .no_toc .pt-4}
+---
+
+## Enforcing strong passwords using pam_cracklib
 
 /etc/pam.d/passwd
 {: .fs-3 .mb-0}
@@ -66,16 +63,27 @@ password required pam_cracklib.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-
 
 ---
 
-### GUIDES
+## References
+{: .no_toc}
+
+### USERS AND GROUPS
+{: .no_toc .text-delta .pt-2}
+
+1. [ArchWiki - Users and groups - User management](https://wiki.archlinux.org/index.php/Users_and_groups#User_management)
+
+### PASSWORD
 {: .no_toc .text-delta .pt-4}
 
 1. [ArchWiki - Security - Passwords](https://wiki.archlinux.org/index.php/Security#Passwords)
 1. [ArchWiki - Installation guide - Root password](https://wiki.archlinux.org/index.php/Installation_guide#Root_password)
-1. [ArchWiki - Users and groups - User management](https://wiki.archlinux.org/index.php/Users_and_groups#User_management)
+
+### SUDO
+{: .no_toc .text-delta .pt-4}
+
 1. [ArchWiki - Sudo](https://wiki.archlinux.org/index.php/Sudo)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-2}
+{: .no_toc .text-delta .pt-4}
 
 1. [Man pages - useradd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/shadow/useradd.8.en)
 1. [Man pages - passwd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/shadow/passwd.1.en)
