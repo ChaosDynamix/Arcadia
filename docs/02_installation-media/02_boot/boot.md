@@ -34,6 +34,7 @@ If asked during the boot (by pressing a key), you can temporarily select and boo
 ---
 
 ## References
+{: .no_toc}
 
 ### FIRMWARE
 {: .no_toc .text-delta .pt-4}
