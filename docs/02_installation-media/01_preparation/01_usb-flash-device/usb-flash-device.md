@@ -38,3 +38,4 @@ dd copies a file (from standard input to standard output, by default) with a cha
 ---
 
 ## References
+{: .no_toc}
