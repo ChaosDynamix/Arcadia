@@ -58,7 +58,9 @@ FILES=(/etc/luks-keys/cryptvolume1 /etc/luks-keys/cryptvolume2)
 HOOKS=(base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard fsck)
 ```
 
-### Create crypttab.initramfs
+---
+
+## Create crypttab.initramfs
 
 /etc/crypttab.initramfs
 {: .fs-3 .pt-2}
@@ -71,7 +73,9 @@ cryptvolume1    /dev/sda2     /etc/luks-keys/cryptvolume1
 cryptvolume2    /dev/sdb1     /etc/luks-keys/cryptvolume2
 ```
 
-### Generate images
+---
+
+## Generate images
 
 mkinitcpio need to create /etc/crypttab from the /etc/crypttab.initramfs we just created
 
