@@ -7,21 +7,20 @@ parent: Foundation
 nav_order: 1
 ---
 
-# Storage Foundation for single device
-{: .no_toc}
-
-## Table of contents
-{: .no_toc .text-delta}
-
-1. TOC
-{:toc}
+# Storage foundation for single device
 
 ---
 
-## Universal foundations
+## Encrypted foundation
 
 ### [Luks on partition](/Andromeda/storage/foundation/single-device/luks-partition/)
-{: .no_toc .pt-2}
+{: .d-inline-block}
+
+LVM
+{: .label .label-blue .ml-2}
+
+BTRFS
+{: .label .label-blue}
 
 Luks on single partition is the simplest way to achieve a full system encryption. You first create a partition and after the encrypted container. You can then select Logical Volume Manager or B-tree filesystem for create the volumes required by Arch Linux.
 
@@ -35,7 +34,13 @@ Device
 ```
 
 ### [Luks on device](/Andromeda/storage/foundation/single-device/luks-device/)
-{: .no_toc .pt-4}
+{: .pt-4 .d-inline-block}
+
+LVM
+{: .label .label-blue .ml-2}
+
+BTRFS
+{: .label .label-blue}
 
 Different to Luks on single partition, Luks on device dont require a partition table, all the device is encrypted. The informations of the device (header) are moved to a USB flash drive which also contain the informations needed for your computer to boot on the system (EFI / Boot sector). This solution is recommended for users who want high protection over the data.
 
