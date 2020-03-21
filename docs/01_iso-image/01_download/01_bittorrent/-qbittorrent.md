@@ -5,6 +5,8 @@ permalink: /iso-image/download/bittorrent/qbittorrent/
 nav_exclude: true
 ---
 
+[ISO image download with BitTorrent](/Andromeda/iso-image/download/bittorrent/){: .btn .btn-purple }
+
 # ISO image download with BitTorrent (qBitTorrent)
 {: .no_toc}
 
