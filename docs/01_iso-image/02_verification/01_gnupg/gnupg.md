@@ -50,6 +50,7 @@ $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x8
 ---
 
 ## References
+{: .no_toc}
 
 ### DIGITAL SIGNATURE
 {: .no_toc .text-delta .pt-2}
