@@ -6,9 +6,9 @@ nav_exclude: true
 ---
 
 <ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/iso-image/">ISO image</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/iso-image/download/">Download</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/iso-image/download/bittorrent/">BitTorrent</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/iso-image/">ISO image</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/iso-image/download/">Download</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/iso-image/download/bittorrent/">BitTorrent</a></li>
     <li class="breadcrumb-nav-list-item"><span>qBittorrent</span></li>
 </ol>
 
