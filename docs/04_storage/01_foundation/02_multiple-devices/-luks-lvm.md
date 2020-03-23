@@ -5,54 +5,21 @@ permalink: /storage/foundation/multiple-devices/luks-lvm/
 nav_exclude: true
 ---
 
-[Foundations for multiple devices](/Andromeda/storage/foundation/multiple-devices/){: .btn .btn-purple }
+<ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/storage/">Storage</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/storage/foundation/">Foundation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/storage/foundation/multiple-devices/">Multiple devices</a></li>
+    <li class="breadcrumb-nav-list-item"><span>Luks on Lvm</span></li>
+</ol>
 
-# Storage foundation on multiple devices with luks on Lvm
-{: .no_toc}
+# [Multiple devices](/Andromeda/storage/foundation/multiple-devices/) / Luks on Lvm
+{: .mt-0 .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
 
 1. TOC
 {:toc}
-
----
-
-## Secure erase the devices
-{: .d-inline-block}
-
-IRREVERSIBLE DATA ERASE
-{: .label .label-red .mx-2}
-
-Before setting up encryption on the mass storage devices, consider securely wiping them first. This consists of overwriting the entire devices with a stream of zero bytes or random bytes, and is done for one or both of the following reasons
-
-- Prevent recovery of previously stored data
-- Prevent disclosure of usage patterns on the encrypted device
-
-### Open dm-crypt containers with Plain mode
-{: .no_toc .pt-2}
-
-```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device1
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device2
-```
-
-### Secure erase the devices with dd
-{: .no_toc .pt-4}
-
-
-```bash
-$ dd if=/dev/zero of=/dev/mapper/erased_device1 status=progress
-$ dd if=/dev/zero of=/dev/mapper/erased_device2 status=progress
-```
-
-### Close the containers
-{: .no_toc .pt-4}
-
-```bash
-$ cryptsetup close erased_device1
-$ cryptsetup close erased_device2
-```
 
 ---
 
