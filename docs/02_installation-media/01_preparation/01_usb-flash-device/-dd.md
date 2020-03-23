@@ -5,10 +5,15 @@ permalink: /installation-media/preparation/usb-flash-device/dd/
 nav_exclude: true
 ---
 
-[Installation media preparation for USB flash device](/Andromeda/installation-media/preparation/usb-flash-device/){: .btn .btn-purple }
+<ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/installation-media/">Installation media</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/installation-media/preparation/">Preparation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/installation-media/preparation/usb-flash-device/">USB flash device</a></li>
+    <li class="breadcrumb-nav-list-item"><span>dd</span></li>
+</ol>
 
-# Installation media preparation for a USB flash device (dd)
-{: .no_toc}
+# [USB flash device](/Andromeda/installation-media/preparation/usb-flash-device/) / dd
+{: .mt-0 .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
