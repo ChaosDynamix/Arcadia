@@ -5,10 +5,15 @@ permalink: /iso-image/download/bittorrent/qbittorrent/
 nav_exclude: true
 ---
 
-[ISO image download with BitTorrent](/Andromeda/iso-image/download/bittorrent/){: .btn .btn-purple }
+<ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/iso-image/">ISO image</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/iso-image/download/">Download</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/iso-image/download/bittorrent/">BitTorrent</a></li>
+    <li class="breadcrumb-nav-list-item"><span>qBittorrent</span></li>
+</ol>
 
-# ISO image download with BitTorrent (qBitTorrent)
-{: .no_toc}
+# [BitTorrent](/Andromeda/iso-image/download/bittorrent/) / qBitTorrent
+{: .mt-0 .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
