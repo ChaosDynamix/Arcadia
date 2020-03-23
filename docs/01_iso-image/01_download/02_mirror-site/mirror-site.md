@@ -98,6 +98,7 @@ The success of one of these commands confirms that your ISO image was properly d
 ---
 
 ## References
+{: .no_toc}
 
 ### MIRROR SITE
 {: .no_toc .text-delta .pt-2}
