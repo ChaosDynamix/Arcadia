@@ -6,9 +6,9 @@ nav_exclude: true
 ---
 
 <ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/storage/">Storage</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/storage/foundation/">Foundation</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/storage/foundation/single-device/">Single device</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/storage/">Storage</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/storage/foundation/">Foundation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/storage/foundation/single-device/">Single device</a></li>
     <li class="breadcrumb-nav-list-item"><span>Luks on device</span></li>
 </ol>
 
