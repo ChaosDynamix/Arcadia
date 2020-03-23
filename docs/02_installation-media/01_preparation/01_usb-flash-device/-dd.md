@@ -6,9 +6,9 @@ nav_exclude: true
 ---
 
 <ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/installation-media/">Installation media</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/installation-media/preparation/">Preparation</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="http://localhost:4000/Andromeda/installation-media/preparation/usb-flash-device/">USB flash device</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/installation-media/">Installation media</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/installation-media/preparation/">Preparation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/installation-media/preparation/usb-flash-device/">USB flash device</a></li>
     <li class="breadcrumb-nav-list-item"><span>dd</span></li>
 </ol>
 
