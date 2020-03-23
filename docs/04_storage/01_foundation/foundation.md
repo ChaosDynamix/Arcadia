@@ -14,7 +14,6 @@ has_toc: false
 
 ## [Single device](/Andromeda/storage/foundation/single-device/)
 
-
 ---
 
 ## [Multiple devices](/Andromeda/storage/foundation/multiple-devices/)
