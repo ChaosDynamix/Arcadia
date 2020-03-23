@@ -13,3 +13,7 @@ has_toc: false
 ---
 
 ## [Grub](/Andromeda/configuration/boot-loader/grub/)
+
+---
+
+## References
