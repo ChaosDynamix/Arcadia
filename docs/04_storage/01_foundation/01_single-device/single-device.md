@@ -13,7 +13,7 @@ nav_order: 1
 
 ## Encrypted foundation
 
-### [Luks on partition](/Andromeda/storage/foundation/single-device/luks-partition/)
+### [Luks on single partition](/Andromeda/storage/foundation/single-device/luks-single-partition/)
 {: .d-inline-block}
 
 LVM
