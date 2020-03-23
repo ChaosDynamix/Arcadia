@@ -49,6 +49,7 @@ Transmission is free software licensed under the terms of the GNU General Public
 ---
 
 ## References
+{: .no_toc}
 
 ### BITTORRENT
 {: .no_toc .text-delta .pt-2}
