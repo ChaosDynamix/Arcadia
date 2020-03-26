@@ -7,7 +7,7 @@ parent: Controller
 nav_order: 1
 ---
 
-# Storage Controller with Lvm
+# Controller / Lvm
 {: .no_toc}
 
 ## Table of contents
