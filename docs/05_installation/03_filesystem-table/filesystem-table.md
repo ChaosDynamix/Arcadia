@@ -7,7 +7,7 @@ nav_order: 3
 has_toc: false
 ---
 
-# Installation filesystem table
+# Installation / Filesystem table
 {: .no_toc}
 
 ## Table of contents
