@@ -6,7 +6,7 @@ parent: Live environment
 nav_order: 1
 ---
 
-# Live environment keyboard layout
+# Live environment / Keyboard layout
 {: .no_toc}
 
 ## Table of contents
@@ -19,15 +19,17 @@ nav_order: 1
 
 ## Select a keymap
 
-#### LIST ALL THE KEYMAPS
-{: .no_toc .pt-2}
+Choose one of the two commands
+
+### LIST ALL THE KEYMAPS
+{: .no_toc .text-delta}
 
 ```bash
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | less
 ```
 
-#### SEARCH SPECIFIC KEYMAP
-{: .no_toc .pt-4}
+### SEARCH SPECIFIC KEYMAP
+{: .no_toc .text-delta .mt-5}
 
 ```bash
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | grep -i search_term
