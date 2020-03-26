@@ -6,7 +6,7 @@ parent: Live environment
 nav_order: 3
 ---
 
-# Live environment internet connection
+# Live environment / Internet connection
 {: .no_toc}
 
 ## Table of contents
