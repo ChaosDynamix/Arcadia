@@ -8,6 +8,10 @@ has_toc: false
 ---
 
 # Storage
+{: .mb-4}
+
+This part cover the setup of the storage prior to the installation.
+{: .fs-5}
 
 ---
 
