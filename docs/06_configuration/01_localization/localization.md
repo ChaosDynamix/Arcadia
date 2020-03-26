@@ -4,10 +4,9 @@ title: Localization
 permalink: /configuration/localization/
 parent: Configuration
 nav_order: 1
-has_toc: false
 ---
 
-# Configuration of the localization
+# Configuration / Localization
 {: .no_toc}
 
 ## Table of contents
