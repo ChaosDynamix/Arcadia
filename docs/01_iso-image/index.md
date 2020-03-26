@@ -10,7 +10,7 @@ has_toc: false
 # ISO image
 {: .mb-4}
 
-An ISO image is a disk image of an optical disc. In other words, it is an archive file that contains everything that would be written to an optical disc, sector by sector, including the optical disc file system.
+This part cover the download and verification of the Arch Linux ISO image.
 {: .fs-5}
 
 ---
@@ -18,12 +18,16 @@ An ISO image is a disk image of an optical disc. In other words, it is an archiv
 
 ## [Download](/Andromeda/iso-image/download/)
 
-In computer networks, download means to receive data from a remote system. This contrasts with uploading, where data is sent to a remote server.
+Download means to receive data from a remote system, typically a server such as a web server, an FTP server, an email server, or other similar systems.
 
-This page cover the Arch Linux ISO image download using two remote systems
+Arch Linux ISO image can be downloaded with multiple remote systems, this guide cover two of them
 
 - BitTorrent
 - Mirror site
+
+Make sure that the system you are running is trusted, updated and work properly in order to reduce the propability of a corrupted downloaded file. The size of the ISO image is approximately 651.0 MB.
+
+Remember that the guide only cover Linux.
 
 ---
 
@@ -35,27 +39,25 @@ A collision or clash is a situation that occurs when two distinct pieces of data
 
 However, if a message is digitally signed, any change in the message after signature invalidates the signature. Furthermore, there is no efficient way to modify a message and its signature to produce a new message with a valid signature, because this is still considered to be computationally infeasible by most cryptographic hash functions.
 
-This page cover the authenticity verification of your downloaded ISO image with the signature provided by Arch Linux.
-
 ---
 
 ## References
 
 ### ISO IMAGE
-{: .no_toc .text-delta .pt-2}
+{: .text-delta}
 
 1. [Wikipedia - ISO image](https://en.wikipedia.org/wiki/ISO_image)
 
 
 ### DOWNLOAD
-{: .no_toc .text-delta .pt-4}
+{: .text-delta .mt-5}
 
 1. [Wikipedia - Download](https://en.wikipedia.org/wiki/Download)
 1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
 1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
 
-### VERIFICATION
-{: .no_toc .text-delta .pt-4}
+### CRYPTOGRAPHY
+{: .text-delta .mt-5}
 
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
