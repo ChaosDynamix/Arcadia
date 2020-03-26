@@ -1,19 +1,14 @@
 ---
 layout: default
-title: Luks on Lvm
-permalink: /storage/foundation/multiple-devices/luks-lvm/
-nav_exclude: true
+title: Luks-Lvm
+permalink: /storage/foundation/luks-lvm/
+grand_parent: Storage
+parent: Foundation
+nav_order: 5
 ---
 
-<ol class="breadcrumb-nav-list" style="padding-left:0; position:relative; top:-17px;">
-    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/storage/">Storage</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/storage/foundation/">Foundation</a></li>
-    <li class="breadcrumb-nav-list-item"><a href="https://chaosdynamix.github.io/Andromeda/storage/foundation/multiple-devices/">Multiple devices</a></li>
-    <li class="breadcrumb-nav-list-item"><span>Luks on Lvm</span></li>
-</ol>
-
-# [Multiple devices](/Andromeda/storage/foundation/multiple-devices/) / Luks on Lvm
-{: .mt-0 .no_toc}
+# Multiple devices / Luks on Lvm
+{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
