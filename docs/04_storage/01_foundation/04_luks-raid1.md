@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Luks on Raid1
-permalink: /storage/foundation/multiple-devices/luks-raid1/
-nav_exclude: true
+title: Luks-Raid1
+permalink: /storage/foundation/luks-raid1/
+grand_parent: Storage
+parent: Foundation
+nav_order: 4
 ---
 
-[Foundations for multiple devices](/Andromeda/storage/foundation/multiple-devices/){: .btn .btn-purple }
-
-# Storage foundation on multiple devices with luks on Raid1
+# Multiple devices / Luks on Raid1
 {: .no_toc}
 
 ## Table of contents
@@ -18,40 +18,37 @@ nav_exclude: true
 
 ---
 
-## Secure erase the devices
+## Secure erase the device
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
 {: .label .label-red .mx-2}
 
-Before setting up encryption on the mass storage devices, consider securely wiping them first. This consists of overwriting the entire devices with a stream of zero bytes or random bytes, and is done for one or both of the following reasons
+Before setting up encryption on the mass storage device, consider securely wiping it first. This consists of overwriting the entire device with a stream of zero bytes or random bytes, and is done for one or both of the following reasons
 
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### Open dm-crypt containers with Plain mode
+### Open a dm-crypt container with Plain mode
 {: .no_toc .pt-2}
 
 ```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device1
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device2
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device
 ```
 
-### Secure erase the devices with dd
+### Secure erase the device with dd
 {: .no_toc .pt-4}
 
 
 ```bash
-$ dd if=/dev/zero of=/dev/mapper/erased_device1 status=progress
-$ dd if=/dev/zero of=/dev/mapper/erased_device2 status=progress
+$ dd if=/dev/zero of=/dev/mapper/erased_device status=progress
 ```
 
-### Close the containers
+### Close the container
 {: .no_toc .pt-4}
 
 ```bash
-$ cryptsetup close erased_device1
-$ cryptsetup close erased_device2
+$ cryptsetup close erased_device
 ```
 
 ---
