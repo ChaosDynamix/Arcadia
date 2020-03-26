@@ -6,7 +6,7 @@ parent: Live environment
 nav_order: 4
 ---
 
-# Live environment system clock
+# Live environment / System clock
 {: .no_toc}
 
 ## Table of contents
