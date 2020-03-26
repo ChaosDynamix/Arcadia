@@ -7,14 +7,16 @@ parent: Controller
 nav_order: 2
 ---
 
-# Storage Controller with Btrfs
+# Controller / Btrfs
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+1. TOC
+{:toc}
 
 ---
-
-## Btrfs for encrypted foundation
-
-### [Btrfs on Luks](/Andromeda/storage/controller/btrfs/btrfs-luks/)
-{: .pt-2}
 
 ```
 subvolid=5
