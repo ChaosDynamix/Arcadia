@@ -7,7 +7,7 @@ nav_order: 2
 has_toc: false
 ---
 
-# Installation essential packages
+# Installation / Essential packages
 {: .no_toc}
 
 ## Table of contents
