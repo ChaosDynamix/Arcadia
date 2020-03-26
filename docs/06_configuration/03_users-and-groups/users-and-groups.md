@@ -4,10 +4,9 @@ title: Users and groups
 permalink: /configuration/users-and-groups/
 parent: Configuration
 nav_order: 3
-has_toc: false
 ---
 
-# Configuration of the accounts
+# Configuration / Users and groups
 {: .no_toc}
 
 ## Table of contents
@@ -30,6 +29,12 @@ $ passwd
 
 ## Create the user and his password
 
+| Argument       | Description                                                       |
+| :------------- | :---------------------------------------------------------------- |
+| -m             | Create the user's home directory if it does not exist             |
+| -G             | A list of supplementary groups which the user is also a member of |
+| -s             | The name of the user's login shell                                |
+
 ```bash
 # Account
 $ useradd -m -G wheel -s /bin/bash username
@@ -42,7 +47,7 @@ $ passwd username
 
 ## Allow the wheel group to use sudo
 
-visudo
+EDITOR=vim visudo
 {: .fs-3 .mb-0}
 
 ```bash
