@@ -8,7 +8,7 @@ has_children: true
 has_toc: false
 ---
 
-# Storage controller
+# Storage / Controller
 
 ---
 
