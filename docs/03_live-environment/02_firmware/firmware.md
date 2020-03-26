@@ -6,7 +6,7 @@ parent: Live environment
 nav_order: 2
 ---
 
-# Live environment firmware
+# Live environment / Firmware
 {: .no_toc}
 
 ## Table of contents
@@ -22,6 +22,12 @@ nav_order: 2
 ```bash
 $ ls /sys/firmware/efi/efivars
 ```
+
+| Firmware           | Result |
+| :----------------- | :----- |
+| UEFI               | Yes    |
+| UEFI with CSM mode | No     |
+| BIOS               | No     |
 
 ---
 
