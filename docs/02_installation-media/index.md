@@ -8,24 +8,29 @@ has_toc: false
 ---
 
 # Installation media
+{: .mb-4}
+
+This part cover the preparation of the installation media used to perform the Arch Linux installation.
+{: .fs-5}
 
 ---
 
 ## [Preparation](/Andromeda/installation-media/preparation/)
 
-The preparation of the installation media allow you to boot the Arch Linux ISO image on your computer in order to install Arch Linux on your computer.
+The preparation of the installation media can be achieve with two supports
 
-This page cover the preparation of the following media
+- USB flash device
+- Compact disc
 
-- USB flash drive
+This support is flashed with the Arch Linux ISO image containing a full operating system that can be booted.
+
+The result will be a installation media that can be used for installing Arch Linux, system maintenance or for recovery purposes, and that, because of the nature of SquashFS, will discard all changes once the computer shuts down.
 
 ---
 
-## [Boot](/Andromeda/installation-media/boot/)
+## [Boot](/Andromeda/installation-media/booting/)
 
-Now that you have a installation media properly prepared, you have to boot your computer on it.
-
-This page cover the configuration of your computer in order to boot on your installation media.
+In order to boot the installation media you just created, we need to configure the firmware setup utility to change the boot order of the computer.
 
 ---
 
