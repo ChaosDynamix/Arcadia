@@ -1,14 +1,12 @@
 ---
 layout: default
-title: Boot
-permalink: /installation-media/boot/
+title: Booting
+permalink: /installation-media/booting/
 parent: Installation media
 nav_order: 2
-has_children: true
-has_toc: false
 ---
 
-# Installation media boot
+# Installation media / Boot
 {: .no_toc}
 
 ## Table of contents
