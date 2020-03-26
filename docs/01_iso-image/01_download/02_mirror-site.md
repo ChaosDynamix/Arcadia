@@ -4,10 +4,10 @@ title: Mirror site
 permalink: /iso-image/download/mirror-site/
 grand_parent: ISO image
 parent: Download
-nav_order: 2
+nav_order: 1
 ---
 
-# ISO image download with a Mirror site
+# Mirror site
 {: .no_toc}
 
 ## Table of contents
@@ -52,42 +52,28 @@ Checksum must be downloaded from the Arch Linux download page. The checksum coul
 
 Replace the checksum and the filename accordingly
 
-#### MD5
-{: .no_toc .pt-2}
+archlinux-checksum.txt
+{: .fs-3 .mb-0}
 
 ```bash
-# archlinux-checksum.txt
-00000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
-```
-
-#### SHA-1
-{: .no_toc .pt-2}
-
-```bash
-# archlinux-checksum.txt
-0000000000000000000000000000000000000000 archlinux-year.month.day-x86_64.iso
+$ echo "00000000000000000000000000000000 archlinux-year.month.day-x86_64.iso" > archlinux-checksum.txt
 ```
 
 ---
 
 ## Verify the integrity of the ISO image
 
-This part assume that you are in possession of this two files in the same folder.
+Make sure that the ISO image and the checksum file are in the same folder.
 
-| File                                    | Description |
-| :-------------------------------------- | :---------- |
-| archlinux-year.day.month-x86_64.iso     | ISO Image   |
-| archlinux-checksum.txt                  | Checksum    |
-
-#### MD5
-{: .no_toc .pt-2}
+### MD5
+{: .no_toc .text-delta}
 
 ```bash
 $ md5sum -c archlinux-checksum.txt
 ```
 
-#### SHA-1
-{: .no_toc .pt-2}
+### SHA-1
+{: .no_toc .text-delta}
 
 ```bash
 $ sha1sum -c archlinux-checksum.txt
@@ -100,13 +86,8 @@ The success of one of these commands confirms that your ISO image was properly d
 ## References
 {: .no_toc}
 
-### MIRROR SITE
-{: .no_toc .text-delta .pt-2}
-
-1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-
-### CHECKSUM
-{: .no_toc .text-delta .pt-4}
+### CRYPTOGRAPHY
+{: .no_toc .text-delta}
 
 1. [Wikipedia - Cryptographic hash function](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
 1. [Wikipedia - File verification](https://en.wikipedia.org/wiki/File_verification)
@@ -116,7 +97,8 @@ The success of one of these commands confirms that your ISO image was properly d
 1. [Wikipedia - SHA-1](https://en.wikipedia.org/wiki/SHA-1)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .mt-5}
 
-1. [Man page - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
-1. [Man page - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
+1. [Arch manual page - Echo](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/echo.1.en)
+1. [Arch manual page - md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
+1. [Arch manual page - sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
