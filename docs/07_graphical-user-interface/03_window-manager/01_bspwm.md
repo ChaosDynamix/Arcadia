@@ -18,7 +18,7 @@ nav_order: 1
 
 ---
 
-## Installation
+## Install the packages
 
 ```bash
 $ pacman -S bspwm sxhkd
@@ -26,7 +26,7 @@ $ pacman -S bspwm sxhkd
 
 ---
 
-## Configuration
+## Create the configuration files
 
 ### Create configuration directories
 
@@ -40,6 +40,35 @@ $ mkdir ~/.config/sxhkd/
 ```bash
 $ cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
 $ cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+```
+
+---
+
+## Load the keyboard layout at start
+
+### List the keyboard available configurations
+
+Select the correct model, layout, variants, and option for your keyboard.
+
+```bash
+localectl list-x11-keymap-models
+localectl list-x11-keymap-layouts
+localectl list-x11-keymap-variants [layout]
+localectl list-x11-keymap-options
+```
+
+### Edit the Bspwm configuration
+
+If you have a non-QWERTY keyboard or a non-standard layout configuration, you should provide a COUNT of 1 to the -m option or -1 to the `sxhkd` command.
+
+~/.config/bspwm/bspwmrc
+{: .fs-3}
+
+#### EXAMPLE
+
+```bash
+setxkbmap -model pc104 -layout fr -variant latin9 &
+sxhkd -m 1 &
 ```
 
 ---
