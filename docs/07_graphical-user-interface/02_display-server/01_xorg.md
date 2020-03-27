@@ -26,23 +26,6 @@ nav_order: 1
 $ pacman -S xorg-server
 ```
 
-### Edit the keyboard configuration for Xorg
-
-Select the correct model, layout, variants, and option for your keyboard and use localectl to set the keyboard layout.
-
-```bash
-localectl list-x11-keymap-models
-localectl list-x11-keymap-layouts
-localectl list-x11-keymap-variants [layout]
-localectl list-x11-keymap-options
-```
-
-#### EXAMPLE
-
-```bash
-localectl --no-convert set-x11-keymap fr pc104 latin9
-```
-
 ---
 
 ## Xorg-xinit
