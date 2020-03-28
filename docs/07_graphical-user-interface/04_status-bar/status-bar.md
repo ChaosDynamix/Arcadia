@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Panel
-permalink: /graphical-user-interface/panel/
+title: Status bar
+permalink: /graphical-user-interface/status-bar/
 parent: Graphical user interface
 nav_order: 4
 has_children: true
 has_toc: false
 ---
 
-# Graphical user interface / Panel
+# Graphical user interface / Status bar
 {: .no_toc}
 
 ## Table of contents
