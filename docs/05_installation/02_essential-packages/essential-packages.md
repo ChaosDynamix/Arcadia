@@ -30,5 +30,5 @@ has_toc: false
 {: .no_toc .pt-4}
 
 ```bash
-$ pacstrap /mnt base base-devel linux linux-firmware vim man-db man-pages
+$ pacstrap /mnt base linux linux-firmware vim man-db man-pages
 ```
