@@ -67,7 +67,10 @@ If you have a non-QWERTY keyboard or a non-standard layout configuration, you sh
 #### EXAMPLE
 
 ```bash
+# Load the correct keyboard layout
 setxkbmap -model pc104 -layout fr -variant latin9 &
+
+# Execute the Hotkey daemon
 sxhkd -m 1 &
 ```
 
@@ -86,7 +89,7 @@ exec bspwm
 
 ---
 
-## Autostart Xorg at login
+## Autostart Bspwm (Xorg) at login
 
 ### Edit the configuration of your shell
 
