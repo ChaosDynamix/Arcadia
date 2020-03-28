@@ -18,23 +18,17 @@ nav_order: 1
 
 ---
 
-## Xorg-server
-
-### Install the package
+## Install the packages
 
 ```bash
-$ pacman -S xorg-server
+$ pacman -S xorg-{server,xinit,xrandr}
 ```
 
 ---
 
-## Xorg-xinit
+## Prepare the Xinit configuration file
 
-### Installation
-
-```bash
-$ pacman -S xorg-xinit
-```
+The xinit program allows a user to manually start an Xorg display server. The `startx` script is a front-end for `xinit`. It is typically used to start window managers or desktop environments.
 
 ### Copy the example file to your home directory
 
@@ -44,7 +38,7 @@ $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
 
 ### Edit the configuration file
 
-Delete the lines below.
+At the end of the file, delete the lines below.
 
 ~/.xinitrc
 {: .fs-3 .mb-0}
@@ -59,8 +53,13 @@ exec xterm -geometry 80x66+0+0 -name login
 
 ---
 
-## Xorg-randr
+## Prepare the Xresources file
 
+Xresources is a user-level configuration dotfile, typically located at `~/.Xresources`. It can be used to set X resources, which are configuration parameters for X client applications.
+
+```bash
+$ touch ~/.Xresources
+```
 
 ---
 
