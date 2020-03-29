@@ -29,34 +29,46 @@ Before setting up encryption on the mass storage device, consider securely wipin
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### Open a dm-crypt container with Plain mode
-{: .no_toc .pt-2}
+### Create the temporary encrypted containers
+{: .no_toc}
 
 ```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped1
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped2
 ```
 
-### Secure erase the device with dd
-{: .no_toc .pt-4}
+### Wipe the containers with zeros
+{: .no_toc .mt-6}
 
 
 ```bash
-$ dd if=/dev/zero of=/dev/mapper/erased_device status=progress
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped1 status=progress
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped2 status=progress
 ```
 
-### Close the container
-{: .no_toc .pt-4}
+### Close the temporary containers
+{: .no_toc .mt-6}
 
 ```bash
-$ cryptsetup close erased_device
+$ cryptsetup close to_be_wiped1
+$ cryptsetup close to_be_wiped2
 ```
 
 ---
 
 ## Partition the devices
 
+If you have more than 2 devices, just clone one of the device with the command `sgdisk -R=/dev/sdc /dev/sdb` and make sure to create new GUID for each of them with `sgdisk -G /dev/sdc`.
+
+The first command create the partition table and the partitions on the devices (with the same GUID). The second command create a new partition GUID for the second device in order to identify each device properly.
+
 ### UEFI / GPT
-{: .no_toc .pt-2}
+{: .no_toc .text-delta .mt-6}
+
+```bash
+$ sgdisk -o -n=1:0:+260M -n=2:0:-100M -t=1:ef00 -t=2:fd00 -R=/dev/sdb /dev/sda
+$ sgdisk -G /dev/sdb
+```
 
 | Device | Partition | Partition type       | Size            |
 | :----- | :-------- | :------------------- | :-------------- |
@@ -65,19 +77,13 @@ $ cryptsetup close erased_device
 | 2      | /dev/sdb1 | EFI system partition | 260M            |
 | 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
 
-#### SGDISK SCRIPT
-{: .no_toc}
+### BIOS / GPT
+{: .no_toc .text-delta .mt-8}
 
 ```bash
-# Create a new partition table, the partitions and clone the setup to the second drive
-$ sgdisk -o -n=1:0:+260M -n=2:0:-100M -t=1:ef00 -t=2:fd00 -R=/dev/sdb /dev/sda
-
-# Create a new partition GUID(s) for the second drive
+$ sgdisk -o -n=1:0:+1M -n=2:0:-100M -t=1:ef02 -t=2:fd00 -R=/dev/sdb /dev/sda
 $ sgdisk -G /dev/sdb
 ```
-
-### BIOS / GPT
-{: .no_toc .pt-4}
 
 | Device | Partition | Partition type       | Size            |
 | :----- | :-------- | :------------------- | :-------------- |
@@ -86,26 +92,23 @@ $ sgdisk -G /dev/sdb
 | 2      | /dev/sdb1 | BIOS boot partition  | 1M              |
 | 2      | /dev/sdb2 | Linux RAID partition | 100%FREE - 100M |
 
-#### SGDISK SCRIPT
-{: .no_toc}
-
-```bash
-# Create a new partition table, the partitions and clone the setup to the second drive
-$ sgdisk -o -n=1:0:+1M -n=2:0:-100M -t=1:ef02 -t=2:fd00 -R=/dev/sdb /dev/sda
-
-# Create a new partition GUID(s) for the second drive
-$ sgdisk -G /dev/sdb
-```
-
 ---
 
 ## Create the RAID array
 
-```bash
-# Create a RAID1 array
-$ mdadm --create --level=1 --metadata=1.2 --raid-devices=2 /dev/md/array /dev/sda2 /dev/sdb2
+Redundant Array of Independent Disks (RAID) is a storage technology that combines multiple disk drive components (typically disk drives or partitions thereof) into a logical unit. Depending on the RAID implementation, this logical unit can be a file system or an additional transparent layer that can hold several partitions.
 
-# Check the synchronization of the array
+### Create a RAID1 array with the devices
+{: .no_toc}
+
+```bash
+$ mdadm --create --level=1 --metadata=1.2 --raid-devices=2 /dev/md/array /dev/sda2 /dev/sdb2
+```
+
+### Check the synchronization of the array
+{: .no_toc .mt-6}
+
+```bash
 $ watch /proc/mdstat
 ```
 
@@ -113,18 +116,20 @@ $ watch /proc/mdstat
 
 ## Encrypt the RAID array
 
-### Create the LUKS1 containers
-{: .no_toc .pt-2}
+GRUB does not support LUKS2 headers to unlock encrypted `/boot` partition so you need to specify `--type luks1` on encrypted device that GRUB need to access.
+
+### Create the LUKS1 container
+{: .no_toc}
 
 ```bash
 $ cryptsetup --type luks1 luksFormat /dev/md/array
 ```
 
-### Open the containers
-{: .no_toc .pt-4}
+### Open the container
+{: .no_toc .mt-6}
 
 ```bash
-$ cryptsetup open /dev/md/array cryptvolume
+$ cryptsetup open /dev/md/array container
 ```
 
 ---
@@ -133,17 +138,17 @@ $ cryptsetup open /dev/md/array cryptvolume
 {: .no_toc}
 
 ### SECURE ERASE
-{: .no_toc .text-delta .pt-2}
+{: .no_toc .text-delta}
 
 1. [ArchWiki - Dm-crypt - Drive preparation - Secure erasure of the hard disk drive](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)
 
 ### GPT FDISK
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .mt-6}
 
 1. [ArchWiki - GPT fdisk](https://wiki.archlinux.org/index.php/GPT_fdisk)
 
 ### MANUALS
-{: .no_toc .text-delta .pt-4}
+{: .no_toc .text-delta .mt-6}
 
 1. [Man page - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
 1. [Man page - dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
