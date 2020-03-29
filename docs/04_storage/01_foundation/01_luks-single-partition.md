@@ -29,26 +29,26 @@ Before setting up encryption on the mass storage device, consider securely wipin
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### Open a dm-crypt container with Plain mode
+### Create the temporary encrypted container
 {: .no_toc .pt-2}
 
 ```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped
 ```
 
-### Secure erase the device with dd
+### Wipe the container with zeros
 {: .no_toc .pt-4}
 
 
 ```bash
-$ dd if=/dev/zero of=/dev/mapper/erased_device status=progress
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
 ```
 
-### Close the container
+### Close the temporary container
 {: .no_toc .pt-4}
 
 ```bash
-$ cryptsetup close erased_device
+$ cryptsetup close to_be_wiped
 ```
 
 ---
@@ -56,38 +56,35 @@ $ cryptsetup close erased_device
 ## Partition the device
 
 ### UEFI / GPT
-{: .no_toc .pt-2}
+{: .no_toc .text-delta}
+
+```bash
+$ sgdisk -o -n=1:0:+260M -n=2:0:0 -t=1:ef00 -t=2:8309 /dev/sda
+```
 
 | Partition | Partition type       | Size     |
 | :-------- | :------------------- | :------- |
 | /dev/sda1 | EFI system partition | 260M     |
 | /dev/sda2 | Linux LUKS partition | 100%FREE |
 
-#### SGDISK SCRIPT
-{: .no_toc}
-
-```bash
-$ sgdisk -o -n=1:0:+260M -n=2:0:0 -t=1:ef00 -t=2:8309 /dev/sda
-```
 
 ### BIOS / GPT
-{: .no_toc .pt-4}
+{: .no_toc .text-delta .mt-6}
+
+```bash
+$ sgdisk -o -n=1:0:+1M -n=2:0:0 -t=1:ef02 -t=2:8309 /dev/sda
+```
 
 | Partition | Partition type       | Size     |
 | :-------- | :------------------- | :------- |
 | /dev/sda1 | BIOS boot partition  | 1M       |
 | /dev/sda2 | Linux LUKS partition | 100%FREE |
 
-#### SGDISK SCRIPT
-{: .no_toc}
-
-```bash
-$ sgdisk -o -n=1:0:+1M -n=2:0:0 -t=1:ef02 -t=2:8309 /dev/sda
-```
-
 ---
 
 ## Encrypt the partition
+
+GRUB does not support LUKS2 headers to unlock encrypted `/boot` partition so you need to specify `--type luks1` on encrypted device that GRUB need to access.
 
 ### Create the LUKS1 container
 {: .no_toc .pt-2}
