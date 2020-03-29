@@ -29,34 +29,46 @@ Before setting up encryption on the mass storage device, consider securely wipin
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### Open a dm-crypt container with Plain mode
-{: .no_toc .pt-2}
+### Create the temporary encrypted containers
+{: .no_toc}
 
 ```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda erased_device
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped1
+$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped2
 ```
 
-### Secure erase the device with dd
-{: .no_toc .pt-4}
+### Wipe the containers with zeros
+{: .no_toc .mt-6}
 
 
 ```bash
-$ dd if=/dev/zero of=/dev/mapper/erased_device status=progress
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped1 status=progress
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped2 status=progress
 ```
 
-### Close the container
-{: .no_toc .pt-4}
+### Close the temporary containers
+{: .no_toc .mt-6}
 
 ```bash
-$ cryptsetup close erased_device
+$ cryptsetup close to_be_wiped1
+$ cryptsetup close to_be_wiped2
 ```
 
 ---
 
 ## Partition the devices
 
+If you have more than 2 devices, just clone the second device with the command `sgdisk -R=/dev/sdc /dev/sdb` and make sure to create new GUID for each of them with `sgdisk -G /dev/sdc`.
+
+Be aware that each device must be unlock during boot time which is not the easiest solution if you have a lot of devices. Workarounds can be found to unlock multiple devices with the same passphrase but there are not covered in this guide.
+
 ### UEFI / GPT
-{: .no_toc .pt-2}
+{: .no_toc .text-delta}
+
+```bash
+$ sgdisk -o -n=1:0:+260M -n=2:0:0 -t=1:ef00 -t=2:8309 /dev/sda
+$ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+```
 
 | Device | Partition | Partition type       | Size     |
 | :----- | :-------- | :------------------- | :------- |
@@ -64,16 +76,13 @@ $ cryptsetup close erased_device
 | 1      | /dev/sda2 | Linux LUKS partition | 100%FREE |
 | 2      | /dev/sdb1 | Linux LUKS partition | 100%FREE |
 
-#### SGDISK SCRIPT
-{: .no_toc}
+### BIOS / GPT
+{: .no_toc .text-delta .mt-6}
 
 ```bash
-$ sgdisk -o -n=1:0:+260M -n=2:0:0 -t=1:ef00 -t=2:8309 /dev/sda
+$ sgdisk -o -n=1:0:+1M -n=2:0:0 -t=1:ef02 -t=2:8309 /dev/sda
 $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
 ```
-
-### BIOS / GPT
-{: .no_toc .pt-4}
 
 | Device | Partition | Partition type       | Size     |
 | :----- | :-------- | :------------------- | :------- |
@@ -81,17 +90,11 @@ $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
 | 1      | /dev/sda2 | Linux LUKS partition | 100%FREE |
 | 2      | /dev/sdb1 | Linux LUKS partition | 100%FREE |
 
-#### SGDISK SCRIPT
-{: .no_toc}
-
-```bash
-$ sgdisk -o -n=1:0:+1M -n=2:0:0 -t=1:ef02 -t=2:8309 /dev/sda
-$ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
-```
-
 ---
 
 ## Encrypt the partitions
+
+GRUB does not support LUKS2 headers to unlock encrypted `/boot` partition so you need to specify `--type luks1` on encrypted device that GRUB need to access.
 
 ### Create the LUKS1 containers
 {: .no_toc .pt-2}
