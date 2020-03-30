@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Luks-Lvm
-permalink: /storage/foundation/luks-lvm/
+title: Lvm-multiple-partitions
+permalink: /storage/foundation/lvm-multiple-partitions/
 grand_parent: Storage
 parent: Foundation
 nav_order: 5
 ---
 
-# Multiple devices / Luks on Lvm
+# Multiple devices / Lvm on multiple partitions
 {: .no_toc}
 
 ## Table of contents
