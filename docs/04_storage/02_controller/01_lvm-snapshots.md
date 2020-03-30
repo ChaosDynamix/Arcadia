@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Lvm
-permalink: /storage/controller/lvm/
+title: Lvm-snapshots
+permalink: /storage/controller/lvm-snapshots/
 grand_parent: Storage
 parent: Controller
 nav_order: 1
 ---
 
-# Controller / Lvm
+# Controller / Lvm with snapshots
 {: .no_toc}
 
-## Table of contents
+## Scenarios
 {: .no_toc .text-delta}
 
 1. TOC
@@ -18,41 +18,21 @@ nav_order: 1
 
 ---
 
-## Create the physical volume
-
-Unix block device node, usable for storage by LVM. Examples: a hard disk, an MBR or GPT partition, a loopback file, a device mapper device (e.g. dm-crypt). It hosts an LVM header.
+## Create the Physical and Group volumes
 
 #### SINGLE CONTAINER
-{: .no_toc .pt-2}
+{: .no_toc .mt-4}
 
 ```bash
 $ pvcreate /dev/mapper/container
-```
-
-#### MULTIPLE CONTAINERS
-{: .no_toc .pt-4}
-
-```bash
-$ pvcreate /dev/mapper/container1 /dev/mapper/container2
-```
-
----
-
-## Create the volume group
-
-Group of PVs that serves as a container for LVs. PEs are allocated from a VG for a LV.
-
-#### SINGLE CONTAINER
-{: .no_toc .pt-2}
-
-```bash
 $ vgcreate grp /dev/mapper/container
 ```
 
 #### MULTIPLE CONTAINERS
-{: .no_toc .pt-4}
+{: .no_toc .mt-4}
 
 ```bash
+$ pvcreate /dev/mapper/container1 /dev/mapper/container2
 $ vgcreate grp /dev/mapper/container1 /dev/mapper/container2
 ```
 
@@ -60,11 +40,10 @@ $ vgcreate grp /dev/mapper/container1 /dev/mapper/container2
 
 ## Create the Logical volumes
 
-"Virtual/logical partition" that resides in a VG and is composed of PEs. LVs are Unix block devices analogous to physical partitions, e.g. they can be directly formatted with a file system.
-
 ```bash
-$ lvcreate -L 8G grp -n swap
 $ lvcreate -L 20G grp -n root
+$ lvcreate -L 8G grp -n swap
+$ lvcreate -L 10G grp -n var
 $ lvcreate -l 100%FREE grp -n home
 ```
 
@@ -74,19 +53,9 @@ $ lvcreate -l 100%FREE grp -n home
 
 ```bash
 $ mkfs.ext4 -L ROOT /dev/grp/root
-$ mkfs.ext4 -L HOME /dev/grp/home
-```
-
----
-
-## Setup the Swap volume
-
-```bash
-# Format the Swap partition
 $ mkswap -L SWAP /dev/grp/swap
-
-# Activate the Swap partition
-$ swapon /dev/grp/swap
+$ mkfs.ext4 -L VAR /dev/grp/var
+$ mkfs.ext4 -L HOME /dev/grp/home
 ```
 
 ---
@@ -94,15 +63,11 @@ $ swapon /dev/grp/swap
 ## Mount the volumes
 
 ```bash
-# Mount the root partition
 $ mount /dev/grp/root /mnt
-
-# Create directories
-$ mkdir /mnt/home
-
-# Mount the home partition
+$ swapon /dev/grp/swap
+$ mkdir /mnt/{var,home}
+$ mount /dev/grp/var /mnt/var
 $ mount /dev/grp/home /mnt/home
-
 ```
 
 ---
@@ -113,34 +78,10 @@ $ mount /dev/grp/home /mnt/home
 UEFI
 {: .label .label-blue .ml-2}
 
-### Single EFI partition
-{: .no_toc .mt-0}
-
 ```bash
-# Format the EFI partition
 $ mkfs.fat -F32 -n EFI /dev/sdXY
-
-# Create the boot directory
 $ mkdir /mnt/efi
-
-# Mount the EFI partition
 $ mount /dev/sdXY /mnt/efi
-```
-
-### Multiple EFI partitions
-{: .no_toc .pt-4}
-
-```bash
-# Format the EFI partition
-$ mkfs.fat -F32 -n EFI /dev/sda1
-$ mkfs.fat -F32 -n EFI /dev/sdb1
-
-# Create the EFI directories
-$ mkdir /mnt/{efi1,efi2}
-
-# Mount the EFI partitions
-$ mount /dev/sda1 /mnt/efi1
-$ mount /dev/sdb1 /mnt/efi2
 ```
 
 ---
