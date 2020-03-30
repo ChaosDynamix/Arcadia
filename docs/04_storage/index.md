@@ -23,7 +23,7 @@ The storage foundation. Due to the large differences between the possibilities, 
 
 ## [Controller](/Andromeda/storage/controller/)
 
-The storage controller represent the system responsible for the management of the files on the base you selected in the previous section. It cover Logical Volume Manager and B-Tree file system.
+The storage controller represent the system responsible for the management of the files on the foundation you select in the previous section. It cover Logical Volume Manager and B-Tree file system.
 
 The word "controller" is used as an related words for "Logical Volume Manager" and "B-Tree file system". They provide the same "volume" feature used in all the scenarios but are different.
 
