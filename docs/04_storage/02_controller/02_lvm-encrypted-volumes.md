@@ -20,6 +20,12 @@ nav_order: 2
 
 ## Setup the Logical volume Manager
 
+| Volume | Size recommendation                                                                                               |
+| :----- | :---------------------------------------------------------------------------------------------------------------- |
+| ROOT   | 23–32 GiB                                                                                                         |
+| SWAP   | [VOID Linux recommendations](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions) |
+| HOME   | 100%FREE                                                                                                          |
+
 ### Create the Physical Volume
 {: .no_toc}
 
@@ -38,8 +44,8 @@ $ vgcreate grp /dev/sda2 /dev/sdb1
 {: .no_toc .mt-6}
 
 ```bash
-$ lvcreate -L 8G grp -n cryptswap
-$ lvcreate -L 20G grp -n cryptroot
+$ lvcreate -L SIZE grp -n cryptswap
+$ lvcreate -L SIZE grp -n cryptroot
 $ lvcreate -l 100%FREE grp -n crypthome
 ```
 
