@@ -17,10 +17,23 @@ nav_order: 1
 
 ---
 
-## Create symbolic link for the time zone
+## Setup the time zone
+
+### List the time zones
+{: .no_toc}
 
 ```bash
-$ ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+$ ls /usr/share/zoneinfo/
+```
+
+### Create a symbolic link
+{: .no_toc .mt-6}
+
+#### EXAMPLE
+{: .no_toc .mt-5}
+
+```bash
+$ ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 ```
 
 ---
