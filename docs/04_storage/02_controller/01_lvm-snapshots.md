@@ -18,10 +18,20 @@ nav_order: 1
 
 ---
 
-## Create the Physical and Group volumes
+## Setup the Logical volume Manager
+
+| Volume | Size recommendation                                                                                               |
+| :----- | :---------------------------------------------------------------------------------------------------------------- |
+| ROOT   | 15–20 GiB                                                                                                         |
+| SWAP   | [VOID Linux recommendations](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions) |
+| VAR    | 8–12 GiB                                                                                                          |
+| HOME   | 100%FREE                                                                                                          |
+
+### Create the Physical and Group Volume
+{: .no_toc}
 
 #### SINGLE CONTAINER
-{: .no_toc .mt-4}
+{: .no_toc .mt-5}
 
 ```bash
 $ pvcreate /dev/mapper/container
@@ -29,27 +39,42 @@ $ vgcreate grp /dev/mapper/container
 ```
 
 #### MULTIPLE CONTAINERS
-{: .no_toc .mt-4}
+{: .no_toc .mt-6}
 
 ```bash
 $ pvcreate /dev/mapper/container1 /dev/mapper/container2
 $ vgcreate grp /dev/mapper/container1 /dev/mapper/container2
 ```
 
----
-
-## Create the Logical volumes
+### Create the Logical volumes
+{: .no_toc .mt-6}
 
 ```bash
-$ lvcreate -L 20G grp -n root
-$ lvcreate -L 8G grp -n swap
-$ lvcreate -L 10G grp -n var
+$ lvcreate -L SIZE grp -n root
+$ lvcreate -L SIZE grp -n swap
+$ lvcreate -L SIZE grp -n var
 $ lvcreate -l 100%FREE grp -n home
+```
+
+### Reduce the Home Logical volume size
+{: .no_toc .mt-6}
+
+The goal here is to free the space needed by the snapshots volume for the Root volume. You remove 20% of the Home volume size which should be sufficient for the snapshots volume created later.
+
+#### EXAMPLE FOR 20G
+{: .no_toc .mt-5}
+
+```bash
+$ echo "20*0.2" | bc
+$ lvreduce -L -4G /dev/grp/home
 ```
 
 ---
 
-## Format the volumes
+## Setup the volumes
+
+### Format the Volumes
+{: .no_toc}
 
 ```bash
 $ mkfs.ext4 -L ROOT /dev/grp/root
@@ -58,16 +83,21 @@ $ mkfs.ext4 -L VAR /dev/grp/var
 $ mkfs.ext4 -L HOME /dev/grp/home
 ```
 
----
-
-## Mount the volumes
+### Mount the volumes
+{: .no_toc .mt-6}
 
 ```bash
 $ mount /dev/grp/root /mnt
-$ swapon /dev/grp/swap
 $ mkdir /mnt/{var,home}
 $ mount /dev/grp/var /mnt/var
 $ mount /dev/grp/home /mnt/home
+```
+
+### Activate the Swap
+{: .no_toc .mt-6}
+
+```bash
+$ swapon /dev/grp/swap
 ```
 
 ---
@@ -78,10 +108,24 @@ $ mount /dev/grp/home /mnt/home
 UEFI
 {: .label .label-blue .ml-2}
 
+#### SINGLE PARTITION
+{: .no_toc .mt-0}
+
 ```bash
-$ mkfs.fat -F32 -n EFI /dev/sdXY
+$ mkfs.fat -F32 -n EFI /dev/sda1
 $ mkdir /mnt/efi
-$ mount /dev/sdXY /mnt/efi
+$ mount /dev/sda1 /mnt/efi
+```
+
+#### MULTIPLE PARTITIONS
+{: .no_toc .mt-6}
+
+```bash
+$ mkfs.fat -F32 -n EFI /dev/sda1
+$ mkfs.fat -F32 -n EFI /dev/sdb1
+$ mkdir /mnt/{efi1,efi2}
+$ mount /dev/sda1 /mnt/efi1
+$ mount /dev/sdb1 /mnt/efi2
 ```
 
 ---
