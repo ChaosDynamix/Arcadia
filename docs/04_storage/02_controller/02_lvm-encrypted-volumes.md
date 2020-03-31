@@ -18,16 +18,24 @@ nav_order: 2
 
 ---
 
-## Create the Physical and Group volumes
+## Setup the Logical volume Manager
+
+### Create the Physical Volume
+{: .no_toc}
 
 ```bash
 $ pvcreate /dev/sda2 /dev/sdb1
+```
+
+### Create the Volume Group
+{: .no_toc .mt-6}
+
+```bash
 $ vgcreate grp /dev/sda2 /dev/sdb1
 ```
 
----
-
-## Create the Logical volumes
+### Create the Logical volumes
+{: .no_toc .mt-6}
 
 ```bash
 $ lvcreate -L 8G grp -n cryptswap
@@ -37,20 +45,50 @@ $ lvcreate -l 100%FREE grp -n crypthome
 
 ---
 
-## Encrypt the Root volume
+## Setup the Root container
+
+### Create the container
+{: .no_toc}
 
 ```bash
 $ cryptsetup --type luks1 luksFormat /dev/grp/cryptroot
 $ cryptsetup open /dev/grp/cryptroot root
 ```
 
----
-
-## Setup the Root container
+### Setup the container
+{: .no_toc .mt-6}
 
 ```bash
 $ mkfs.ext4 -L ROOT /dev/mapper/root
 $ mount /dev/mapper/root /mnt
+```
+
+---
+
+## Setup the Home container
+
+### Create the key for the container
+{: .no_toc}
+
+```bash
+$ mkdir -p -m 700 /mnt/etc/luks-keys
+$ dd if=/dev/random of=/mnt/etc/luks-keys/home bs=1 count=256 status=progress
+```
+
+### Create the container
+{: .no_toc .mt-6}
+
+```bash
+$ cryptsetup --type luks1 luksFormat /dev/grp/crypthome /etc/luks-keys/home
+$ cryptsetup -d /etc/luks-keys/home open /dev/grp/crypthome home
+```
+
+### Setup the container
+{: .no_toc .mt-6}
+
+```bash
+$ mkfs.ext4 -L HOME /dev/mapper/home
+$ mount /dev/mapper/home /mnt/home
 ```
 
 ---
@@ -61,10 +99,42 @@ $ mount /dev/mapper/root /mnt
 UEFI
 {: .label .label-blue .ml-2}
 
+### Format the partition(s)
+{: .no_toc .mt-0}
+
+#### SINGLE PARTITION
+{: .no_toc .mt-5}
+
 ```bash
-$ mkfs.fat -F32 -n EFI /dev/sdXY
+$ mkfs.fat -F32 -n EFI /dev/sda1
+```
+
+#### MULTIPLE PARTITIONS
+{: .no_toc .mt-6}
+
+```bash
+$ mkfs.fat -F32 -n EFI /dev/sda1
+$ mkfs.fat -F32 -n EFI /dev/sdb1
+```
+
+### Mount the partition(s)
+{: .no_toc .mt-6}
+
+#### SINGLE PARTITION
+{: .no_toc .mt-5}
+
+```bash
 $ mkdir /mnt/efi
-$ mount /dev/sdXY /mnt/efi
+$ mount /dev/sda1 /mnt/efi
+```
+
+#### MULTIPLE PARTITIONS
+{: .no_toc .mt-6}
+
+```bash
+$ mkdir /mnt/{efi1,efi2}
+$ mount /dev/sda1 /mnt/efi1
+$ mount /dev/sdb1 /mnt/efi2
 ```
 
 ---
