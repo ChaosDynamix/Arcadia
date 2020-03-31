@@ -26,6 +26,26 @@ $ genfstab -U /mnt >> /mnt/etc/fstab
 
 ---
 
+## Configuring fstab and crypttab
+
+/etc/crypttab
+{: .fs-3 .mb-0}
+
+```bash
+swap      /dev/grp/cryptswap      /dev/urandom	             swap,cipher=aes-xts-plain64,size=256
+home      /dev/grp/crypthome      /etc/luks-keys/home
+```
+
+/etc/fstab
+{: .fs-3 .pt-2 .mb-0}
+
+```bash
+/dev/mapper/swap      none        swap        sw              0 0
+/dev/mapper/home      /home       ext4        defaults        0 2
+```
+
+---
+
 ## Add the Swap file to the fstab
 {: .d-inline-block}
 
