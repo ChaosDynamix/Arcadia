@@ -12,7 +12,7 @@ has_swapfile: false
 init-system: systemd
 ---
 
-# Single device / Luks on device
+# LVM / Luks on device
 {: .no_toc}
 
 ## Table of contents
