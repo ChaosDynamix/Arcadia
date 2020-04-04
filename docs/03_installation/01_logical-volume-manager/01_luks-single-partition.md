@@ -14,7 +14,7 @@ has_swapfile: false
 init-system: busybox
 ---
 
-# Single device / Luks on single partition
+# LVM / Luks on single partition
 {: .no_toc}
 
 ## Table of contents
