@@ -14,7 +14,7 @@ has_swapfile: false
 init-system: busybox
 ---
 
-# Multiple devices / Luks on Raid1
+# LVM / Luks on Raid1
 {: .no_toc}
 
 ## Table of contents
@@ -33,8 +33,8 @@ init-system: busybox
 {% include efi-partition.md %}
 {% include mirrorlist.md %}
 {% include essential-packages.md %}
-{% include keyfile.md %}
 {% include filesystem-table.md %}
+{% include keyfile.md %}
 {% include initial-ramdisk.md %}
 {% include microcode.md %}
 {% include boot-loader.md %}
