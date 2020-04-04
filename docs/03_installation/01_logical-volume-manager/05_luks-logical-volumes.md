@@ -14,7 +14,7 @@ has_swapfile: false
 init-system: busybox
 ---
 
-# Multiple devices / Luks on logical volumes
+# LVM / Luks on logical volumes
 {: .no_toc}
 
 ## Table of contents
@@ -63,7 +63,7 @@ $ lvcreate -l 100%FREE grp -n crypthome
 
 ## Setup the Root container
 
-### Create the container
+### Create the Root container
 {: .no_toc}
 
 ```bash
@@ -71,7 +71,7 @@ $ cryptsetup --type luks1 luksFormat /dev/grp/cryptroot
 $ cryptsetup open /dev/grp/cryptroot root
 ```
 
-### Setup the container
+### Format and mount the Root container
 {: .no_toc .mt-6}
 
 ```bash
@@ -84,41 +84,8 @@ $ mount /dev/mapper/root /mnt
 {% include efi-partition.md %}
 {% include mirrorlist.md %}
 {% include essential-packages.md %}
-
-## Keyfile
-
-### Create the keys directory
-{: .no_toc .mt-4}
-
-```bash
-$ mkdir -m 700 /etc/luks-keys
-```
-
-### Generate the keys
-{: .no_toc .mt-6}
-
-```bash
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/root iflag=fullblock
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/home iflag=fullblock
-```
-
-### Change the permissions
-{: .no_toc .mt-6}
-
-```bash
-$ chmod 600 /etc/luks-keys/root
-$ chmod 600 /etc/luks-keys/home
-$ chmod 600 /boot/initramfs-linux*
-```
-
-### Add the key in the container
-{: .no_toc .mt-6}
-
-```bash
-$ cryptsetup luksAddKey /dev/grp/root /etc/luks-keys/root
-```
-
----
+{% include filesystem-table.md %}
+{% include keyfile.md %}
 
 ## Setup the Home container
 
@@ -135,22 +102,12 @@ $ cryptsetup -d /etc/luks-keys/home open /dev/grp/crypthome home
 
 ```bash
 $ mkfs.ext4 -L HOME /dev/mapper/home
-$ mount /dev/mapper/home /mnt/home
+$ mount /dev/mapper/home /home
 ```
 
 ---
 
-## Filesystem table
-
-### Generate fstab
-{: .no_toc .mt-4}
-
-```bash
-$ genfstab -U /mnt >> /mnt/etc/fstab
-```
-
-### Edit the configuration
-{: .no_toc .mt-6}
+## Add entries to Fstab and Crypttab
 
 ### /etc/fstab
 {: .fs-3 .mb-0}
@@ -166,14 +123,6 @@ $ genfstab -U /mnt >> /mnt/etc/fstab
 ```bash
 swap    /dev/grp/cryptswap    /dev/urandom	         swap,cipher=aes-xts-plain64,size=256
 home    /dev/grp/crypthome    /etc/luks-keys/home
-```
-
----
-
-## Enter the system
-
-```bash
-$ arch-chroot /mnt
 ```
 
 ---
