@@ -45,7 +45,7 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
     {% when "busybox" %}
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):container cryptkey=rootfs:/etc/luks-keys/container root=/dev/grp/root loglevel=3 quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=(device-UUID):{% if page.title == "Luks on logical volumes" %}root{% else %}container{% endif %} cryptkey=rootfs:/etc/luks-keys/{% if page.title == "Luks on logical volumes" %}root{% else %}container{% endif %} root=/dev/{% if page.title == "Luks on logical volumes" %}mapper/root{% else %}grp/root{% endif %} loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
