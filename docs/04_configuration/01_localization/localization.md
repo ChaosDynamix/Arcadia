@@ -79,17 +79,6 @@ LC_COLLATE=C
 
 ---
 
-## Set the console locale
-
-/etc/vconsole.conf
-{: .fs-3 .mb-0}
-
-```bash
-KEYMAP=fr-latin9
-```
-
----
-
 ## References
 {: .no_toc}
 
