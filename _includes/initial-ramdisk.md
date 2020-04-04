@@ -1,14 +1,24 @@
 ## Initial ramdisk
 
-### Edit the configuration
+### Set the console locale
 {: .no_toc .mt-4}
+
+#### EXAMPLE
+{: .no_toc .mt-4}
+
+```bash
+$ echo KEYMAP=fr-latin9 > /etc/vconsole.conf
+```
+
+### Edit the configuration
+{: .no_toc .mt-6}
 
 /etc/mkinitcpio.conf
 {: .fs-3 .mb-0}
 
 {% capture busybox-luks-lvm %}
 ```bash
-FILES=(/etc/luks-keys/container)
+FILES=({% if page.title == "Luks on logical volumes" %}/etc/luks-keys/root{% else %}/etc/luks-keys/container{% endif %})
 HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 ```
 {% endcapture %}
