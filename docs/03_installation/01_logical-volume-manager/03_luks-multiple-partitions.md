@@ -14,7 +14,7 @@ has_swapfile: false
 init-system: systemd
 ---
 
-# Multiple devices / Luks on multiple partitions
+# LVM / Luks on multiple partitions
 {: .no_toc}
 
 ## Table of contents
@@ -32,8 +32,8 @@ init-system: systemd
 {% include efi-partition.md %}
 {% include mirrorlist.md %}
 {% include essential-packages.md %}
-{% include keyfile.md %}
 {% include filesystem-table.md %}
+{% include keyfile.md %}
 {% include initial-ramdisk.md %}
 {% include microcode.md %}
 {% include boot-loader.md %}
