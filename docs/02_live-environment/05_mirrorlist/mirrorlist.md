@@ -1,7 +1,23 @@
-## Mirrorlist
+---
+layout: default
+title: Mirrorlist
+permalink: /live-environment/mirrorlist/
+parent: Live environment
+nav_order: 5
+---
 
-### Update Arch Linux keyring
-{: .no_toc .mt-4}
+# Live environment / Mirrorlist
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+1. TOC
+{:toc}
+
+---
+
+## Update Arch Linux keyring
 
 The arch linux keyring holds all the signatures related to the packages. During the installation, a package is verified against this keyring to ensure that the downloaded file is properly signed. This keyring need to be updated in order to delete revoked keys and add new trusted keys.
 
@@ -11,8 +27,9 @@ $ pacman -Sy archlinux-keyring
 
 If you are not in a live environment context, avoid refreshing the package list without upgrading the system. In practice, do not run `pacman -Sy package_name` instead of `pacman -Syu package_name`, as this could lead to dependency issues.
 
-### Install reflector package
-{: .no_toc .mt-6}
+---
+
+## Install reflector package
 
 Reflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file `/etc/pacman.d/mirrorlist`.
 
@@ -20,8 +37,9 @@ Reflector is a script which can retrieve the latest mirror list from the MirrorS
 $ pacman -S reflector
 ```
 
-### Launch the reflector script with your arguments
-{: .no_toc .mt-6}
+---
+
+## Launch the reflector script with your arguments
 
 | Argument | Description                                                                                                                         |
 | :------- | :---------------------------------------------------------------------------------------------------------------------------------- |

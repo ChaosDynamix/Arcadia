@@ -1,0 +1,42 @@
+name: Luks on multiple partitions
+has-multiple-devices: true
+has-multiple-containers: true
+has-detached-header: false
+has-raid1: false
+has-swapfile: false
+has-cryptboot: true
+
+# Partitioning
+sgdisk-creation: -n=2:0:0
+sgdisk-partype: -t=2:8309
+sgdisk-device: /dev/sda
+table-parid1: /dev/sda2
+table-parid2: /dev/sdb1
+table-partype: Linux LUKS partition
+table-parsize: 100%FREE
+
+# Encryption
+cryptsetup-device1: /dev/sda2
+cryptsetup-device2: /dev/sdb1
+
+# Logical Volume Manager
+has-encrypted-volumes: false
+pv-and-vg-create: /dev/mapper/container1 /dev/mapper/container2
+
+# EFI partitions
+efi-partition1: /dev/sda1
+
+# controller
+controller: lvm
+controller-package: lvm2
+
+# Keyfiles
+keyfile1: cryptlvm1.keyfile
+keyfile2: cryptlvm2.keyfile
+
+# Initial ramdisk
+mkinitcpio-files: (/etc/luks-keys/cryptlvm1.keyfile /etc/luks-keys/cryptlvm2.keyfile)
+mkinitcpio-hooks: (base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck)
+
+# Grub
+grub-cmdline-linux-default: root=/dev/grp/root loglevel=3 quiet

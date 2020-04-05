@@ -8,7 +8,7 @@ Andromeda is one of the many guides to install and configure Arch Linux.
 {: .fs-8}
 
 <span class="fs-6">
-[Getting started](/Andromeda/iso-image/){: .btn .btn-green}
+[Getting started]({{ site.baseurl }}{% link docs/01_preparation/preparation.md %}){: .btn .btn-green}
 </span>
 
 ---

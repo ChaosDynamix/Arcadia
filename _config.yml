@@ -6,7 +6,7 @@
 title: Andromeda
 email: your-email@example.com
 description: Andromeda is one of the many guides to install and configure Arch Linux.
-baseurl: "/Andromeda/" # the subpath of your site, e.g. /blog
+baseurl: "/Andromeda" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  ChaosDynamix
 

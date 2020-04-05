@@ -5,13 +5,6 @@ permalink: /installation/lvm/luks-multiple-partitions/
 grand_parent: Installation
 parent: Logical Volume Manager
 nav_order: 3
-
-has_multiple-devices: true
-has_multiple_containers: true
-has_detached_header: false
-has_raid: false
-has_swapfile: false
-init-system: systemd
 ---
 
 # LVM / Luks on multiple partitions
@@ -25,15 +18,16 @@ init-system: systemd
 
 ---
 
-{% include secure-erase.md %}
-{% include partitioning.md %}
-{% include encryption.md %}
-{% include logical-volume-manager.md %}
-{% include efi-partition.md %}
-{% include mirrorlist.md %}
-{% include essential-packages.md %}
-{% include filesystem-table.md %}
-{% include keyfile.md %}
-{% include initial-ramdisk.md %}
-{% include microcode.md %}
-{% include boot-loader.md %}
+{% assign scenario = site.data.lvm.luks-multiple-partitions %}
+
+{% include installation_secure-erase.md data=scenario %}
+{% include installation_partitioning.md data=scenario %}
+{% include installation_encryption.md data=scenario %}
+{% include installation_lvm.md data=scenario %}
+{% include installation_efi.md data=scenario %}
+{% include installation_essential-packages.md data=scenario %}
+{% include installation_filesystem-table.md data=scenario %}
+{% include installation_keyfile.md data=scenario %}
+{% include installation_initial-ramdisk.md data=scenario %}
+{% include installation_microcode.md %}
+{% include installation_boot-loader.md data=scenario %}

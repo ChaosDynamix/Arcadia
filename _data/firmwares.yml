@@ -1,0 +1,21 @@
+- name: UEFI
+  partition-table: GPT
+  sgdisk-creation: -n=1:0:+260M
+  sgdisk-partype: -t=1:ef00
+  table-device1: /dev/sda1
+  table-device2: /dev/sdb1
+  table-partype: EFI system partition
+  table-parsize: 260M
+  grub-pacman: pacman -S grub efibootmgr
+  grub-install: grub-install --target=x86_64-efi --recheck --efi-directory=/efi --bootloader-id=GRUB
+
+- name: BIOS
+  partition-table: GPT
+  sgdisk-creation: -n=1:0:+1M
+  sgdisk-partype: -t=1:ef02
+  table-device1: /dev/sda1
+  table-device2: /dev/sdb1
+  table-partype: BIOS boot partition
+  table-parsize: 1M
+  grub-pacman: pacman -S grub
+  grub-install: grub-install --target=i386-pc --recheck /dev/sda

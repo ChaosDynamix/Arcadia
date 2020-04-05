@@ -1,41 +1,57 @@
-## Logical volume Manager
+{% assign scenario = include.data %}
 
+## Setup the Logical Volume Manager
+
+{% if scenario.has-encrypted-volumes %}
+| Volume | Size recommendation                                                                                               |
+| :----- | :---------------------------------------------------------------------------------------------------------------- |
+| ROOT   | 23–32 GiB                                                                                                         |
+| SWAP   | [VOID Linux recommendations](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions) |
+| HOME   | 100%FREE                                                                                                          |
+{% else %}
 | Volume | Size recommendation                                                                                               |
 | :----- | :---------------------------------------------------------------------------------------------------------------- |
 | ROOT   | 15–20 GiB                                                                                                         |
 | SWAP   | [VOID Linux recommendations](https://docs.voidlinux.org/installation/live-images/partitions.html#swap-partitions) |
 | VAR    | 8–12 GiB                                                                                                          |
 | HOME   | 100%FREE                                                                                                          |
+{% endif %}
 
 ### Create the Physical Volume
 {: .no_toc}
 
-{% if page.has_multiple_containers %}
 ```bash
-$ pvcreate /dev/mapper/container1 /dev/mapper/container2
+$ pvcreate {{ scenario.pv-and-vg-create }}
 ```
-{% else %}
-```bash
-$ pvcreate /dev/mapper/container
-```
-{% endif %}
 
 ### Create the Volume Group
 {: .no_toc .mt-6}
 
-{% if page.has_multiple_containers %}
 ```bash
-$ vgcreate grp /dev/mapper/container1 /dev/mapper/container2
+$ vgcreate grp {{ scenario.pv-and-vg-create }}
 ```
-{% else %}
-```bash
-$ vgcreate grp /dev/mapper/container
-```
-{% endif %}
 
 ### Create the Logical volumes
 {: .no_toc .mt-6}
 
+{% if scenario.has-encrypted-volumes %}
+```bash
+$ lvcreate -L SIZE grp -n cryptswap
+$ lvcreate -L SIZE grp -n cryptroot
+$ lvcreate -l 100%FREE grp -n crypthome
+```
+
+### Setup the Root volume
+{: .no_toc .mt-6}
+
+```bash
+$ cryptsetup --type luks1 luksFormat /dev/grp/cryptroot
+$ cryptsetup open /dev/grp/cryptroot root
+$ mkfs.ext4 -L ROOT /dev/mapper/root
+$ mount /dev/mapper/root /mnt
+```
+
+{% else %}
 ```bash
 $ lvcreate -L SIZE grp -n root
 $ lvcreate -L SIZE grp -n swap
@@ -82,5 +98,6 @@ $ mount /dev/grp/home /mnt/home
 ```bash
 $ swapon /dev/grp/swap
 ```
+{% endif %}
 
 ---

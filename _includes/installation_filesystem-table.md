@@ -1,14 +1,19 @@
-## Filesystem table
+{% assign scenario = include.data %}
+
+## Generate the filesystem table
 
 ### Generate fstab
-{: .no_toc .mt-4}
+{: .no_toc}
 
 ```bash
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if page.has_swapfile %}
-### Edit the configuration
+{% if scenario.has-swapfile %}
+### Create the swapfile
+{: .no_toc .mt-6}
+
+### Add the swapfile in the fstab
 {: .no_toc .mt-6}
 
 /etc/fstab
