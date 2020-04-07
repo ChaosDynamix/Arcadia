@@ -12,7 +12,7 @@ Grub is choosed because it allow encrypted /boot and increase the security of yo
 {: .no_toc .mt-6}
 
 ```bash
-$ {{ firmware.grub-pacman }}
+$ {{ firmware.grub.package }}
 ```
 {% endfor %}
 
@@ -28,13 +28,9 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 /etc/default/grub
 {: .fs-3 .mb-0}
 
-{% if scenario.has-cryptboot %}
-
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="{{ scenario.grub-cmdline-linux-default }}"
-GRUB_ENABLE_CRYPTODISK=y
+{{ scenario.configuration.grub -}}
 ```
-{% endif %}
 
 ### Install GRUB on your device
 {: .no_toc .mt-6}
@@ -44,7 +40,7 @@ GRUB_ENABLE_CRYPTODISK=y
 {: .no_toc .mt-6}
 
 ```bash
-$ {{ firmware.grub-install }}
+$ {{ firmware.grub.install }}
 ```
 {% endfor %}
 
