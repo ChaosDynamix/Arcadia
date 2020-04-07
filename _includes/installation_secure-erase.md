@@ -1,6 +1,7 @@
 {% assign scenario = include.data %}
+{% assign devicenumber = scenario.storage.devices | size %}
 
-## {% if scenario.has-multiple-devices %}Secure erase the devices{% else %}Secure erase the device{% endif %}
+## Secure erase the device{% if devicenumber > 1 %}s{% endif %}
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
@@ -11,46 +12,31 @@ Before setting up encryption on a mass storage device, consider securely wiping 
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### {% if scenario.has-multiple-devices %}Create the temporary encrypted containers{% else %}Create the temporary encrypted container{% endif %}
+### Create the temporary encrypted container{% if devicenumber > 1 %}s{% endif %}
 {: .no_toc .mt-6}
 
-{% if scenario.has-multiple-devices %}
 ```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped1
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped2
+{%- for device in scenario.storage.devices %}
+$ cryptsetup open --type plain -d /dev/urandom {{ device.name }} to_be_wiped{{ device.id }}
+{%- endfor %}
 ```
-{% else %}
-```bash
-$ cryptsetup open --type plain -d /dev/urandom /dev/sda to_be_wiped
-```
-{% endif %}
 
-### {% if scenario.has-multiple-devices %}Wipe the containers with zeros{% else %}Wipe the container with zeros{% endif %}
+### Wipe the container{% if devicenumber > 1 %}s{% endif %} with zeros
 {: .no_toc .mt-6}
 
-{% if scenario.has-multiple-devices %}
 ```bash
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped1 status=progress
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped2 status=progress
+{%- for device in scenario.storage.devices %}
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped{{ device.id }} status=progress
+{%- endfor %}
 ```
-{% else %}
-```bash
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
-```
-{% endif %}
 
-### {% if scenario.has-multiple-devices %}Close the temporary containers{% else %}Close the temporary container{% endif %}
+### Close the temporary container{% if devicenumber > 1 %}s{% endif %}
 {: .no_toc .mt-6}
 
-{% if scenario.has-multiple-devices %}
 ```bash
-$ cryptsetup close to_be_wiped1
-$ cryptsetup close to_be_wiped2
+{%- for device in scenario.storage.devices %}
+$ cryptsetup close to_be_wiped{{ device.id }}
+{%- endfor %}
 ```
-{% else %}
-```bash
-$ cryptsetup close to_be_wiped
-```
-{% endif %}
 
 ---
