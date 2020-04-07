@@ -1,41 +1,84 @@
-name: Luks on logical volumes
-has-multiple-devices: true
-has-multiple-containers: false
-has-detached-header: false
-has-raid1: false
-has-swapfile: false
-has-cryptboot: true
+storage:
+  has-raid1: false
+  has-swapfile: false
+  has-detached-header: false
 
-# Partitioning
-sgdisk-creation: -n=2:0:0
-sgdisk-partype: -t=2:8e00
-sgdisk-device: /dev/sda
-table-partype: Linux LVM
-table-parsize: 100%FREE
-table-parid1: /dev/sda2
-table-parid2: /dev/sdb1
+  devices:
+    - id: 1
+      node: /dev/sda
 
-# Encryption
-cryptsetup-device1: /dev/grp/cryptroot
+    - id: 2
+      node: /dev/sdb
 
-# Logical Volume Manager
-has-encrypted-volumes: true
-pv-and-vg-create: /dev/sda2 /dev/sdb1
+  partitions:
+    - node: /dev/sda1
+      is-firmware: true
 
-# EFI partitions
-efi-partition1: /dev/sda1
+    - node: /dev/sda2
+      is-firmware: false
+      type: Linux LVM
+      size: 100%FREE
 
-# controller
-controller: lvm
-controller-package: lvm2
+    - node: /dev/sdb1
+      is-firmware: false
+      type: Linux LVM
+      size: 100%FREE
 
-# Keyfiles
-keyfile1: cryptroot.keyfile
-keyfile2: crypthome.keyfile
+  containers:
+    - name: root
+      node: /dev/grp/cryptroot
+      mapper: /dev/mapper/root
+      keyfile: cryptroot.keyfile
 
-# Initial ramdisk
-mkinitcpio-files: (/etc/luks-key/cryptroot.keyfile)
-mkinitcpio-hooks: (base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+    - name: home
+      node: /dev/grp/crypthome
+      mapper: /dev/mapper/home
+      keyfile: crypthome.keyfile
 
-# Grub
-grub-cmdline-linux-default: cryptdevice=/dev/grp/cryptroot:root cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet
+  lvm:
+    has-encrypted-volumes: true
+    pv: /dev/sda2 /dev/sdb1
+    vg: grp
+    lvs:
+      - label: CRYPTROOT
+        is-root: true
+        is-swap: false
+        has-dir: false
+        node: /dev/grp/cryptroot
+        size: 20G
+        size-arg: -L
+
+      - label: CRYPTSWAP
+        is-root: false
+        is-swap: true
+        has-dir: false
+        node: /dev/grp/cryptswap
+        size: "> 512M"
+        size-arg: -L
+
+      - label: CRYPTHOME
+        is-root: false
+        is-swap: false
+        has-dir: true
+        node: /dev/grp/crypthome
+        size: 100%FREE
+        size-arg: -l
+
+package:
+  lvm: lvm2
+
+script:
+  sgdisk:
+    - args: -n=2:0:0 -t=2:8e00 /dev/sda
+      is-primary: true
+
+    - args: -o -n=1:0:0 -t=1:8e00 /dev/sdb
+      is-primary: false
+
+configuration:
+  mkinitcpio: |
+    FILES=(/etc/luks-key/cryptroot.keyfile)
+    HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+  grub: |
+    GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/grp/cryptroot:root cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
+    GRUB_ENABLE_CRYPTODISK=y
