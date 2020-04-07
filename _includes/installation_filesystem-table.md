@@ -9,7 +9,7 @@
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if scenario.has-swapfile %}
+{% if scenario.storage.has-swapfile %}
 ### Create the swapfile
 {: .no_toc .mt-6}
 
