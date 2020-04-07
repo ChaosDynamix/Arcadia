@@ -1,6 +1,7 @@
 {% assign scenario = include.data %}
+{% assign containernumber = scenario.storage.containers | size %}
 
-## {% if scenario.has-multiple-containers %}Setup the Keyfile for the containers{% else %}Setup the Keyfile for the container{% endif %}
+## Setup the Keyfile for the container{% if containernumber > 1 %}s{% endif %}
 
 ### Create the keys directory
 {: .no_toc}
@@ -9,52 +10,37 @@
 $ mkdir -m 700 /etc/luks-keys
 ```
 
-### Generate the key
+### Generate the key{% if containernumber > 1 %}s{% endif %}
 {: .no_toc .mt-6}
 
-{% if scenario.has-multiple-containers or scenario.has-encrypted-volumes %}
 ```bash
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/{{ scenario.keyfile1 }} iflag=fullblock
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/{{ scenario.keyfile2 }} iflag=fullblock
+{%- for container in scenario.storage.containers %}
+$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/{{ container.keyfile }} iflag=fullblock
+{%- endfor %}
 ```
-{% else %}
-```bash
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/{{ scenario.keyfile1 }} iflag=fullblock
-```
-{% endif %}
 
 ### Change the permissions
 {: .no_toc .mt-6}
 
-{% if scenario.has-multiple-containers or scenario.has-encrypted-volumes %}
 ```bash
-$ chmod 600 /etc/luks-keys/{{ scenario.keyfile1 }}
-$ chmod 600 /etc/luks-keys/{{ scenario.keyfile2 }}
+{%- for container in scenario.storage.containers %}
+$ chmod 600 /etc/luks-keys/{{ container.keyfile }}
+{%- endfor %}
 $ chmod 600 /boot/initramfs-linux*
 ```
-{% else %}
-```bash
-$ chmod 600 /etc/luks-keys/container
-$ chmod 600 /boot/initramfs-linux*
-```
-{% endif %}
 
-### Add the key in the container
+### Add the key in the container{% if containernumber > 1 %}s{% endif %}
 {: .no_toc .mt-6}
 
-{% if scenario.has-multiple-containers %}
 ```bash
-$ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/{{ scenario.keyfile1 }}
-$ cryptsetup luksAddKey /dev/sdb1 /etc/luks-keys/{{ scenario.keyfile2 }}
+{%- for container in scenario.storage.containers %}
+  {%- unless container.name == "home" and scenario.storage.lvm.has-encrypted-volumes %}
+$ cryptsetup luksAddKey {{ container.node }} /etc/luks-keys/{{ container.keyfile }}
+  {%- endunless %}
+{%- endfor %}
 ```
 
-{% else %}
-```bash
-$ cryptsetup luksAddKey {{ scenario.cryptsetup-device1 }} /etc/luks-keys/{{ scenario.keyfile1 }}
-```
-{% endif %}
-
-{% if scenario.has-multiple-containers %}
+{% if scenario.storage.containers > 1 %}
 ---
 
 ## Add entries to the initramfs crypttab
@@ -64,41 +50,9 @@ $ cryptsetup luksAddKey {{ scenario.cryptsetup-device1 }} /etc/luks-keys/{{ scen
 {: .fs-3 .mb-0}
 
 ```bash
-container1    /dev/sda2     /etc/luks-keys/container1
-container2    /dev/sdb1     /etc/luks-keys/container2
-```
-{% endif %}
-
-{% if scenario.has-encrypted-volumes %}
----
-
-## Setup the Home volume
-
-```bash
-$ cryptsetup --type luks1 luksFormat /dev/grp/crypthome /etc/luks-keys/{{ scenario.keyfile2 }}
-$ cryptsetup -d /etc/luks-keys/{{ scenario.keyfile2 }} open /dev/grp/crypthome home
-$ mkfs.ext4 -L HOME /dev/mapper/home
-$ mount /dev/mapper/home /home
-```
-
----
-
-## Add entries to Fstab and Crypttab
-
-### /etc/fstab
-{: .no_toc .fs-3 .mb-0}
-
-```bash
-/dev/mapper/swap      none        swap        sw              0 0
-/dev/mapper/home      /home       ext4        defaults        0 2
-```
-
-### /etc/crypttab
-{: .no_toc .fs-3 .mb-0}
-
-```bash
-swap    /dev/grp/cryptswap    /dev/urandom	         swap,cipher=aes-xts-plain64,size=256
-home    /dev/grp/crypthome    /etc/luks-keys/{{ scenario.keyfile2 }}
+{%- for container in scenario.storage.containers %}
+{{ container.name }}    {{ container.node }}     /etc/luks-keys/{{ container.keyfile }}
+{%- endfor %}
 ```
 {% endif %}
 
