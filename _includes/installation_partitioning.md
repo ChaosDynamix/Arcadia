@@ -1,51 +1,32 @@
 {% assign scenario = include.data %}
+{% assign devicenumber = scenario.storage.devices | size %}
 
-## {% if scenario.has-multiple-devices %}Partition the devices{% else %}Partition the device{% endif %}
+## Partition the device{% if devicenumber > 1 %}s{% endif %}
 
 {% for firmware in site.data.firmwares %}
 
-### {{ firmware.name }} / {{ firmware.partition-table }}
+### {{ firmware.name }} / {{ firmware.partition.table }}
 {: .no_toc .text-delta .mt-6}
 
-  {% if scenario.has-raid1 %}
-
 ```bash
-$ sgdisk -o {{ firmware.sgdisk-creation }} {{ scenario.sgdisk-creation }} {{ firmware.sgdisk-partype }} {{ scenario.sgdisk-partype }} -R=/dev/sdb {{ scenario.sgdisk-device }}
-$ sgdisk -G /dev/sdb
+  {%- for script in scenario.script.sgdisk %}
+    {%- if script.is-primary %}
+$ sgdisk {{ firmware.sgdisk.args }} {{ script.args }}
+    {%- else %}
+$ sgdisk {{ script.args }}
+    {%- endif %}
+  {%- endfor %}
 ```
 
-| Partition id                 | Partition type               | Partition size               |
-| :--------------------------- | :--------------------------- | :--------------------------- |
-| {{ firmware.table-device1 }} | {{ firmware.table-partype }} | {{ firmware.table-parsize }} |
-| {{ scenario.table-parid1 }}  | {{ scenario.table-partype }} | {{ scenario.table-parsize }} |
-| {{ firmware.table-device2 }} | {{ firmware.table-partype }} | {{ firmware.table-parsize }} |
-| {{ scenario.table-parid2 }}  | {{ scenario.table-partype }} | {{ scenario.table-parsize }} |
-
-  {% elsif scenario.has-multiple-devices %}
-
-```bash
-$ sgdisk -o {{ firmware.sgdisk-creation }} {{ scenario.sgdisk-creation }} {{ firmware.sgdisk-partype }} {{ scenario.sgdisk-partype }} {{ scenario.sgdisk-device }}
-$ sgdisk -o -n=1:0:0 {{ scenario.sgdisk-partype }} /dev/sdb
-```
-
-| Partition id                 | Partition type               | Partition size               |
-| :--------------------------- | :--------------------------- | :--------------------------- |
-| {{ firmware.table-device1 }} | {{ firmware.table-partype }} | {{ firmware.table-parsize }} |
-| {{ scenario.table-parid1 }}  | {{ scenario.table-partype }} | {{ scenario.table-parsize }} |
-| {{ scenario.table-parid2 }}  | {{ scenario.table-partype }} | {{ scenario.table-parsize }} |
-
-  {% else %}
-
-```bash
-$ sgdisk -o {{ firmware.sgdisk-creation }} {{ scenario.sgdisk-creation }} {{ firmware.sgdisk-partype }} {{ scenario.sgdisk-partype }} {{ scenario.sgdisk-device }}
-```
-
-| Partition id                 | Partition type               | Partition size               |
-| :--------------------------- | :--------------------------- | :--------------------------- |
-| {{ firmware.table-device1 }} | {{ firmware.table-partype }} | {{ firmware.table-parsize }} |
-| {{ scenario.table-parid1 }}  | {{ scenario.table-partype }} | {{ scenario.table-parsize }} |
-
-  {% endif %}
+| Partition name               | Partition type                | Partition size                |
+| :--------------------------- | :---------------------------- | :---------------------------- |
+  {%- for partition in scenario.storage.partitions %}
+    {%- if partition.is-firmware %}
+| {{ partition.node }}         | {{ firmware.partition.type }} | {{ firmware.partition.size }} |
+    {%- else %}
+| {{ partition.node }}         | {{ partition.type }}          | {{ partition.size }}          |      
+    {%- endif %}
+  {%- endfor %}
 
 {% endfor %}
 
