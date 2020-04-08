@@ -1,9 +1,10 @@
 {% assign scenario = include.data %}
 
-{%- assign rootlv = scenario.storage.lvm.lvs | where: "is-root", true | first %}
-{%- assign swaplv = scenario.storage.lvm.lvs | where: "is-swap", true | first %}
-{%- assign otherlvs = scenario.storage.lvm.lvs | where: "has-dir", true %}
-{%- assign otherlvslabels = scenario.storage.lvm.lvs | where: "has-dir", true | map: "label" %}
+{%- assign rootLv = scenario.storage.lvm.lvs | where: "name", "root" | first %}
+{%- assign swapLv = scenario.storage.lvm.lvs | where: "name", "swap" | first %}
+{%- assign otherLvs = scenario.storage.lvm.lvs | where: "has-dir", true %}
+{%- assign otherLvNames = scenario.storage.lvm.lvs | where: "has-dir", true | map: "name" %}
+{%- assign otherLvNumber = otherLvs | size %}
 
 ## Setup the Logical Volume Manager
 
@@ -14,60 +15,55 @@
 {%- endfor %}
 
 ### Create the Physical Volume
-{: .no_toc}
 
-```bash
+```
 $ pvcreate {{ scenario.storage.lvm.pv }}
 ```
 
 ### Create the Volume Group
-{: .no_toc .mt-6}
 
-```bash
+```
 $ vgcreate {{ scenario.storage.lvm.vg }} {{ scenario.storage.lvm.pv }}
 ```
+
 ### Create the Logical volumes
-{: .no_toc .mt-6}
 
 {%- unless scenario.storage.lvm.has-encrypted-volumes %}
 Before creating the `HOME` volume, use `vgdisplay` to see how many space are available. The `HOME` volume size is equal to the size of the remaining space minus 5G. The 5G of free space are used later for the snapshot volume.
 {%- endunless %}
 
-```bash
+```
 {%- for lv in scenario.storage.lvm.lvs %}
-$ lvcreate {{ lv.arg }} SIZE {{ scenario.storage.lvm.vg }} -n {{ lv.label }}
+$ lvcreate {{ lv.size-arg }} SIZE {{ scenario.storage.lvm.vg }} -n {{ lv.label | downcase }}
 {%- endfor %}
 ```
 
 {% unless scenario.storage.lvm.has-encrypted-volumes %}
 ### Format the Volumes
-{: .no_toc .mt-6}
 
-```bash
+```
 {%- for lv in scenario.storage.lvm.lvs %}
-  {%- unless lv.is-swap %}
+  {%- unless lv.name == "swap" %}
 $ mkfs.ext4 -L {{ lv.label }} {{ lv.node }}
   {%- endunless %}
 {%- endfor %}
 ```
 
 ### Mount the volumes
-{: .no_toc .mt-6}
 
-```bash
-$ mount {{ rootlv.node }} {{ rootlv.mount }}
-$ mkdir /mnt/{ {{- otherlvslabels | sort_natural | join: "," | downcase -}} }
-{%- for otherlv in otherlvs %}
-$ mount {{ otherlv.node }} {{ otherlv.mount }}
+```
+$ mount {{ rootLv.node }} /mnt
+$ mkdir /mnt/{% if otherLvNumber > 1 %}{ {{- otherLvNames | sort_natural | join: "," -}} }{% else %}{{ otherLvNames[0] }}{% endif %}
+{%- for otherLvs in otherLvs %}
+$ mount {{ otherLvs.node }} /mnt/{{ otherLvs.name }}
 {%- endfor %}
 ```
 
 ### Setup the Swap volume
-{: .no_toc .mt-6}
 
-```bash
-$ mkswap -L {{ swaplv.label }} {{ swaplv.node }}
-$ swapon {{ swaplv.node }}
+```
+$ mkswap -L {{ swapLv.label }} {{ swapLv.node }}
+$ swapon {{ swapLv.node }}
 ```
 {% endunless %}
 

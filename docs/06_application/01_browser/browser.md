@@ -9,7 +9,6 @@ has_toc: false
 ---
 
 # Application / Browser
-{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -24,3 +23,4 @@ has_toc: false
 ---
 
 ## References
+{: .no_toc}

@@ -9,7 +9,6 @@ has_toc: false
 ---
 
 # Display server
-{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -28,28 +27,18 @@ Xorg (commonly referred as simply X) is the most popular display server among Li
 ## References
 {: .no_toc}
 
-### GRAPHICS PROCESSING UNIT
-{: .no_toc .text-delta .pt-2}
+#### GRAPHICS PROCESSING UNIT
+- [Wikipedia - Graphics processing unit](https://en.wikipedia.org/wiki/Graphics_processing_unit)
 
-1. [Wikipedia - Graphics processing unit](https://en.wikipedia.org/wiki/Graphics_processing_unit)
+#### DEVICE DRIVER
+- [Wikipedia - Device driver](https://en.wikipedia.org/wiki/Device_driver)
 
-### DEVICE DRIVER
-{: .no_toc .text-delta .pt-4}
+#### DISPLAY SERVER
+- [Wikipedia - Display server](https://en.wikipedia.org/wiki/Display_server)
 
- 1. [Wikipedia - Device driver](https://en.wikipedia.org/wiki/Device_driver)
+#### Nvidia
+- [Wikipedia - Nvidia](https://en.wikipedia.org/wiki/Nvidia)
 
-### DISPLAY SERVER
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Display server](https://en.wikipedia.org/wiki/Display_server)
-
-### Nvidia
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Nvidia](https://en.wikipedia.org/wiki/Nvidia)
-
-### XORG
-{: .no_toc .text-delta .pt-4}
-
-1. [Wikipedia - Xorg](https://en.wikipedia.org/wiki/X.Org_Server)
-1. [ArchWiki - Xorg](https://wiki.archlinux.org/index.php/Xorg)
+#### XORG
+- [Wikipedia - Xorg](https://en.wikipedia.org/wiki/X.Org_Server)
+- [ArchWiki - Xorg](https://wiki.archlinux.org/index.php/Xorg)

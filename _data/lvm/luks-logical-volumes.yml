@@ -13,6 +13,7 @@ storage:
   partitions:
     - node: /dev/sda1
       is-firmware: true
+      label: EFI
 
     - node: /dev/sda2
       is-firmware: false
@@ -40,25 +41,22 @@ storage:
     pv: /dev/sda2 /dev/sdb1
     vg: grp
     lvs:
-      - label: CRYPTROOT
-        is-root: true
-        is-swap: false
+      - name: root
+        label: CRYPTROOT
         has-dir: false
         node: /dev/grp/cryptroot
         size: 20G
         size-arg: -L
 
-      - label: CRYPTSWAP
-        is-root: false
-        is-swap: true
+      - name: swap
+        label: CRYPTSWAP
         has-dir: false
         node: /dev/grp/cryptswap
         size: "> 512M"
         size-arg: -L
 
-      - label: CRYPTHOME
-        is-root: false
-        is-swap: false
+      - name: home
+        label: CRYPTHOME
         has-dir: true
         node: /dev/grp/crypthome
         size: 100%FREE

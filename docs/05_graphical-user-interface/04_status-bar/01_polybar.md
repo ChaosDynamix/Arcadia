@@ -21,7 +21,7 @@ nav_order: 1
 
 ## Install the Arch User Repository needed packages
 
-```bash
+```
 $ pacman -S base-devel git
 ```
 
@@ -29,7 +29,7 @@ $ pacman -S base-devel git
 
 ## Clone the Polybar repository with git
 
-```bash
+```
 $ git clone https://aur.archlinux.org/polybar.git
 ```
 
@@ -37,7 +37,7 @@ $ git clone https://aur.archlinux.org/polybar.git
 
 ## Install Polybar
 
-```bash
+```
 $ cd polybar
 $ makepkg -si
 ```

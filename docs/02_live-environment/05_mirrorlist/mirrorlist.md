@@ -7,7 +7,6 @@ nav_order: 5
 ---
 
 # Live environment / Mirrorlist
-{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -21,7 +20,7 @@ nav_order: 5
 
 The arch linux keyring holds all the signatures related to the packages. During the installation, a package is verified against this keyring to ensure that the downloaded file is properly signed. This keyring need to be updated in order to delete revoked keys and add new trusted keys.
 
-```bash
+```
 $ pacman -Sy archlinux-keyring
 ```
 
@@ -33,7 +32,7 @@ If you are not in a live environment context, avoid refreshing the package list 
 
 Reflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file `/etc/pacman.d/mirrorlist`.
 
-```bash
+```
 $ pacman -S reflector
 ```
 
@@ -50,9 +49,8 @@ $ pacman -S reflector
 | --save   | Save the mirrorlist to the given path.                                                                                              |
 
 #### EXAMPLE
-{: .no_toc .mt-5}
 
-```bash
+```
 $ reflector -c FR -a 15 -p https --sort rate --save /etc/pacman.d/mirrorlist
 ```
 

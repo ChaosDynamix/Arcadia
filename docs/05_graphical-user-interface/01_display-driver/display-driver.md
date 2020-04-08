@@ -9,7 +9,6 @@ has_toc: false
 ---
 
 # Display driver
-{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}

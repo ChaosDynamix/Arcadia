@@ -52,24 +52,18 @@ The initial value of the system clock is calculated from the hardware clock, dep
 
 ## References
 
-### KEYBOARD
-{: .no_toc .text-delta}
+#### KEYBOARD
+- [Wikipedia - US keyboard layout image](https://en.wikipedia.org/wiki/File:KB_United_States-NoAltGr.svg)
+- [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
 
-1. [Wikipedia - US keyboard layout image](https://en.wikipedia.org/wiki/File:KB_United_States-NoAltGr.svg)
-1. [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
+#### FIRMWARE
+- [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
+- [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
+- [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+- [Wikipedia - EFI system partition](https://en.wikipedia.org/wiki/EFI_system_partition)
 
-### FIRMWARE
-{: .no_toc .text-delta .mt-5}
-
-1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
-1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
-1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
-1. [Wikipedia - EFI system partition](https://en.wikipedia.org/wiki/EFI_system_partition)
-
-### TIME
-{: .no_toc .text-delta .mt-5}
-
-1. [ArchWiki - System time](https://wiki.archlinux.org/index.php/System_time)
-1. [Wikipedia - System time](https://en.wikipedia.org/wiki/System_time)
-1. [Wikipedia - Real time clock](https://en.wikipedia.org/wiki/Real-time_clock)
-1. [Wikipedia - Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol)
+#### TIME
+- [ArchWiki - System time](https://wiki.archlinux.org/index.php/System_time)
+- [Wikipedia - System time](https://en.wikipedia.org/wiki/System_time)
+- [Wikipedia - Real time clock](https://en.wikipedia.org/wiki/Real-time_clock)
+- [Wikipedia - Network Time Protocol](https://en.wikipedia.org/wiki/Network_Time_Protocol)

@@ -26,8 +26,6 @@ Most current PC firmware permits booting from a USB drive, allowing the launch o
 
 ## References
 
-### USB FLASH DEVICE
-{: .text-delta}
-
-1. [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
-1. [Wikipedia - Live USB](https://en.wikipedia.org/wiki/Live_USB)
+#### USB FLASH DEVICE
+- [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
+- [Wikipedia - Live USB](https://en.wikipedia.org/wiki/Live_USB)

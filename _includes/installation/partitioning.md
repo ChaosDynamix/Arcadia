@@ -5,10 +5,9 @@
 
 {% for firmware in site.data.firmwares %}
 
-### {{ firmware.name }} / {{ firmware.partition.table }}
-{: .no_toc .text-delta .mt-6}
+#### {{ firmware.name }} / {{ firmware.partition.table }}
 
-```bash
+```
   {%- for script in scenario.script.sgdisk %}
     {%- if script.is-primary %}
 $ sgdisk {{ firmware.sgdisk.args }} {{ script.args }}

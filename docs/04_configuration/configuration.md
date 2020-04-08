@@ -35,18 +35,12 @@ In computing, the term group generally refers to a grouping of users. In princip
 
 ## References
 
-### LOCALIZATION
-{: .no_toc .text-delta .pt-2}
-
+#### LOCALIZATION
 1. [Wikipedia - Internationalization and localization](https://en.wikipedia.org/wiki/Internationalization_and_localization)
 
-### NETWORK
-{: .no_toc .text-delta .pt-4}
-
+#### NETWORK
 1. [Wikipedia - Computer network](https://en.wikipedia.org/wiki/Computer_network)
 
-### USERS AND GROUPS
-{: .no_toc .text-delta .pt-4}
-
+#### USERS AND GROUPS
 1. [Wikipedia - User (computing)](https://en.wikipedia.org/wiki/User_(computing))
 1. [Wikipedia - Group (computing)](https://en.wikipedia.org/wiki/Group_(computing))

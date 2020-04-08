@@ -8,7 +8,6 @@ nav_order: 1
 ---
 
 # USB flash device
-{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -20,7 +19,7 @@ nav_order: 1
 
 ## List your devices
 
-```bash
+```
 $ fdisk -l
 ```
 
@@ -30,7 +29,7 @@ $ fdisk -l
 
 Edit path/to/archlinux.iso and sdX accordingly
 
-```bash
+```
 $ dd bs=4M if=path/to/archlinux.iso of=/dev/sdX status=progress oflag=sync
 ```
 

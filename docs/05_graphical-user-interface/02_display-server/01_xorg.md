@@ -8,7 +8,6 @@ nav_order: 1
 ---
 
 # Display server / Xorg
-{: .no_toc}
 
 ## Table of contents
 {: .no_toc .text-delta}
@@ -20,7 +19,7 @@ nav_order: 1
 
 ## Install the packages
 
-```bash
+```
 $ pacman -S xorg-{server,xinit,xrandr}
 ```
 
@@ -32,7 +31,7 @@ The xinit program allows a user to manually start an Xorg display server. The `s
 
 ### Copy the example file to your home directory
 
-```bash
+```
 $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
 ```
 
@@ -40,10 +39,8 @@ $ cp /etc/X11/xinit/xinitrc ~/.xinitrc
 
 At the end of the file, delete the lines below.
 
-~/.xinitrc
-{: .fs-3 .mb-0}
-
-```bash
+##### ~/.xinitrc
+```
 twm &
 xclock -geometry 50x50-1+1 &
 xterm -geometry 80x50+494+51 &
@@ -57,7 +54,7 @@ exec xterm -geometry 80x66+0+0 -name login
 
 Xresources is a user-level configuration dotfile, typically located at `~/.Xresources`. It can be used to set X resources, which are configuration parameters for X client applications.
 
-```bash
+```
 $ touch ~/.Xresources
 ```
 

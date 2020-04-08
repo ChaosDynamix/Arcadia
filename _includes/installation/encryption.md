@@ -7,17 +7,15 @@ GRUB does not support LUKS2 headers to unlock encrypted `/boot` partition so you
 
 {% if scenario.storage.has-detached-header %}
 ### Create the header
-{: .no_toc}
 
-```bash
+```
 $ dd if=/dev/zero of=header.img bs=16M count=1
 ```
 {% endif %}
 
 ### Create the LUKS1 container{% if devicenumber > 1 %}s{% endif %}
-{: .no_toc .mt-6}
 
-```bash
+```
 {%- for container in scenario.storage.containers %}
 $ cryptsetup --type luks1 luksFormat {{ container.node }} {% if scenario.storage.has-detached-header %}--offset 32768 --header header.img{% endif %}
 {%- endfor %}
@@ -28,9 +26,8 @@ The `--offset` option allows specifying the start of encrypted data on a device.
 {% endif %}
 
 ### Open the container{% if devicenumber > 1 %}s{% endif %}
-{: .no_toc .mt-6}
 
-```bash
+```
 {%- for container in scenario.storage.containers %}
 $ cryptsetup open {% if scenario.storage.has-detached-header %}--header header.img {% endif %}{{ container.node }} {{ container.name }}
 {%- endfor %}

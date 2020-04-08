@@ -10,6 +10,7 @@ storage:
   partitions:
     - node: /dev/sda1
       is-firmware: true
+      label: EFI
 
     - node: /dev/sda2
       is-firmware: false
@@ -27,37 +28,33 @@ storage:
     pv: /dev/sda2
     vg: grp
     lvs:
-      - label: ROOT
-        is-swap: false
-        is-root: true
+      - name: root
+        label: ROOT
         has-dir: false
         node: /dev/grp/root
         size: 20G
         size-arg: -L
 
-      - label: SWAP
-        is-swap: true
-        is-root: false
+      - name: swap
+        label: SWAP
         has-dir: false
         node: /dev/grp/swap
         size: "> 512M"
         size-arg: -L
 
-      - label: VAR
-        is-swap: false
-        is-root: false
+      - name: var
+        label: VAR
         has-dir: true
         node: /dev/grp/var
         size: 10G
         size-arg: -L
 
-      - label: HOME
-        is-swap: false
-        is-root: false
+      - name: home
+        label: HOME
         has-dir: true
         node: /dev/grp/home
         size: 100%FREE - 5G
-        size-arg: -l
+        size-arg: -L
 
 packages:
   - name: lvm2
