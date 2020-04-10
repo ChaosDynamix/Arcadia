@@ -1,4 +1,4 @@
-{% assign scenario = include.data %}
+{% assign template = include.template %}
 
 ## Setup the initial ramdisk images
 
@@ -13,7 +13,7 @@ $ echo KEYMAP=fr-latin9 > /etc/vconsole.conf
 
 ##### /etc/mkinitcpio.conf
 ```
-{{ scenario.configuration.mkinitcpio -}}
+{{ template.configuration.mkinitcpio -}}
 ```
 
 ### Generate the images

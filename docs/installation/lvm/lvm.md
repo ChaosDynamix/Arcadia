@@ -64,7 +64,7 @@ Device 1                               Device 2
               +---------------------------------------------+
 ```
 
-### [Luks on Raid1](/Andromeda/installation/lvm/luks-raid1/)
+### [Luks on Raid](/Andromeda/installation/lvm/luks-raid/)
 {: .mt-8}
 
 Different to Luks on multiple partitions, Luks on Raid1 is a mirroring system used for data redundancy. Only use this scenario with devices with the same size. Due to the redundancy feature, this scenario reduce the final system size.

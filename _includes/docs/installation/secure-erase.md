@@ -1,7 +1,8 @@
-{% assign scenario = include.data %}
-{% assign devicenumber = scenario.storage.devices | size %}
+{% assign template = include.template %}
+{% assign devices = template.devices %}
+{% assign device_number = template.devices | size %}
 
-## Secure erase the device{% if devicenumber > 1 %}s{% endif %}
+## Secure erase the device{% if device_number > 1 %}s{% endif %}
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
@@ -12,23 +13,23 @@ Before setting up encryption on a mass storage device, consider securely wiping 
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### Create the temporary encrypted container{% if devicenumber > 1 %}s{% endif %}
+### Create the temporary encrypted container{% if device_number > 1 %}s{% endif %}
 ```
-{%- for device in scenario.storage.devices %}
-$ cryptsetup open --type plain -d /dev/urandom {{ device.name }} to_be_wiped{{ device.id }}
+{%- for device in devices %}
+$ cryptsetup open --type plain -d /dev/urandom {{ device.node }} to_be_wiped{{ device.id }}
 {%- endfor %}
 ```
 
-### Wipe the container{% if devicenumber > 1 %}s{% endif %} with zeros
+### Wipe the container{% if device_number > 1 %}s{% endif %} with zeros
 ```
-{%- for device in scenario.storage.devices %}
+{%- for device in devices %}
 $ dd if=/dev/zero of=/dev/mapper/to_be_wiped{{ device.id }} status=progress
 {%- endfor %}
 ```
 
-### Close the temporary container{% if devicenumber > 1 %}s{% endif %}
+### Close the temporary container{% if device_number > 1 %}s{% endif %}
 ```
-{%- for device in scenario.storage.devices %}
+{%- for device in devices %}
 $ cryptsetup close to_be_wiped{{ device.id }}
 {%- endfor %}
 ```

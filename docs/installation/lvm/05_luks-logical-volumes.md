@@ -2,9 +2,7 @@
 layout: default
 title: Luks-logical-volumes
 permalink: /installation/lvm/luks-logical-volumes/
-grand_parent: Installation
-parent: LVM
-nav_order: 5
+nav_exclude: true
 ---
 
 # LVM / Luks on logical volumes
@@ -17,13 +15,13 @@ nav_order: 5
 
 ---
 
-{%- assign scenario = site.data.lvm.luks-logical-volumes %}
-{%- assign rootcontainer = scenario.storage.containers | where: "name", "root" | first %}
-{%- assign homecontainer = scenario.storage.containers | where: "name", "home" | first %}
+{% assign luks-logical-volumes = site.data.docs.installation.lvm.template.luks-logical-volumes %}
+{% assign luks-lvm = site.data.docs.installation.lvm.scenario.luks-lvm %}
 
-{% include installation/secure-erase.md data=scenario %}
-{% include installation/partitioning.md data=scenario %}
-{% include installation/lvm.md data=scenario %}
+{% include docs/installation/secure-erase.md template=luks-logical-volumes %}
+{% include docs/installation/partitioning.md template=luks-logical-volumes %}
+
+<!--
 
 ## Setup the Root volume
 
@@ -40,11 +38,6 @@ $ mount {{ rootcontainer.mapper }} /mnt
 ```
 
 ---
-
-{% include installation/efi.md data=scenario %}
-{% include installation/essential-packages.md data=scenario %}
-{% include installation/filesystem-table.md data=scenario %}
-{% include installation/keyfile.md data=scenario %}
 
 ## Setup the Home volume
 
@@ -78,6 +71,4 @@ swap    /dev/grp/cryptswap    /dev/urandom	         swap,cipher=aes-xts-plain64,
 
 ---
 
-{% include installation/initial-ramdisk.md data=scenario %}
-{% include installation/microcode.md %}
-{% include installation/boot-loader.md data=scenario %}
+-->

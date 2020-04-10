@@ -1,4 +1,4 @@
-{% assign scenario = include.data %}
+{% assign template = include.template %}
 
 ## Generate the filesystem table
 
@@ -7,7 +7,7 @@
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if scenario.storage.has-swapfile %}
+{% if template.has-swapfile %}
 ### Create the swapfile
 
 ### Add the swapfile in the fstab
