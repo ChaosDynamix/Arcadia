@@ -7,10 +7,6 @@ nav_exclude: true
 Andromeda is one of the many guides to install and configure Arch Linux.
 {: .fs-8}
 
-<span class="fs-6">
-[Getting started]({{ site.baseurl }}{% link docs/preparation/preparation.md %}){: .btn .btn-green}
-</span>
-
 ---
 
 ## Early stage

@@ -13,8 +13,6 @@ github_username:  ChaosDynamix
 # Build settings
 markdown: kramdown
 remote_theme: pmarsceill/just-the-docs
-plugins:
-  - jekyll-feed
 
 # Auxiliary links
 aux_links:
@@ -28,6 +26,50 @@ kramdown:
   toc_levels: "2"
   syntax_highlighter_opts:
     default_lang: bash
+
+# Collections_dir
+collections_dir: _docs
+
+# Collections
+collections:
+
+  preparation:
+    title: Preparation
+    nav_order: 1
+    has_sections: true
+    output: true
+    is_post: false
+    sections:
+      - name: Installation image
+        nav_order: 1
+      - name: Installation media
+        nav_order: 2
+
+  live_environment:
+    title: Live environment
+    nav_order: 2
+    has_sections: false
+    output: true
+    is_post: false
+
+  installation:
+    title: Installation
+    nav_order: 3
+    has_sections: true
+    output: true
+    is_post: false
+    sections:
+      - name: Logical Volume Manager
+        nav_order: 1
+      - name: B-tree filesystem
+        nav_order: 2
+
+  configuration:
+    title: Configuration
+    nav_order: 4
+    has_sections: false
+    output: true
+    is_post: false
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

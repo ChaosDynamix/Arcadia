@@ -1,6 +1,30 @@
 <nav role="navigation" aria-label="Main navigation">
 
-  <h3 class="mt-0">Preparation</h3>
+    {%- assign collections = site.collections | where: "is_post", false | sort: "nav_order" -%}
+    {%- assign index = 1 -%}
+    {%- for collection in collections -%}
+      <h3 class="mt-0">{{ collection.title }}</h3>
+      {%- if collection.has_sections -%}
+        {%- assign sections = collection.sections | sort: "nav_order" -%}
+        {%- for section in sections -%}
+          <h4>{{ section.name }}</h4>
+          <ol class="navigation-list">
+          {%- assign documents = collection.docs | where: "section", section.name | sort: "nav_order" -%}
+          {%- for document in documents -%}
+            <li class="navigation-list-item">{{ document.name }}</li>
+          {%- endfor -%}
+          </ol>
+        {%- endfor -%}
+      {%- else -%}
+        {%- assign documents = collection.docs | sort: "nav_order" -%}
+        <ol class="navigation-list">
+        {%- for document in documents -%}
+          <li class="navigation-list-item">{{ document.name }}</li>
+        {%- endfor -%}
+        </ol>
+      {% endif %}
+      <div style="border-bottom: 1px solid #eeebee;height: 32px;margin-bottom: 32px"></div>
+    {%- endfor -%}
 
 </nav>
 
