@@ -36,6 +36,7 @@ collections:
   preparation:
     title: Preparation
     nav_order: 1
+    permalink: /:collection/:path/
     has_sections: true
     output: true
     is_post: false
@@ -45,9 +46,10 @@ collections:
       - name: Installation media
         nav_order: 2
 
-  live_environment:
+  live-environment:
     title: Live environment
     nav_order: 2
+    permalink: /:collection/:path/
     has_sections: false
     output: true
     is_post: false
@@ -55,18 +57,18 @@ collections:
   installation:
     title: Installation
     nav_order: 3
+    permalink: /:collection/:path/
     has_sections: true
     output: true
     is_post: false
     sections:
       - name: Logical Volume Manager
         nav_order: 1
-      - name: B-tree filesystem
-        nav_order: 2
 
   configuration:
     title: Configuration
     nav_order: 4
+    permalink: /:collection/:path/
     has_sections: false
     output: true
     is_post: false
