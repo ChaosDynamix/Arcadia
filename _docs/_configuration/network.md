@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Network
 nav_order: 2
 ---

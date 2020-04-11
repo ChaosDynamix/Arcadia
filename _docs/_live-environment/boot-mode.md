@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Boot mode
 nav_order: 2
 ---

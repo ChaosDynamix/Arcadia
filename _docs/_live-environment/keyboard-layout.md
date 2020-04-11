@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Keyboard Layout
 nav_order: 1
 ---

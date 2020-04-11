@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Netboot
 section: Installation media
 nav_order: 2

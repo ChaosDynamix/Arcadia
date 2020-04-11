@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Localization
 nav_order: 1
 ---

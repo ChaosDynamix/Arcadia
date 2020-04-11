@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Mirrorlist
 nav_order: 5
 ---

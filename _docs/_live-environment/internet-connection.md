@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Internet connection
 nav_order: 3
 ---

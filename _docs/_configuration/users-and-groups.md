@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Users and groups
 nav_order: 3
 ---

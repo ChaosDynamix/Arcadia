@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Luks on single partition
 section: Logical Volume Manager
 nav_order: 1

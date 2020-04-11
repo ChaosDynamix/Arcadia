@@ -1,4 +1,5 @@
 ---
+layout: default
 name: Luks on Raid
 section: Logical Volume Manager
 nav_order: 3

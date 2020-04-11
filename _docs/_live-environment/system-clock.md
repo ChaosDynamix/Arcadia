@@ -1,4 +1,5 @@
 ---
+layout: default
 name: System clock
 nav_order: 4
 ---
