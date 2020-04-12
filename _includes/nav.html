@@ -11,7 +11,7 @@
             {%- assign documents = collection.docs | where: "section", section.name | sort: "nav_order" -%}
             {%- for document in documents -%}
               {%- if document.parent == nil -%}
-                {%- if page.parent == document.title -%}
+                {%- if page.section == document.section and page.parent == document.title -%}
                   {%- assign first_level_url = document.url | absolute_url -%}
                 {%- endif -%}
                 <li class="navigation-list-item{% if page.section == document.section and page.title == document.title or page.parent == document.title %} active{% endif %}">
