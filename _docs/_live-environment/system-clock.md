@@ -1,6 +1,6 @@
 ---
 layout: default
-name: System clock
+title: System clock
 nav_order: 4
 ---
 

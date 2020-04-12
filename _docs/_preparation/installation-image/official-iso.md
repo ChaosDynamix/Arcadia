@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Official ISO
+title: Official ISO
 section: Installation image
 nav_order: 1
 ---

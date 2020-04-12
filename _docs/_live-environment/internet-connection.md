@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Internet connection
+title: Internet connection
 nav_order: 3
 ---
 

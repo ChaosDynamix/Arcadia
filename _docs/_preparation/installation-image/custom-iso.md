@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Custom ISO
+title: Custom ISO
 section: Installation image
 nav_order: 2
 ---

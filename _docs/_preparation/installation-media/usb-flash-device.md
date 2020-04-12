@@ -1,6 +1,6 @@
 ---
 layout: default
-name: USB flash device
+title: USB flash device
 section: Installation media
 nav_order: 1
 ---

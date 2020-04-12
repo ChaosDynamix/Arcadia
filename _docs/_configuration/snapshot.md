@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Snapshot
+title: Snapshot
 nav_order: 4
 ---
 

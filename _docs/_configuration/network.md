@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Network
+title: Network
 nav_order: 2
 ---
 

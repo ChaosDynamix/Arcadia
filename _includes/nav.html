@@ -10,8 +10,8 @@
           <ul class="navigation-list">
           {%- assign documents = collection.docs | where: "section", section.name | sort: "nav_order" -%}
           {%- for document in documents -%}
-            <li class="navigation-list-item{% if page.url == document.url %} active{% endif %}">
-              <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link">{{ document.name }}</a>
+            <li class="navigation-list-item{% if page.title == document.title %} active{% endif %}">
+              <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link{% if page.url == document.url %} active{% endif %}">{{ document.title }}</a>
             </li>
           {%- endfor -%}
           </ul>
@@ -21,7 +21,7 @@
         <ul class="navigation-list">
         {%- for document in documents -%}
           <li class="navigation-list-item{% if page.url == document.url %} active{% endif %}">
-            <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link">{{ document.name }}</a>
+            <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link{% if page.url == document.url %} active{% endif %}">{{ document.title }}</a>
           </li>
         {%- endfor -%}
         </ul>

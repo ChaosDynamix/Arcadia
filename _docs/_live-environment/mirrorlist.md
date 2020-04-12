@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Mirrorlist
+title: Mirrorlist
 nav_order: 5
 ---
 

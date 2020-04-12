@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Keyboard Layout
+title: Keyboard Layout
 nav_order: 1
 ---
 

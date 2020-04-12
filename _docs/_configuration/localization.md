@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Localization
+title: Localization
 nav_order: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Luks on logical volumes
+title: Luks on logical volumes
 section: Logical Volume Manager
 nav_order: 4
 ---

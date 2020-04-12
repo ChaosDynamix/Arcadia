@@ -1,6 +1,6 @@
 ---
 layout: default
-name: Boot mode
+title: Boot mode
 nav_order: 2
 ---
 
