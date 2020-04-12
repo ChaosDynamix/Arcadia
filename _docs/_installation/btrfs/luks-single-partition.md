@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Luks on single partition
-section: lvm
+section: btrfs
 nav_order: 1
 has_children: true
 ---

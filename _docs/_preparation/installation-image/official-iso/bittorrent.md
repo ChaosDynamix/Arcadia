@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Official ISO
+title: BitTorrent
 section: Installation image
 nav_order: 1
-has_children: true
+parent: Official ISO
 ---
 
-Official ISO
+BitTorrent

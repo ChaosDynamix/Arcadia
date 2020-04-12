@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Luks on Raid
-section: Logical Volume Manager
+section: lvm
 nav_order: 3
 ---
 

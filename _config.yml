@@ -62,8 +62,10 @@ collections:
     output: true
     is_post: false
     sections:
-      - name: Logical Volume Manager
+      - name: lvm
         nav_order: 1
+      - name: btrfs
+        nav_order: 2
 
   configuration:
     title: Configuration

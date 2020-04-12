@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Luks on multiple partitions
-section: Logical Volume Manager
+section: lvm
 nav_order: 2
 ---
 
