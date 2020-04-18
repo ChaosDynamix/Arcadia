@@ -16,7 +16,9 @@ nav_order: 1
 
 ---
 
-## Select a keymap
+## Keyboard layout
+
+### List the keymaps
 
 Choose one of the two commands
 
@@ -30,9 +32,7 @@ $ ls /usr/share/kbd/keymaps/**/*.map.gz | less
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | grep -i search_term
 ```
 
----
-
-## Load the keymap
+### Load the keymap
 
 Replace fr-latin9 accordingly
 

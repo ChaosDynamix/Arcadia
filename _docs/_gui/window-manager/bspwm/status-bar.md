@@ -1,13 +1,10 @@
 ---
-layout: default
-title: Polybar
-permalink: /graphical-user-interface/status-bar/polybar/
-grand_parent: Graphical user interface
-parent: Status bar
+title: Status bar
 nav_order: 1
+parent: Bspwm
 ---
 
-# Status bar / Polybar
+# {{ page.title }}
 {: .no_toc}
 
 ## Table of contents
@@ -20,7 +17,6 @@ nav_order: 1
 
 
 ## Install the Arch User Repository needed packages
-
 
 ```
 $ pacman -S base-devel git

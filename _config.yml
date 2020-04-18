@@ -1,13 +1,9 @@
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# Global settings
 title: Andromeda
 email: your-email@example.com
 description: Andromeda is one of the many guides to install and configure Arch Linux.
-baseurl: "/Andromeda" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/Andromeda"
+url: ""
 github_username:  ChaosDynamix
 
 # Build settings
@@ -27,6 +23,37 @@ kramdown:
   syntax_highlighter_opts:
     default_lang: bash
 
+# Defaults
+defaults:
+  -
+    scope:
+      path: "_docs/_preparation"
+    values:
+      layout: default
+  -
+    scope:
+      path: "_docs/_scenario/lvm"
+    values:
+      layout: default
+      section: lvm
+  -
+    scope:
+      path: "_docs/_display"
+    values:
+      layout: default
+  -
+    scope:
+      path: "_docs/_gui/desktop-environment"
+    values:
+      layout: default
+      section: desktop environment
+  -
+    scope:
+      path: "_docs/_gui/window-manager"
+    values:
+      layout: default
+      section: window manager
+
 # Collections_dir
 collections_dir: _docs
 
@@ -37,52 +64,38 @@ collections:
     title: Preparation
     nav_order: 1
     permalink: /:collection/:path/
-    has_sections: true
     output: true
     is_post: false
-    sections:
-      - name: Installation image
-        nav_order: 1
-      - name: Installation media
-        nav_order: 2
+    has_sections: false
 
-  live-environment:
-    title: Live environment
+  scenario:
+    title: Scenario
     nav_order: 2
     permalink: /:collection/:path/
-    has_sections: false
     output: true
     is_post: false
-
-  installation:
-    title: Installation
-    nav_order: 3
-    permalink: /:collection/:path/
     has_sections: true
-    output: true
-    is_post: false
     sections:
       - name: lvm
         nav_order: 1
-      - name: btrfs
-        nav_order: 2
 
-  configuration:
-    title: Configuration
-    nav_order: 4
+  display:
+    title: Display
+    nav_order: 3
     permalink: /:collection/:path/
-    has_sections: false
     output: true
     is_post: false
+    has_sections: false
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+  gui:
+    title: Graphical user interface
+    nav_order: 4
+    permalink: /:collection/:path/
+    output: true
+    is_post: false
+    has_sections: true
+    sections:
+      - name: desktop environment
+        nav_order: 1
+      - name: window manager
+        nav_order: 2
