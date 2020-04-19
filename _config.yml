@@ -99,3 +99,5 @@ collections:
         nav_order: 1
       - name: window manager
         nav_order: 2
+
+exclude: ["vendor","Makefile"]

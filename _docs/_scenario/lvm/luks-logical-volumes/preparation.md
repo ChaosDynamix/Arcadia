@@ -19,6 +19,5 @@ parent: Luks on logical volumes
 
 {% include installation/secure-erase.md template=template %}
 {% include installation/partitioning.md template=template %}
-{% include installation/encryption.md template=template %}
 {% include installation/lvm.md template=template scenario=scenario %}
 {% include installation/efi.md template=template %}
