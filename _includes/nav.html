@@ -1,63 +1,46 @@
 <nav role="navigation" aria-label="Main navigation">
-
-    {%- assign collections = site.collections | where: "is_post", false | sort: "nav_order" -%}
-    {%- for collection in collections -%}
+  {%- assign collections = site.collections | where: "is_post", false | sort: "nav_order" -%}
+  {%- for collection in collections -%}
+    <div class="navigation-section">
+      <div class="navigation-section-content">
         <h3 class="mt-0">{{ collection.title }}</h3>
-        {%- if collection.has_sections -%}
-          {%- assign sections = collection.sections | sort: "nav_order" -%}
-          {%- for section in sections -%}
-            <h4>{{ section.name }}</h4>
-            <ul class="navigation-list">
-            {%- assign documents = collection.docs | where: "section", section.name | sort: "nav_order" -%}
-            {%- for document in documents -%}
-              {%- if document.parent == nil -%}
-                {%- if page.section == document.section and page.parent == document.title -%}
-                  {%- assign first_level_url = document.url | absolute_url -%}
-                {%- endif -%}
-                <li class="navigation-list-item{% if page.section == document.section and page.title == document.title or page.parent == document.title %} active{% endif %}">
-                  <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link{% if page.url == document.url %} active{% endif %}">{{ document.title }}</a>
+        {%- assign sections = collection.sections | sort: "nav_order" -%}
+        {%- for section in sections -%}
+          <h4>{{ section.name }}</h4>
+          <ul class="navigation-list">
+          {%- assign documents = collection.docs | where: "section", section.name | sort: "nav_order" -%}
+          {%- for document in documents -%}
+            {%- if document.parent == nil -%}
+              {%- if page.section == document.section and page.parent == document.title -%}
+                {%- assign first_level_url = document.url | absolute_url -%}
+              {%- endif -%}
+              <li class="navigation-list-item{% if page.section == document.section and page.title == document.title or page.parent == document.title or page.grand_parent == document.title %} active{% endif %}">
+                <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link{% if page.url == document.url %} active{% endif %}">{{ document.title }}</a>
                 {%- if document.has_children -%}
                   {%- assign all_children = collection.docs | where: "parent", document.title -%}
                   {%- assign section_children = all_children | where: "section", section.name | sort: "nav_order" -%}
-                  <ul class="navigation-list-child-list ">
-                    {%- for child in section_children -%}
-                      <li class="navigation-list-item {% if page.url == child.url %} active{% endif %}">
-                        <a href="{{ child.url | absolute_url }}" class="navigation-list-link{% if page.url == child.url %} active{% endif %}">{{ child.title }}</a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
-                </li>
-              {%- endif -%}
-            {%- endfor -%}
-            </ul>
-          {%- endfor -%}
-        {%- else -%}
-          {%- assign documents = collection.docs | sort: "nav_order" -%}
-          <ul class="navigation-list">
-          {%- for document in documents -%}
-            {%- if document.parent == nil -%}
-              {%- if page.parent == document.title -%}
-                {%- assign first_level_url = document.url | absolute_url -%}
-              {%- endif -%}
-              <li class="navigation-list-item{% if page.section == document.section and page.title == document.title or page.parent == document.title %} active{% endif %}">
-                <a href="{{ document.url | prepend: site.baseurl }}" class="navigation-list-link{% if page.url == document.url %} active{% endif %}">{{ document.title }}</a>
-                {%- if document.has_children -%}
-                  {%- assign all_children = collection.docs | where: "parent", document.title | sort: "nav_order" -%}
-                  <ul class="navigation-list-child-list ">
-                    {%- for child in all_children -%}
-                      <li class="navigation-list-item {% if page.url == child.url %} active{% endif %}">
-                        <a href="{{ child.url | absolute_url }}" class="navigation-list-link{% if page.url == child.url %} active{% endif %}">{{ child.title }}</a>
-                      </li>
-                    {%- endfor -%}
-                  </ul>
+                  <ol class="navigation-list-child-list ">
+                  {%- for child in section_children -%}
+                    <li class="navigation-list-item {% if page.url == child.url %} active{% endif %}">
+                      <a href="{{ child.url | absolute_url }}" class="navigation-list-link{% if page.url == child.url %} active{% endif %}">{{ child.title }}</a>
+                      {%- if child.title == page.parent and child.parent == page.grand_parent -%}
+                        {%- assign grand_child = documents | where: "title", page.title | first -%}
+                        <ul class="navigation-list-child-list">
+                          <li class="navigation-list-item active">
+                            <a href="{{ grand_child.url | absolute_url }}" class="navigation-list-link active">{{ grand_child.title }}</a>
+                          </li>
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                  </ol>
                 {%- endif -%}
               </li>
             {%- endif -%}
           {%- endfor -%}
           </ul>
-        {%- endif -%}
-        <div style="border-bottom: 1px solid #eeebee;height: 32px;margin-bottom: 32px"></div>
-    {%- endfor -%}
-
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endfor -%}
 </nav>

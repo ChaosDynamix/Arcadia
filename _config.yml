@@ -5,6 +5,7 @@ description: Andromeda is one of the many guides to install and configure Arch L
 baseurl: "/Andromeda"
 url: ""
 github_username:  ChaosDynamix
+footer_content: "Copyright &copy; 2020 ChaosDynamix."
 
 # Build settings
 markdown: kramdown
@@ -27,29 +28,25 @@ kramdown:
 defaults:
   -
     scope:
-      path: "_docs/_preparation"
-    values:
-      layout: default
-  -
-    scope:
-      path: "_docs/_scenario/lvm"
+      path: "_docs/_stage1/lvm"
     values:
       layout: default
       section: lvm
   -
     scope:
-      path: "_docs/_display"
+      path: "_docs/_stage1/btrfs"
     values:
       layout: default
+      section: btrfs
   -
     scope:
-      path: "_docs/_gui/desktop-environment"
+      path: "_docs/_stage2/desktop-environment"
     values:
       layout: default
       section: desktop environment
   -
     scope:
-      path: "_docs/_gui/window-manager"
+      path: "_docs/_stage2/window-manager"
     values:
       layout: default
       section: window manager
@@ -60,44 +57,35 @@ collections_dir: _docs
 # Collections
 collections:
 
-  preparation:
-    title: Preparation
+  stage1:
+    title: Stage 1
     nav_order: 1
     permalink: /:collection/:path/
     output: true
     is_post: false
-    has_sections: false
+    sections:
+      - name: lvm
+        nav_order: 1
+      - name: btrfs
+        nav_order: 2
 
-  scenario:
-    title: Scenario
+  stage2:
+    title: Stage 2
     nav_order: 2
     permalink: /:collection/:path/
     output: true
     is_post: false
-    has_sections: true
-    sections:
-      - name: lvm
-        nav_order: 1
-
-  display:
-    title: Display
-    nav_order: 3
-    permalink: /:collection/:path/
-    output: true
-    is_post: false
-    has_sections: false
-
-  gui:
-    title: Graphical user interface
-    nav_order: 4
-    permalink: /:collection/:path/
-    output: true
-    is_post: false
-    has_sections: true
     sections:
       - name: desktop environment
         nav_order: 1
       - name: window manager
         nav_order: 2
 
-exclude: ["vendor","Makefile"]
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - Makefile
+  - README.md
