@@ -1,7 +1,7 @@
 ---
 title: Luks on single partition
+uuid: b84ab5fb-9500-4b17-b322-bd04e31f5d3a
 nav_order: 1
-has_children: true
 ---
 
 # {{ page.title }}

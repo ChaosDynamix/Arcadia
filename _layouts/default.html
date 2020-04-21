@@ -49,22 +49,23 @@ layout: table_wrappers
           {% endif %}
         </div>
         <div class="page">
+          <!-- Get the page collection -->
+          {%- assign collection = site.collections | where: "title", page.collection | first -%}
           {% unless page.url == "/" %}
             <nav class="breadcrumb-nav">
               <ol class="breadcrumb-nav-list">
-                {% if page.grand_parent %}
                 <li class="breadcrumb-nav-list-item"><span>{{ page.section | capitalize }}</span></li>
-                <li class="breadcrumb-nav-list-item"><span>{{ page.grand_parent }}</span></li>
-                <li class="breadcrumb-nav-list-item"><span>{{ page.parent }}</span></li>
-                <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
-                {% elsif page.parent %}
-                <li class="breadcrumb-nav-list-item"><span>{{ page.section | capitalize }}</span></li>
-                <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
-                <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
-                {% else %}
-                <li class="breadcrumb-nav-list-item"><span>{{ page.section | capitalize }}</span></li>
-                <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+                <!-- If the page has a grand_parent -->
+                {% if page.grand_parent_uuid %}
+                  {% assign grand_parent = collection.docs | where: "uuid", page.grand_parent_uuid | first %}
+                  <li class="breadcrumb-nav-list-item"><a href="{{ grand_parent.url | absolute_url }}">{{ grand_parent.title }}</a></li>
                 {% endif %}
+                <!-- If page has a parent -->
+                {% if page.parent_uuid %}
+                  {% assign parent = collection.docs | where: "uuid", page.parent_uuid | first %}
+                  <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>
+                {% endif %}
+                <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
               </ol>
             </nav>
           {% endunless %}
@@ -75,30 +76,21 @@ layout: table_wrappers
               {{ content }}
             {% endif %}
 
-          {% if page.has_children == true and page.has_toc != false %}
-            <hr>
-            <h2 class="text-delta">Steps</h2>
-            <ol>
-            {% for collection in site.collections %}
-              {% assign children = collection.docs | where: "parent", page.title | sort: "nav_order" %}
-              {% if collection.has_sections %}
+          {% unless page.parent_uuid %}
+            {% assign children = collection.docs | where: "parent_uuid", page.uuid | sort: "nav_order" %}
+            {% assign children_size = children | size %}
+            {% unless children_size == 0 %}
+              <hr>
+              <h2 class="text-delta">Steps</h2>
+              <ol>
                 {% for child in children %}
-                  {% if child.section == page.section %}
-                    <li>
-                      <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
-                    </li>
-                  {% endif %}
+                  <li>
+                    <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
+                  </li>
                 {% endfor %}
-              {% else %}
-                {% for child in children %}
-                    <li>
-                      <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
-                    </li>
-                {% endfor %}
-              {% endif %}
-            {% endfor %}
-            </ol>
-          {% endif %}
+              </ol>
+            {% endunless %}
+          {% endunless %}
 
           {% if site.footer_content != nil %}
             <hr>

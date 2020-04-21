@@ -24,32 +24,14 @@ kramdown:
   syntax_highlighter_opts:
     default_lang: bash
 
-# Defaults
-defaults:
-  -
-    scope:
-      path: "_docs/_stage1/lvm"
-    values:
-      layout: default
-      section: lvm
-  -
-    scope:
-      path: "_docs/_stage1/btrfs"
-    values:
-      layout: default
-      section: btrfs
-  -
-    scope:
-      path: "_docs/_stage2/desktop-environment"
-    values:
-      layout: default
-      section: desktop environment
-  -
-    scope:
-      path: "_docs/_stage2/window-manager"
-    values:
-      layout: default
-      section: window manager
+# Exclude
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - Makefile
+  - README.md
 
 # Collections_dir
 collections_dir: _docs
@@ -57,8 +39,8 @@ collections_dir: _docs
 # Collections
 collections:
 
-  stage1:
-    title: Stage 1
+  installation:
+    title: installation
     nav_order: 1
     permalink: /:collection/:path/
     output: true
@@ -69,8 +51,8 @@ collections:
       - name: btrfs
         nav_order: 2
 
-  stage2:
-    title: Stage 2
+  desktop:
+    title: desktop
     nav_order: 2
     permalink: /:collection/:path/
     output: true
@@ -81,11 +63,29 @@ collections:
       - name: window manager
         nav_order: 2
 
-# Exclude
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - Makefile
-  - README.md
+# Defaults
+defaults:
+  -
+    scope:
+      path: "_docs/_installation/lvm"
+    values:
+      layout: default
+      section: lvm
+  -
+    scope:
+      path: "_docs/_installation/btrfs"
+    values:
+      layout: default
+      section: btrfs
+  -
+    scope:
+      path: "_docs/_desktop/desktop-environment"
+    values:
+      layout: default
+      section: desktop environment
+  -
+    scope:
+      path: "_docs/_desktop/window-manager"
+    values:
+      layout: default
+      section: window manager
