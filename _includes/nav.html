@@ -41,17 +41,18 @@
                   <!-- Unless there is no children -->
                   {%- unless children_size == 0 -%}
 
-                    <ol class="navigation-list-child-list ">
+                    <ol class="navigation-list-child-list">
 
-                      <!-- Loop the section pages -->
+                      <!-- Loop the children -->
                       {%- for child in children -%}
                         <li class="navigation-list-item{% if child.uuid == page.uuid or child.uuid == page.parent_uuid %} active{% endif %}">
                           <a href="{{ child.url | absolute_url }}" class="navigation-list-link{% if child.uuid == page.uuid %} active{% endif %}">{{ child.title }}</a>
 
+                          <!-- If the child is the page parent -->
                           {% if child.uuid == page.parent_uuid %}
                             <!-- Get the grand children -->
                             {%- assign grand_child = section_pages | where: "uuid", page.uuid | first -%}
-                            <ul class="navigation-list-child-list">
+                            <ul class="navigation-list-child-list custom-style">
                               <li class="navigation-list-item{% if grand_child.uuid == page.uuid %} active{% endif %}">
                                 <a href="{{ grand_child.url | absolute_url }}" class="navigation-list-link{% if grand_child.uuid == page.uuid %} active{% endif %}">{{ grand_child.title }}</a>
                               </li>

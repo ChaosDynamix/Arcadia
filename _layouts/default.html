@@ -51,7 +51,7 @@ layout: table_wrappers
         <div class="page">
           <!-- Get the page collection -->
           {%- assign collection = site.collections | where: "title", page.collection | first -%}
-          {% unless page.url == "/" %}
+          {% unless page.url == "/" or page.nav_exclude %}
             <nav class="breadcrumb-nav">
               <ol class="breadcrumb-nav-list">
                 <li class="breadcrumb-nav-list-item"><span>{{ page.section | capitalize }}</span></li>
@@ -76,7 +76,7 @@ layout: table_wrappers
               {{ content }}
             {% endif %}
 
-          {% unless page.parent_uuid %}
+          {% unless page.parent_uuid or page.nav_exclude %}
             {% assign children = collection.docs | where: "parent_uuid", page.uuid | sort: "nav_order" %}
             {% assign children_size = children | size %}
             {% unless children_size == 0 %}

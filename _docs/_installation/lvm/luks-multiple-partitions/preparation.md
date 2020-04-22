@@ -14,3 +14,17 @@ nav_order: 1
 {:toc}
 
 ---
+
+{% include installation/preparation/installation-image.md %}
+---
+{% include installation/preparation/installation-media.md %}
+---
+{% include installation/preparation/keymap.md %}
+---
+{% include installation/preparation/boot-mode.md %}
+---
+{% include installation/preparation/network.md %}
+---
+{% include installation/preparation/keyring.md %}
+---
+{% include installation/preparation/mirrorlist.md %}

@@ -1,0 +1,24 @@
+## Generate the mirrorlist
+
+### Install the reflector package
+
+Reflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file `/etc/pacman.d/mirrorlist`.
+
+```
+$ pacman -S reflector
+```
+
+### Launch the reflector script with your arguments
+
+##### Example
+```
+$ reflector -c FR -a 15 -p https --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+| Argument | Description                                                                                                                         |
+| :------- | :---------------------------------------------------------------------------------------------------------------------------------- |
+| -c       | Match one of the given countries (case-sensitive). Use `reflector --list-countries` to see which are available                      |
+| -a       | Only return mirrors that have synchronized in the last n hours. n may be an integer or a decimal number                             |
+| -p       | March one of the given protocols, e.g "http", "https", "ftp"                                                                        |
+| --sort   | Sort the mirrorlist. "rate": download rate; "country": server's location; "score": MirrorStatus score; "delay": MirrorStatus delay. |
+| --save   | Save the mirrorlist to the given path.                                                                                              |

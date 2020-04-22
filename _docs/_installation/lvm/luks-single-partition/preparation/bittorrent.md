@@ -14,3 +14,5 @@ grand_parent_uuid: b84ab5fb-9500-4b17-b322-bd04e31f5d3a
 {:toc}
 
 ---
+
+{% include installation/preparation/installation-image/bittorrent.md %}
