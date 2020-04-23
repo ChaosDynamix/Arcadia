@@ -1,0 +1,24 @@
+profile:
+
+  solo:
+    plural: false
+    command:
+      create: >
+        $ cryptsetup open --type plain -d /dev/urandom /dev/sda1 to_be_wiped
+      wipe: >
+        $ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+      close: >
+        $ cryptsetup close to_be_wiped
+
+  multiple:
+    plural: true
+    command:
+      create: >
+        $ cryptsetup open --type plain -d /dev/urandom /dev/sda1 to_be_wiped1
+        $ cryptsetup open --type plain -d /dev/urandom /dev/sda2 to_be_wiped2
+      wipe: >
+        $ dd if=/dev/zero of=/dev/mapper/to_be_wiped1 status=progress
+        $ dd if=/dev/zero of=/dev/mapper/to_be_wiped2 status=progress
+      close: >
+        $ cryptsetup close to_be_wiped1
+        $ cryptsetup close to_be_wiped1

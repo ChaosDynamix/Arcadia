@@ -2,6 +2,8 @@
 layout: table_wrappers
 ---
 
+{%- assign documentation_collection = site.collections | where: "uuid", "a5e4be81-7697-4061-9553-6ad752e4965d" | first -%}
+
 <!DOCTYPE html>
 
 <html lang="{{ site.lang | default: "en-US" }}">
@@ -49,20 +51,13 @@ layout: table_wrappers
           {% endif %}
         </div>
         <div class="page">
-          <!-- Get the page collection -->
-          {%- assign collection = site.collections | where: "title", page.collection | first -%}
           {% unless page.url == "/" or page.nav_exclude %}
             <nav class="breadcrumb-nav">
               <ol class="breadcrumb-nav-list">
-                <li class="breadcrumb-nav-list-item"><span>{{ page.section | capitalize }}</span></li>
-                <!-- If the page has a grand_parent -->
-                {% if page.grand_parent_uuid %}
-                  {% assign grand_parent = collection.docs | where: "uuid", page.grand_parent_uuid | first %}
-                  <li class="breadcrumb-nav-list-item"><a href="{{ grand_parent.url | absolute_url }}">{{ grand_parent.title }}</a></li>
-                {% endif %}
+                <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr }}</span></li>
                 <!-- If page has a parent -->
                 {% if page.parent_uuid %}
-                  {% assign parent = collection.docs | where: "uuid", page.parent_uuid | first %}
+                  {% assign parent = documentation_collection.docs | where: "uuid", page.parent_uuid | first %}
                   <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>
                 {% endif %}
                 <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
@@ -77,7 +72,7 @@ layout: table_wrappers
             {% endif %}
 
           {% unless page.parent_uuid or page.nav_exclude %}
-            {% assign children = collection.docs | where: "parent_uuid", page.uuid | sort: "nav_order" %}
+            {% assign children = documentation_collection.docs | where: "parent_uuid", page.uuid | sort: "nav_order" %}
             {% assign children_size = children | size %}
             {% unless children_size == 0 %}
               <hr>

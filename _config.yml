@@ -34,40 +34,20 @@ exclude:
   - README.md
 
 # Collections_dir
-collections_dir: _docs
+collections_dir: src
 
 # Collections
 collections:
 
-  installation:
-    title: installation
+  documentation:
+    uuid: a5e4be81-7697-4061-9553-6ad752e4965d
     output: true
     permalink: /:collection/:path
-    nav_include: true
-    nav_order: 1
-    sections:
-      - name: lvm
-        nav_order: 1
-      - name: btrfs
-        nav_order: 2
-
-  desktop:
-    title: desktop
-    output: true
-    permalink: /:collection/:path
-    nav_include: true
-    nav_order: 2
-    sections:
-      - name: desktop environment
-        nav_order: 1
-      - name: window manager
-        nav_order: 2
 
   library:
-    title: library
+    uuid: 5560831d-30b1-41be-9f94-1f2d0e405166
     output: true
     permalink: /:collection/:path
-    nav_include: false
 
 # Defaults
 defaults:
@@ -81,30 +61,35 @@ defaults:
       search_exclude: true
   -
     scope:
-      path: "_docs/_installation/lvm"
+      path: "src/_library"
     values:
       layout: default
-      section: lvm
+      nav_exclude: true
   -
     scope:
-      path: "_docs/_installation/btrfs"
+      path: "src/_documentation/system/lvm"
     values:
       layout: default
-      section: btrfs
+      context_uuid: 94854e83-3816-42e4-8d5f-f48d3a54483e
+      context_abbr: LVM
   -
     scope:
-      path: "_docs/_desktop/desktop-environment"
+      path: "src/_documentation/system/btrfs"
     values:
       layout: default
-      section: desktop environment
+      context_uuid: 80a79960-1e97-479e-8d0e-789516293fc0
+      context_abbr: BTRFS
   -
     scope:
-      path: "_docs/_desktop/window-manager"
+      path: "src/_documentation/gui/de"
     values:
       layout: default
-      section: window manager
+      context_uuid: 9e55133c-c83d-43fb-9386-af81ef91b6dc
+      context_abbr: DE
   -
     scope:
-      path: "_docs/_library"
+      path: "src/_documentation/gui/wm"
     values:
       layout: default
+      context_uuid: 83bc464a-a758-4b5c-a83b-65e92548c5c6
+      context_abbr: WM
