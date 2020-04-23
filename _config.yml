@@ -41,10 +41,10 @@ collections:
 
   installation:
     title: installation
-    nav_order: 1
-    permalink: /:collection/:path/
     output: true
-    is_post: false
+    permalink: /:collection/:path
+    nav_include: true
+    nav_order: 1
     sections:
       - name: lvm
         nav_order: 1
@@ -53,15 +53,21 @@ collections:
 
   desktop:
     title: desktop
-    nav_order: 2
-    permalink: /:collection/:path/
     output: true
-    is_post: false
+    permalink: /:collection/:path
+    nav_include: true
+    nav_order: 2
     sections:
       - name: desktop environment
         nav_order: 1
       - name: window manager
         nav_order: 2
+
+  library:
+    title: library
+    output: true
+    permalink: /:collection/:path
+    nav_include: false
 
 # Defaults
 defaults:
@@ -97,3 +103,8 @@ defaults:
     values:
       layout: default
       section: window manager
+  -
+    scope:
+      path: "_docs/_library"
+    values:
+      layout: default

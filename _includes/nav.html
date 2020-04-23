@@ -1,7 +1,7 @@
 <nav role="navigation" aria-label="Main navigation">
 
   <!-- Get the collections -->
-  {%- assign collections = site.collections | where: "is_post", false | sort: "nav_order" -%}
+  {%- assign collections = site.collections | where: "nav_include", true | sort: "nav_order" -%}
 
   <!-- Loop the collections -->
   {%- for collection in collections -%}

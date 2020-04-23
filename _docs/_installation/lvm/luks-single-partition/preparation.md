@@ -15,7 +15,10 @@ nav_order: 1
 
 ---
 
-{% include installation/preparation/installation-image.md %}
+{% assign library_collection = site.collections | where: "title", "library" | first %}
+{% assign query = page.uuid | prepend: "?parentuuid=" %}
+
+{% include installation/preparation/installation-image.md query=query %}
 ---
 {% include installation/preparation/installation-media.md %}
 ---
