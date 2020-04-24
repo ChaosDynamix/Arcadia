@@ -1,0 +1,33 @@
+lvm: !!map
+
+  luks_single_partition: !!map
+    context: !!str partition
+    plural: !!bool false
+    headerless: !!bool false
+    command: !!map
+      create: !!str $ cryptsetup --type luks1 luksFormat /dev/sda2
+      open: !!str $ cryptsetup open /dev/sda2 cryptlvm
+
+  luks_multiple_partitions: !!map
+    context: !!str partitions
+    plural: !!bool true
+    headerless: !!bool false
+    command: !!map
+      create: !!str $ cryptsetup --type luks1 luksFormat /dev/sda2 /dev/sdb1
+      open: !!str $ cryptsetup open /dev/sda2 /dev/sdb1 cryptlvm
+
+  luks_raid: !!map
+    context: !!str raid array
+    plural: !!bool true
+    headerless: !!bool false
+    command: !!map
+      create: !!str $ cryptsetup --type luks1 luksFormat /dev/md/array
+      open: !!str $ cryptsetup open /dev/md/array cryptlvm
+
+  luks_logical_volumes: !!map
+    context: !!str partitions
+    plural: !!bool true
+    headerless: !!bool false
+    command: !!map
+      create: !!str $ cryptsetup --type luks1 luksFormat /dev/grp/cryptroot
+      open: !!str $ cryptsetup open /dev/grp/cryptroot root

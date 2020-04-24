@@ -1,0 +1,22 @@
+single      : !!map
+  plural    : !!bool false
+  command   : !!map
+    create  : !!str |
+              $ cryptsetup open --type plain -d /dev/urandom /dev/sda1 to_be_wiped
+    wipe    : !!str |
+              $ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
+    close   : !!str |
+              $ cryptsetup close to_be_wiped
+
+multiple    : !!map
+  plural    : !!bool true
+  command   : !!map
+    create  : !!str |
+              $ cryptsetup open --type plain -d /dev/urandom /dev/sda1 to_be_wiped1
+              $ cryptsetup open --type plain -d /dev/urandom /dev/sda2 to_be_wiped2
+    wipe    : !!str |
+              $ dd if=/dev/zero of=/dev/mapper/to_be_wiped1 status=progress
+              $ dd if=/dev/zero of=/dev/mapper/to_be_wiped2 status=progress
+    close   : !!str |
+              $ cryptsetup close to_be_wiped1
+              $ cryptsetup close to_be_wiped1

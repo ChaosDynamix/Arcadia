@@ -15,10 +15,14 @@ nav_order: 2
 
 ---
 
-{% assign storage_profile = site.data.system.storage %}
+{% assign storage_data = site.data.system.storage %}
 
-{% assign secure_erase_profile = storage_profile.secure-erase.profile.solo %}
-{% include system/storage/secure-erase.md profile=secure_erase_profile %}
+{% include system/storage/secure-erase.md profile=storage_data.secure-erase.single %}
 ---
-{% assign partitioning_profile = storage_profile.partitioning %}
-{% include system/storage/partitioning.md profile=partitioning_profile %}
+{% include system/storage/partitioning.md profile=storage_data.partitioning.luks_single_partition %}
+---
+{% include system/storage/encryption.md profile=storage_data.encryption.lvm.luks_single_partition %}
+---
+{% include system/storage/lvm.md template=storage_data.lvm.template.lvm_on_luks profile=storage_data.lvm.luks_single_partition %}
+---
+{% include system/storage/efi.md profile=storage_data.efi.single %}

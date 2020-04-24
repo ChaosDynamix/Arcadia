@@ -1,13 +1,19 @@
 {% assign profile = include.profile %}
 
-## Partition the device{% if device_number > 1 %}s{% endif %}
+## Partition the device{% if profile.plural %}s{% endif %}
 
-#### TITLE
+{% for mode in profile.modes %}
+
+#### {{ mode.title }}
 
 ```
-TODO
+{{ mode.sgdisk -}}
 ```
 
-| Partition name | Partition type | Partition size |
-| :------------- | :------------- | :------------- |
-|||
+| Partition name       | Partition type       | Partition size       |
+| :------------------- | :------------------- | :------------------- |
+{%- for partition in mode.partitions %}
+| {{ partition.node }} | {{ partition.type }} | {{ partition.size }} |
+{%- endfor %}
+
+{% endfor %}

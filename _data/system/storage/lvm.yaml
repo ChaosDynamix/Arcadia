@@ -1,0 +1,58 @@
+template: !!map
+  lvm_on_luks: !!map
+
+    logical_volumes: !!seq
+      - label : !!str ROOT
+        node  : !!str /dev/grp/root
+        size  : !!str 15-20 GiB
+
+      - label : !!str SWAP
+        node  : !!str /dev/grp/swap
+        size  : !!str "> 512M"
+
+      - label : !!str VAR
+        node  : !!str /dev/grp/var
+        size  : !!str 8-12 GiB
+
+      - label : !!str HOME
+        node  : !!str /dev/grp/home
+        size  : !!str 100%FREE - 5G
+
+    command: !!map
+      logical_volumes : !!str |
+                        $ lvcreate -L SIZE grp -n root
+                        $ lvcreate -L SIZE grp -n swap
+                        $ lvcreate -L SIZE grp -n var
+                        $ lvcreate -L SIZE grp -n home
+      format          : !!str |
+                        $ mkfs.ext4 -L ROOT /dev/grp/root
+                        $ mkfs.ext4 -L VAR /dev/grp/var
+                        $ mkfs.ext4 -L HOME /dev/grp/home
+      mount           : !!str |
+                        $ mount /dev/grp/root /mnt
+                        $ mkdir /mnt/{var,home}
+                        $ mount /dev/grp/var /mnt/var
+                        $ mount /dev/grp/home /mnt/home
+      swap            : !!str |
+                        $ mkswap -L SWAP /dev/grp/swap
+                        $ swapon /dev/grp/swap
+
+  luks_on_lvm: !!map
+    logical_volumes: !!seq
+
+      - label : !!str CRYPTROOT
+        node  : !!str /dev/grp/cryptroot
+        size  : !!str 23-32 GiB
+
+      - label : !!str CRYPTSWAP
+        node  : !!str /dev/grp/cryptswap
+        size  : !!str "> 512M"
+
+      - label : !!str CRYPTHOME
+        node  : !!str /dev/grp/crypthome
+        size  : !!str 100%FREE
+
+luks_single_partition: !!map
+  command: !!map
+    physical_volume : !!str $ pvcreate /dev/mapper/cryptlvm
+    volume_group    : !!str $ vgcreate grp /dev/mapper/cryptlvm

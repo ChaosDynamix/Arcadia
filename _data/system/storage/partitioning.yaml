@@ -1,0 +1,136 @@
+luks_single_partition : !!map
+  plural  : !!bool false
+  modes   : !!seq
+
+    - title           : !!str BIOS / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+1M -t=1:ef02 -n=2:0:0 -t=2:8309 /dev/sda
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str BIOS boot partition
+          size  : !!str 1M
+        - !!map &LSP1
+          node  : !!str /dev/sda2
+          type  : !!str Linux LUKS partition
+          size  : !!str 100%FREE
+
+    - title           : !!str UEFI / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+260M -t=1:ef00 -n=2:0:0 -t=2:8309 /dev/sda
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str EFI system partition
+          size  : !!str 260M
+        - *LSP1
+
+luks_multiple_partitions: !!map
+  plural  : !!bool true
+  modes   : !!seq
+
+    - title           : !!str BIOS / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+1M -t=1:ef02 -n=2:0:0 -t=2:8309 /dev/sda
+                      $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str BIOS boot partition
+          size  : !!str 1M
+        - !!map &LMP1
+          node  : !!str /dev/sda2
+          type  : !!str Linux LUKS partition
+          size  : !!str 100%FREE
+        - !!map &LMP2
+          node  : !!str /dev/sdb1
+          type  : !!str Linux LUKS partition
+          size  : !!str 100%FREE
+
+    - title           : !!str UEFI / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+260M -t=1:ef00 -n=2:0:0 -t=2:8309 /dev/sda
+                      $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str EFI system partition
+          size  : !!str 260M
+        - *LMP1
+        - *LMP2
+
+luks_raid: !!map
+  plural  : !!bool true
+  modes   : !!seq
+
+    - title           : !!str BIOS / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+1M -t=1:ef02 -n=2:0:-100M -t=2:fd00 -R=/dev/sdb /dev/sda
+                      $ sgdisk -G /dev/sdb
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str BIOS boot partition
+          size  : !!str 1M
+        - !!map &LR1
+          node  : !!str /dev/sda2
+          type  : !!str Linux RAID partition
+          size  : !!str 100%FREE - 100M
+        - !!map
+          node  : !!str /dev/sdb1
+          type  : !!str BIOS boot partition
+          size  : !!str 1M
+        - !!map &LR2
+          node  : !!str /dev/sdb2
+          type  : !!str Linux RAID partition
+          size  : !!str 100%FREE - 100M
+
+    - title           : !!str UEFI / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+260M -t=1:ef00 -n=2:0:-100M -t=2:fd00 -R=/dev/sdb /dev/sda
+                      $ sgdisk -G /dev/sdb
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str EFI system partition
+          size  : !!str 260M
+        - *LR1
+        - !!map
+          node  : !!str /dev/sdb1
+          type  : !!str EFI system partition
+          size  : !!str 260M
+        - *LR2
+
+luks_logical_volumes: !!map
+  plural  : !!bool true
+  modes   : !!seq
+
+    - title           : !!str BIOS / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+1M -t=1:ef02 -n=2:0:0 -t=2:8e00 /dev/sda
+                      $ sgdisk -o -n=1:0:0 -t=1:8e00 /dev/sdb
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str BIOS boot partition
+          size  : !!str 1M
+        - !!map &LLV1
+          node  : !!str /dev/sda2
+          type  : !!str Linux LVM
+          size  : !!str 100%FREE
+        - !!map &LLV2
+          node  : !!str /dev/sdb1
+          type  : !!str Linux LVM
+          size  : !!str 100%FREE
+
+    - title           : !!str UEFI / GPT
+      sgdisk          : |
+                      $ sgdisk -o -n=1:0:+260M -t=1:ef00 -n=2:0:0 -t=2:8e00 /dev/sda
+                      $ sgdisk -o -n=1:0:0 -t=1:8e00 /dev/sdb
+      partitions      : !!seq
+        - !!map
+          node  : !!str /dev/sda1
+          type  : !!str EFI system partition
+          size  : !!str 260M
+        - *LLV1
+        - *LLV2
