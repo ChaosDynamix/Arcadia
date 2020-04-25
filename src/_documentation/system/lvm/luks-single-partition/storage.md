@@ -15,14 +15,14 @@ nav_order: 2
 
 ---
 
-{% assign storage_data = site.data.system.storage %}
+{% assign data = site.data.system.storage %}
 
-{% include system/storage/secure-erase.md profile=storage_data.secure-erase.single %}
+{% include system/storage/secure-erase.md dev_number=1 %}
 ---
-{% include system/storage/partitioning.md profile=storage_data.partitioning.luks_single_partition %}
+{% include system/storage/partitioning.md scenario=data.partitioning.scenarios.luks_single_partition %}
 ---
-{% include system/storage/encryption.md profile=storage_data.encryption.lvm.luks_single_partition %}
+{% include system/storage/encryption.md scenario=data.encryption.scenarios.luks_single_partition context="lvm" %}
 ---
-{% include system/storage/lvm.md template=storage_data.lvm.template.lvm_on_luks profile=storage_data.lvm.luks_single_partition %}
+{% include system/storage/lvm/lvm-luks.md scenario=data.lvm.scenarios.luks_single_partition %}
 ---
-{% include system/storage/efi.md profile=storage_data.efi.single %}
+{% include system/storage/efi.md part_number=1 %}

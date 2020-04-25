@@ -1,0 +1,21 @@
+lvm: !!map
+
+  luks_single_partition     : !!map
+    mkinitcpio  : !!str |
+                  FILES=(/etc/luks-key/cryptlvm.keyfile)
+                  HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+
+  luks_multiple_partitions  : !!map
+    mkinitcpio  : !!str |
+                  FILES=(/etc/luks-keys/cryptlvm1.keyfile /etc/luks-keys/cryptlvm2.keyfile)
+                  HOOKS=(base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck)
+
+  luks_raid                 : !!map
+    mkinitcpio  : !!str |
+                  FILES=(/etc/luks-key/cryptlvm.keyfile)
+                  HOOKS=(base udev autodetect modconf block mdadm_udev encrypt lvm2 filesystems keyboard keymap fsck)
+
+  luks_logical_volumes      : !!map
+    mkinitcpio  : !!str |
+                  FILES=(/etc/luks-key/cryptroot.keyfile)
+                  HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)

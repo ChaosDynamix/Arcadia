@@ -1,0 +1,53 @@
+lvm: !!map
+
+  luks_single_partition   : !!map
+    plural  : !!bool false
+    command : !!map
+      generate  : !!str |
+                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm.keyfile iflag=fullblock
+      chmod     : !!str |
+                  $ chmod 600 /etc/luks-keys/cryptlvm.keyfile
+                  $ chmod 600 /boot/initramfs-linux*
+      add       : !!str |
+                  $ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/cryptlvm.keyfile
+
+  luks_multiple_partitions  : !!map
+    plural  : !!bool true
+    command : !!map
+      generate  : !!str |
+                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm1.keyfile iflag=fullblock
+                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm2.keyfile iflag=fullblock
+      chmod     : !!str |
+                  $ chmod 600 /etc/luks-keys/cryptlvm1.keyfile
+                  $ chmod 600 /etc/luks-keys/cryptlvm2.keyfile
+                  $ chmod 600 /boot/initramfs-linux*
+      add       : !!str |
+                  $ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/cryptlvm1.keyfile
+                  $ cryptsetup luksAddKey /dev/sdb1 /etc/luks-keys/cryptlvm2.keyfile
+
+  luks_raid : !!map
+    plural  : !!bool false
+    command : !!map
+      generate  : !!str |
+                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm.keyfile iflag=fullblock
+      chmod     : !!str |
+                  $ chmod 600 /etc/luks-keys/cryptlvm.keyfile
+                  $ chmod 600 /boot/initramfs-linux*
+      add       : !!str |
+                  $ cryptsetup luksAddKey /dev/md/array /etc/luks-keys/cryptlvm.keyfile
+
+  luks_logical_volumes    : !!map
+    plural  : !!bool true
+    command : !!map
+      generate  : !!str |
+                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptroot.keyfile iflag=fullblock
+                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/crypthome.keyfile iflag=fullblock
+      chmod     : !!str |
+                  $ chmod 600 /etc/luks-keys/cryptroot.keyfile
+                  $ chmod 600 /etc/luks-keys/crypthome.keyfile
+                  $ chmod 600 /boot/initramfs-linux*
+      add       : !!str |
+                  $ cryptsetup luksAddKey /dev/grp/cryptroot /etc/luks-keys/cryptroot.keyfile
+                  $ cryptsetup luksAddKey /dev/grp/crypthome /etc/luks-keys/crypthome.keyfile
+
+btrfs: !!map

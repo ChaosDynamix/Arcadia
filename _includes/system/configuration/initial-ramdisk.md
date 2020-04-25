@@ -1,4 +1,4 @@
-{% assign template = include.template %}
+{% assign profile = include.profile %}
 
 ## Setup the initial ramdisk images
 
@@ -6,7 +6,7 @@
 
 ##### /etc/mkinitcpio.conf
 ```
-{{ template.configuration.mkinitcpio -}}
+{{ profile.mkinitcpio -}}
 ```
 
 ### Generate the images

@@ -1,0 +1,53 @@
+lvm: !!map
+
+  luks_single_partition     : !!map
+    grub_pacman : !!seq
+
+      - title : !!str bios
+        cmd   : !!str $ pacman -S grub
+
+      - title : !!str uefi
+        cmd   : !!str $ pacman -S grub efibootmgr
+
+    grub_cfg    : !!str |
+                  GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/sda2:cryptlvm cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
+                  GRUB_ENABLE_CRYPTODISK=y
+
+  luks_multiple_partitions  : !!map
+    grub_pacman : !!seq
+
+      - title : !!str bios
+        cmd   : !!str $ pacman -S grub
+
+      - title : !!str uefi
+        cmd   : !!str $ pacman -S grub efibootmgr
+
+    grub_cfg    : !!str |
+                  GRUB_CMDLINE_LINUX_DEFAULT="root=/dev/grp/root loglevel=3 quiet"
+                  GRUB_ENABLE_CRYPTODISK=y
+
+  luks_raid                 : !!map
+    grub_pacman : !!seq
+
+      - title : !!str bios
+        cmd   : !!str $ pacman -S grub
+
+      - title : !!str uefi
+        cmd   : !!str $ pacman -S grub efibootmgr
+
+    grub_cfg    : !!str |
+                  GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/array:cryptlvm cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
+                  GRUB_ENABLE_CRYPTODISK=y
+
+  luks_logical_volumes      : !!map
+    grub_pacman : !!seq
+
+      - title : !!str bios
+        cmd   : !!str $ pacman -S grub
+
+      - title : !!str uefi
+        cmd   : !!str $ pacman -S grub efibootmgr
+
+    grub_cfg    : !!str |
+                  GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/grp/cryptroot:root cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
+                  GRUB_ENABLE_CRYPTODISK=y

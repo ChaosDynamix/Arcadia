@@ -1,0 +1,5 @@
+lvm: !!map
+  has_swapfile: !!bool false
+
+btrfs: !!map
+  has_swapfile: !!bool true

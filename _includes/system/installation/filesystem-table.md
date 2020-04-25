@@ -1,4 +1,4 @@
-{% assign template = include.template %}
+{% assign profile = include.profile %}
 
 ## Generate the filesystem table
 
@@ -7,7 +7,7 @@
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if template.has-swapfile %}
+{% if profile.has-swapfile %}
 ### Create the swapfile
 
 TODO

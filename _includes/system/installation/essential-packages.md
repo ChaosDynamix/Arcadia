@@ -1,8 +1,7 @@
-{% assign template = include.template %}
-{% assign package = site.data.installation.lvm.package %}
+{% assign profile = include.profile %}
 
 ## Install the essential packages
 
 ```
-$ pacstrap /mnt base linux linux-firmware {{ package }} {% if template.has-raid %}mdadm {% endif -%} vim man-db man-pages
+$ pacstrap /mnt base linux linux-firmware {{ profile.pkgs }} vim man-db man-pages
 ```

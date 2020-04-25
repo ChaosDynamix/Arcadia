@@ -1,0 +1,5 @@
+lvm: !!map
+  pkgs: !!str lvm2
+
+lvm_raid: !!map
+  pkgs: !!str lvm2 mdadm

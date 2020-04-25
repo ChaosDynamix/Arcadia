@@ -1,20 +1,40 @@
-{%- assign profile = include.profile %}
+{% assign dev_letters = "a,b,c,d" | split: "," %}
 
-## Setup the EFI partition{% if profile.plural %}s{% endif %}
+## Setup the EFI partition{% if include.part_number > 1 %}s{% endif %}
 {: .d-inline-block}
 
 UEFI
 {: .label .label-blue .ml-2}
 
-### Format the partition{% if profile.plural %}s{% endif %}
+### Format the partition{% if include.part_number > 1 %}s{% endif %}
 {: .mt-0}
 
 ```
-{{ profile.command.format -}}
+{%- for letter in dev_letters %}
+  {%- if forloop.first and include.part_number < 2 %}
+$ mkfs.fat -F32 -n EFI /dev/sd{{ letter }}{{ forloop.index }}
+  {%- else %}
+$ mkfs.fat -F32 -n EFI{{ forloop.index }} /dev/sd{{ letter }}{{ forloop.index }}
+  {%- endif %}
+  {%- if forloop.index == include.part_number %}
+    {%- break %}
+  {%- endif %}
+{%- endfor %}
 ```
 
-### Mount the partition{% if profile.plural %}s{% endif %}
+### Mount the partition{% if include.part_number > 1 %}s{% endif %}
 
 ```
-{{ profile.command.mount -}}
+{%- for letter in dev_letters %}
+  {%- if forloop.first and include.part_number < 2 %}
+$ mkdir /mnt/efi
+$ mount /dev/sd{{ letter }}{{ forloop.index }} /mnt/efi
+  {%- else %}
+$ mkdir /mnt/efi{{ forloop.index }}
+$ mount /dev/sd{{ letter }}{{ forloop.index }} /mnt/efi{{ forloop.index }}
+  {%- endif %}
+  {%- if forloop.index == include.part_number %}
+    {%- break %}
+  {%- endif %}
+{%- endfor %}
 ```

@@ -1,19 +1,20 @@
-{% assign profile = include.profile %}
+{% assign scenario = include.scenario %}
+{% assign modes = site.data.system.storage.partitioning.modes %}
 
-## Partition the device{% if profile.plural %}s{% endif %}
+## Partition the device{% if scenario.plural %}s{% endif %}
 
-{% for mode in profile.modes %}
+{% for mode in modes %}
 
 #### {{ mode.title }}
 
 ```
-{{ mode.sgdisk -}}
+{{ scenario.sgdisk | replace: "mode_sgdisk", mode.sgdisk -}}
 ```
 
 | Partition name       | Partition type       | Partition size       |
 | :------------------- | :------------------- | :------------------- |
-{%- for partition in mode.partitions %}
-| {{ partition.node }} | {{ partition.type }} | {{ partition.size }} |
+{%- for partition in scenario.partitions %}
+| {{ partition.node }} | {{ partition.type | replace: "mode_partition_type", mode.partition.type }} | {{ partition.size | replace: "mode_partition_size", mode.partition.size }} |      
 {%- endfor %}
 
 {% endfor %}
