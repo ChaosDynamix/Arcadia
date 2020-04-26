@@ -19,7 +19,7 @@ $ mkfs.fat -F32 -n {{ partition.label }} {{ partition.node }}
 ### Mount the partition{% if scenario.plural %}s{% endif %}
 
 ```
-$ mkdir /mnt/{ {{- scenario.mkdir -}} }
+$ mkdir /mnt/{{ scenario.mkdir }}
 {%- for partition in scenario.partitions %}
 $ mount {{ partition.node }} {{ partition.mount }}
 {%- endfor %}

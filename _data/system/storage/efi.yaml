@@ -26,7 +26,7 @@ scenario: !!map
   # MULTIPLE EFI PARTITIONS
   multiple_efi_partitions : !!map
     plural      : !!bool true
-    mkdir       : !!str efi1,efi2
+    mkdir       : !!str "{efi1,efi2}"
     partitions  : !!seq
       - !!map
         node  : !!str /dev/sda1

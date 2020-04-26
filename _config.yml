@@ -6,6 +6,7 @@ baseurl: "/Andromeda"
 url: ""
 github_username:  ChaosDynamix
 footer_content: "Copyright &copy; 2020 ChaosDynamix."
+search_enabled: false
 
 # Build settings
 markdown: kramdown
