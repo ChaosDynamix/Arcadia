@@ -14,3 +14,7 @@ nav_order: 3
 {:toc}
 
 ---
+
+{% include system/installation/essential-packages.md %}
+---
+{% include system/installation/filesystem-table.md %}

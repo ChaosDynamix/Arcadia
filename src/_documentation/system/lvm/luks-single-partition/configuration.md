@@ -15,18 +15,16 @@ nav_order: 4
 
 ---
 
-{% assign data = site.data.system.configuration %}
-
 {% include system/configuration/localization.md %}
 ---
 {% include system/configuration/network.md %}
 ---
 {% include system/configuration/account.md %}
 ---
-{% include system/configuration/keyfile.md profile=data.keyfile.lvm.luks_single_partition %}
+{% include system/configuration/keyfile.md %}
 ---
-{% include system/configuration/initial-ramdisk.md profile=data.initial-ramdisk.lvm.luks_single_partition %}
+{% include system/configuration/initial-ramdisk.md %}
 ---
 {% include system/configuration/microcode.md %}
 ---
-{% include system/configuration/boot-loader.md profile=data.boot-loader.lvm.luks_single_partition %}
+{% include system/configuration/boot-loader.md %}

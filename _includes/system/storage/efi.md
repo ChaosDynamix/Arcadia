@@ -1,40 +1,26 @@
-{% assign dev_letters = "a,b,c,d" | split: "," %}
+{%- assign scenario_title = site.data.system.storage.efi.map[page.parent_uuid] %}
+{%- assign scenario = site.data.system.storage.efi.scenario[scenario_title] %}
 
-## Setup the EFI partition{% if include.part_number > 1 %}s{% endif %}
+## Setup the EFI partition{% if scenario.plural %}s{% endif %}
 {: .d-inline-block}
 
 UEFI
 {: .label .label-blue .ml-2}
 
-### Format the partition{% if include.part_number > 1 %}s{% endif %}
+### Format the partition{% if scenario.plural %}s{% endif %}
 {: .mt-0}
 
 ```
-{%- for letter in dev_letters %}
-  {%- if forloop.first and include.part_number < 2 %}
-$ mkfs.fat -F32 -n EFI /dev/sd{{ letter }}{{ forloop.index }}
-  {%- else %}
-$ mkfs.fat -F32 -n EFI{{ forloop.index }} /dev/sd{{ letter }}{{ forloop.index }}
-  {%- endif %}
-  {%- if forloop.index == include.part_number %}
-    {%- break %}
-  {%- endif %}
+{%- for partition in scenario.partitions %}
+$ mkfs.fat -F32 -n {{ partition.label }} {{ partition.node }}
 {%- endfor %}
 ```
 
-### Mount the partition{% if include.part_number > 1 %}s{% endif %}
+### Mount the partition{% if scenario.plural %}s{% endif %}
 
 ```
-{%- for letter in dev_letters %}
-  {%- if forloop.first and include.part_number < 2 %}
-$ mkdir /mnt/efi
-$ mount /dev/sd{{ letter }}{{ forloop.index }} /mnt/efi
-  {%- else %}
-$ mkdir /mnt/efi{{ forloop.index }}
-$ mount /dev/sd{{ letter }}{{ forloop.index }} /mnt/efi{{ forloop.index }}
-  {%- endif %}
-  {%- if forloop.index == include.part_number %}
-    {%- break %}
-  {%- endif %}
+$ mkdir /mnt/{ {{- scenario.mkdir -}} }
+{%- for partition in scenario.partitions %}
+$ mount {{ partition.node }} {{ partition.mount }}
 {%- endfor %}
 ```

@@ -15,12 +15,9 @@ nav_order: 1
 
 ---
 
-{% assign library_collection = site.collections | where: "uuid", "5560831d-30b1-41be-9f94-1f2d0e405166" | first %}
-{% assign query = page.uuid | prepend: "?parentuuid=" %}
-
-{% include system/preparation/installation-image.md query=query %}
+{% include system/preparation/installation-image.md %}
 ---
-{% include system/preparation/installation-media.md query=query %}
+{% include system/preparation/installation-media.md %}
 ---
 {% include system/preparation/keymap.md %}
 ---

@@ -1,10 +1,5 @@
 ---
 title: Mirror site
-category: installation image
-description: |
-  Mirror sites or mirrors are replicas of other websites or any network node. The concept of mirroring applies to network services accessible through any protocol, such as HTTP or FTP.
-
-  Such sites have different URLs than the original site, but host identical or near-identical content. Mirror sites are often located in a different geographic region than the original, or upstream site.
 ---
 
 # {{ page.title }}

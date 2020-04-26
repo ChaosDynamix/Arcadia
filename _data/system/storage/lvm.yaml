@@ -1,7 +1,0 @@
-scenarios: !!map
-
-  # LUKS ON SINGLE PARTITION
-  luks_single_partition: !!map
-    cmd   : !!map
-      pv  : !!str $ pvcreate /dev/mapper/cryptlvm
-      vg  : !!str $ vgcreate grp /dev/mapper/cryptlvm

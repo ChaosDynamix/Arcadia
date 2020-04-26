@@ -1,5 +1,3 @@
-{% assign scenario = include.scenario %}
-
 ## Setup the Logical Volume Manager
 
 | Node          | label | Size recommendation |
@@ -12,13 +10,13 @@
 ### Create the Physical Volume
 
 ```
-{{ scenario.cmd.pv }}
+$ pvcreate /dev/mapper/crypt{{ page.context_abbr | downcase }}
 ```
 
 ### Create the Volume Group
 
 ```
-{{ scenario.cmd.vg }}
+$ vgcreate grp /dev/mapper/crypt{{ page.context_abbr | downcase }}
 ```
 
 ### Create the Logical volumes

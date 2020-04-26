@@ -1,6 +1,7 @@
-{% assign dev_letters = "a,b,c,d,e" | split: "," %}
+{%- assign scenario_title = site.data.system.storage.secure-erase.map[page.parent_uuid] %}
+{%- assign scenario = site.data.system.storage.secure-erase.scenario[scenario_title] %}
 
-## Secure erase the device{% if include.dev_number > 1 %}s{% endif %}
+## Secure erase the device{% if scenario.plural %}s{% endif %}
 {: .d-inline-block}
 
 IRREVERSIBLE DATA ERASE
@@ -11,44 +12,23 @@ Before setting up encryption on a mass storage device, consider securely wiping 
 - Prevent recovery of previously stored data
 - Prevent disclosure of usage patterns on the encrypted device
 
-### Create the temporary encrypted container{% if include.dev_number > 1 %}s{% endif %}
+### Create the temporary encrypted container{% if scenario.plural %}s{% endif %}
 ```
-{%- for letter in dev_letters %}
-  {%- if forloop.first and include.dev_number < 2 %}
-$ cryptsetup open --type plain -d /dev/urandom /dev/sd{{ letter }} to_be_wiped  
-  {%- else %}
-$ cryptsetup open --type plain -d /dev/urandom /dev/sd{{ letter }} to_be_wiped{{ forloop.index }}
-  {%- endif %}
-  {%- if forloop.index == include.dev_number %}
-    {%- break %}
-  {%- endif %}
+{%- for dev in scenario.devices %}
+$ cryptsetup open --type plain -d /dev/urandom {{ dev.node }} {{ dev.mapper }}
 {%- endfor %}
 ```
 
-### Wipe the container{% if include.dev_number > 1 %}s{% endif %} with zeros
+### Wipe the container{% if scenario.plural %}s{% endif %} with zeros
 ```
-{%- for letter in dev_letters %}
-  {%- if forloop.first and include.dev_number < 2 %}
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped status=progress
-  {%- else %}
-$ dd if=/dev/zero of=/dev/mapper/to_be_wiped{{ forloop.index }} status=progress
-  {%- endif %}
-  {%- if forloop.index == include.dev_number %}
-    {%- break %}
-  {%- endif %}
+{%- for dev in scenario.devices %}
+$ dd if=/dev/zero of=/dev/mapper/{{ dev.mapper }} status=progress
 {%- endfor %}
 ```
 
-### Close the temporary container{% if include.dev_number > 1 %}s{% endif %}
+### Close the temporary container{% if scenario.plural %}s{% endif %}
 ```
-{%- for letter in dev_letters %}
-  {%- if forloop.first and include.dev_number < 2 %}
-$ cryptsetup close to_be_wiped
-  {%- else %}
-$ cryptsetup close to_be_wiped{{ forloop.index }}
-  {%- endif %}
-  {%- if forloop.index == include.dev_number %}
-    {%- break %}
-  {%- endif %}
+{%- for dev in scenario.devices %}
+$ cryptsetup close {{ dev.mapper }}
 {%- endfor %}
 ```

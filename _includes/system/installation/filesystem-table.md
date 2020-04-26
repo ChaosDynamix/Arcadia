@@ -1,4 +1,4 @@
-{% assign profile = include.profile %}
+{%- assign swapfile = site.data.system.installation.filesystem-table.swapfile[page.parent_uuid] %}
 
 ## Generate the filesystem table
 
@@ -7,7 +7,7 @@
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if profile.has-swapfile %}
+{% if swapfile%}
 ### Create the swapfile
 
 TODO

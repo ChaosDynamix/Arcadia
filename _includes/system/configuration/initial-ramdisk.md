@@ -1,4 +1,4 @@
-{% assign profile = include.profile %}
+{%- assign configuration = site.data.system.configuration.initial-ramdisk[page.parent_uuid] %}
 
 ## Setup the initial ramdisk images
 
@@ -6,11 +6,10 @@
 
 ##### /etc/mkinitcpio.conf
 ```
-{{ profile.mkinitcpio -}}
+{{ configuration -}}
 ```
 
 ### Generate the images
-
 ```
 $ mkinitcpio -p linux
 ```

@@ -15,8 +15,6 @@ nav_order: 3
 
 ---
 
-{% assign data = site.data.system.installation %}
-
-{% include system/installation/essential-packages.md profile=data.essential-packages.lvm %}
+{% include system/installation/essential-packages.md %}
 ---
-{% include system/installation/filesystem-table.md profile=data.filesystem-table.lvm %}
+{% include system/installation/filesystem-table.md %}

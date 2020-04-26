@@ -1,32 +1,41 @@
-{% assign profile = include.profile %}
+{%- assign scenario_title = site.data.system.configuration.keyfile.map[page.parent_uuid] %}
+{%- assign scenario = site.data.system.configuration.keyfile.scenario[scenario_title] %}
 
-## Setup the Keyfile for the container{% if profile.plural %}s{% endif %}
+## Setup the Keyfile for the container{% if scenario.plural %}s{% endif %}
 
 ### Create the keys directory
 ```
 $ mkdir -m 700 /etc/luks-keys
 ```
 
-### Generate the key{% if profile.plural %}s{% endif %}
+### Generate the key{% if scenario.plural %}s{% endif %}
 ```
-{{ profile.command.generate -}}
+{%- for container in scenario.containers %}
+$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/{{ container.keyfile | replace: "_context_", page.context_abbr | downcase }} iflag=fullblock
+{%- endfor %}
 ```
 
 ### Change the permissions
 ```
-{{ profile.command.chmod -}}
+{%- for container in scenario.containers %}
+$ chmod 600 /etc/luks-keys/{{ container.keyfile | replace: "_context_", page.context_abbr | downcase }}
+{%- endfor %}
+$ chmod 600 /boot/initramfs-linux*
 ```
 
-### Add the key{% if profile.plural %}s{% endif %} in the container{% if profile.plural %}s{% endif %}
+### Add the key{% if scenario.plural %}s{% endif %} in the container{% if scenario.plural %}s{% endif %}
 ```
-{{ profile.command.add -}}
+{%- for container in scenario.containers %}
+$ cryptsetup luksAddKey {{ container.node }} /etc/luks-keys/{{ container.keyfile | replace: "_context_", page.context_abbr | downcase }}
+{%- endfor %}
 ```
 
-{% if profile.plural %}
+{% if scenario.crypttab %}
 ### Add entries to the initramfs crypttab
 
 ##### /etc/crypttab.initramfs
 ```
-{{ profile.command.crypttab -}}
+root      /dev/grp/cryptroot        /etc/luks-keys/cryptroot
+home      /dev/grp/crypthome        /etc/luks-keys/crypthome
 ```
 {% endif %}

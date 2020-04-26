@@ -14,3 +14,17 @@ nav_order: 4
 {:toc}
 
 ---
+
+{% include system/configuration/localization.md %}
+---
+{% include system/configuration/network.md %}
+---
+{% include system/configuration/account.md %}
+---
+{% include system/configuration/keyfile.md %}
+---
+{% include system/configuration/initial-ramdisk.md %}
+---
+{% include system/configuration/microcode.md %}
+---
+{% include system/configuration/boot-loader.md %}

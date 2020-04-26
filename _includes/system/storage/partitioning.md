@@ -1,5 +1,6 @@
-{% assign scenario = include.scenario %}
-{% assign modes = site.data.system.storage.partitioning.modes %}
+{%- assign scenario_title = site.data.system.storage.partitioning.map[page.parent_uuid] %}
+{%- assign scenario = site.data.system.storage.partitioning.scenario[scenario_title] %}
+{%- assign modes = site.data.system.storage.partitioning.modes %}
 
 ## Partition the device{% if scenario.plural %}s{% endif %}
 

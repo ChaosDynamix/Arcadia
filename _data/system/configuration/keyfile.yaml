@@ -1,53 +1,52 @@
-lvm: !!map
+map: !!map
 
-  luks_single_partition   : !!map
-    plural  : !!bool false
-    command : !!map
-      generate  : !!str |
-                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm.keyfile iflag=fullblock
-      chmod     : !!str |
-                  $ chmod 600 /etc/luks-keys/cryptlvm.keyfile
-                  $ chmod 600 /boot/initramfs-linux*
-      add       : !!str |
-                  $ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/cryptlvm.keyfile
+  # LUKS ON SINGLE PARTITION
+  b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!str luks_single_partition
+  cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!str luks_single_partition
 
-  luks_multiple_partitions  : !!map
-    plural  : !!bool true
-    command : !!map
-      generate  : !!str |
-                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm1.keyfile iflag=fullblock
-                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm2.keyfile iflag=fullblock
-      chmod     : !!str |
-                  $ chmod 600 /etc/luks-keys/cryptlvm1.keyfile
-                  $ chmod 600 /etc/luks-keys/cryptlvm2.keyfile
-                  $ chmod 600 /boot/initramfs-linux*
-      add       : !!str |
-                  $ cryptsetup luksAddKey /dev/sda2 /etc/luks-keys/cryptlvm1.keyfile
-                  $ cryptsetup luksAddKey /dev/sdb1 /etc/luks-keys/cryptlvm2.keyfile
+  # LUKS ON MULTIPLE PARTITIONS
+  66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!str luks_multiple_partitions
 
-  luks_raid : !!map
-    plural  : !!bool false
-    command : !!map
-      generate  : !!str |
-                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptlvm.keyfile iflag=fullblock
-      chmod     : !!str |
-                  $ chmod 600 /etc/luks-keys/cryptlvm.keyfile
-                  $ chmod 600 /boot/initramfs-linux*
-      add       : !!str |
-                  $ cryptsetup luksAddKey /dev/md/array /etc/luks-keys/cryptlvm.keyfile
+  # LUKS ON RAID
+  ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!str luks_raid
 
-  luks_logical_volumes    : !!map
-    plural  : !!bool true
-    command : !!map
-      generate  : !!str |
-                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptroot.keyfile iflag=fullblock
-                  $ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/crypthome.keyfile iflag=fullblock
-      chmod     : !!str |
-                  $ chmod 600 /etc/luks-keys/cryptroot.keyfile
-                  $ chmod 600 /etc/luks-keys/crypthome.keyfile
-                  $ chmod 600 /boot/initramfs-linux*
-      add       : !!str |
-                  $ cryptsetup luksAddKey /dev/grp/cryptroot /etc/luks-keys/cryptroot.keyfile
-                  $ cryptsetup luksAddKey /dev/grp/crypthome /etc/luks-keys/crypthome.keyfile
+  # LUKS ON LOGICAL VOLUMES
+  a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!str luks_logical_volumes
 
-btrfs: !!map
+scenario: !!map
+
+  # LUKS ON SINGLE PARTITION
+  luks_single_partition: !!map
+    plural      : !!bool false
+    containers  : !!seq
+      - node    : !!str /dev/sda2
+        keyfile : !!str crypt_context_.keyfile
+    crypttab    : !!bool false
+
+  # LUKS ON MULTIPLE PARTITIONS
+  luks_multiple_partitions: !!map
+    plural      : !!bool true
+    containers  : !!seq
+      - node    : !!str /dev/sda2
+        keyfile : !!str crypt_context_1.keyfile
+      - node    : !!str /dev/sdb1
+        keyfile : !!str crypt_context_2.keyfile
+    crypttab    : !!bool false
+
+  # LUKS ON RAID
+  luks_raid: !!map
+    plural      : !!bool false
+    containers  : !!seq
+      - node    : !!str /dev/md/array
+        keyfile : !!str crypt_context_.keyfile
+    crypttab    : !!bool false
+
+  # LUKS ON LOGICAL VOLUMES
+  luks_logical_volumes: !!map
+    plural      : !!bool true
+    containers  : !!seq
+      - node    : !!str /dev/grp/cryptroot
+        keyfile : !!str cryptroot.keyfile
+      - node    : !!str /dev/grp/crypthome
+        keyfile : !!str crypthome.keyfile
+    crypttab    : !!bool true

@@ -1,4 +1,5 @@
-{% assign scenario = include.scenario %}
+{%- assign scenario_title = site.data.system.storage.encryption.map[page.parent_uuid] %}
+{%- assign scenario = site.data.system.storage.encryption.scenario[scenario_title] %}
 
 ## Encrypt the {{ scenario.context }}
 
@@ -30,9 +31,9 @@ The `--offset` option allows specifying the start of encrypted data on a device.
 {%- assign containers_size = scenario.containers | size %}
 {%- for container in scenario.containers %}
   {%- if forloop.first and containers_size < 2 %}
-$ cryptsetup open {{ container.node }} crypt{{ include.context }}
+$ cryptsetup open {{ container.node }} crypt{{ page.context_abbr | downcase }}
   {%- else %}
-$ cryptsetup open {{ container.node }} crypt{{ include.context }}{{ forloop.index }}
+$ cryptsetup open {{ container.node }} crypt{{ page.context_abbr | downcase }}{{ forloop.index }}
   {%- endif %}
 {%- endfor %}
 ```

@@ -1,18 +1,35 @@
+map: !!map
+
+  # LUKS ON SINGLE PARTITION
+  b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!str luks_single_partition
+  cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!str luks_single_partition
+
+  # LUKS ON MULTIPLE PARTITIONS
+  66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!str luks_multiple_partitions
+
+  # LUKS ON RAID
+  ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!str luks_raid
+
+  # LUKS ON LOGICAL VOLUMES
+  a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!str luks_logical_volumes
+
 modes: !!seq
 
+  # BIOS / GPT
   - title     : !!str BIOS / GPT
     sgdisk    : !!str -n=1:0:+1M -t=1:ef02
     partition : !!map
       type    : !!srt BIOS boot partition
       size    : !!str 1M
 
+  # UEFI / GPT
   - title     : !!str UEFI / GPT
     sgdisk    : !!str -n=1:0:+260M -t=1:ef00
     partition : !!map
       type    : !!srt EFI system partition
       size    : !!str 260M
 
-scenarios: !!map
+scenario: !!map
 
   # LUKS ON SINGLE PARTITION
   luks_single_partition: !!map
@@ -33,8 +50,8 @@ scenarios: !!map
   luks_multiple_partitions: !!map
     plural  : !!bool true
     sgdisk  : !!str |
-                  $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
-                  $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+              $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
+              $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
     partitions  : !!seq
       - !!map
         node  : !!str /dev/sda1

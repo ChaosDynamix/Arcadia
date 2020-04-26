@@ -14,3 +14,13 @@ nav_order: 2
 {:toc}
 
 ---
+
+{% include system/storage/secure-erase.md %}
+---
+{% include system/storage/partitioning.md %}
+---
+{% include system/storage/encryption.md %}
+---
+{% include system/storage/lvm/lvm-luks.md %}
+---
+{% include system/storage/efi.md %}

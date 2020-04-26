@@ -1,4 +1,5 @@
-{% assign profile = include.profile %}
+{%- assign configurations = site.data.system.configuration.boot-loader[page.parent_uuid] %}
+{%- assign firmwares = site.data.system.configuration.boot-loader.firmwares %}
 
 ## Setup the Boot loader
 
@@ -6,10 +7,10 @@
 
 Grub is choosed because it allow encrypted /boot and increase the security of your system.
 
-{% for firmware in profile.grub_pacman %}
+{% for firmware in firmwares %}
 #### {{ firmware.title }}
 ```
-{{ firmware.cmd }}
+{{ firmware.pkg_list }}
 ```
 {% endfor %}
 
@@ -23,14 +24,20 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 {: .text-red-200}
 
 ##### /etc/default/grub
+{% for configuration in configurations %}
+#### {{ configuration.title }}
 ```
-{{ profile.grub_cfg -}}
+{{ configuration.cmd -}}
 ```
+{% endfor %}
 
 ### Install GRUB on your device
+{% for firmware in firmwares %}
+#### {{ firmware.title }}
 ```
-TODO
+{{ firmware.cmd }}
 ```
+{% endfor %}
 
 ### Generate the configuration
 ```

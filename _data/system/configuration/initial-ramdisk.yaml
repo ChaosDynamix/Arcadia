@@ -1,21 +1,19 @@
-lvm: !!map
+# LVM - LUKS ON SINGLE PARTITION
+b84ab5fb-9500-4b17-b322-bd04e31f5d3a: !!str |
+                                      FILES=(/etc/luks-key/cryptlvm.keyfile)
+                                      HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 
-  luks_single_partition     : !!map
-    mkinitcpio  : !!str |
-                  FILES=(/etc/luks-key/cryptlvm.keyfile)
-                  HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+# LVM - LUKS ON MULTIPLE PARTITIONS
+66df9fd1-5ee6-42a1-831e-b3b9d6e26524: !!str |
+                                      FILES=(/etc/luks-keys/cryptlvm1.keyfile /etc/luks-keys/cryptlvm2.keyfile)
+                                      HOOKS=(base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck)
 
-  luks_multiple_partitions  : !!map
-    mkinitcpio  : !!str |
-                  FILES=(/etc/luks-keys/cryptlvm1.keyfile /etc/luks-keys/cryptlvm2.keyfile)
-                  HOOKS=(base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck)
+# LVM - LUKS ON RAID
+ff8a81bc-82d1-440a-9f71-df9676a19a26: !!str |
+                                      FILES=(/etc/luks-key/cryptlvm.keyfile)
+                                      HOOKS=(base udev autodetect modconf block mdadm_udev encrypt lvm2 filesystems keyboard keymap fsck)
 
-  luks_raid                 : !!map
-    mkinitcpio  : !!str |
-                  FILES=(/etc/luks-key/cryptlvm.keyfile)
-                  HOOKS=(base udev autodetect modconf block mdadm_udev encrypt lvm2 filesystems keyboard keymap fsck)
-
-  luks_logical_volumes      : !!map
-    mkinitcpio  : !!str |
-                  FILES=(/etc/luks-key/cryptroot.keyfile)
-                  HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+# LVM - LUKS ON LOGICAL VOLUMES
+a852843f-53ac-47e9-a82d-d6cf288c8b76: !!str |
+                                      FILES=(/etc/luks-key/cryptroot.keyfile)
+                                      HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)

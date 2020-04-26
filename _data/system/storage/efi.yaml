@@ -1,0 +1,38 @@
+map: !!map
+
+  # SINGLE EFI PARTITION
+  b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!str single_efi_partition
+  cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!str single_efi_partition
+  66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!str single_efi_partition
+  a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!str single_efi_partition
+
+  # MULTIPLE EFI PARTITIONS
+  ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!str multiple_efi_partitions
+
+  # SINGLE EFI PARTITION WITH DETACHED HEADER
+
+scenario: !!map
+
+  # SINGLE EFI PARTITION
+  single_efi_partition    : !!map
+    plural      : !!bool false
+    mkdir       : !!str efi
+    partitions  : !!seq
+      - !!map
+        node  : !!str /dev/sda1
+        label : !!str EFI
+        mount : !!str /mnt/efi
+
+  # MULTIPLE EFI PARTITIONS
+  multiple_efi_partitions : !!map
+    plural      : !!bool true
+    mkdir       : !!str efi1,efi2
+    partitions  : !!seq
+      - !!map
+        node  : !!str /dev/sda1
+        label : !!str EFI1
+        mount : !!str /mnt/efi1
+      - !!map
+        node  : !!str /dev/sdb1
+        label : !!str EFI2
+        mount : !!str /mnt/efi2
