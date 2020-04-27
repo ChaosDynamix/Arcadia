@@ -5,6 +5,10 @@ nav_order: 2
 ---
 
 # {{ page.title }}
+{: .d-inline-block}
+
+ENCRYPTED BOOT
+{: .label .label-blue .ml-2}
 
 ```text
 Device 1                               Device 2

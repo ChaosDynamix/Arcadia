@@ -5,8 +5,12 @@ nav_order: 1
 ---
 
 # {{ page.title }}
+{: .d-inline-block}
 
-Luks on single partition for the Logical Volume Manager. The boot partition is in the root volume and decrypted by GRUB during boot.
+ENCRYPTED BOOT
+{: .label .label-blue .ml-2}
+
+The straightforward method is to set up LVM on top of the encrypted partition instead of the other way round. Technically the LVM is setup inside one big encrypted blockdevice. Hence, the LVM is not transparent until the blockdevice is unlocked and the underlying volume structure is scanned and mounted during boot.
 {: .fs-5 .fw-300 }
 
 ```text
