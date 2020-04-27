@@ -1,27 +1,63 @@
-sections:
+# SIDEBAR
+sidebar     : !!map
+  sections  : !!seq
 
-  - uuid: e54f0447-8a34-4908-be2b-6a5e95eb8237
-    title: System
-    nav_order: 1
-    contexts:
+    - !!map       # SYSTEM
+      uuid      : !!str e54f0447-8a34-4908-be2b-6a5e95eb8237
+      title     : !!str System
+      nav_order : !!int 1
+      contexts  : !!seq
 
-      - uuid: 94854e83-3816-42e4-8d5f-f48d3a54483e
-        title: Logical Volume Manager
-        nav_order: 1
+        - !!map
+          uuid      : !!str 94854e83-3816-42e4-8d5f-f48d3a54483e
+          title     : !!str Logical Volume Manager
+          nav_order : !!int 1
 
-      - uuid: 80a79960-1e97-479e-8d0e-789516293fc0
-        title: B-tree filesystem
-        nav_order: 2
+        - !!map
+          uuid      : !!str 80a79960-1e97-479e-8d0e-789516293fc0
+          title     : !!str B-tree filesystem
+          nav_order : !!int 2
 
-  - uuid: b27b08c0-dad7-4a1f-aefe-b821cab76a6a
-    title: Graphical User Interface
-    nav_order: 2
-    contexts:
+    - !!map       # GRAPHICAL USER INTERFACE
+      uuid      : !!str b27b08c0-dad7-4a1f-aefe-b821cab76a6a
+      title     : !!str Graphical User Interface
+      nav_order : !!int 2
+      contexts  : !!seq
 
-      - uuid: 9e55133c-c83d-43fb-9386-af81ef91b6dc
-        title: Desktop environment
-        nav_order: 1
+        - !!map
+          uuid      : !!str 9e55133c-c83d-43fb-9386-af81ef91b6dc
+          title     : !!str Desktop environment
+          nav_order : !!int 1
 
-      - uuid: 83bc464a-a758-4b5c-a83b-65e92548c5c6
-        title: Window manager
-        nav_order: 2
+        - !!map
+          uuid      : !!str 83bc464a-a758-4b5c-a83b-65e92548c5c6
+          title     : !!str Window manager
+          nav_order : !!int 2
+
+# INCLUDE
+include     : !!map
+  sections  : !!seq
+
+    - !!map   # INSTALLATION IMAGE
+      title : !!str installation-image
+      tabs  : !!seq
+
+        - !!map
+          title   : !!str BitTorrent
+          include : !!str system/preparation/installation-image/bittorrent.md
+
+        - !!map
+          title   : !!str Mirror site
+          include : !!str system/preparation/installation-image/mirror-site.md
+
+    - !!map   # INSTALLATION MEDIA
+      title : !!str installation-media
+      tabs  : !!seq
+
+        - !!map
+          title   : !!str Dd
+          include : !!str system/preparation/installation-media/dd.md
+
+        - !!map
+          title   : !!str Etcher
+          include : !!str system/preparation/installation-media/etcher.md

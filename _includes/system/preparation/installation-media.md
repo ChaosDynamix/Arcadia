@@ -1,18 +1,33 @@
+{%- assign include_section = site.data.nav.include.sections | where: "title", "installation-media" | first %}
+
 ## Prepare the USB flash device
 
-### List your devices
+<div class="tab-main">
 
-```
-$ fdisk -l
-```
+  {%- for tab in include_section.tabs -%}
+    {%- if forloop.first -%}
+      <input class="tab-controller" type="radio" name="tab-controller-{{ include_section.title }}" id="tab-controller-{{ include_section.title }}-{{ forloop.index }}" checked />    
+    {%- else -%}
+      <input class="tab-controller" type="radio" name="tab-controller-{{ include_section.title }}" id="tab-controller-{{ include_section.title }}-{{ forloop.index }}" />
+    {%- endif -%}
+  {%- endfor -%}
 
-### Flash the USB flash device
+  <nav class="tab-nav">
+    {%- for tab in include_section.tabs -%}
+      <label class="tab-nav__item tab-nav__item--{{ forloop.index }} text-delta" for="tab-controller-{{ include_section.title }}-{{ forloop.index }}">{{ tab.title }}</label>
+    {%- endfor -%}
+  </nav>
 
-Edit path/to/archlinux.iso and sdX accordingly
+  {%- for tab in include_section.tabs -%}
+    <div class="tab-content tab-content--{{ forloop.index }}">
+      {%- capture tab_content %}
+{% include {{ tab.include }} %}
+      {%- endcapture -%}
+{{ tab_content  | markdownify }}
+    </div>
+  {%- endfor -%}
 
-```
-$ dd bs=4M if=path/to/archlinux.iso of=/dev/sdX status=progress oflag=sync
-```
+</div>
 
 ### Boot the USB flash device
 

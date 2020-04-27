@@ -2,8 +2,6 @@
 layout: table_wrappers
 ---
 
-{%- assign documentation_collection = site.collections | where: "uuid", "a5e4be81-7697-4061-9553-6ad752e4965d" | first -%}
-
 <!DOCTYPE html>
 
 <html lang="{{ site.lang | default: "en-US" }}">
@@ -45,7 +43,7 @@ layout: table_wrappers
           {% if site.aux_links != nil %}
             <ul class="list-style-none text-small aux-nav">
               {% for link in site.aux_links %}
-                <li class="d-inline-block my-0 text-delta{% unless forloop.last %} mr-4{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
+                <li class="d-inline-block my-0 text-delta fw-700{% unless forloop.last %} mr-4{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
               {% endfor %}
             </ul>
           {% endif %}
@@ -57,7 +55,7 @@ layout: table_wrappers
                 <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr }}</span></li>
                 <!-- If page has a parent -->
                 {% if page.parent_uuid %}
-                  {% assign parent = documentation_collection.docs | where: "uuid", page.parent_uuid | first %}
+                  {% assign parent = site.documentation | where: "uuid", page.parent_uuid | first %}
                   <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>
                 {% endif %}
                 <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
@@ -72,9 +70,8 @@ layout: table_wrappers
             {% endif %}
 
           {% unless page.parent_uuid or page.nav_exclude %}
-            {% assign children = documentation_collection.docs | where: "parent_uuid", page.uuid | sort: "nav_order" %}
-            {% assign children_size = children | size %}
-            {% unless children_size == 0 %}
+            {% assign children = site.documentation | where: "parent_uuid", page.uuid | sort: "nav_order" %}
+            {% unless children.size == 0 %}
               <hr>
               <h2 class="text-delta">Steps</h2>
               <ol>

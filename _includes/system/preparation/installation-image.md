@@ -1,15 +1,30 @@
+{%- assign include_section = site.data.nav.include.sections | where: "title", "installation-image" | first %}
+
 ## Download Arch Linux official ISO
 
-### [BitTorrent]({{ site.baseurl }}{% link _library/system/installation-image/bittorrent.md %}{{ page.uuid | prepend: "?parentuuid=" }})
+<div class="tab-main">
 
-BitTorrent (abbreviated to BT) is a communication protocol for peer-to-peer file sharing (P2P) which is used to distribute data and electronic files over the Internet.
+  {%- for tab in include_section.tabs -%}
+    {%- if forloop.first -%}
+      <input class="tab-controller" type="radio" name="tab-controller-{{ include_section.title }}" id="tab-controller-{{ include_section.title }}-{{ forloop.index }}" checked />    
+    {%- else -%}
+      <input class="tab-controller" type="radio" name="tab-controller-{{ include_section.title }}" id="tab-controller-{{ include_section.title }}-{{ forloop.index }}" />
+    {%- endif -%}
+  {%- endfor -%}
 
-Rather than downloading a file from a single source server, the BitTorrent protocol allows users to join a "swarm" of hosts to upload to/download from each other simultaneously.
+  <nav class="tab-nav">
+    {%- for tab in include_section.tabs -%}
+      <label class="tab-nav__item tab-nav__item--{{ forloop.index }} text-delta" for="tab-controller-{{ include_section.title }}-{{ forloop.index }}">{{ tab.title }}</label>
+    {%- endfor -%}
+  </nav>
 
-BitTorrent does not, on its own, offer its users anonymity. One can usually see the IP addresses of all peers in a swarm in one's own client or firewall program. This may expose users with insecure systems to attacks.
+  {%- for tab in include_section.tabs -%}
+    <div class="tab-content tab-content--{{ forloop.index }}">
+      {%- capture tab_content %}
+{% include {{ tab.include }} %}
+      {%- endcapture -%}
+{{ tab_content  | markdownify }}
+    </div>
+  {%- endfor -%}
 
-### [Mirror site]({{ site.baseurl }}{% link _library/system/installation-image/mirror-site.md %}{{ page.uuid | prepend: "?parentuuid=" }})
-
-Mirror sites or mirrors are replicas of other websites or any network node. The concept of mirroring applies to network services accessible through any protocol, such as HTTP or FTP.
-
-Such sites have different URLs than the original site, but host identical or near-identical content. Mirror sites are often located in a different geographic region than the original, or upstream site.
+</div>

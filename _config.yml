@@ -1,31 +1,25 @@
-# Global settings
+# GLOBAL SETTINGS
 title: Andromeda
-email: your-email@example.com
 description: Andromeda is one of the many guides to install and configure Arch Linux.
 baseurl: "/Andromeda"
-url: ""
 github_username:  ChaosDynamix
+
+# THEME SETTINGS
+remote_theme: pmarsceill/just-the-docs
 footer_content: "Copyright &copy; 2020 ChaosDynamix."
 search_enabled: true
-
-# Build settings
-markdown: kramdown
-remote_theme: pmarsceill/just-the-docs
-
-# Auxiliary links
 aux_links:
-  "Home":
-    - "//chaosdynamix.github.io/Andromeda"
   "Github":
     - "//github.com/ChaosDynamix/Andromeda"
 
-# Kramdown
+# MARKDOWN SETTINGS
+markdown: kramdown
 kramdown:
   toc_levels: "2"
   syntax_highlighter_opts:
     default_lang: bash
 
-# Exclude
+# EXCLUDE
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -34,10 +28,7 @@ exclude:
   - Makefile
   - README.md
 
-# Collections_dir
-collections_dir: src
-
-# Collections
+# COLLECTIONS
 collections:
 
   documentation:
@@ -45,43 +36,32 @@ collections:
     output: true
     permalink: /:collection/:path
 
-  library:
-    uuid: 5560831d-30b1-41be-9f94-1f2d0e405166
-    output: true
-    permalink: /:collection/:path
-
-# Defaults
+# DEFAULTS
 defaults:
   -
     scope:
-      path: "src/_library"
-    values:
-      layout: default
-      nav_exclude: true
-  -
-    scope:
-      path: "src/_documentation/system/lvm"
+      path: "_documentation/system/lvm"
     values:
       layout: default
       context_uuid: 94854e83-3816-42e4-8d5f-f48d3a54483e
       context_abbr: LVM
   -
     scope:
-      path: "src/_documentation/system/btrfs"
+      path: "_documentation/system/btrfs"
     values:
       layout: default
       context_uuid: 80a79960-1e97-479e-8d0e-789516293fc0
       context_abbr: BTRFS
   -
     scope:
-      path: "src/_documentation/gui/de"
+      path: "_documentation/gui/de"
     values:
       layout: default
       context_uuid: 9e55133c-c83d-43fb-9386-af81ef91b6dc
       context_abbr: DE
   -
     scope:
-      path: "src/_documentation/gui/wm"
+      path: "_documentation/gui/wm"
     values:
       layout: default
       context_uuid: 83bc464a-a758-4b5c-a83b-65e92548c5c6
