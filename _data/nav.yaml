@@ -7,12 +7,10 @@ sidebar     : !!map
       title     : !!str System
       nav_order : !!int 1
       contexts  : !!seq
-
         - !!map
           uuid      : !!str 94854e83-3816-42e4-8d5f-f48d3a54483e
           title     : !!str Logical Volume Manager
           nav_order : !!int 1
-
         - !!map
           uuid      : !!str 80a79960-1e97-479e-8d0e-789516293fc0
           title     : !!str B-tree filesystem
@@ -23,12 +21,10 @@ sidebar     : !!map
       title     : !!str Graphical User Interface
       nav_order : !!int 2
       contexts  : !!seq
-
         - !!map
           uuid      : !!str 9e55133c-c83d-43fb-9386-af81ef91b6dc
           title     : !!str Desktop environment
           nav_order : !!int 1
-
         - !!map
           uuid      : !!str 83bc464a-a758-4b5c-a83b-65e92548c5c6
           title     : !!str Window manager
@@ -41,11 +37,9 @@ include     : !!map
     - !!map   # INSTALLATION IMAGE
       title : !!str installation-image
       tabs  : !!seq
-
         - !!map
           title   : !!str BitTorrent
           include : !!str system/preparation/installation-image/bittorrent.md
-
         - !!map
           title   : !!str Mirror site
           include : !!str system/preparation/installation-image/mirror-site.md
@@ -53,11 +47,36 @@ include     : !!map
     - !!map   # INSTALLATION MEDIA
       title : !!str installation-media
       tabs  : !!seq
-
         - !!map
           title   : !!str Dd
           include : !!str system/preparation/installation-media/dd.md
-
         - !!map
           title   : !!str Etcher
           include : !!str system/preparation/installation-media/etcher.md
+
+    - !!map   # DISPLAY DRIVER
+      title : !!str display-driver
+      tabs  : !!seq
+        - !!map
+          title   : !!str Nvidia
+          include : !!str gui/preparation/display-driver/nvidia.md
+        - !!map
+          title   : !!str Amd
+          include : !!str gui/preparation/display-driver/amd.md
+
+    - !!map   # DISPLAY SERVER
+      title : !!str display-server
+      tabs  : !!seq
+        - !!map
+          title   : !!str Xorg
+          include : !!str gui/preparation/display-server/xorg.md
+        - !!map
+          title   : !!str Wayland
+          include : !!str gui/preparation/display-server/wayland.md
+
+    - !!map   # STATUS BAR
+      title : !!str status-bar
+      tabs  : !!seq
+        - !!map
+          title   : !!str Polybar
+          include : !!str gui/configuration/status-bar/polybar.md

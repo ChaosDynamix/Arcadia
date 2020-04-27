@@ -14,3 +14,5 @@ nav_order: 2
 {:toc}
 
 ---
+
+{% include gui/installation/bspwm.md %}

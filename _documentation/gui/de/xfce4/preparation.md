@@ -14,3 +14,7 @@ nav_order: 1
 {:toc}
 
 ---
+
+{% include gui/preparation/display-driver.md %}
+---
+{% include gui/preparation/display-server.md %}

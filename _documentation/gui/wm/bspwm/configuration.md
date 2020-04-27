@@ -14,3 +14,5 @@ nav_order: 3
 {:toc}
 
 ---
+
+{% include gui/configuration/status-bar.md %}
