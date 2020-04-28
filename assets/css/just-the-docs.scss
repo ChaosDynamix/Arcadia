@@ -73,11 +73,11 @@ $logo: "{{ site.logo | absolute_url }}";
     display: none;
   }
 
-  {% assign include_sections = site.data.nav.include.sections %}
-  {% for include_section in include_sections %}
-    {% for tab in include_section.tabs %}
-    #tab-controller-{{ include_section.title }}-{{ forloop.index }}:checked ~ .tab-content--{{ forloop.index }}{display: block;}
-    #tab-controller-{{ include_section.title }}-{{ forloop.index }}:checked ~ .tab-nav .tab-nav__item--{{ forloop.index }}{font-weight: 600;color: $link-color;border-bottom: $sp-1 solid $link-color;}
+  {% assign nav_includes = site.data.nav.includes %}
+  {% for nav_include in nav_includes %}
+    {% for index in (1..nav_include.tabs.size) %}
+    #tab-controller-{{ nav_include.title }}-{{ index }}:checked ~ .tab-content--{{ index }}{display: block;}
+    #tab-controller-{{ nav_include.title }}-{{ index }}:checked ~ .tab-nav .tab-nav__item--{{ index }}{font-weight: 600;color: $link-color;border-bottom: $sp-1 solid $link-color;}
     {% endfor %}
   {% endfor %}
 

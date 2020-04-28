@@ -20,7 +20,7 @@ scenario: !!map
                 sda
                 ├──sda1
                 ├──sda2               crypto_LUKS
-                  ├── cryptlvm2       LVM2_member
+                  ├── cryptlvm1       LVM2_member
                       ├──grp-root     ext4
                       ├──grp-swap     swap
                       ├──grp-var      ext4

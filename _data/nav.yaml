@@ -30,53 +30,62 @@ sidebar     : !!map
           title     : !!str Window manager
           nav_order : !!int 2
 
-# INCLUDE
-include     : !!map
-  sections  : !!seq
+# INCLUDES
+includes : !!seq
 
-    - !!map   # INSTALLATION IMAGE
-      title : !!str installation-image
-      tabs  : !!seq
-        - !!map
-          title   : !!str BitTorrent
-          include : !!str system/preparation/installation-image/bittorrent.md
-        - !!map
-          title   : !!str Mirror site
-          include : !!str system/preparation/installation-image/mirror-site.md
+  - !!map   # INSTALLATION IMAGE
+    title : !!str installation-image
+    tabs  : !!seq
+      - !!map
+        title : !!str BitTorrent
+        path  : !!str system/preparation/installation-image/bittorrent.md
+      - !!map
+        title : !!str Mirror site
+        path  : !!str system/preparation/installation-image/mirror-site.md
 
-    - !!map   # INSTALLATION MEDIA
-      title : !!str installation-media
-      tabs  : !!seq
-        - !!map
-          title   : !!str Dd
-          include : !!str system/preparation/installation-media/dd.md
-        - !!map
-          title   : !!str Etcher
-          include : !!str system/preparation/installation-media/etcher.md
+  - !!map   # INSTALLATION MEDIA
+    title : !!str installation-media
+    tabs  : !!seq
+      - !!map
+        title : !!str Dd
+        path  : !!str system/preparation/installation-media/dd.md
+      - !!map
+        title : !!str Etcher
+        path  : !!str system/preparation/installation-media/etcher.md
 
-    - !!map   # DISPLAY DRIVER
-      title : !!str display-driver
-      tabs  : !!seq
-        - !!map
-          title   : !!str Nvidia
-          include : !!str gui/preparation/display-driver/nvidia.md
-        - !!map
-          title   : !!str Amd
-          include : !!str gui/preparation/display-driver/amd.md
+  - !!map   # PARTITIONING
+    title : !!str partitioning
+    tabs  : !!seq
+      - !!map
+        title : !!str UEFI / GPT
+        path  : !!str system/storage/partitioning/uefi-gpt.md
+      - !!map
+        title : !!str BIOS / GPT
+        path  : !!str system/storage/partitioning/bios-gpt.md
 
-    - !!map   # DISPLAY SERVER
-      title : !!str display-server
-      tabs  : !!seq
-        - !!map
-          title   : !!str Xorg
-          include : !!str gui/preparation/display-server/xorg.md
-        - !!map
-          title   : !!str Wayland
-          include : !!str gui/preparation/display-server/wayland.md
+  - !!map   # DISPLAY DRIVER
+    title : !!str display-driver
+    tabs  : !!seq
+      - !!map
+        title : !!str Nvidia
+        path  : !!str gui/preparation/display-driver/nvidia.md
+      - !!map
+        title : !!str Amd
+        path  : !!str gui/preparation/display-driver/amd.md
 
-    - !!map   # STATUS BAR
-      title : !!str status-bar
-      tabs  : !!seq
-        - !!map
-          title   : !!str Polybar
-          include : !!str gui/configuration/status-bar/polybar.md
+  - !!map   # DISPLAY SERVER
+    title : !!str display-server
+    tabs  : !!seq
+      - !!map
+        title : !!str Xorg
+        path  : !!str gui/preparation/display-server/xorg.md
+      - !!map
+        title : !!str Wayland
+        path  : !!str gui/preparation/display-server/wayland.md
+
+  - !!map   # STATUS BAR
+    title : !!str status-bar
+    tabs  : !!seq
+      - !!map
+        title : !!str Polybar
+        path  : !!str gui/configuration/status-bar/polybar.md

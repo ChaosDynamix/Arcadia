@@ -13,17 +13,17 @@ map: !!map
   # LUKS ON LOGICAL VOLUMES
   a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!str luks_logical_volumes
 
-modes: !!seq
+mode: !!map
 
   # BIOS / GPT
-  - title     : !!str BIOS / GPT
+  bios_gpt    : !!map
     sgdisk    : !!str -n=1:0:+1M -t=1:ef02
     partition : !!map
       type    : !!srt BIOS boot partition
       size    : !!str 1M
 
   # UEFI / GPT
-  - title     : !!str UEFI / GPT
+  uefi_gpt    : !!map
     sgdisk    : !!str -n=1:0:+260M -t=1:ef00
     partition : !!map
       type    : !!srt EFI system partition
