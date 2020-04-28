@@ -1,13 +1,16 @@
 {%- assign swapfile = site.data.system.installation.filesystem-table.swapfile[page.parent_uuid] %}
 
-## Generate the filesystem table
+## Generate the fstab file
 
-### Generate fstab
+genfstab helps fill in an fstab file by autodetecting all the current mounts below a given mountpoint and printing them in fstab-compatible format to standard output.
+
+It can be used to persist a manually mounted filesystem hierarchy and is often used during the initial install and configuration of an OS.
+
 ```
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if swapfile%}
+{% if swapfile %}
 ### Create the swapfile
 
 TODO
