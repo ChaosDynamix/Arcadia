@@ -6,20 +6,19 @@ The default console keymap is US.
 
 ### List the keymaps
 
-#### LIST ALL THE KEYMAPS
+#### ALL THE KEYMAPS
 ```
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | less
 ```
 
-#### SEARCH SPECIFIC KEYMAP
+#### SPECIFIC KEYMAP
 ```
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | grep -i search_term
 ```
 
-### Load the keymap
+### Load the correct keymap
 
-Replace fr-latin9 accordingly
-
+##### Example
 ```
 $ loadkeys fr-latin9
 ```
