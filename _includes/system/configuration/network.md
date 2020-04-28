@@ -2,11 +2,14 @@
 
 ### Set the hostname
 
+A hostname is a unique name created to identify a machine on a network, configured in `/etc/hostname`.
+
 ```
-$ echo hostname > /etc/hostname
+# Replace "name" accordingly
+$ echo name > /etc/hostname
 ```
 
-### Set the hosts
+### Set local hostname resolution
 
 ##### /etc/hosts
 ```

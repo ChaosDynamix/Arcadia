@@ -12,6 +12,9 @@ Grub is choosed because it allow encrypted /boot and increase the security of yo
 ```
 {{ firmware.pkg_list }}
 ```
+  {% if firmware.title == "uefi" %}
+Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
+  {% endif %}
 {% endfor %}
 
 ### Edit the GRUB configuration
@@ -31,7 +34,9 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 ```
 {% endfor %}
 
-It is highly recommended to replace the content of `cryptdevice=` with the UUID of the device, however during the installation, it is easier to use the `/dev/sdXY`. **Consider replacing this value after the installation**.
+### Recommendation
+
+It is highly recommended to replace the content of `cryptdevice=` with the UUID of the device, however during the installation, it is easier to use `/dev/sdXY`. **Consider replacing this value after the installation**.
 
 ##### Example
 ```

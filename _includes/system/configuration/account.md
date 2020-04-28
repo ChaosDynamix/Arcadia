@@ -16,12 +16,12 @@ $ passwd
 | -G             | A list of supplementary groups which the user is also a member of |
 | -s             | The name of the user's login shell                                |
 
-#### Account
+##### Account
 ```
 $ useradd -m -G wheel -s /bin/bash username
 ```
 
-#### Password
+##### Password
 ```
 $ passwd username
 ```
