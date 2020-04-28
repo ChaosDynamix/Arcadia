@@ -5,8 +5,13 @@ layout: table_wrappers
 <!DOCTYPE html>
 
 <html lang="{{ site.lang | default: "en-US" }}">
+
+<!-- HEAD -->
 {% include head.html %}
+
 <body>
+
+  <!-- LOGO_TITLE -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="link" viewBox="0 0 16 16">
       <title>Link</title>
@@ -15,23 +20,35 @@ layout: table_wrappers
   </svg>
 
   <div class="page-wrap">
+
+    <!-- SIDEBAR -->
     <div class="side-bar">
+
+      <!-- SIDEBAR_HEADER -->
       <div class="site-header">
         <a href="{{ site.url }}{{ site.baseurl }}" class="site-title lh-tight">{% include title.html %}</a>
         <button class="menu-button fs-3 js-main-nav-trigger" data-text-toggle="Hide" type="button">Menu</button>
       </div>
 
+      <!-- SIDEBAR_BODY -->
       <div class="navigation main-nav js-main-nav">
         {% include nav.html %}
       </div>
+
+      <!-- SIDEBAR_FOOTER -->
       <footer class="site-footer">
         <p class="text-small text-grey-dk-000 mb-4">This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.</p>
       </footer>
     </div>
+
     <div class="main-content-wrap js-main-content" tabindex="0">
       <div class="main-content">
+
+        <!-- PAGE_HEADER -->
         <div class="page-header js-page-header">
-          {% if site.search_enabled != false %}
+
+          {%- if site.search_enabled != false -%}
+          <!-- PAGE_HEADER_SEARCH -->
           <div class="search">
             <div class="search-input-wrap">
               <input type="text" class="js-search-input search-input" tabindex="0" placeholder="Search {{ site.title }}" aria-label="Search {{ site.title }}" autocomplete="off">
@@ -39,62 +56,72 @@ layout: table_wrappers
             </div>
             <div class="js-search-results search-results-wrap"></div>
           </div>
-          {% endif %}
-          {% if site.aux_links != nil %}
-            <ul class="list-style-none text-small aux-nav">
-              {% for link in site.aux_links %}
-                <li class="d-inline-block my-0 text-delta fw-700{% unless forloop.last %} mr-4{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </div>
-        <div class="page">
-          {% unless page.url == "/" or page.nav_exclude %}
-            <nav class="breadcrumb-nav">
-              <ol class="breadcrumb-nav-list">
-                <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr }}</span></li>
-                <!-- If page has a parent -->
-                {% if page.parent_uuid %}
-                  {% assign parent = site.documentation | where: "uuid", page.parent_uuid | first %}
-                  <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>
-                {% endif %}
-                <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
-              </ol>
-            </nav>
-          {% endunless %}
-          <div id="main-content" class="page-content" role="main">
-            {% if site.heading_anchors != false %}
-              {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#link\"></use></svg>" anchorClass="anchor-heading" %}
-            {% else %}
-              {{ content }}
-            {% endif %}
+          {%- endif -%}
 
-          {% unless page.parent_uuid or page.nav_exclude %}
-            {% assign children = site.documentation | where: "parent_uuid", page.uuid | sort: "nav_order" %}
-            {% unless children.size == 0 %}
+          {%- if site.aux_links != nil -%}
+          <!-- PAGE_HEADER_AUX_LINKS -->
+          <ul class="list-style-none text-small aux-nav">
+            {%- for link in site.aux_links -%}
+            <li class="d-inline-block my-0 text-delta fw-700{% unless forloop.last %} mr-4{% endunless %}"><a href="{{ link.last }}">{{ link.first }}</a></li>
+            {%- endfor -%}
+          </ul>
+          {%- endif -%}
+
+        </div>
+
+        <!-- PAGE -->
+        <div class="page">
+
+          {%- unless page.url == "/" or page.nav_exclude -%}
+          <!-- PAGE_BREADCRUMB -->
+          <nav class="breadcrumb-nav">
+            <ol class="breadcrumb-nav-list">
+              <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr }}</span></li>
+              {%- if page.parent_uuid -%}
+                {%- assign parent = site.documentation | where: "uuid", page.parent_uuid | first -%}
+                <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>
+              {%- endif -%}
+              <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+            </ol>
+          </nav>
+          {%- endunless -%}
+
+          <!-- PAGE_CONTENT -->
+          <div id="main-content" class="page-content" role="main">
+            {%- if site.heading_anchors != false -%}
+              {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#link\"></use></svg>" anchorClass="anchor-heading" %}
+            {%- else -%}
+              {{ content }}
+            {%- endif -%}
+
+            {%- unless page.parent_uuid or page.nav_exclude -%}
+              {%- assign children = site.documentation | where: "parent_uuid", page.uuid | sort: "nav_order" -%}
+              {%- unless children.size == 0 -%}
+              <!-- PAGE_TOC -->
               <hr>
               <h2 class="text-delta">Steps</h2>
               <ol>
-                {% for child in children %}
-                  <li>
-                    <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
-                  </li>
-                {% endfor %}
+                {%- for child in children -%}
+                <li>
+                  <a href="{{ child.url | absolute_url }}">{{ child.title }}</a>
+                </li>
+                {%- endfor -%}
               </ol>
-            {% endunless %}
-          {% endunless %}
+              {%- endunless -%}
+            {%- endunless -%}
 
-          {% if site.footer_content != nil %}
+            {%- if site.footer_content != nil -%}
+            <!-- PAGE_FOOTER -->
             <hr>
             <footer role="contentinfo">
               <p class="text-small text-grey-dk-000 mb-0">{{ site.footer_content }}</p>
             </footer>
-          {% endif %}
+            {%- endif -%}
 
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </body>
 </html>

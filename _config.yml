@@ -1,26 +1,26 @@
 # GLOBAL SETTINGS
-title: Andromeda
-description: Andromeda is one of the many guides to install and configure Arch Linux.
-baseurl: "/Andromeda"
-github_username:  ChaosDynamix
+title           : !!str Andromeda
+description     : !!str Andromeda is one of the many guides to install and configure Arch Linux.
+baseurl         : !!str "/Andromeda"
+github_username : !!str ChaosDynamix
 
 # THEME SETTINGS
-remote_theme: pmarsceill/just-the-docs
-footer_content: "Copyright &copy; 2020 ChaosDynamix."
-search_enabled: true
-aux_links:
-  "Github":
+remote_theme    : !!str pmarsceill/just-the-docs
+footer_content  : !!str "Copyright &copy; 2020 ChaosDynamix."
+search_enabled  : !!bool true
+aux_links       : !!map
+  "Github": !!seq
     - "//github.com/ChaosDynamix/Andromeda"
 
 # MARKDOWN SETTINGS
-markdown: kramdown
-kramdown:
-  toc_levels: "2"
-  syntax_highlighter_opts:
-    default_lang: bash
+markdown  : !!str kramdown
+kramdown  : !!map
+  toc_levels              : "2"
+  syntax_highlighter_opts : !!map
+    default_lang  : !!str bash
 
 # EXCLUDE
-exclude:
+exclude: !!seq
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -29,40 +29,45 @@ exclude:
   - README.md
 
 # COLLECTIONS
-collections:
+collections : !!map
 
-  documentation:
-    uuid: a5e4be81-7697-4061-9553-6ad752e4965d
-    output: true
-    permalink: /:collection/:path
+  # DOCUMENTATION
+  documentation : !!map
+    uuid      : !!str a5e4be81-7697-4061-9553-6ad752e4965d
+    output    : !!bool true
+    permalink : !!str /:collection/:path
 
 # DEFAULTS
-defaults:
-  -
-    scope:
-      path: "_documentation/system/lvm"
-    values:
-      layout: default
-      context_uuid: 94854e83-3816-42e4-8d5f-f48d3a54483e
-      context_abbr: LVM
-  -
-    scope:
-      path: "_documentation/system/btrfs"
-    values:
-      layout: default
-      context_uuid: 80a79960-1e97-479e-8d0e-789516293fc0
-      context_abbr: BTRFS
-  -
-    scope:
-      path: "_documentation/gui/de"
-    values:
-      layout: default
-      context_uuid: 9e55133c-c83d-43fb-9386-af81ef91b6dc
-      context_abbr: DE
-  -
-    scope:
-      path: "_documentation/gui/wm"
-    values:
-      layout: default
-      context_uuid: 83bc464a-a758-4b5c-a83b-65e92548c5c6
-      context_abbr: WM
+defaults: !!seq
+
+  - !!map     # LOGICAL VOLUME MANAGER
+    scope   : !!map
+      path  : !!str "_documentation/system/lvm"
+    values  : !!map
+      layout        : !!str default
+      context_uuid  : !!str 94854e83-3816-42e4-8d5f-f48d3a54483e
+      context_abbr  : !!str LVM
+
+  - !!map     # B TREE FILESYSTEM
+    scope   : !!map
+      path  : !!str "_documentation/system/btrfs"
+    values  : !!map
+      layout        : !!str default
+      context_uuid  : !!str 80a79960-1e97-479e-8d0e-789516293fc0
+      context_abbr  : !!str BTRFS
+
+  - !!map     # DESKTOP ENVIRONMENT
+    scope   : !!map
+      path  : !!str "_documentation/gui/de"
+    values  : !!map
+      layout        : !!str default
+      context_uuid  : !!str 9e55133c-c83d-43fb-9386-af81ef91b6dc
+      context_abbr  : !!str DE
+
+  - !!map     # WINDOW MANAGER
+    scope   : !!map
+      path  : !!str "_documentation/gui/wm"
+    values  : !!map
+      layout        : !!str default
+      context_uuid  : !!str 83bc464a-a758-4b5c-a83b-65e92548c5c6
+      context_abbr  : !!str WM
