@@ -36,6 +36,8 @@ scenario: !!map
     plural  : !!bool false
     sgdisk  : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
+    devices : !!seq
+      - !!str /dev/sda
     partitions  : !!seq
       - !!map
         node  : !!str /dev/sda1
@@ -52,6 +54,9 @@ scenario: !!map
     sgdisk  : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
               $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+    devices : !!seq
+      - !!str /dev/sda
+      - !!str /dev/sdb
     partitions  : !!seq
       - !!map
         node  : !!str /dev/sda1
@@ -72,6 +77,9 @@ scenario: !!map
     sgdisk  : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:-100M -t=2:fd00 -R=/dev/sdb /dev/sda
               $ sgdisk -G /dev/sdb
+    devices : !!seq
+      - !!str /dev/sda
+      - !!str /dev/sdb
     partitions  : !!seq
       - !!map
         node  : !!str /dev/sda1
@@ -96,6 +104,9 @@ scenario: !!map
     sgdisk  : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8e00 /dev/sda
               $ sgdisk -o -n=1:0:0 -t=1:8e00 /dev/sdb
+    devices : !!seq
+      - !!str /dev/sda
+      - !!str /dev/sdb
     partitions  : !!seq
       - !!map
         node  : !!str /dev/sda1

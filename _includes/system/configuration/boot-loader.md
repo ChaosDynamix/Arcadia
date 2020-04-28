@@ -31,7 +31,15 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 ```
 {% endfor %}
 
+It is highly recommended to replace the content of `cryptdevice=` with the UUID of the device, however during the installation, it is easier to use the `/dev/sdXY`. **Consider replacing this value after the installation**.
+
+##### Example
+```
+cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:cryptlvm
+```
+
 ### Install GRUB on your device
+
 {% for firmware in firmwares %}
 #### {{ firmware.title }}
 ```
@@ -47,7 +55,6 @@ $ grub-mkconfig -o /boot/grub/grub.cfg
 ---
 
 ## Reboot the computer
-
 ```
 $ exit
 $ umount -R /mnt

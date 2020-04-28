@@ -1,5 +1,9 @@
 ## Load the correct Keymap
 
+The default console keymap is US.
+
+![Representation of the US default keyboard layout for Arch Linux](https://upload.wikimedia.org/wikipedia/commons/5/51/KB_United_States-NoAltGr.svg)
+
 ### List the keymaps
 
 #### LIST ALL THE KEYMAPS

@@ -15,6 +15,8 @@ $ dd if=/dev/zero of=header.img bs=16M count=1
 
 ### Create the LUKS1 container{% if scenario.plural %}s{% endif %}
 
+Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
+
 ```
 {%- for container in scenario.containers %}
 $ cryptsetup --type luks1 luksFormat {{ container.node }}

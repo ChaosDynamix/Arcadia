@@ -1,11 +1,11 @@
 ## Setup the Logical Volume Manager
 
-| Node          | label | Size recommendation |
-| :------------ | :---- | :------------------ |
-| /dev/grp/root | ROOT  | 15-20 GiB           |
-| /dev/grp/swap | SWAP  | > 512M              |
-| /dev/grp/var  | VAR   | 8-12 GiB            |
-| /dev/grp/home | HOME  | 100%FREE - 5G       |
+| Node            | label | Size recommendation |
+| :-------------- | :---- | :------------------ |
+| `/dev/grp/root` | ROOT  | 15-20 GiB           |
+| `/dev/grp/swap` | SWAP  | > 512M              |
+| `/dev/grp/var`  | VAR   | 8-12 GiB            |
+| `/dev/grp/home` | HOME  | 100%FREE - 5G       |
 
 ### Create the Physical Volume
 
@@ -52,4 +52,21 @@ $ mount /dev/grp/home /mnt/home
 ```
 $ mkswap -L SWAP /dev/grp/swap
 $ swapon /dev/grp/swap
+```
+
+### Verify the informations about the filesystems
+```
+$ lsblk -f
+```
+
+##### Output
+```text
+sda
+├──sda1         
+├──sda2               crypto_LUKS           
+  ├── cryptlvm        LVM2_member
+      ├──grp-root     ext4
+      ├──grp-swap     swap
+      ├──grp-var      ext4
+      ├──grp-home     ext4
 ```
