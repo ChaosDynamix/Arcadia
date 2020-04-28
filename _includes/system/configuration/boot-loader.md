@@ -1,4 +1,4 @@
-{%- assign configurations = site.data.system.configuration.boot-loader[page.parent_uuid] %}
+{%- assign scenario = site.data.system.configuration.boot-loader[page.parent_uuid] %}
 {%- assign firmwares = site.data.system.configuration.boot-loader.firmwares %}
 
 ## Setup the Boot loader
@@ -27,13 +27,14 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 {: .text-red-200}
 
 ##### /etc/default/grub
-{% for configuration in configurations %}
+{% for configuration in scenario.configurations %}
 #### {{ configuration.title }}
 ```
 {{ configuration.cmd -}}
 ```
 {% endfor %}
 
+{% unless scenario.systemd %}
 ### Recommendation
 
 It is highly recommended to replace the content of `cryptdevice=` with the UUID of the device, however during the installation, it is easier to use `/dev/sdXY`. **Consider replacing this value after the installation**.
@@ -42,6 +43,7 @@ It is highly recommended to replace the content of `cryptdevice=` with the UUID 
 ```
 cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:cryptlvm
 ```
+{% endunless %}
 
 ### Install GRUB on your device
 

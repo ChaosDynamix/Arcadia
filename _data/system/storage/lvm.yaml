@@ -1,0 +1,31 @@
+scenario: !!map
+
+  # LUKS ON SINGLE PARTITION
+  b84ab5fb-9500-4b17-b322-bd04e31f5d3a: !!map
+    node_list : !!str /dev/mapper/cryptlvm
+    map       : !!str |
+                sda
+                ├──sda1
+                ├──sda2               crypto_LUKS
+                  ├── cryptlvm        LVM2_member
+                      ├──grp-root     ext4
+                      ├──grp-swap     swap
+                      ├──grp-var      ext4
+                      ├──grp-home     ext4
+
+  # LUKS ON MULTIPLE PARTITIONS
+  66df9fd1-5ee6-42a1-831e-b3b9d6e26524: !!map
+    node_list : !!str /dev/mapper/cryptlvm1 /dev/mapper/cryptlvm2
+    map       : !!str |
+                sda
+                ├──sda1
+                ├──sda2               crypto_LUKS
+                  ├── cryptlvm2       LVM2_member
+                      ├──grp-root     ext4
+                      ├──grp-swap     swap
+                      ├──grp-var      ext4
+                      ├──grp-home     ext4
+                sdb
+                ├──sdb1               crypto_LUKS
+                  ├── cryptlvm2       LVM2_member
+                      ├──grp-home     ext4

@@ -17,6 +17,7 @@ scenario: !!map
 
   # LUKS ON SINGLE PARTITION
   luks_single_partition: !!map
+    systemd     : !!bool false
     plural      : !!bool false
     containers  : !!seq
       - node    : !!str /dev/sda2
@@ -25,6 +26,7 @@ scenario: !!map
 
   # LUKS ON MULTIPLE PARTITIONS
   luks_multiple_partitions: !!map
+    systemd     : !!bool true
     plural      : !!bool true
     containers  : !!seq
       - node    : !!str /dev/sda2
@@ -35,6 +37,7 @@ scenario: !!map
 
   # LUKS ON RAID
   luks_raid: !!map
+    systemd     : !!bool false
     plural      : !!bool false
     containers  : !!seq
       - node    : !!str /dev/md/array
@@ -43,6 +46,7 @@ scenario: !!map
 
   # LUKS ON LOGICAL VOLUMES
   luks_logical_volumes: !!map
+    systemd     : !!bool false
     plural      : !!bool true
     containers  : !!seq
       - node    : !!str /dev/grp/cryptroot

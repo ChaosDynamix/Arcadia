@@ -1,3 +1,5 @@
+{%- assign scenario = site.data.system.storage.lvm.scenario[page.parent_uuid] %}
+
 ## Setup the Logical Volume Manager
 
 | Node            | label | Size recommendation |
@@ -10,13 +12,13 @@
 ### Create the Physical Volume
 
 ```
-$ pvcreate /dev/mapper/crypt{{ page.context_abbr | downcase }}
+$ pvcreate {{ scenario.node_list }}
 ```
 
 ### Create the Volume Group
 
 ```
-$ vgcreate grp /dev/mapper/crypt{{ page.context_abbr | downcase }}
+$ vgcreate grp {{ scenario.node_list }}
 ```
 
 ### Create the Logical volumes
@@ -61,12 +63,5 @@ $ lsblk -f
 
 ##### Output
 ```text
-sda
-├──sda1         
-├──sda2               crypto_LUKS           
-  ├── cryptlvm        LVM2_member
-      ├──grp-root     ext4
-      ├──grp-swap     swap
-      ├──grp-var      ext4
-      ├──grp-home     ext4
+{{ scenario.map -}}
 ```
