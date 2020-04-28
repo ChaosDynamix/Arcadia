@@ -1,6 +1,6 @@
 ## Load the correct Keymap
 
-The default console keymap is US.
+The default console keymap is US. Skip this step if your keyboard layout match the default one.
 
 ![Representation of the US default keyboard layout for Arch Linux](https://upload.wikimedia.org/wikipedia/commons/5/51/KB_United_States-NoAltGr.svg)
 

@@ -31,7 +31,7 @@
 
 ### Boot the USB flash device
 
-In order to boot on the USB device, we need to modify the firmware configuration with the firmware setup utility.
+In order to boot on the USB device, you need to modify the firmware configuration with the firmware setup utility.
 
 If asked during the boot (by pressing a key), you can temporarily select and boot on a device. Don't follow this procedure if you are in this scenario.
 

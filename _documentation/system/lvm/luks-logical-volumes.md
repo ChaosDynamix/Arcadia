@@ -8,7 +8,10 @@ nav_order: 4
 {: .d-inline-block}
 
 ENCRYPTED BOOT
-{: .label .label-blue .ml-2}
+{: .label .label-blue}
+
+UNTESTED
+{: .label .label-yellow}
 
 To use encryption on top of LVM, the LVM volumes are set up first and then used as the base for the encrypted partitions. This way, a mixture of encrypted and non-encrypted volumes/partitions is possible as well.
 {: .fs-5 .fw-300 }

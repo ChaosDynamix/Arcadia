@@ -8,7 +8,10 @@ nav_order: 2
 {: .d-inline-block}
 
 ENCRYPTED BOOT
-{: .label .label-blue .ml-2}
+{: .label .label-blue}
+
+UNTESTED
+{: .label .label-yellow}
 
 ```text
 Device 1                               Device 2
