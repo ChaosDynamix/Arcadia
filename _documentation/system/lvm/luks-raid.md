@@ -10,7 +10,7 @@ nav_order: 3
 ENCRYPTED BOOT
 {: .label .label-blue}
 
-UNTESTED
+EXPERIMENTAL
 {: .label .label-yellow}
 
 ```text

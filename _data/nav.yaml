@@ -63,6 +63,16 @@ includes : !!seq
         title : !!str BIOS / GPT
         path  : !!str system/storage/partitioning/bios-gpt.md
 
+  - !!map   # RAID
+    title : !!str raid
+    tabs  : !!seq
+      - !!map
+        title : !!str RAID 1
+        path  : !!str system/storage/raid/raid1.md
+      - !!map
+        title : !!str RAID 0
+        path  : !!str system/storage/raid/raid0.md
+
   - !!map   # DISPLAY DRIVER
     title : !!str display-driver
     tabs  : !!seq

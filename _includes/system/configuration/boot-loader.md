@@ -1,5 +1,5 @@
 {%- assign scenario = site.data.system.configuration.boot-loader[page.parent_uuid] %}
-{%- assign firmwares = site.data.system.configuration.boot-loader.firmwares %}
+{%- assign firmware = site.data.system.configuration.boot-loader.firmware %}
 
 ## Setup the Boot loader
 
@@ -7,15 +7,17 @@
 
 Grub is choosed because it allow encrypted /boot and increase the security of your system.
 
-{% for firmware in firmwares %}
-#### {{ firmware.title }}
+#### {{ firmware.uefi.title }}
 ```
-{{ firmware.pkg_list }}
+{{ firmware.uefi.pkg_list }}
 ```
-  {% if firmware.title == "uefi" %}
+
 Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
-  {% endif %}
-{% endfor %}
+
+#### {{ firmware.bios.title }}
+```
+{{ firmware.bios.pkg_list }}
+```
 
 ### Edit the GRUB configuration
 {: .d-inline-block}
@@ -45,14 +47,40 @@ cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:cryptlvm
 ```
 {% endunless %}
 
-### Install GRUB on your device
+### Install GRUB on your device{%- if scenario.has_raid %}s{% endif %}
 
-{% for firmware in firmwares %}
-#### {{ firmware.title }}
+{%- if scenario.has_raid %}
+Note: If the Raid array is degraded, the system will not be able to boot properly.
+{: .fs-3 }
+{%- endif %}
+
+#### {{ firmware.uefi.title }}
 ```
-{{ firmware.cmd }}
+{%- unless scenario.has_raid %}
+$ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck
+{%- else %}
+# Install GRUB in the directory without calling efibootmgr
+$ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck --removable
+
+# Create one boot entry for each drive
+$ efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux a" --loader "\EFI\BOOT\BOOTX64.efi"
+$ efibootmgr --create --disk /dev/sdb --part 1 --label "Arch Linux b" --loader "\EFI\BOOT\BOOTX64.efi"
+
+# Check and change the boot order
+$ efibootmgr
+$ efibootmgr --bootorder X,Y
+{%- endunless %}
 ```
-{% endfor %}
+
+#### {{ firmware.bios.title }}
+```
+{%- unless scenario.has_raid %}
+$ grub-install --target=i386-pc --recheck /dev/sda
+{%- else %}
+$ grub-install --target=i386-pc --recheck /dev/sda
+$ grub-install --target=i386-pc --recheck /dev/sdb
+{%- endunless %}
+```
 
 ### Generate the configuration
 ```

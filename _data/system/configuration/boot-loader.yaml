@@ -1,17 +1,16 @@
-firmwares: !!seq
+firmware: !!map
 
-  - !!map
+  bios  : !!map
     title     : !!str bios
     pkg_list  : !!str $ pacman -S grub
-    cmd       : !!str $ grub-install --target=i386-pc --recheck /dev/sda
 
-  - !!map
+  uefi  : !!map
     title     : !!str uefi
     pkg_list  : !!str $ pacman -S grub efibootmgr
-    cmd       : !!str $ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck
 
 # LVM - LUKS ON SINGLE PARTITION
 b84ab5fb-9500-4b17-b322-bd04e31f5d3a: !!map
+  has_raid        : !!bool false
   systemd         : !!bool false
   configurations  : !!seq
     - !!map
@@ -27,6 +26,7 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a: !!map
 
 # LVM - LUKS ON MULTIPLE PARTITIONS
 66df9fd1-5ee6-42a1-831e-b3b9d6e26524: !!map
+  has_raid        : !!bool false
   systemd         : !!bool true
   configurations  : !!seq
     - !!map
@@ -42,21 +42,23 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a: !!map
 
 # LVM - LUKS ON RAID
 ff8a81bc-82d1-440a-9f71-df9676a19a26: !!map
+  has_raid        : !!bool true
   systemd         : !!bool false
   configurations  : !!seq
     - !!map
       title : !!str trim
       cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/array:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
+              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/system:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
               GRUB_ENABLE_CRYPTODISK=y
     - !!map
       title : !!str no trim
       cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/array:cryptlvm cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
+              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/system:cryptlvm cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
               GRUB_ENABLE_CRYPTODISK=y
 
 # LVM - LUKS ON LOGICAL VOLUMES
 a852843f-53ac-47e9-a82d-d6cf288c8b76: !!map
+  has_raid        : !!bool false
   systemd         : !!bool false
   configurations  : !!seq
     - !!map

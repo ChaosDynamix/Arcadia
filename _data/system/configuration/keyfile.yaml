@@ -40,7 +40,7 @@ scenario: !!map
     systemd     : !!bool false
     plural      : !!bool false
     containers  : !!seq
-      - node    : !!str /dev/md/array
+      - node    : !!str /dev/md/system
         keyfile : !!str crypt_context_.keyfile
     crypttab    : !!bool false
 

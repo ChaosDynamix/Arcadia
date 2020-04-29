@@ -42,7 +42,7 @@ scenario: !!map
     headerless  : !!bool false
     containers: !!seq
       - !!map
-        node: !!str /dev/md/array
+        node: !!str /dev/md/system
 
   # LUKS ON LOGICAL VOLUMES
   luks_logical_volumes: !!map

@@ -29,3 +29,25 @@ scenario: !!map
                 ├──sdb1               crypto_LUKS
                   ├── cryptlvm2       LVM2_member
                       ├──grp-home     ext4
+
+  ff8a81bc-82d1-440a-9f71-df9676a19a26: !!map
+    node_list : !!str /dev/mapper/cryptlvm
+    map       : !!str |
+                sda
+                ├──sda1
+                ├──sda2                 linux_raid_m
+                  ├── md127             crypto_LUKS
+                    ├── cryptlvm        LVM2_member
+                        ├──grp-root     ext4
+                        ├──grp-swap     swap
+                        ├──grp-var      ext4
+                        ├──grp-home     ext4
+                sdb
+                ├──sdb1
+                ├──sdb2                 linux_raid_m
+                  ├── md127             crypto_LUKS
+                    ├── cryptlvm        LVM2_member
+                        ├──grp-root     ext4
+                        ├──grp-swap     swap
+                        ├──grp-var      ext4
+                        ├──grp-home     ext4
