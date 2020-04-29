@@ -49,11 +49,6 @@ cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:cryptlvm
 
 ### Install GRUB on your device{%- if scenario.has_raid %}s{% endif %}
 
-{%- if scenario.has_raid %}
-Note: If the Raid array is degraded, the system will not be able to boot properly.
-{: .fs-3 }
-{%- endif %}
-
 #### {{ firmware.uefi.title }}
 ```
 {%- unless scenario.has_raid %}
@@ -81,6 +76,34 @@ $ grub-install --target=i386-pc --recheck /dev/sda
 $ grub-install --target=i386-pc --recheck /dev/sdb
 {%- endunless %}
 ```
+
+{%- if scenario.has_raid %}
+### Add a custom hook for mdadm_udev
+
+This hook allow the system to start with a degraded raid array. [Source](https://bugs.archlinux.org/task/57860)
+
+##### /usr/lib/initcpio/install/mdadm_udev
+```
+# Add this command in the build() function at the end.
+add_runscript
+```
+
+##### /usr/lib/initcpio/hooks/mdadm_udev
+```
+#!/usr/bin/ash
+
+run_hook() {
+  local seconds=10
+  mdadm --detail --scan | grep -q INACTIVE_ARRAY || return 0
+  echo "Waiting $seconds seconds for incomplete mdadm arrays..."
+  sleep $seconds
+  mdadm -IRs
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
+```
+
+{%- endif %}
 
 ### Generate the configuration
 ```
