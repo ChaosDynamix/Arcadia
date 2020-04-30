@@ -10,8 +10,8 @@ nav_order: 1
 ENCRYPTED BOOT
 {: .label .label-blue}
 
-TESTED
-{: .label .label-green}
+IN PROGRESS
+{: .label .label-red}
 
 The straightforward method is to set up LVM on top of the encrypted partition instead of the other way round. Technically the LVM is setup inside one big encrypted blockdevice. Hence, the LVM is not transparent until the blockdevice is unlocked and the underlying volume structure is scanned and mounted during boot.
 {: .fs-5 .fw-300 }

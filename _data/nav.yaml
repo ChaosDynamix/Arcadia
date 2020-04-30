@@ -1,4 +1,7 @@
-# SIDEBAR
+####################################
+# SIDEBAR NAVIGATION               #
+####################################
+
 sidebar     : !!map
   sections  : !!seq
 
@@ -30,7 +33,10 @@ sidebar     : !!map
           title     : !!str Window manager
           nav_order : !!int 2
 
-# INCLUDES
+####################################
+# INCLUDE TABS NAVIGATION          #
+####################################
+
 includes : !!seq
 
   - !!map   # INSTALLATION IMAGE

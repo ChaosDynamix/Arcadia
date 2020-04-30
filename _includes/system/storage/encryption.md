@@ -16,7 +16,9 @@ Passwords must be complex enough to not be easily guessed from e.g. personal inf
 
 ```
 {%- for container in scenario.encryption.containers %}
+  {%- if container.bootable %}
 $ cryptsetup --type luks1 luksFormat {{ container.node }}
+  {%- endif %}
 {%- endfor %}
 ```
 

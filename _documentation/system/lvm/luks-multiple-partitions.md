@@ -10,8 +10,8 @@ nav_order: 2
 ENCRYPTED BOOT
 {: .label .label-blue}
 
-EXPERIMENTAL
-{: .label .label-yellow}
+IN PROGRESS
+{: .label .label-red}
 
 ```text
 Device 1                               Device 2

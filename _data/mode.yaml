@@ -1,11 +1,17 @@
-# BIOS / GPT
+####################################
+# BIOS WITH GPT                    #
+####################################
+
 bios_gpt    : !!map
   sgdisk    : !!str -n=1:0:+1M -t=1:ef02
   partition : !!map
     type    : !!srt BIOS boot partition
     size    : !!str 1M
 
-# UEFI / GPT
+####################################
+# UEFI WITH GPT                    #
+####################################
+
 uefi_gpt    : !!map
   sgdisk    : !!str -n=1:0:+260M -t=1:ef00
   partition : !!map
