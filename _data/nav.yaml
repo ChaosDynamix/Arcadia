@@ -73,6 +73,16 @@ includes : !!seq
         title : !!str RAID 0
         path  : !!str system/storage/raid/raid0.md
 
+  - !!map   # BOOT LOADER
+    title : !!str boot-loader
+    tabs  : !!seq
+      - !!map
+        title : !!str UEFI
+        path  : !!str system/configuration/boot-loader/uefi.md
+      - !!map
+        title : !!str BIOS
+        path  : !!str system/configuration/boot-loader/bios.md
+
   - !!map   # DISPLAY DRIVER
     title : !!str display-driver
     tabs  : !!seq

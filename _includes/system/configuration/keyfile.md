@@ -35,15 +35,10 @@ $ cryptsetup luksAddKey {{ container.node }} /etc/luks-keys/{{ container.keyfile
 
 ##### /etc/crypttab.initramfs
 ```
-cryptlvm1     /dev/sda2     /etc/luks-keys/cryptlvm1.keyfile
-cryptlvm2     /dev/sdb1     /etc/luks-keys/cryptlvm2.keyfile
+cryptlvm1     UUID=device_UUID_of_sda2     /etc/luks-keys/cryptlvm1.keyfile
+cryptlvm2     UUID=device_UUID_of_sdb1     /etc/luks-keys/cryptlvm2.keyfile
 ```
 
-It is highly recommended to replace the nodes (/dev/sdXY) with the UUID of the devices, however during the installation, it is easier to use `/dev/sdXY`. **Consider replacing the values after the installation**.
-
-##### Example
-```
-cryptlvm1     UUID=2f9a8428-ac69-478a-88a2-4aa458565431     /etc/luks-keys/cryptlvm1.keyfile
-cryptlvm2     UUID=2f9a8428-ac69-478a-88a2-4aa458565431     /etc/luks-keys/cryptlvm2.keyfile
-```
+**Note**: Replace `device_UUID_of_sdXY` with the UUID of `/dev/sda2` and `/dev/sdb1`.
+{: .fs-3 }
 {% endif %}

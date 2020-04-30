@@ -76,7 +76,7 @@ layout: table_wrappers
           <!-- PAGE_BREADCRUMB -->
           <nav class="breadcrumb-nav">
             <ol class="breadcrumb-nav-list">
-              <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr }}</span></li>
+              <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr | upcase }}</span></li>
               {%- if page.parent_uuid -%}
                 {%- assign parent = site.documentation | where: "uuid", page.parent_uuid | first -%}
                 <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>

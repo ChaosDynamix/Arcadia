@@ -1,73 +1,80 @@
-firmware: !!map
+map: !!map
 
-  bios  : !!map
-    title     : !!str bios
-    pkg_list  : !!str $ pacman -S grub
+  # LUKS ON SINGLE PARTITION
+  b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!str luks_single_partition
+  cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!str luks_single_partition
 
-  uefi  : !!map
-    title     : !!str uefi
-    pkg_list  : !!str $ pacman -S grub efibootmgr
+  # LUKS ON MULTIPLE PARTITIONS
+  66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!str luks_multiple_partitions
 
-# LVM - LUKS ON SINGLE PARTITION
-b84ab5fb-9500-4b17-b322-bd04e31f5d3a: !!map
-  has_raid        : !!bool false
-  systemd         : !!bool false
-  configurations  : !!seq
-    - !!map
-      title : !!str trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/sda2:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
-    - !!map
-      title : !!str no trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/sda2:cryptlvm cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
+  # LUKS ON RAID
+  ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!str luks_raid
 
-# LVM - LUKS ON MULTIPLE PARTITIONS
-66df9fd1-5ee6-42a1-831e-b3b9d6e26524: !!map
-  has_raid        : !!bool false
-  systemd         : !!bool true
-  configurations  : !!seq
-    - !!map
-      title : !!str trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="rd.luks.options=discard root=/dev/grp/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
-    - !!map
-      title : !!str no trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="root=/dev/grp/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
+  # LUKS ON LOGICAL VOLUMES
+  a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!str luks_logical_volumes
 
-# LVM - LUKS ON RAID
-ff8a81bc-82d1-440a-9f71-df9676a19a26: !!map
-  has_raid        : !!bool true
-  systemd         : !!bool false
-  configurations  : !!seq
-    - !!map
-      title : !!str trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/system:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
-    - !!map
-      title : !!str no trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/md/system:cryptlvm cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
+scenario: !!map
 
-# LVM - LUKS ON LOGICAL VOLUMES
-a852843f-53ac-47e9-a82d-d6cf288c8b76: !!map
-  has_raid        : !!bool false
-  systemd         : !!bool false
-  configurations  : !!seq
-    - !!map
-      title : !!str trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/grp/cryptroot:root:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
-    - !!map
-      title : !!str no trim
-      cmd   : !!str |
-              GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/grp/cryptroot:root cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
-              GRUB_ENABLE_CRYPTODISK=y
+  # LUKS ON SINGLE PARTITION
+  luks_single_partition     : !!map
+    has_raid        : !!bool false
+    systemd         : !!bool false
+    configurations  : !!seq
+      - !!map
+        title : !!str trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:crypt_context_:allow-discards cryptkey=rootfs:/etc/luks-keys/crypt_context_.keyfile root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+      - !!map
+        title : !!str no trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:crypt_context_ cryptkey=rootfs:/etc/luks-keys/crypt_context_.keyfile root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+
+  # LUKS ON MULTIPLE PARTITIONS
+  luks_multiple_partitions  : !!map
+    has_raid        : !!bool false
+    systemd         : !!bool true
+    configurations  : !!seq
+      - !!map
+        title : !!str trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="rd.luks.options=discard root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+      - !!map
+        title : !!str no trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+
+  # LUKS ON RAID
+  luks_raid                 : !!map
+    has_raid        : !!bool true
+    systemd         : !!bool false
+    configurations  : !!seq
+      - !!map
+        title : !!str trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:crypt_context_:allow-discards cryptkey=rootfs:/etc/luks-keys/crypt_context_.keyfile root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+      - !!map
+        title : !!str no trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:crypt_context_ cryptkey=rootfs:/etc/luks-keys/crypt_context_.keyfile root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+
+  # LUKS ON LOGICAL VOLUMES
+  luks_logical_volumes      : !!map
+    has_raid        : !!bool false
+    systemd         : !!bool false
+    configurations  : !!seq
+      - !!map
+        title : !!str trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=7b38f0ff-08a5-463d-8c18-e4386b89721e:root:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+      - !!map
+        title : !!str no trim
+        cmd   : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/grp/cryptroot:root cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y

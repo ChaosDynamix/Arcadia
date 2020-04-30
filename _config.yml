@@ -46,7 +46,7 @@ defaults: !!seq
     values  : !!map
       layout        : !!str default
       context_uuid  : !!str 94854e83-3816-42e4-8d5f-f48d3a54483e
-      context_abbr  : !!str LVM
+      context_abbr  : !!str lvm
 
   - !!map     # B TREE FILESYSTEM
     scope   : !!map
@@ -54,7 +54,7 @@ defaults: !!seq
     values  : !!map
       layout        : !!str default
       context_uuid  : !!str 80a79960-1e97-479e-8d0e-789516293fc0
-      context_abbr  : !!str BTRFS
+      context_abbr  : !!str btrfs
 
   - !!map     # DESKTOP ENVIRONMENT
     scope   : !!map
@@ -62,7 +62,7 @@ defaults: !!seq
     values  : !!map
       layout        : !!str default
       context_uuid  : !!str 9e55133c-c83d-43fb-9386-af81ef91b6dc
-      context_abbr  : !!str DE
+      context_abbr  : !!str de
 
   - !!map     # WINDOW MANAGER
     scope   : !!map
@@ -70,4 +70,4 @@ defaults: !!seq
     values  : !!map
       layout        : !!str default
       context_uuid  : !!str 83bc464a-a758-4b5c-a83b-65e92548c5c6
-      context_abbr  : !!str WM
+      context_abbr  : !!str wm
