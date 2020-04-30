@@ -1,4 +1,4 @@
-{% assign scenario = include.scenario %}
+{%- assign scenario = site.data.system.storage.lvm.scenario[page.parent_uuid] %}
 
 ## Setup the Logical Volume Manager
 
@@ -11,11 +11,33 @@
 ### Create the Physical Volume
 
 ```
-{{ scenario.cmd.pv }}
+$ pvcreate {{ scenario.node_list }}
 ```
 
 ### Create the Volume Group
 
 ```
-{{ scenario.cmd.vg }}
+$ vgcreate grp {{ scenario.node_list }}
+```
+
+### Create the Logical volumes
+
+```
+$ lvcreate -L SIZE grp -n cryptroot
+$ lvcreate -L SIZE grp -n cryptswap
+$ lvcreate -l 100%FREE grp -n crypthome
+```
+
+{% include system/storage/encryption.md %}
+
+### Format the Root container
+
+```
+$ mkfs.ext4 -L ROOT /dev/mapper/root
+```
+
+### Mount the Root container
+
+```
+$ mount /dev/mapper/root /mnt
 ```

@@ -31,7 +31,7 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 {: .fs-3 }
 {% endunless %}
 
-### Install GRUB on the {% if scenario.has_raid %}EFI array{% else %}device{% endif %}
+### Install GRUB in the EFI directory
 
 ```
 {%- if scenario.has_raid %}

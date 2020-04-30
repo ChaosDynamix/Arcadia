@@ -18,6 +18,7 @@ scenario: !!map
   # LUKS ON SINGLE PARTITION
   luks_single_partition: !!map
     context     : !!str partition
+    is_root     : !!bool false
     plural      : !!bool false
     headerless  : !!bool false
     containers: !!seq
@@ -27,6 +28,7 @@ scenario: !!map
   # LUKS ON MULTIPLE PARTITIONS
   luks_multiple_partitions: !!map
     context     : !!str partitions
+    is_root     : !!bool false
     plural      : !!bool true
     headerless  : !!bool false
     containers: !!seq
@@ -37,8 +39,9 @@ scenario: !!map
 
   # LUKS ON RAID
   luks_raid: !!map
-    context     : !!str raid array
-    plural      : !!bool true
+    context     : !!str system Raid array
+    is_root     : !!bool false
+    plural      : !!bool false
     headerless  : !!bool false
     containers: !!seq
       - !!map
@@ -47,7 +50,8 @@ scenario: !!map
   # LUKS ON LOGICAL VOLUMES
   luks_logical_volumes: !!map
     context     : !!str root partition
-    plural      : !!bool true
+    is_root     : !!bool true
+    plural      : !!bool false
     headerless  : !!bool false
     containers: !!seq
       - !!map

@@ -1,10 +1,30 @@
-swapfile: !!map
+scenario: !!map
 
-  # LVM
-  b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!bool false
-  66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!bool false
-  ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!bool false
-  a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!bool false
+  # LVM - LUKS ON SINGLE PARTITION
+  b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
+    has_swapfile    : !!bool false
+    luks_partition  : !!bool true
 
-  # BTRFS
-  cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!bool true
+
+  # LVM - LUKS ON MULTIPLE PARTITIONS
+  66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!map
+    has_swapfile    : !!bool false
+    luks_partition  : !!bool true
+
+
+  # LVM - LUKS ON RAID
+  ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
+    has_swapfile    : !!bool false
+    luks_partition  : !!bool true
+
+
+  # LVM - LUKS ON LOGICAL VOLUMES
+  a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
+    has_swapfile    : !!bool false
+    luks_partition  : !!bool false
+
+
+  # BTRFS - LUKS ON SINGLE PARTITION
+  cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!map
+    has_swapfile    : !!bool true
+    luks_partition  : !!bool true

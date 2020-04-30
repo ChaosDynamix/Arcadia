@@ -32,7 +32,9 @@ The `--offset` option allows specifying the start of encrypted data on a device.
 ```
 {%- assign containers_size = scenario.containers | size %}
 {%- for container in scenario.containers %}
-  {%- if forloop.first and containers_size < 2 %}
+  {%- if forloop.first and scenario.is_root %}
+$ cryptsetup open {{ container.node }} root
+  {%- elsif forloop.first and scenario.is_root == false and scenario.containers.size < 2 %}
 $ cryptsetup open {{ container.node }} crypt{{ page.context_abbr | downcase }}
   {%- else %}
 $ cryptsetup open {{ container.node }} crypt{{ page.context_abbr | downcase }}{{ forloop.index }}

@@ -15,9 +15,10 @@ Warning
 Before enabling TRIM on a device, make sure the device fully supports TRIM commands, or data loss can occur.
 {: .text-red-200}
 
-##### /etc/default/grub
 {% for configuration in scenario.configurations %}
 #### {{ configuration.title }}
+
+##### /etc/default/grub
 ```
 {{ configuration.cmd | replace: "_context_", page.context_abbr -}}
 ```
@@ -28,7 +29,7 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 {: .fs-3 }
 {% endunless %}
 
-### Install GRUB on your device{%- if scenario.has_raid %}s{% endif %}
+### Install GRUB on the device{%- if scenario.has_raid %}s{% endif %}
 
 ```
 {%- if scenario.has_raid %}
