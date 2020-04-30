@@ -1,0 +1,50 @@
+####################################
+# LVM ON LUKS                      #
+####################################
+
+lvm_luks  : !!map
+  vg      : !!str grp
+  lvs     : !!seq
+
+    - !!map
+      node  : !!str /dev/_grp_/root
+      label : !!str ROOT
+      size  : !!str "15-20 GiB"
+
+    - !!map
+      node  : !!str /dev/_grp_/swap
+      label : !!str SWAP
+      size  : !!str "> 512 MiB"
+
+    - !!map
+      node  : !!str /dev/_grp_/var
+      label : !!str VAR
+      size  : !!str "8-12 GiB"
+
+    - !!map
+      node  : !!str /dev/_grp_/home
+      label : !!str HOME
+      size  : !!str "100%FREE - 5 GiB"
+
+####################################
+# LUKS ON LVM                      #
+####################################
+
+luks_lvm  : !!map
+  vg      : !!str grp
+  lvs     : !!seq
+
+    - !!map
+      node  : !!str /dev/_grp_/cryptroot
+      label : !!str CRYPTROOT
+      size  : !!str "23-32 GiB"
+
+    - !!map
+      node  : !!str /dev/_grp_/cryptswap
+      label : !!str CRYPTSWAP
+      size  : !!str "> 512 MiB"
+
+    - !!map
+      node  : !!str /dev/_grp_/crypthome
+      label : !!str CRYPTHOME
+      size  : !!str "100%FREE"

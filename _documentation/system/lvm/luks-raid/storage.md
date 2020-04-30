@@ -15,6 +15,8 @@ nav_order: 2
 
 ---
 
+{% assign scenario = site.data.scenario[page.parent_uuid] %}
+
 {% include system/storage/secure-erase.md %}
 ---
 {% include system/storage/partitioning.md %}
@@ -23,6 +25,6 @@ nav_order: 2
 ---
 {% include system/storage/encryption.md %}
 ---
-{% include system/storage/lvm/lvm-luks.md %}
+{% include system/storage/lvm.md %}
 ---
 {% include system/storage/efi.md %}

@@ -14,3 +14,5 @@ nav_order: 4
 {:toc}
 
 ---
+
+{% assign scenario = site.data.scenario[page.parent_uuid] %}

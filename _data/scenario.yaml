@@ -1,0 +1,167 @@
+####################################
+# LOGICAL VOLUME MANAGER           #
+####################################
+
+# LUKS ON SINGLE PARTITION
+b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
+  template  : !!str luks_single_partition
+  context   : !!str lvm
+  pkg_list  : !!str lvm2
+
+  storage         : !!map
+    has_raid      : !!bool false
+    has_swapfile  : !!bool false
+    devices       : !!seq
+      - !!map
+        node  : !!str /dev/sda
+
+  has_encryption  : !!bool true
+  encryption      : !!map
+    context       : !!str partition
+    headerless    : !!bool false
+    containers    : !!seq
+      - !!map
+        node        : !!str /dev/sda2
+        name        : !!str cryptlvm
+        bootable    : !!bool true
+        keyfile     : !!str cryptlvm.keyfile
+        keyfile_path: !!str /etc/luks-keys/cryptlvm.keyfile
+
+  has_lvm   : !!bool true
+  lvm       : !!map
+    template      : !!str lvm_luks
+    physical_vol  : !!str /dev/mapper/cryptlvm
+
+  efi       : !!map
+    context : !!str partition
+    node    : !!str /dev/sda1
+
+# LUKS ON MULTIPLE PARTITIONS
+66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!map
+  template  : !!str luks_multiple_partitions
+  context   : !!str lvm
+  pkg_list  : !!str lvm2
+
+  storage         : !!map
+    has_raid      : !!bool false
+    has_swapfile  : !!bool false
+    devices       : !!seq
+      - !!map
+        node  : !!str /dev/sda
+      - !!map
+        node  : !!str /dev/sdb
+
+  has_encryption  : !!bool true
+  encryption      : !!map
+    context       : !!str partitions
+    headerless    : !!bool false
+    containers    : !!seq
+      - !!map
+        node        : !!str /dev/sda2
+        name        : !!str cryptlvm1
+        bootable    : !!bool true
+        keyfile     : !!str cryptlvm1.keyfile
+        keyfile_path: !!str /etc/luks-keys/cryptlvm1.keyfile
+      - !!map
+        node        : !!str /dev/sdb1
+        name        : !!str cryptlvm2
+        bootable    : !!bool true
+        keyfile     : !!str cryptlvm2.keyfile
+        keyfile_path: !!str /etc/luks-keys/cryptlvm2.keyfile
+
+  has_lvm   : !!bool true
+  lvm       : !!map
+    template      : !!str lvm_luks
+    physical_vol  : !!str /dev/mapper/cryptlvm1 /dev/mapper/cryptlvm2
+
+  efi       : !!map
+    context : !!str partition
+    node    : !!str /dev/sda1
+
+# LUKS ON RAID
+ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
+  template  : !!str luks_raid
+  context   : !!str lvm
+  pkg_list  : !!str lvm2 mdadm
+
+  storage         : !!map
+    has_raid      : !!bool true
+    has_swapfile  : !!bool false
+    devices       : !!seq
+      - !!map
+        node  : !!str /dev/sda
+      - !!map
+        node  : !!str /dev/sdb
+
+  has_encryption  : !!bool true
+  encryption      : !!map
+    context       : !!str system Raid array
+    headerless    : !!bool false
+    containers    : !!seq
+      - !!map
+        node        : !!str /dev/md/system
+        name        : !!str cryptlvm
+        bootable    : !!bool true
+        keyfile     : !!str cryptlvm.keyfile
+        keyfile_path: !!str /etc/luks-keys/cryptlvm.keyfile
+
+  has_lvm   : !!bool true
+  lvm       : !!map
+    template      : !!str lvm_luks
+    physical_vol  : !!str /dev/mapper/cryptlvm
+
+  efi       : !!map
+    context : !!str array
+    node    : !!str /dev/md/efi
+
+# LUKS ON LOGICAL VOLUMES
+a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
+  template  : !!str luks_logical_volumes
+  context   : !!str lvm
+  pkg_list  : !!str lvm2
+
+  storage         : !!map
+    has_raid      : !!bool false
+    has_swapfile  : !!bool false
+    devices       : !!seq
+      - !!map
+        node  : !!str /dev/sda
+      - !!map
+        node  : !!str /dev/sdb
+
+  has_encryption  : !!bool true
+  encryption      : !!map
+    context       : !!str Root partition
+    headerless    : !!bool false
+    containers    : !!seq
+      - !!map
+        node        : !!str /dev/grp/cryptroot
+        name        : !!str root
+        bootable    : !!bool true
+        keyfile     : !!str cryptroot.keyfile
+        keyfile_path: !!str /etc/luks-keys/cryptroot.keyfile
+      - !!map
+        node        : !!str /dev/grp/crypthome
+        name        : !!str home
+        bootable    : !!bool false
+        keyfile     : !!str crypthome.keyfile
+        keyfile_path: !!str /etc/luks-keys/crypthome.keyfile
+
+  has_lvm   : !!bool true
+  lvm       : !!map
+    template      : !!str luks_lvm
+    physical_vol  : !!str /dev/sda2 /dev/sdb1
+
+  efi       : !!map
+    context : !!str partition
+    node    : !!str /dev/sda1
+
+####################################
+# B-TREE FILESYSTEM                #
+####################################
+
+# LUKS ON SINGLE PARTITION
+cf65c6ee-bd52-47c4-af3d-a53c0ff8b032  : !!map
+  template  : !!str luks_logical_volumes
+  context   : !!str btrfs
+  pkg_list  : !!str btrfs-progs

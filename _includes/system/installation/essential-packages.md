@@ -1,5 +1,3 @@
-{%- assign package_list = site.data.system.installation.essential-packages.pkgs[page.parent_uuid] %}
-
 ## Install the essential packages
 
 ### Package types
@@ -26,5 +24,5 @@ pacstrap is designed to create a new system installation from scratch. The speci
 
 ##### Example
 ```
-$ pacstrap /mnt base linux linux-firmware {{ package_list }} vim man-db man-pages
+$ pacstrap /mnt base linux linux-firmware {{ scenario.pkg_list }} vim man-db man-pages
 ```

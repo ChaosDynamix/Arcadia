@@ -15,7 +15,7 @@ Warning
 Before enabling TRIM on a device, make sure the device fully supports TRIM commands, or data loss can occur.
 {: .text-red-200}
 
-{% for configuration in scenario.configurations %}
+{% for configuration in site.date.template[scenario.template].grub_configurations %}
 #### {{ configuration.title }}
 
 ##### /etc/default/grub
@@ -24,15 +24,15 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 ```
 {% endfor %}
 
-{% unless scenario.systemd %}
+{% unless site.date.template[scenario.template].init_system == "systemd" %}
 **Note**: Replace `7b38f0ff-08a5-463d-8c18-e4386b89721e` with the UUID of your device.
 {: .fs-3 }
 {% endunless %}
 
-### Install GRUB on the device{%- if scenario.has_raid %}s{% endif %}
+### Install GRUB on the device{%- if scenario.storage.has_raid %}s{% endif %}
 
 ```
-{%- if scenario.has_raid %}
+{%- if scenario.storage.has_raid %}
 $ grub-install --target=i386-pc --recheck /dev/sda
 $ grub-install --target=i386-pc --recheck /dev/sdb
 {%- else %}

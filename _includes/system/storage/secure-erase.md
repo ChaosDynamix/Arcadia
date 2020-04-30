@@ -1,6 +1,3 @@
-{%- assign scenario_title = site.data.system.storage.secure-erase.map[page.parent_uuid] %}
-{%- assign scenario = site.data.system.storage.secure-erase.scenario[scenario_title] %}
-
 ## Secure erase the device{% if scenario.plural %}s{% endif %}
 {: .d-inline-block}
 
@@ -14,21 +11,21 @@ Before setting up encryption on a mass storage device, consider securely wiping 
 
 ### Create the temporary encrypted container{% if scenario.plural %}s{% endif %}
 ```
-{%- for dev in scenario.devices %}
-$ cryptsetup open --type plain -d /dev/urandom {{ dev.node }} {{ dev.mapper }}
+{%- for device in scenario.storage.devices %}
+$ cryptsetup open --type plain -d /dev/urandom {{ device.node }} to_be_wiped{{ forloop.index }}
 {%- endfor %}
 ```
 
 ### Wipe the container{% if scenario.plural %}s{% endif %} with zeros
 ```
-{%- for dev in scenario.devices %}
-$ dd if=/dev/zero of=/dev/mapper/{{ dev.mapper }} status=progress
+{%- for index in (1..scenario.storage.devices.size) %}
+$ dd if=/dev/zero of=/dev/mapper/to_be_wiped{{ index }} status=progress
 {%- endfor %}
 ```
 
 ### Close the temporary container{% if scenario.plural %}s{% endif %}
 ```
-{%- for dev in scenario.devices %}
-$ cryptsetup close {{ dev.mapper }}
+{%- for index in (1..scenario.storage.devices.size) %}
+$ cryptsetup close to_be_wiped{{ index }}
 {%- endfor %}
 ```

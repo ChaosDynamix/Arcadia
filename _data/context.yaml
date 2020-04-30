@@ -1,0 +1,20 @@
+# LOGICAL VOLUME MANAGER
+lvm   : !!map
+  title     : !!str Logical Volume Manager
+  abbr      : !!str lvm
+  package   : !!str lvm2
+
+  # MKINITCPIO HOOK
+  has_hook  : !!bool true
+  hook      : !!map
+    busybox : !!str lvm2
+    systemd : !!str sd-lvm2
+
+# B-TREE FILESYSTEM
+btrfs : !!map
+  title     : !!str B-Tree filesystem
+  abbr      : !!str btrfs
+  package   : !!str btrfs-progs
+
+  # MKINITCPIO HOOK
+  has_hook  : !!bool false

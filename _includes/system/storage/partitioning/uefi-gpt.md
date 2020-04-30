@@ -1,15 +1,15 @@
-{%- assign mode = site.data.system.storage.partitioning.mode.uefi_gpt %}
+{%- assign mode = site.data.mode.uefi_gpt %}
 
 ### Partition scheme
 
 | Partition node       | Partition type       | Partition size       |
 | :------------------- | :------------------- | :------------------- |
-{%- for partition in scenario.partitions %}
+{%- for partition in site.data.template[scenario.template].partitions %}
 | {{ partition.node }} | {{ partition.type | replace: "mode_partition_type", mode.partition.type }} | {{ partition.size | replace: "mode_partition_size", mode.partition.size }} |      
 {%- endfor %}
 
 ### Sgdisk script
 
 ```
-{{ scenario.sgdisk | replace: "mode_sgdisk", mode.sgdisk -}}
+{{ site.data.template[scenario.template].sgdisk | replace: "mode_sgdisk", mode.sgdisk -}}
 ```

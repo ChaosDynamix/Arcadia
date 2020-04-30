@@ -26,7 +26,7 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 ```
 {% endfor %}
 
-{% unless scenario.systemd %}
+{% unless site.data.template[scenario.template].init_system == "systemd" %}
 **Note**: Replace `7b38f0ff-08a5-463d-8c18-e4386b89721e` with the UUID of your device.
 {: .fs-3 }
 {% endunless %}
@@ -34,19 +34,19 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 ### Install GRUB in the EFI directory
 
 ```
-{%- if scenario.has_raid %}
+{%- if scenario.storage.has_raid %}
 $ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck --removable
 {%- else %}
 $ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB --recheck
 {%- endif %}
 ```
 
-{%- if scenario.has_raid %}
+{%- if scenario.storage.has_raid %}
 **Note**: `--removable` flag prevent Efibootmgr to launch because he is not able to write boot entries for a Raid array.
 {: .fs-3 }
 {%- endif %}
 
-{%- if scenario.has_raid %}
+{%- if scenario.storage.has_raid %}
 ### Add boot entries with Efibootmgr
 ```
 $ efibootmgr --create --disk /dev/sda --part 1 --label "Arch Linux UUID" --loader "\EFI\BOOT\BOOTX64.efi"

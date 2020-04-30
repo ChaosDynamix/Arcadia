@@ -15,6 +15,8 @@ nav_order: 1
 
 ---
 
+{% assign scenario = site.data.scenario[page.parent_uuid] %}
+
 {% include system/preparation/installation-image.md %}
 ---
 {% include system/preparation/installation-media.md %}

@@ -1,22 +1,19 @@
-{%- assign scenario_title = site.data.system.storage.efi.map[page.parent_uuid] %}
-{%- assign scenario = site.data.system.storage.efi.scenario[scenario_title] %}
-
-## Setup the EFI {{ scenario.context }}
+## Setup the EFI {{ scenario.efi.context }}
 {: .d-inline-block}
 
 UEFI
 {: .label .label-blue}
 
-### Format the {{ scenario.context }}
+### Format the {{ scenario.efi.context }}
 {: .mt-0}
 
 ```
-$ mkfs.fat -F32 -n EFI {{ scenario.node }}
+$ mkfs.fat -F32 -n EFI {{ scenario.efi.node }}
 ```
 
-### Mount the {{ scenario.context }}
+### Mount the {{ scenario.efi.context }}
 
 ```
 $ mkdir /mnt/efi
-$ mount {{ scenario.node }} /mnt/efi
+$ mount {{ scenario.efi.node }} /mnt/efi
 ```

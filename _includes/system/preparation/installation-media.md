@@ -1,5 +1,3 @@
-{%- assign include_section = site.data.nav.include.sections | where: "title", "installation-media" | first %}
-
 ## Prepare the USB flash device
 
 {% include tabs.html title="installation-media" %}
