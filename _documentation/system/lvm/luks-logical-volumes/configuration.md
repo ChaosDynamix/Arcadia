@@ -16,3 +16,5 @@ nav_order: 4
 ---
 
 {% assign scenario = site.data.scenario[page.parent_uuid] %}
+
+{% include system/storage/encryption.md step=2 %}

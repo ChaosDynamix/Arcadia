@@ -8,43 +8,22 @@ It can be used to persist a manually mounted filesystem hierarchy and is often u
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
-{% if scenario.template == "luks_logical_volumes" %}
-### Add the swap volume in the crypttab
-```
-swap    /dev/grp/cryptswap    /dev/urandom    swap,cipher=aes-xts-plain64,size=256
-```
-
-### Add the swap volume in the fstab
-```
-/dev/mapper/swap    none    swap    sw    0 0
-```
-{% endif %}
-
-{% if scenario.storage.has_swapfile %}
-### Create the swapfile
-
-```
-$ truncate -s 0 /swapfile
-$ chattr +C /swapfile
-$ btrfs property set /swapfile compression none
-$ dd if=/dev/zero of=/swapfile bs=1M count=512 status=progress
-$ chmod 600 /swapfile
-$ mkswap /swapfile
-$ swapon /swapfile
-```
-
-### Add the swapfile in the fstab
-
-##### /etc/fstab
-```
-/.swap/swapfile       none        swap        defaults        0 0
-```
-{% endif %}
-
----
-
-## Enter the system
+### Enter the system
 
 ```
 $ arch-chroot /mnt
 ```
+
+{% if scenario.template == "luks_logical_volumes" %}
+### Add the Swap volume
+
+##### /etc/crypttab
+```
+swap    /dev/grp/cryptswap    /dev/urandom    swap,cipher=aes-xts-plain64,size=256
+```
+
+##### /etc/fstab
+```
+/dev/mapper/swap    none    swap    sw    0 0
+```
+{% endif %}

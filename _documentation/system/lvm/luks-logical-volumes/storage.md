@@ -23,6 +23,6 @@ nav_order: 2
 ---
 {% include system/storage/lvm.md %}
 ---
-{% include system/storage/encryption.md %}
+{% include system/storage/encryption.md step=1 %}
 ---
 {% include system/storage/efi.md %}

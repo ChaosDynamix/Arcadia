@@ -4,7 +4,7 @@
 
 ##### /etc/mkinitcpio.conf
 ```
-FILES=({{ scenario.encryption.containers | map: "keyfile_path" | sort | join: " " }})
+FILES=({{ scenario.encryption.containers | map: "keyfile" | sort | join: " " }})
 HOOKS=({{ site.data.template[scenario.template].mkinitcpio.hooks }})
 ```
 

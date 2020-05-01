@@ -8,14 +8,14 @@ $ mkdir -m 700 /etc/luks-keys
 ### Generate the key{% if scenario.encryption.containers.size > 1 %}s{% endif %}
 ```
 {%- for container in scenario.encryption.containers %}
-$ dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/{{ container.keyfile }} iflag=fullblock
+$ dd bs=512 count=4 if=/dev/random of={{ container.keyfile }} iflag=fullblock
 {%- endfor %}
 ```
 
 ### Change the permissions
 ```
 {%- for container in scenario.encryption.containers %}
-$ chmod 600 /etc/luks-keys/{{ container.keyfile }}
+$ chmod 600 {{ container.keyfile }}
 {%- endfor %}
 $ chmod 600 /boot/initramfs-linux*
 ```
@@ -23,7 +23,7 @@ $ chmod 600 /boot/initramfs-linux*
 ### Add the key{% if scenario.encryption.containers.size > 1 %}s{% endif %} in the container{% if scenario.encryption.containers.size > 1 %}s{% endif %}
 ```
 {%- for container in scenario.encryption.containers %}
-$ cryptsetup luksAddKey {{ container.node }} /etc/luks-keys/{{ container.keyfile }}
+$ cryptsetup luksAddKey {{ container.node }} {{ container.keyfile }}
 {%- endfor %}
 ```
 
@@ -32,10 +32,11 @@ $ cryptsetup luksAddKey {{ container.node }} /etc/luks-keys/{{ container.keyfile
 
 ##### /etc/crypttab.initramfs
 ```
-cryptlvm1     UUID=device_UUID_of_sda2     /etc/luks-keys/cryptlvm1.keyfile
-cryptlvm2     UUID=device_UUID_of_sdb1     /etc/luks-keys/cryptlvm2.keyfile
+{%- for container in scenario.encryption.containers %}
+{{ container.name }}     UUID=device_UUID     {{ container.keyfile }}
+{%- endfor %}
 ```
 
-**Note**: Replace `device_UUID_of_sdXY` with the UUID of `/dev/sda2` and `/dev/sdb1`.
+**Note**: Replace `device_UUID` with the UUID of `/dev/sda2` and `/dev/sdb1`.
 {: .fs-3 }
 {% endif %}

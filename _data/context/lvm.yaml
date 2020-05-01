@@ -26,6 +26,29 @@ lvm_luks  : !!map
       label : !!str HOME
       size  : !!str "100%FREE - 5 GiB"
 
+  node  : !!map
+
+    main  : !!seq
+      - !!map
+        node  : !!str /dev/grp/root
+        label : !!str ROOT
+        mount : !!str /mnt
+
+      - !!map
+        node  : !!str /dev/grp/var
+        label : !!str VAR
+        mount : !!str /mnt/var
+
+      - !!map
+        node  : !!str /dev/grp/home
+        label : !!str HOME
+        mount : !!str /mnt/home
+
+    has_swap  : !!bool true
+    swap      : !!map
+      node    : !!str /dev/grp/swap
+      label   : !!str SWAP
+
 ####################################
 # LUKS ON LVM                      #
 ####################################

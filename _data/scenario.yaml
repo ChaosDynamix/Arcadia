@@ -10,22 +10,23 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
 
   storage         : !!map
     has_raid      : !!bool false
-    has_swapfile  : !!bool false
     devices       : !!seq
       - !!map
         node  : !!str /dev/sda
 
   has_encryption  : !!bool true
   encryption      : !!map
-    context       : !!str partition
-    headerless    : !!bool false
-    containers    : !!seq
+    headerless  : !!bool false
+    steps       : !!seq
+      - !!map
+        id  : !!int 1
+        ctx : !!str partition
+    containers  : !!seq
       - !!map
         node        : !!str /dev/sda2
         name        : !!str cryptlvm
-        bootable    : !!bool true
-        keyfile     : !!str cryptlvm.keyfile
-        keyfile_path: !!str /etc/luks-keys/cryptlvm.keyfile
+        step_id     : !!int 1
+        keyfile     : !!str /etc/luks-keys/cryptlvm.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
@@ -44,7 +45,6 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
 
   storage         : !!map
     has_raid      : !!bool false
-    has_swapfile  : !!bool false
     devices       : !!seq
       - !!map
         node  : !!str /dev/sda
@@ -53,21 +53,22 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
 
   has_encryption  : !!bool true
   encryption      : !!map
-    context       : !!str partitions
-    headerless    : !!bool false
-    containers    : !!seq
+    headerless  : !!bool false
+    steps       : !!seq
+      - !!map
+        id  : !!int 1
+        ctx : !!str partitions
+    containers  : !!seq
       - !!map
         node        : !!str /dev/sda2
         name        : !!str cryptlvm1
-        bootable    : !!bool true
-        keyfile     : !!str cryptlvm1.keyfile
-        keyfile_path: !!str /etc/luks-keys/cryptlvm1.keyfile
+        step_id     : !!int 1
+        keyfile     : !!str /etc/luks-keys/cryptlvm1.keyfile
       - !!map
         node        : !!str /dev/sdb1
         name        : !!str cryptlvm2
-        bootable    : !!bool true
-        keyfile     : !!str cryptlvm2.keyfile
-        keyfile_path: !!str /etc/luks-keys/cryptlvm2.keyfile
+        step_id     : !!int 1
+        keyfile     : !!str /etc/luks-keys/cryptlvm2.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
@@ -86,7 +87,6 @@ ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
 
   storage         : !!map
     has_raid      : !!bool true
-    has_swapfile  : !!bool false
     devices       : !!seq
       - !!map
         node  : !!str /dev/sda
@@ -95,15 +95,17 @@ ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
 
   has_encryption  : !!bool true
   encryption      : !!map
-    context       : !!str system Raid array
-    headerless    : !!bool false
-    containers    : !!seq
+    headerless  : !!bool false
+    steps       : !!seq
+      - !!map
+        id  : !!int 1
+        ctx : !!str system Raid array
+    containers  : !!seq
       - !!map
         node        : !!str /dev/md/system
         name        : !!str cryptlvm
-        bootable    : !!bool true
-        keyfile     : !!str cryptlvm.keyfile
-        keyfile_path: !!str /etc/luks-keys/cryptlvm.keyfile
+        step_id     : !!int 1
+        keyfile     : !!str /etc/luks-keys/cryptlvm.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
@@ -122,7 +124,6 @@ a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
 
   storage         : !!map
     has_raid      : !!bool false
-    has_swapfile  : !!bool false
     devices       : !!seq
       - !!map
         node  : !!str /dev/sda
@@ -131,21 +132,25 @@ a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
 
   has_encryption  : !!bool true
   encryption      : !!map
-    context       : !!str Root partition
-    headerless    : !!bool false
-    containers    : !!seq
+    headerless  : !!bool false
+    steps       : !!seq
+      - !!map
+        id  : !!int 1
+        ctx : !!str Root container
+      - !!map
+        id  : !!int 2
+        ctx : !!str Home container
+    containers  : !!seq
       - !!map
         node        : !!str /dev/grp/cryptroot
         name        : !!str root
-        bootable    : !!bool true
-        keyfile     : !!str cryptroot.keyfile
-        keyfile_path: !!str /etc/luks-keys/cryptroot.keyfile
+        step_id     : !!int 1
+        keyfile     : !!str /etc/luks-keys/cryptroot.keyfile
       - !!map
         node        : !!str /dev/grp/crypthome
         name        : !!str home
-        bootable    : !!bool false
-        keyfile     : !!str crypthome.keyfile
-        keyfile_path: !!str /etc/luks-keys/crypthome.keyfile
+        step_id     : !!int 2
+        keyfile     : !!str /etc/luks-keys/crypthome.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
