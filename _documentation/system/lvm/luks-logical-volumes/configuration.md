@@ -17,4 +17,20 @@ nav_order: 4
 
 {% assign scenario = site.data.scenario[page.parent_uuid] %}
 
+{% include system/configuration/localization.md %}
+---
+{% include system/configuration/network.md %}
+---
+{% include system/configuration/account.md %}
+---
+{% include system/configuration/keyfile.md %}
+---
 {% include system/storage/encryption.md step=2 %}
+---
+{% include system/storage/setup.md step=2 %}
+---
+{% include system/configuration/initial-ramdisk.md %}
+---
+{% include system/configuration/microcode.md %}
+---
+{% include system/configuration/boot-loader.md %}

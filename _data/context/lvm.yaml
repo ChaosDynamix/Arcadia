@@ -3,8 +3,8 @@
 ####################################
 
 lvm_luks  : !!map
-  vg      : !!str grp
-  lvs     : !!seq
+  group   : !!str grp
+  volumes : !!seq
 
     - !!map
       node  : !!str /dev/_grp_/root
@@ -26,36 +26,33 @@ lvm_luks  : !!map
       label : !!str HOME
       size  : !!str "100%FREE - 5 GiB"
 
-  node  : !!map
-
-    main  : !!seq
-      - !!map
-        node  : !!str /dev/grp/root
-        label : !!str ROOT
-        mount : !!str /mnt
+  setup   : !!map
+    steps   : !!seq
 
       - !!map
-        node  : !!str /dev/grp/var
-        label : !!str VAR
-        mount : !!str /mnt/var
-
-      - !!map
-        node  : !!str /dev/grp/home
-        label : !!str HOME
-        mount : !!str /mnt/home
-
-    has_swap  : !!bool true
-    swap      : !!map
-      node    : !!str /dev/grp/swap
-      label   : !!str SWAP
+        id        : !!int 1
+        context   : !!str volumes
+        format    : !!str |
+                    $ mkfs.ext4 -L ROOT /dev/grp/root
+                    $ mkfs.ext4 -L VAR /dev/grp/var
+                    $ mkfs.ext4 -L HOME /dev/grp/home
+        mount     : !!str |
+                    $ mount /dev/grp/root /mnt
+                    $ mkdir /mnt/{var,home}
+                    $ mount /dev/grp/var /mnt/var
+                    $ mount /dev/grp/home /mnt/home
+        has_swap  : !!bool true
+        swap      : !!str |
+                    $ mkswap -L SWAP /dev/grp/swap
+                    $ swapon /dev/grp/swap
 
 ####################################
 # LUKS ON LVM                      #
 ####################################
 
 luks_lvm  : !!map
-  vg      : !!str grp
-  lvs     : !!seq
+  group   : !!str grp
+  volumes : !!seq
 
     - !!map
       node  : !!str /dev/_grp_/cryptroot
@@ -71,3 +68,24 @@ luks_lvm  : !!map
       node  : !!str /dev/_grp_/crypthome
       label : !!str CRYPTHOME
       size  : !!str "100%FREE"
+
+  setup   : !!map
+    steps   : !!seq
+
+      - !!map
+        id        : !!int 1
+        context   : !!str Root container
+        format    : !!str |
+                    $ mkfs.ext4 -L ROOT /dev/mapper/root
+        mount     : !!str |
+                    $ mount /dev/mapper/root /mnt
+        has_swap  : !!bool false
+
+      - !!map
+        id        : !!int 2
+        context   : !!str Home container
+        format    : !!str |
+                    $ mkfs.ext4 -L HOME /dev/mapper/home
+        mount     : !!str |
+                    $ mount /dev/mapper/home /mnt/home
+        has_swap  : !!bool false

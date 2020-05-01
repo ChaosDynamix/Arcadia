@@ -23,15 +23,17 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
         ctx : !!str partition
     containers  : !!seq
       - !!map
+        step_id     : !!int 1
+        init_key    : !!bool false
+        bootable    : !!bool true
         node        : !!str /dev/sda2
         name        : !!str cryptlvm
-        step_id     : !!int 1
         keyfile     : !!str /etc/luks-keys/cryptlvm.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
-    template      : !!str lvm_luks
-    physical_vol  : !!str /dev/mapper/cryptlvm
+    template  : !!str lvm_luks
+    pv        : !!str /dev/mapper/cryptlvm
 
   efi       : !!map
     context : !!str partition
@@ -60,20 +62,24 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
         ctx : !!str partitions
     containers  : !!seq
       - !!map
+        step_id     : !!int 1
+        init_key    : !!bool false
+        bootable    : !!bool true
         node        : !!str /dev/sda2
         name        : !!str cryptlvm1
-        step_id     : !!int 1
         keyfile     : !!str /etc/luks-keys/cryptlvm1.keyfile
       - !!map
+        step_id     : !!int 1
+        init_key    : !!bool false
+        bootable    : !!bool true
         node        : !!str /dev/sdb1
         name        : !!str cryptlvm2
-        step_id     : !!int 1
         keyfile     : !!str /etc/luks-keys/cryptlvm2.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
-    template      : !!str lvm_luks
-    physical_vol  : !!str /dev/mapper/cryptlvm1 /dev/mapper/cryptlvm2
+    template  : !!str lvm_luks
+    pv        : !!str /dev/mapper/cryptlvm1 /dev/mapper/cryptlvm2
 
   efi       : !!map
     context : !!str partition
@@ -102,15 +108,17 @@ ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
         ctx : !!str system Raid array
     containers  : !!seq
       - !!map
+        step_id     : !!int 1
+        init_key    : !!bool false
+        bootable    : !!bool true
         node        : !!str /dev/md/system
         name        : !!str cryptlvm
-        step_id     : !!int 1
         keyfile     : !!str /etc/luks-keys/cryptlvm.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
-    template      : !!str lvm_luks
-    physical_vol  : !!str /dev/mapper/cryptlvm
+    template  : !!str lvm_luks
+    pv        : !!str /dev/mapper/cryptlvm
 
   efi       : !!map
     context : !!str array
@@ -142,20 +150,24 @@ a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
         ctx : !!str Home container
     containers  : !!seq
       - !!map
+        step_id     : !!int 1
+        init_key    : !!bool false
+        bootable    : !!bool true
         node        : !!str /dev/grp/cryptroot
         name        : !!str root
-        step_id     : !!int 1
         keyfile     : !!str /etc/luks-keys/cryptroot.keyfile
       - !!map
+        step_id     : !!int 2
+        init_key    : !!bool true
+        bootable    : !!bool false
         node        : !!str /dev/grp/crypthome
         name        : !!str home
-        step_id     : !!int 2
         keyfile     : !!str /etc/luks-keys/crypthome.keyfile
 
   has_lvm   : !!bool true
   lvm       : !!map
-    template      : !!str luks_lvm
-    physical_vol  : !!str /dev/sda2 /dev/sdb1
+    template  : !!str luks_lvm
+    pv        : !!str /dev/sda2 /dev/sdb1
 
   efi       : !!map
     context : !!str partition

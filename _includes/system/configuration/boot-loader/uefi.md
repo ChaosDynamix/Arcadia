@@ -17,7 +17,7 @@ Warning
 Before enabling TRIM on a device, make sure the device fully supports TRIM commands, or data loss can occur.
 {: .text-red-200}
 
-{% for configuration in scenario.configurations %}
+{% for configuration in site.data.template[scenario.template].grub_configurations %}
 #### {{ configuration.title }}
 
 ##### /etc/default/grub

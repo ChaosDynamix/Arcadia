@@ -25,4 +25,6 @@ nav_order: 2
 ---
 {% include system/storage/lvm.md %}
 ---
+{% include system/storage/setup.md step=1 %}
+---
 {% include system/storage/efi.md %}

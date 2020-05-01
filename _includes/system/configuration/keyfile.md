@@ -1,4 +1,4 @@
-## Setup the Keyfile for the container{% if scenario.encryption.containers.size > 1 %}s{% endif %}
+## Create the Keyfile{% if scenario.encryption.containers.size > 1 %}s{% endif %}
 
 ### Create the keys directory
 ```
@@ -21,9 +21,12 @@ $ chmod 600 /boot/initramfs-linux*
 ```
 
 ### Add the key{% if scenario.encryption.containers.size > 1 %}s{% endif %} in the container{% if scenario.encryption.containers.size > 1 %}s{% endif %}
+
 ```
 {%- for container in scenario.encryption.containers %}
+  {%- if container.bootable %}
 $ cryptsetup luksAddKey {{ container.node }} {{ container.keyfile }}
+  {%- endif %}
 {%- endfor %}
 ```
 

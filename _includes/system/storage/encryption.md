@@ -21,7 +21,7 @@ Passwords must be complex enough to not be easily guessed from e.g. personal inf
 
 ```
 {%- for container in step_containers %}
-$ cryptsetup --type luks1 luksFormat {{ container.node }}
+$ cryptsetup --type luks1 luksFormat {{ container.node }} {% if container.init_key %}{{ container.keyfile }}{% endif %}
 {%- endfor %}
 ```
 
@@ -34,6 +34,6 @@ $ cryptsetup --type luks1 luksFormat {{ container.node }}
 
 ```
 {%- for container in step_containers %}
-$ cryptsetup open {{ container.node }} {{ container.name }}
+$ cryptsetup {% if container.init_key %}-d {{ container.keyfile }}{% endif %} open {{ container.node }} {{ container.name }}
 {%- endfor %}
 ```
