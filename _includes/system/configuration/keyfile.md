@@ -29,17 +29,3 @@ $ cryptsetup luksAddKey {{ container.node }} {{ container.keyfile }}
   {%- endif %}
 {%- endfor %}
 ```
-
-{% if site.data.template[scenario.template].init_system == "systemd" %}
-### Add entries to the initramfs crypttab
-
-##### /etc/crypttab.initramfs
-```
-{%- for container in scenario.encryption.containers %}
-{{ container.name }}     UUID=device_UUID     {{ container.keyfile }}
-{%- endfor %}
-```
-
-**Note**: Replace `device_UUID` with the UUID of `/dev/sda2` and `/dev/sdb1`.
-{: .fs-3 }
-{% endif %}

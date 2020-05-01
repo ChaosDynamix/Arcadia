@@ -16,7 +16,6 @@ nav_order: 3
 ---
 
 {% assign scenario = site.data.scenario[page.parent_uuid] %}
+{% assign template = site.data.template[scenario.template] %}
 
 {% include system/installation/essential-packages.md %}
----
-{% include system/installation/filesystem-table.md %}

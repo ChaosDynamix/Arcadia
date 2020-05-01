@@ -18,6 +18,10 @@ luks_single_partition     : !!map
   sgdisk    : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
 
+  has_fstab               : !!bool false
+  has_crypttab            : !!bool false
+  has_crypttab_initramfs  : !!bool false
+
   mkinitcpio: !!map
     hooks : !!str base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck
 
@@ -57,6 +61,13 @@ luks_multiple_partitions  : !!map
   sgdisk    : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
               $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+
+  has_fstab               : !!bool false
+  has_crypttab            : !!bool false
+  has_crypttab_initramfs  : !!bool true
+  crypttab_initramfs      : !!str |
+                            crypt_context_1     UUID=device_UUID   /etc/luks-keys/crypt_context_1.keyfile
+                            crypt_context_2     UUID=device_UUID   /etc/luks-keys/crypt_context_2.keyfile
 
   mkinitcpio: !!map
     hooks : !!str base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck
@@ -102,6 +113,10 @@ luks_raid                 : !!map
               $ sgdisk -o mode_sgdisk -n=2:0:-100M -t=2:fd00 -R=/dev/sdb /dev/sda
               $ sgdisk -G /dev/sdb
 
+  has_fstab               : !!bool false
+  has_crypttab            : !!bool false
+  has_crypttab_initramfs  : !!bool false
+
   mkinitcpio: !!map
     hooks : !!str base udev autodetect modconf block mdadm_udev encrypt lvm2 filesystems keyboard keymap fsck
 
@@ -141,6 +156,17 @@ luks_logical_volumes      : !!map
   sgdisk    : !!str |
               $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8e00 /dev/sda
               $ sgdisk -o -n=1:0:0 -t=1:8e00 /dev/sdb
+
+  has_fstab     : !!bool true
+  fstab         : !!str |
+                  /dev/mapper/swap    none    swap    sw          0 0
+                  /dev/mapper/home    /home   ext4    defaults    0 2
+  has_crypttab  : !!bool true
+  crypttab      : !!str |
+                  swap    /dev/grp/cryptswap     /dev/urandom          swap,cipher=aes-xts-plain64,size=256
+                  home    /dev/grp/crypthome     /etc/luks-keys/home
+
+  has_crypttab_initramfs  : !!bool false
 
   mkinitcpio: !!map
     hooks : !!str base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck

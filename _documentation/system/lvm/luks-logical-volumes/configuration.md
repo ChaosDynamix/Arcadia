@@ -16,6 +16,7 @@ nav_order: 4
 ---
 
 {% assign scenario = site.data.scenario[page.parent_uuid] %}
+{% assign template = site.data.template[scenario.template] %}
 
 {% include system/configuration/localization.md %}
 ---
@@ -28,6 +29,10 @@ nav_order: 4
 {% include system/storage/encryption.md step=2 %}
 ---
 {% include system/storage/setup.md step=2 %}
+---
+{% include system/configuration/fstab.md %}
+---
+{% include system/configuration/crypttab.md %}
 ---
 {% include system/configuration/initial-ramdisk.md %}
 ---
