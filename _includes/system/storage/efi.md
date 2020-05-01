@@ -1,19 +1,19 @@
-## Setup the EFI {{ scenario.efi.context }}
+## Setup the EFI {{ template.efi.context }}
 {: .d-inline-block}
 
 UEFI
 {: .label .label-blue}
 
-### Format the {{ scenario.efi.context }}
+### Format the {{ template.efi.context }}
 {: .mt-0}
 
 ```
-$ mkfs.fat -F32 -n EFI {{ scenario.efi.node }}
+$ mkfs.fat -F32 -n EFI {{ template.efi.node }}
 ```
 
-### Mount the {{ scenario.efi.context }}
+### Mount the {{ template.efi.context }}
 
 ```
 $ mkdir /mnt/efi
-$ mount {{ scenario.efi.node }} /mnt/efi
+$ mount {{ template.efi.node }} /mnt/efi
 ```

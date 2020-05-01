@@ -1,4 +1,4 @@
-{% if site.data.template[scenario.template].has_crypttab_initramfs %}
+{% if template.has_crypttab_initramfs %}
 ## Edit the initramfs crypttab
 
 ##### /etc/crypttab.initramfs

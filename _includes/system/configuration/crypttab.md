@@ -1,4 +1,4 @@
-{% if site.data.template[scenario.template].has_crypttab %}
+{% if template.has_crypttab %}
 ## Edit the crypttab
 
 ##### /etc/crypttab

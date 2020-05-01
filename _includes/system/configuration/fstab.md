@@ -1,4 +1,4 @@
-{% if site.data.template[scenario.template].has_fstab %}
+{% if template.has_fstab %}
 ## Edit the fstab
 
 ##### /etc/fstab

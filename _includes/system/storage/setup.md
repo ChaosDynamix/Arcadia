@@ -1,4 +1,5 @@
-{% assign step = site.data.context.lvm[scenario.lvm.template].setup.steps | where: "id", include.step | first %}
+{% assign profile = site.data.lvm.profile[scenario.lvm.template] %}
+{% assign step = profile.setup.steps | where: "id", include.step | first %}
 
 ## Setup the {{ step.context }}
 

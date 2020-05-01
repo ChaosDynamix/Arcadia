@@ -3,26 +3,25 @@
 ####################################
 
 lvm_luks  : !!map
-  group   : !!str grp
   volumes : !!seq
 
     - !!map
-      node  : !!str /dev/_grp_/root
+      node  : !!str /dev/grp/root
       label : !!str ROOT
       size  : !!str "15-20 GiB"
 
     - !!map
-      node  : !!str /dev/_grp_/swap
+      node  : !!str /dev/grp/swap
       label : !!str SWAP
       size  : !!str "> 512 MiB"
 
     - !!map
-      node  : !!str /dev/_grp_/var
+      node  : !!str /dev/grp/var
       label : !!str VAR
       size  : !!str "8-12 GiB"
 
     - !!map
-      node  : !!str /dev/_grp_/home
+      node  : !!str /dev/grp/home
       label : !!str HOME
       size  : !!str "100%FREE - 5 GiB"
 
@@ -51,21 +50,20 @@ lvm_luks  : !!map
 ####################################
 
 luks_lvm  : !!map
-  group   : !!str grp
   volumes : !!seq
 
     - !!map
-      node  : !!str /dev/_grp_/cryptroot
+      node  : !!str /dev/grp/cryptroot
       label : !!str CRYPTROOT
       size  : !!str "23-32 GiB"
 
     - !!map
-      node  : !!str /dev/_grp_/cryptswap
+      node  : !!str /dev/grp/cryptswap
       label : !!str CRYPTSWAP
       size  : !!str "> 512 MiB"
 
     - !!map
-      node  : !!str /dev/_grp_/crypthome
+      node  : !!str /dev/grp/crypthome
       label : !!str CRYPTHOME
       size  : !!str "100%FREE"
 

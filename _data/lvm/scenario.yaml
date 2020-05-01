@@ -1,0 +1,55 @@
+####################################
+# LUKS ON SINGLE PARTITION         #
+####################################
+
+b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
+  template    : !!str luks_single_partition
+  controller  : !!str lvm
+  pkg_list    : !!str lvm2
+
+  has_lvm     : !!bool true
+  lvm         : !!map
+    template  : !!str lvm_luks
+    pv        : !!str /dev/mapper/cryptlvm
+
+####################################
+# LUKS ON MULTIPLE PARTITIONS      #
+####################################
+
+66df9fd1-5ee6-42a1-831e-b3b9d6e26524  : !!map
+  template    : !!str luks_multiple_partitions
+  controller  : !!str lvm
+  pkg_list    : !!str lvm2
+
+  has_lvm     : !!bool true
+  lvm         : !!map
+    template  : !!str lvm_luks
+    pv        : !!str /dev/mapper/cryptlvm1 /dev/mapper/cryptlvm2
+
+####################################
+# LUKS ON RAID                     #
+####################################
+
+ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
+  template    : !!str luks_raid
+  controller  : !!str lvm
+  pkg_list    : !!str lvm2 mdadm
+
+  has_lvm     : !!bool true
+  lvm         : !!map
+    template  : !!str lvm_luks
+    pv        : !!str /dev/mapper/cryptlvm
+
+####################################
+# LUKS ON LOGICAL VOLUMES          #
+####################################
+
+a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
+  template    : !!str luks_logical_volumes
+  controller  : !!str lvm
+  pkg_list    : !!str lvm2
+
+  has_lvm     : !!bool true
+  lvm         : !!map
+    template  : !!str luks_lvm
+    pv        : !!str /dev/sda2 /dev/sdb1

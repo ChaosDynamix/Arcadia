@@ -1,4 +1,4 @@
-{% assign bootable_containers = scenario.encryption.containers | where: "bootable", true %}
+{% assign bootable_containers = template.encryption.containers | where: "bootable", true %}
 
 ## Setup the initial ramdisk images
 
@@ -6,11 +6,11 @@
 
 ##### /etc/mkinitcpio.conf
 ```
-FILES=({{ bootable_containers | map: "keyfile" | sort | join: " " }})
-HOOKS=({{ site.data.template[scenario.template].mkinitcpio.hooks }})
+FILES=({{ bootable_containers | map: "keyfile" | sort | join: " " | replace: "_context_", scenario.controller }})
+HOOKS=({{ template.mkinitcpio.hooks }})
 ```
 
-{% if scenario.storage.has_raid %}
+{% if template.has_raid %}
 ### Add a custom hook for mdadm_udev
 
 This hook allow the system to start with a degraded raid array. [Source](https://bugs.archlinux.org/task/57860)
