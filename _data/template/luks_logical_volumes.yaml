@@ -76,7 +76,7 @@ encryption      : !!map
       step_id           : !!int 2
       is_headerless     : !!bool false
       is_bootable       : !!bool false
-      has_password      : !!bool true
+      has_password      : !!bool false
       has_keyfile       : !!bool true
       has_init_keyfile  : !!bool true
       name              : !!str home
