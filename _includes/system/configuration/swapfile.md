@@ -1,3 +1,4 @@
+{% if scenario.has_swapfile %}
 ## Create the swapfile
 
 ### Creation
@@ -25,3 +26,4 @@ $ swapon /swap/swapfile
 ```
 /.swap/swapfile       none        swap        defaults        0 0
 ```
+{% endif %}

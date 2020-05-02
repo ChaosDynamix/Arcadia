@@ -24,7 +24,7 @@ pacstrap is designed to create a new system installation from scratch. The speci
 
 ##### Example
 ```
-$ pacstrap /mnt base linux linux-firmware {{ scenario.pkg_list }} vim man-db man-pages
+$ pacstrap /mnt base linux linux-firmware {{ scenario.pacstrap }} vim man-db man-pages
 ```
 
 ---

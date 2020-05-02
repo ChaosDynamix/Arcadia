@@ -1,13 +1,11 @@
-{% assign bootable_containers = template.encryption.containers | where: "bootable", true %}
-
+{% if scenario.has_initramfs %}
 ## Setup the initial ramdisk images
 
 ### Edit the configuration
 
 ##### /etc/mkinitcpio.conf
 ```
-FILES=({{ bootable_containers | map: "keyfile" | sort | join: " " | replace: "_context_", scenario.controller }})
-HOOKS=({{ template.mkinitcpio.hooks }})
+{{ scenario.initramfs -}}
 ```
 
 {% if template.has_raid %}
@@ -38,10 +36,10 @@ run_hook() {
 
 **Note**: The script create a local variable, check the arrays for potential inactive array, break if everything is fine, display a message, wait 10 seconds and start the arrays even if they are in degraded state.
 {: .fs-3 }
-
 {% endif %}
 
 ### Generate the images
 ```
 $ mkinitcpio -p linux
 ```
+{% endif %}

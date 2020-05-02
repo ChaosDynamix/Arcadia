@@ -1,8 +1,8 @@
-{% if template.has_crypttab %}
+{% if scenario.has_crypttab %}
 ## Edit the crypttab
 
 ##### /etc/crypttab
 ```
-{{ site.data.template[scenario.template].crypttab -}}
+{{ scenario.crypttab -}}
 ```
 {% endif %}

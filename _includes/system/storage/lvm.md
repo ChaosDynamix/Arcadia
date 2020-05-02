@@ -1,5 +1,3 @@
-{% assign profile = site.data.lvm.profile[scenario.lvm.template] %}
-
 ## Setup the Logical Volume Manager
 
 | Node                | Label              | Size recommendation |

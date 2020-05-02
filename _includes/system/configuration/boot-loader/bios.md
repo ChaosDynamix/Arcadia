@@ -19,25 +19,25 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 
 ##### /etc/default/grub
 ```
-{{ template.grub_configuration | replace: "_context_", scenario.controller -}}
+{{ scenario.grub -}}
 ```
 
 #### NO TRIM
 
 ##### /etc/default/grub
 ```
-{{ template.grub_configuration | replace: "_context_", scenario.controller | replace: ":allow-discards", "" | replace: "rd.luks.options=discard ", "" -}}
+{{ scenario.grub | replace: ":allow-discards", "" | replace: "rd.luks.options=discard ", "" -}}
 ```
 
-{% unless template.init_system == "systemd" %}
-**Note**: Replace `7b38f0ff-08a5-463d-8c18-e4386b89721e` with the UUID of your device.
+{% unless template.has_systemd %}
+**Note**: Replace `device_uuid` with the UUID of your device.
 {: .fs-3 }
 {% endunless %}
 
 ### Install GRUB on the device{%- if template.has_raid %}s{% endif %}
 
 ```
-{%- if scenario.storage.has_raid %}
+{%- if template.has_raid %}
 $ grub-install --target=i386-pc --recheck /dev/sda
 $ grub-install --target=i386-pc --recheck /dev/sdb
 {%- else %}

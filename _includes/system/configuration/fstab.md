@@ -1,8 +1,8 @@
-{% if template.has_fstab %}
+{% if scenario.has_fstab %}
 ## Edit the fstab
 
 ##### /etc/fstab
 ```
-{{ site.data.template[scenario.template].fstab -}}
+{{ scenario.fstab -}}
 ```
 {% endif %}

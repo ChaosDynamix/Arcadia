@@ -17,6 +17,7 @@ nav_order: 1
 
 {% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
 {% assign template = site.data.template[scenario.template] %}
+{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
 
 {% include system/preparation/installation-image.md %}
 ---
