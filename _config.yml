@@ -56,6 +56,14 @@ defaults: !!seq
       context_uuid  : !!str 80a79960-1e97-479e-8d0e-789516293fc0
       context_abbr  : !!str btrfs
 
+  - !!map     # EXT4
+    scope   : !!map
+      path  : !!str "_documentation/system/ext4"
+    values  : !!map
+      layout        : !!str default
+      context_uuid  : !!str e86d8089-1595-42e6-9b3b-de1c9db31b8d
+      context_abbr  : !!str ext4
+
   - !!map     # DESKTOP ENVIRONMENT
     scope   : !!map
       path  : !!str "_documentation/gui/de"

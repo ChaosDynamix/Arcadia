@@ -8,6 +8,7 @@ $ pacman -S grub efibootmgr
 
 Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
 
+{% if scenario.has_grub %}
 ### Edit the GRUB configuration
 {: .d-inline-block}
 
@@ -35,6 +36,7 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 **Note**: Replace `device_uuid` with the UUID of your device.
 {: .fs-3 }
 {% endunless %}
+{% endif %}
 
 ### Install GRUB in the EFI directory
 

@@ -6,6 +6,7 @@ Grub is choosed because it allow encrypted /boot and increase the security of yo
 $ pacman -S grub
 ```
 
+{% if scenario.has_grub %}
 ### Edit the GRUB configuration
 {: .d-inline-block}
 
@@ -33,6 +34,7 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 **Note**: Replace `device_uuid` with the UUID of your device.
 {: .fs-3 }
 {% endunless %}
+{% endif %}
 
 ### Install GRUB on the device{%- if template.has_raid %}s{% endif %}
 

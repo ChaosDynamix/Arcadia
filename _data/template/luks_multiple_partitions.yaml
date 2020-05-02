@@ -2,9 +2,11 @@
 # SCRIPT (MANDATORY)               #
 ####################################
 
-sgdisk  : !!str |
-          $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
-          $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+sgdisk            : !!map
+  has_fixed_size  : !!bool true
+  script          : !!str |
+                    $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
+                    $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
 
 ####################################
 # STORAGE (MANDATORY)              #

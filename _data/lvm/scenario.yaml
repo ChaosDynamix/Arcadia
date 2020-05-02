@@ -10,9 +10,9 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
   has_grub                : !!bool true
   has_swapfile            : !!bool false
   has_systemd             : !!bool false
+  has_pacstrap            : !!bool true
 
   template      : !!str luks_single_partition
-  controller    : !!str lvm
   pacstrap      : !!str lvm2
 
   lvm       : !!map
@@ -39,9 +39,9 @@ b84ab5fb-9500-4b17-b322-bd04e31f5d3a  : !!map
   has_grub                : !!bool true
   has_swapfile            : !!bool false
   has_systemd             : !!bool true
+  has_pacstrap            : !!bool true
 
   template    : !!str luks_multiple_partitions
-  controller  : !!str lvm
   pacstrap    : !!str lvm2
 
   lvm       : !!map
@@ -72,9 +72,9 @@ ff8a81bc-82d1-440a-9f71-df9676a19a26  : !!map
   has_grub                : !!bool true
   has_swapfile            : !!bool false
   has_systemd             : !!bool false
+  has_pacstrap            : !!bool true
 
   template    : !!str luks_raid
-  controller  : !!str lvm
   pacstrap    : !!str lvm2 mdadm
 
   lvm       : !!map
@@ -101,9 +101,9 @@ a852843f-53ac-47e9-a82d-d6cf288c8b76  : !!map
   has_grub                : !!bool true
   has_swapfile            : !!bool false
   has_systemd             : !!bool false
+  has_pacstrap            : !!bool true
 
   template    : !!str luks_logical_volumes
-  controller  : !!str lvm
   pacstrap    : !!str lvm2
 
   lvm       : !!map

@@ -1,0 +1,17 @@
+multiple_partitions : !!map
+  setup   : !!map
+    steps   : !!seq
+      - !!map
+        id        : !!int 1
+        context   : !!str partitions
+        format    : !!str |
+                    $ mkfs.ext4 -L ROOT /dev/sda2
+                    $ mkfs.ext4 -L HOME /dev/sda4
+        mount     : !!str |
+                    $ mount /dev/sda2 /mnt
+                    $ mkdir /mnt/home
+                    $ mount /dev/sda4 /mnt/home
+        has_swap  : !!bool true
+        swap      : !!str |
+                    $ mkswap -L SWAP /dev/sda3
+                    $ swapon /dev/sda3

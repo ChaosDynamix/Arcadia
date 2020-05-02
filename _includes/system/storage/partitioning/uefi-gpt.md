@@ -11,5 +11,9 @@
 ### Sgdisk script
 
 ```
-{{ template.sgdisk | replace: "mode_sgdisk", mode.sgdisk -}}
+{{ template.sgdisk.script | replace: "mode_sgdisk", mode.sgdisk -}}
 ```
+
+{% unless template.sgdisk.has_fixed_size %}
+**Note**: Replace SIZE accordingly.
+{% endunless %}

@@ -3,9 +3,10 @@
 ####################################
 
 sgdisk            : !!map
-  has_fixed_size  : !!bool true
+  has_fixed_size  : !!bool false
   script          : !!str |
-                    $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
+                    $ sgdisk -o mode_sgdisk -n=2:0:SIZE -t=2:8304 -n=3:0:SIZE -t=3:8200 -n=4:0:SIZE -t=4:8302 /dev/sda
+
 
 ####################################
 # STORAGE (MANDATORY)              #
@@ -22,8 +23,16 @@ partitions: !!seq
     size  : !!str mode_partition_size
   - !!map
     node  : !!str /dev/sda2
-    type  : !!str Linux LUKS partition
-    size  : !!str 100%FREE
+    type  : !!str Linux x86-64 Root
+    size  : !!str "23-32 GiB"
+  - !!map
+    node  : !!str /dev/sda3
+    type  : !!str Linux Swap
+    size  : !!str "> 512 MiB"
+  - !!map
+    node  : !!str /dev/sda4
+    type  : !!str Linux Home
+    size  : !!str "100%FREE"
 
 efi       : !!map
   node    : !!str /dev/sda1
@@ -39,24 +48,4 @@ has_raid  : !!bool false
 # ENCRYPTION                       #
 ####################################
 
-has_encryption  : !!bool true
-
-encryption      : !!map
-
-  steps         : !!seq
-    - !!map
-      id        : !!int 1
-      title     : !!str Encrypt the LUKS partition
-
-  containers    : !!seq
-    - !!map
-      step_id           : !!int 1
-      is_headerless     : !!bool false
-      is_bootable       : !!bool true
-      has_password      : !!bool true
-      has_keyfile       : !!bool true
-      has_init_keyfile  : !!bool false
-      name              : !!str cryptsystem
-      node              : !!str /dev/sda2
-      type              : !!str luks1
-      keyfile           : !!str /etc/luks-keys/cryptsystem.keyfile
+has_encryption  : !!bool false

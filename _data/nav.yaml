@@ -18,6 +18,10 @@ sidebar     : !!map
           uuid      : !!str 80a79960-1e97-479e-8d0e-789516293fc0
           title     : !!str B-tree filesystem
           nav_order : !!int 2
+        - !!map
+          uuid      : !!str e86d8089-1595-42e6-9b3b-de1c9db31b8d
+          title     : !!str Ext4
+          nav_order : !!int 3
 
     - !!map       # GRAPHICAL USER INTERFACE
       uuid      : !!str b27b08c0-dad7-4a1f-aefe-b821cab76a6a
