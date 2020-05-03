@@ -1,7 +1,6 @@
 ---
-title: Luks on multiple partitions
-uuid: 66df9fd1-5ee6-42a1-831e-b3b9d6e26524
-nav_order: 2
+title     : !!str Luks on multiple partitions
+nav_order : !!int 2
 ---
 
 # {{ page.title }}

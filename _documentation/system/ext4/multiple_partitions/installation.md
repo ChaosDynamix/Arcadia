@@ -1,8 +1,7 @@
 ---
-title: Installation
-uuid: 6589e3c2-ced3-4945-88fc-20100f32b81b
-parent_uuid: 66ec7fd3-6e75-4f2b-92b6-9520dfecee1e
-nav_order: 3
+title     : !!str Installation
+parent    : !!str Multiple partitions
+nav_order : !!int 3
 ---
 
 # {{ page.title }}
@@ -15,6 +14,6 @@ nav_order: 3
 
 ---
 
-{% assign scenario = site.data.ext4.scenario[page.parent_uuid] %}
+{% assign scenario = site.data.system.ext4["multiple_partitions"] %}
 
 {% include system/installation/essential-packages.md %}

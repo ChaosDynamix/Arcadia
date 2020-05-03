@@ -1,8 +1,7 @@
 ---
-title: Configuration
-uuid: a23bb653-76f7-48b5-b624-7790d9992cc0
-parent_uuid: b84ab5fb-9500-4b17-b322-bd04e31f5d3a
-nav_order: 4
+title     : !!str Configuration
+parent    : !!str Luks on single partition
+nav_order : !!int 4
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 4
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_single_partition"] %}
 
 {% include system/configuration/localization.md %}
 ---

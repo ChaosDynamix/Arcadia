@@ -1,8 +1,7 @@
 ---
-title: Preparation
-uuid: 4a50d874-f482-4074-b68c-cb7f76a65956
-parent_uuid: 66ec7fd3-6e75-4f2b-92b6-9520dfecee1e
-nav_order: 1
+title     : !!str Preparation
+parent    : !!str Multiple partitions
+nav_order : !!int 1
 ---
 
 # {{ page.title }}
@@ -15,8 +14,7 @@ nav_order: 1
 
 ---
 
-{% assign scenario = site.data.ext4.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
+{% assign scenario = site.data.system.ext4["multiple_partitions"] %}
 
 {% include system/preparation/installation-image.md %}
 ---

@@ -1,8 +1,7 @@
 ---
-title: Preparation
-uuid: f77d368b-bb6d-4afc-a671-32157bfb63e6
-parent_uuid: 7d1ce837-5ca7-439f-aa21-cdf7df3ffacc
-nav_order: 1
+title     : !!str Preparation
+parent    : !!str Xfce4
+nav_order : !!int 3
 ---
 
 # {{ page.title }}

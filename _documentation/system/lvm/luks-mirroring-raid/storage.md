@@ -1,8 +1,7 @@
 ---
-title: Storage
-uuid: 34bb5e80-40fc-4e49-842f-5e578603d4b0
-parent_uuid: ff8a81bc-82d1-440a-9f71-df9676a19a26
-nav_order: 2
+title     : !!str Storage
+parent    : !!str Luks on mirroring Raid
+nav_order : !!int 2
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 2
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_mirroring_raid"] %}
 
 {% include system/storage/secure-erase.md %}
 ---
@@ -28,7 +25,5 @@ nav_order: 2
 {% include system/storage/encryption.md step=1 %}
 ---
 {% include system/storage/lvm.md %}
----
-{% include system/storage/setup.md step=1 %}
 ---
 {% include system/storage/efi.md %}

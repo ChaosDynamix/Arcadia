@@ -1,25 +1,28 @@
 <nav role="navigation" aria-label="Main navigation">
-  {% assign sections = site.data.nav.sidebar.sections | sort: "nav_order" %}
+  {%- assign sections = site.data.nav.sidebar.sections | sort: "nav_order" -%}
   {%- for section in sections -%}
     <div class="navigation-section">
       <div class="navigation-section-content">
         <h3 class="mt-0">{{ section.title }}</h3>
         {%- assign contexts = section.contexts | sort: "nav_order" -%}
         {%- for context in contexts -%}
-          <h4>{{ context.title }}</h4>
-          {%- assign context_pages = site.documentation | where: "context_uuid", context.uuid | sort: "nav_order" -%}
-          {%- unless context_pages.size == 0 -%}
+          <h4>{{ context.full_name }}</h4>
+          {%- assign ctx_pages = site.documentation | where: "context", context.name | sort: "nav_order" -%}
+          {%- unless ctx_pages.size == 0 -%}
             <ul class="navigation-list">
-            {%- for context_page in context_pages -%}
-              {%- unless context_page.parent_uuid -%}
-                <li class="navigation-list-item{% if context_page.uuid == page.uuid or context_page.uuid == page.parent_uuid %} active{% endif %}">
-                  <a href="{{ context_page.url | prepend: site.baseurl }}" class="navigation-list-link{% if context_page.uuid == page.uuid %} active{% endif %}">{{ context_page.title }}</a>
-                  {%- assign children = context_pages | where: "parent_uuid", context_page.uuid | sort: "nav_order" -%}
+            {%- for ctx_page in ctx_pages -%}
+              {%- unless ctx_page.parent -%}
+                <li class="navigation-list-item{% if ctx_page.context == page.context and ctx_page.title == page.parent or ctx_page.title == page.title %} active{% endif %}">
+                  {%- if ctx_page.context == page.context and ctx_page.title == page.parent -%}
+                    {%- assign first_level_url = ctx_page.url | absolute_url -%}
+                  {%- endif -%}
+                  <a href="{{ ctx_page.url | prepend: site.baseurl }}" class="navigation-list-link{% if ctx_page.url == page.url %} active{% endif %}">{{ ctx_page.title }}</a>
+                  {%- assign children = ctx_pages | where: "parent", ctx_page.title | sort: "nav_order" -%}
                   {%- unless children.size == 0 -%}
                     <ol class="navigation-list-child-list">
                       {%- for child in children -%}
                         <li class="navigation-list-item">
-                          <a href="{{ child.url | absolute_url }}" class="navigation-list-link{% if child.uuid == page.uuid %} active{% endif %}">{{ child.title }}</a>
+                          <a href="{{ child.url | absolute_url }}" class="navigation-list-link{% if child.url == page.url %} active{% endif %}">{{ child.title }}</a>
                         </li>
                       {%- endfor -%}
                     </ol>

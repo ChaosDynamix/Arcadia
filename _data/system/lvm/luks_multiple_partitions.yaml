@@ -1,0 +1,105 @@
+has_fstab_cfg               : !!bool false
+has_crypttab_cfg            : !!bool false
+has_crypttab_initramfs_cfg  : !!bool true
+has_initramfs_cfg           : !!bool true
+has_grub_cfg                : !!bool true
+has_swapfile                : !!bool false
+has_systemd                 : !!bool true
+has_needed_packages         : !!bool true
+has_raid                    : !!bool false
+has_encryption              : !!bool true
+
+needed_packages : !!str lvm2
+
+# DEVICES
+devices   : !!seq
+  - !!map
+    node  : !!str /dev/sda
+  - !!map
+    node  : !!str /dev/sdb
+
+# PARTITIONS
+partitions: !!seq
+  - !!map
+    node  : !!str /dev/sda1
+    type  : !!str mode_partition_type
+    size  : !!str mode_partition_size
+  - !!map
+    node  : !!str /dev/sda2
+    type  : !!str Linux LUKS partition
+    size  : !!str 100%FREE
+  - !!map
+    node  : !!str /dev/sdb1
+    type  : !!str Linux LUKS partition
+    size  : !!str 100%FREE
+
+# EFI
+efi       : !!map
+  node    : !!str /dev/sda1
+  context : !!str partition
+
+# ENCRYPTION
+encryption      : !!map
+  headerless    : !!bool false
+  steps         : !!seq
+    - !!map
+      id        : !!int 1
+      title     : !!str Encrypt the partitions
+  containers    : !!seq
+    - !!map
+      step_id           : !!int 1
+      keyfile_id        : !!int 1
+      is_headerless     : !!bool false
+      is_bootable       : !!bool true
+      has_password      : !!bool true
+      has_keyfile       : !!bool true
+      has_init_keyfile  : !!bool false
+      name              : !!str cryptlvmUUID
+      node              : !!str /dev/sda2
+      type              : !!str luks1
+    - !!map
+      step_id           : !!int 1
+      keyfile_id        : !!int 2
+      is_headerless     : !!bool false
+      is_bootable       : !!bool true
+      has_password      : !!bool true
+      has_keyfile       : !!bool true
+      has_init_keyfile  : !!bool false
+      name              : !!str cryptlvmUUID
+      node              : !!str /dev/sdb1
+      type              : !!str luks1
+  keyfiles      : !!seq
+    - !!map
+      id        : !!int 1
+      name      : !!str cryptlvmUUID
+      path      : !!str /etc/luks-keys/cryptlvmUUID.keyfile
+    - !!map
+      id        : !!int 2
+      name      : !!str cryptlvmUUID
+      path      : !!str /etc/luks-keys/cryptlvmUUID.keyfile
+
+# LOGICAL VOLUME MANAGER
+lvm         : !!map
+  template  : !!str lvm-luks
+  pv        : !!str /dev/mapper/cryptlvmUUID /dev/mapper/cryptlvmUUID
+
+
+# CONFIGURATIONS
+crypttab_initramfs_cfg  : !!str |
+                          cryptlvmUUID     UUID=device_UUID   /etc/luks-keys/cryptlvmUUID.keyfile
+                          cryptlvmUUID     UUID=device_UUID   /etc/luks-keys/cryptlvmUUID.keyfile
+
+initramfs_cfg : !!str |
+                FILES=(/etc/luks-keys/cryptlvmUUID.keyfile /etc/luks-keys/cryptlvmUUID.keyfile)
+                HOOKS=(base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck)
+
+grub_cfg      : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="rd.luks.options=discard root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
+
+# SCRIPTS
+sgdisk            : !!map
+  has_fixed_size  : !!bool true
+  script          : !!str |
+                    $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
+                    $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb

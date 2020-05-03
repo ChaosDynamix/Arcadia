@@ -1,7 +1,7 @@
-{% if template.has_encryption %}
+{% if scenario.has_encryption %}
 
-{% assign step = template.encryption.steps | where: "id", include.step | first %}
-{% assign step_containers = template.encryption.containers | where: "step_id", include.step %}
+{% assign step = scenario.encryption.steps | where: "id", include.step | first %}
+{% assign step_containers = scenario.encryption.containers | where: "step_id", include.step %}
 {% assign headerless_containers = step_containers | where: "is_headerless", true %}
 {% assign bootable_containers = step_containers | where: "is_bootable", true %}
 {% assign password_containers = step_containers | where: "has_password", true %}
@@ -29,7 +29,8 @@ Passwords must be complex enough to not be easily guessed from e.g. personal inf
 
 ```
 {%- for container in step_containers %}
-$ cryptsetup --type {{ container.type }} luksFormat {{ container.node }}{% if container.has_init_keyfile %} {{ container.keyfile }}{% elsif container.is_headerless %} --offset 32768 --header {{ container.header }}{% endif %}
+  {%- assign keyfile = scenario.encryption.keyfiles | where: "id", container.keyfile_id | first %}
+$ cryptsetup --type {{ container.type }} luksFormat {{ container.node }}{% if container.has_init_keyfile %} {{ keyfile.path }}{% elsif container.is_headerless %} --offset 32768 --header {{ container.header }}{% endif %}
 {%- endfor %}
 ```
 
@@ -41,7 +42,8 @@ $ cryptsetup --type {{ container.type }} luksFormat {{ container.node }}{% if co
 ### Open the container{% if step_containers.size > 1 %}s{% endif %}
 ```
 {%- for container in step_containers %}
-$ cryptsetup{% if container.has_init_keyfile %} -d {{ container.keyfile }}{% endif %} open{% if container.has_header %} --header {{ container.header }}{% endif %} {{ container.node }} {{ container.name }}
+  {%- assign keyfile = scenario.encryption.keyfiles | where: "id", container.keyfile_id | first %}
+$ cryptsetup{% if container.has_init_keyfile %} -d {{ keyfile.path }}{% endif %} open{% if container.has_header %} --header {{ container.header }}{% endif %} {{ container.node }} {{ container.name }}
 {%- endfor %}
 ```
 

@@ -76,10 +76,9 @@ layout: table_wrappers
           <!-- PAGE_BREADCRUMB -->
           <nav class="breadcrumb-nav">
             <ol class="breadcrumb-nav-list">
-              <li class="breadcrumb-nav-list-item"><span>{{ page.context_abbr | upcase }}</span></li>
-              {%- if page.parent_uuid -%}
-                {%- assign parent = site.documentation | where: "uuid", page.parent_uuid | first -%}
-                <li class="breadcrumb-nav-list-item"><a href="{{ parent.url | absolute_url }}">{{ parent.title }}</a></li>
+              <li class="breadcrumb-nav-list-item"><span>{{ page.context | upcase }}</span></li>
+              {%- if page.parent -%}
+                <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
               {%- endif -%}
               <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
             </ol>
@@ -94,8 +93,8 @@ layout: table_wrappers
               {{ content }}
             {%- endif -%}
 
-            {%- unless page.parent_uuid or page.nav_exclude -%}
-              {%- assign children = site.documentation | where: "parent_uuid", page.uuid | sort: "nav_order" -%}
+            {%- unless page.parent or page.nav_exclude -%}
+              {%- assign children = site.documentation | where: "parent", page.title | sort: "nav_order" -%}
               {%- unless children.size == 0 -%}
               <!-- PAGE_TOC -->
               <hr>

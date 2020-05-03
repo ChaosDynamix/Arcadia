@@ -1,1 +1,15 @@
-TODO
+## Create the RAID array
+
+Redundant Array of Independent Disks (RAID) is a storage technology that combines multiple disk drive components (typically disk drives or partitions thereof) into a logical unit. Depending on the RAID implementation, this logical unit can be a file system or an additional transparent layer that can hold several partitions.
+
+When creating an array from Arch Linux ISO image, use the option `--homehost=myhostname` (or `--homehost=any` to always have the same name regardless of the host) to set the hostname, otherwise the hostname archiso will be written in the array metadata.
+
+### Create the system raid0 array
+```
+$ mdadm --create --level=0 --metadata=1.2 --raid-devices=2 --homehost=myhostname /dev/md/system /dev/sda2 /dev/sdb2
+```
+
+### Check the synchronization of the array
+```
+$ watch cat /proc/mdstat
+```

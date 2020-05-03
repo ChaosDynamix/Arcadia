@@ -1,8 +1,7 @@
 ---
-title: Configuration
-uuid: a23bb653-76f7-48b5-b624-7790d9992cc0
-parent_uuid: 66ec7fd3-6e75-4f2b-92b6-9520dfecee1e
-nav_order: 4
+title     : !!str Configuration
+parent    : !!str Multiple partitions
+nav_order : !!int 4
 ---
 
 # {{ page.title }}
@@ -15,8 +14,7 @@ nav_order: 4
 
 ---
 
-{% assign scenario = site.data.ext4.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
+{% assign scenario = site.data.system.ext4["multiple_partitions"] %}
 
 {% include system/configuration/localization.md %}
 ---

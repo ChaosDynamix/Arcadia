@@ -1,7 +1,6 @@
 ---
-title: Multiple partitions
-uuid: 66ec7fd3-6e75-4f2b-92b6-9520dfecee1e
-nav_order: 1
+title     : !!str Multiple partitions
+nav_order : !!int 1
 ---
 
 # {{ page.title }}
@@ -9,3 +8,11 @@ nav_order: 1
 
 IN PROGRESS
 {: .label .label-red}
+
+```text
+Device
++--------------+--------------+--------------+--------------+
+| Partition    | Partition    | Partition    | Partition    |
+| BIOS/EFI     | ROOT         | SWAP         | HOME         |
++--------------+--------------+--------------+--------------+
+```

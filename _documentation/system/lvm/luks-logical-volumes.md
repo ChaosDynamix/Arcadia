@@ -1,7 +1,6 @@
 ---
-title: Luks on logical volumes
-uuid: a852843f-53ac-47e9-a82d-d6cf288c8b76
-nav_order: 4
+title     : !!str Luks on logical volumes
+nav_order : !!int 4
 ---
 
 # {{ page.title }}

@@ -1,6 +1,20 @@
 ## Prepare the USB flash device
 
-{% include tabs.html title="installation-media" %}
+### List your devices
+
+Identify your USB flash device node.
+
+```
+$ fdisk -l
+```
+
+### Flash the USB flash device
+
+Edit `path/to/archlinux.iso` and `sdX` accordingly
+
+```
+$ dd bs=4M if=path/to/archlinux.iso of=/dev/sdX status=progress oflag=sync
+```
 
 ### Boot the USB flash device
 

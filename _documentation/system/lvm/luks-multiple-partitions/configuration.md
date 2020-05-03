@@ -1,8 +1,7 @@
 ---
-title: Configuration
-uuid: 36bc7364-4054-4699-982d-b7d74a05cbb7
-parent_uuid: 66df9fd1-5ee6-42a1-831e-b3b9d6e26524
-nav_order: 4
+title     : !!str Configuration
+parent    : !!str Luks on multiple partitions
+nav_order : !!int 4
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 4
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_multiple_partitions"] %}
 
 {% include system/configuration/localization.md %}
 ---
@@ -27,7 +24,7 @@ nav_order: 4
 ---
 {% include system/configuration/keyfile.md %}
 ---
-{% include system/configuration/crypttab-initramfs.md %}
+{% include system/configuration/table.md %}
 ---
 {% include system/configuration/initial-ramdisk.md %}
 ---

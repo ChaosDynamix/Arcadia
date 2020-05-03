@@ -1,8 +1,7 @@
 ---
-title: Storage
-uuid: 0992bde6-ecb3-4eff-bf7c-436456e3ac3f
-parent_uuid: a852843f-53ac-47e9-a82d-d6cf288c8b76
-nav_order: 2
+title     : !!str Storage
+parent    : !!str Luks on logical volumes
+nav_order : !!int 2
 ---
 
 # {{ page.title }}
@@ -15,18 +14,14 @@ nav_order: 2
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_logical_volumes"] %}
 
 {% include system/storage/secure-erase.md %}
 ---
 {% include system/storage/partitioning.md %}
 ---
-{% include system/storage/lvm.md %}
+{% include system/storage/lvm.md step=1 %}
 ---
 {% include system/storage/encryption.md step=1 %}
----
-{% include system/storage/setup.md step=1 %}
 ---
 {% include system/storage/efi.md %}

@@ -1,8 +1,7 @@
 ---
-title: Configuration
-uuid: 67f7de5b-5d15-4479-abd7-799ab52ce14a
-parent_uuid: a852843f-53ac-47e9-a82d-d6cf288c8b76
-nav_order: 4
+title     : !!str Configuration
+parent    : !!str Luks on logical volumes
+nav_order : !!int 4
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 4
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_logical_volumes"] %}
 
 {% include system/configuration/localization.md %}
 ---
@@ -29,11 +26,9 @@ nav_order: 4
 ---
 {% include system/storage/encryption.md step=2 %}
 ---
-{% include system/storage/setup.md step=2 %}
+{% include system/storage/lvm.md step=2 %}
 ---
-{% include system/configuration/fstab.md %}
----
-{% include system/configuration/crypttab.md %}
+{% include system/configuration/table.md %}
 ---
 {% include system/configuration/initial-ramdisk.md %}
 ---

@@ -33,49 +33,44 @@ collections : !!map
 
   # DOCUMENTATION
   documentation : !!map
-    uuid      : !!str a5e4be81-7697-4061-9553-6ad752e4965d
+    name      : !!str documentation
     output    : !!bool true
     permalink : !!str /:collection/:path
 
 # DEFAULTS
 defaults: !!seq
 
-  - !!map     # LOGICAL VOLUME MANAGER
-    scope   : !!map
-      path  : !!str "_documentation/system/lvm"
-    values  : !!map
-      layout        : !!str default
-      context_uuid  : !!str 94854e83-3816-42e4-8d5f-f48d3a54483e
-      context_abbr  : !!str lvm
+  - !!map         # LOGICAL VOLUME MANAGER
+    scope         : !!map
+      path    : !!str "_documentation/system/lvm"
+    values        : !!map
+      layout  : !!str default
+      context : !!str lvm
 
-  - !!map     # B TREE FILESYSTEM
-    scope   : !!map
-      path  : !!str "_documentation/system/btrfs"
-    values  : !!map
-      layout        : !!str default
-      context_uuid  : !!str 80a79960-1e97-479e-8d0e-789516293fc0
-      context_abbr  : !!str btrfs
+  - !!map         # B TREE FILESYSTEM
+    scope         : !!map
+      path    : !!str "_documentation/system/btrfs"
+    values        : !!map
+      layout  : !!str default
+      context : !!str btrfs
 
-  - !!map     # EXT4
-    scope   : !!map
-      path  : !!str "_documentation/system/ext4"
-    values  : !!map
-      layout        : !!str default
-      context_uuid  : !!str e86d8089-1595-42e6-9b3b-de1c9db31b8d
-      context_abbr  : !!str ext4
+  - !!map         # EXT4
+    scope         : !!map
+      path    : !!str "_documentation/system/ext4"
+    values        : !!map
+      layout  : !!str default
+      context : !!str ext4
 
-  - !!map     # DESKTOP ENVIRONMENT
-    scope   : !!map
-      path  : !!str "_documentation/gui/de"
-    values  : !!map
-      layout        : !!str default
-      context_uuid  : !!str 9e55133c-c83d-43fb-9386-af81ef91b6dc
-      context_abbr  : !!str de
+  - !!map         # DESKTOP ENVIRONMENT
+    scope         : !!map
+      path    : !!str "_documentation/gui/de"
+    values        : !!map
+      layout  : !!str default
+      context : !!str de
 
-  - !!map     # WINDOW MANAGER
-    scope   : !!map
-      path  : !!str "_documentation/gui/wm"
-    values  : !!map
-      layout        : !!str default
-      context_uuid  : !!str 83bc464a-a758-4b5c-a83b-65e92548c5c6
-      context_abbr  : !!str wm
+  - !!map         # WINDOW MANAGER
+    scope         : !!map
+      path    : !!str "_documentation/gui/wm"
+    values        : !!map
+      layout  : !!str default
+      context : !!str wm

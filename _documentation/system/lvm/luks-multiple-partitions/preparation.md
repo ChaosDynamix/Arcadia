@@ -1,8 +1,7 @@
 ---
-title: Preparation
-uuid: b475231a-e702-4fc2-a611-0ae65fb41663
-parent_uuid: 66df9fd1-5ee6-42a1-831e-b3b9d6e26524
-nav_order: 1
+title     : !!str Preparation
+parent    : !!str Luks on multiple partitions
+nav_order : !!int 1
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 1
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_multiple_partitions"] %}
 
 {% include system/preparation/installation-image.md %}
 ---

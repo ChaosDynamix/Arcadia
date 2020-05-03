@@ -1,8 +1,7 @@
 ---
-title: Preparation
-uuid: 10a8d22b-8d9a-473d-bd19-fa563bf35140
-parent_uuid: 1300b327-53fb-4525-88d1-4544f35287ac
-nav_order: 1
+title     : !!str Preparation
+parent    : !!str Bspwm
+nav_order : !!int 1
 ---
 
 # {{ page.title }}

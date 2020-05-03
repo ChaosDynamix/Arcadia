@@ -1,8 +1,7 @@
 ---
-title: Configuration
-uuid: 5ae49f0f-b640-43f4-adce-c3585ab4f51c
-parent_uuid: ff8a81bc-82d1-440a-9f71-df9676a19a26
-nav_order: 4
+title     : !!str Configuration
+parent    : !!str Luks on mirroring Raid
+nav_order : !!int 4
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 4
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_mirroring_raid"] %}
 
 {% include system/configuration/localization.md %}
 ---

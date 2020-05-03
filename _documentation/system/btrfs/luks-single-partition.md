@@ -1,7 +1,6 @@
 ---
-title: Luks on single partition
-uuid: cf65c6ee-bd52-47c4-af3d-a53c0ff8b032
-nav_order: 1
+title     : !!str Luks on single partition
+nav_order : !!int 1
 ---
 
 # {{ page.title }}

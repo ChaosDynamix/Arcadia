@@ -1,9 +1,9 @@
-{% assign bootable_containers = template.encryption.containers | where: "is_bootable", true %}
+{% assign bootable_containers = scenario.encryption.containers | where: "is_bootable", true %}
 
-## Create the Keyfile{% if template.encryption.containers.size > 1 %}s{% endif %}
+## Setup the Keyfile{% if scenario.encryption.containers.size > 1 %}s{% endif %}
 
 {% if bootable_containers.size > 1 %}
-Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so you can identify them properly. Example: `cryptsystem7b38.keyfile`.
+Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so you can identify them properly. Example: `cryptlvm7b38.keyfile`.
 {% endif %}
 
 ### Create the keys directory
@@ -11,17 +11,19 @@ Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so y
 $ mkdir -m 700 /etc/luks-keys
 ```
 
-### Generate the key{% if template.encryption.containers.size > 1 %}s{% endif %}
+### Generate the key{% if scenario.encryption.containers.size > 1 %}s{% endif %}
 ```
-{%- for container in template.encryption.containers %}
-$ dd bs=512 count=4 if=/dev/random of={{ container.keyfile }} iflag=fullblock
+{%- for container in scenario.encryption.containers %}
+  {%- assign keyfile = scenario.encryption.keyfiles | where: "id", container.keyfile_id | first %}
+$ dd bs=512 count=4 if=/dev/random of={{ keyfile.path }} iflag=fullblock
 {%- endfor %}
 ```
 
 ### Change the permissions
 ```
-{%- for container in template.encryption.containers %}
-$ chmod 600 {{ container.keyfile }}
+{%- for container in scenario.encryption.containers %}
+  {%- assign keyfile = scenario.encryption.keyfiles | where: "id", container.keyfile_id | first %}
+$ chmod 600 {{ keyfile.path }}
 {%- endfor %}
 $ chmod 600 /boot/initramfs-linux*
 ```
@@ -30,6 +32,7 @@ $ chmod 600 /boot/initramfs-linux*
 
 ```
 {%- for container in bootable_containers %}
-$ cryptsetup luksAddKey {{ container.node }} {{ container.keyfile }}
+  {%- assign keyfile = scenario.encryption.keyfiles | where: "id", container.keyfile_id | first %}
+$ cryptsetup luksAddKey {{ container.node }} {{ keyfile.path }}
 {%- endfor %}
 ```

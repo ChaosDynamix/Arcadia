@@ -1,8 +1,7 @@
 ---
-title: Storage
-uuid: b304ca59-5d23-40df-b187-3482e0b5652a
-parent_uuid: 66df9fd1-5ee6-42a1-831e-b3b9d6e26524
-nav_order: 2
+title     : !!str Storage
+parent    : !!str Luks on multiple partitions
+nav_order : !!int 2
 ---
 
 # {{ page.title }}
@@ -15,9 +14,7 @@ nav_order: 2
 
 ---
 
-{% assign scenario = site.data.lvm.scenario[page.parent_uuid] %}
-{% assign template = site.data.template[scenario.template] %}
-{% assign profile = site.data.lvm.profile[scenario.lvm.profile] %}
+{% assign scenario = site.data.system.lvm["luks_multiple_partitions"] %}
 
 {% include system/storage/secure-erase.md %}
 ---
@@ -26,7 +23,5 @@ nav_order: 2
 {% include system/storage/encryption.md step=1 %}
 ---
 {% include system/storage/lvm.md %}
----
-{% include system/storage/setup.md step=1 %}
 ---
 {% include system/storage/efi.md %}

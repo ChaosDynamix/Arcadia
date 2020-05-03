@@ -1,7 +1,6 @@
 ---
-title: Luks on Raid
-uuid: ff8a81bc-82d1-440a-9f71-df9676a19a26
-nav_order: 3
+title     : !!str Luks on mirroring Raid
+nav_order : !!int 3
 ---
 
 # {{ page.title }}

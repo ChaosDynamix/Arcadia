@@ -1,14 +1,14 @@
-{% if scenario.has_initramfs %}
+{% if scenario.has_initramfs_cfg %}
 ## Setup the initial ramdisk images
 
 ### Edit the configuration
 
 ##### /etc/mkinitcpio.conf
 ```
-{{ scenario.initramfs -}}
+{{ scenario.initramfs_cfg -}}
 ```
 
-{% if template.has_raid %}
+{% if scenario.has_raid %}
 ### Add a custom hook for mdadm_udev
 
 This hook allow the system to start with a degraded raid array. [Source](https://bugs.archlinux.org/task/57860)
