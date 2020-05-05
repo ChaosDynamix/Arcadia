@@ -16,12 +16,12 @@ nav_order : !!int 2
 
 {% assign scenario = site.data.system.lvm["luks_multiple_partitions"] %}
 
-{% include system/storage/secure-erase.md %}
+{% include system/secure-erase.md %}
 ---
-{% include system/storage/partitioning.md %}
+{% include system/partitioning.md %}
 ---
-{% include system/storage/encryption.md step=1 %}
+{% include system/encryption.md step=1 %}
 ---
-{% include system/storage/lvm.md %}
+{% include system/lvm.md %}
 ---
-{% include system/storage/efi.md %}
+{% include system/filesystem.md step=1 %}

@@ -14,4 +14,4 @@ nav_order : !!int 3
 
 ---
 
-{% include gui/configuration/status-bar.md %}
+{% include gui/status-bar.md %}

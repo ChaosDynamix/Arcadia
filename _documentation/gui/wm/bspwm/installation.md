@@ -14,4 +14,4 @@ nav_order : !!int 2
 
 ---
 
-{% include gui/installation/bspwm.md %}
+{% include gui/bspwm.md %}

@@ -16,16 +16,8 @@ nav_order : !!int 1
 
 {% assign scenario = site.data.system.lvm["luks_logical_volumes"] %}
 
-{% include system/preparation/installation-image.md %}
+{% include system/installation-image.md %}
 ---
-{% include system/preparation/installation-media.md %}
+{% include system/installation-media.md %}
 ---
-{% include system/preparation/keymap.md %}
----
-{% include system/preparation/boot-mode.md %}
----
-{% include system/preparation/network.md %}
----
-{% include system/preparation/keyring.md %}
----
-{% include system/preparation/mirrorlist.md %}
+{% include system/live-environment.md %}

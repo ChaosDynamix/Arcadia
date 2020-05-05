@@ -1,111 +1,104 @@
-has_fstab_cfg               : !!bool true
-has_crypttab_cfg            : !!bool true
-has_crypttab_initramfs_cfg  : !!bool false
-has_initramfs_cfg           : !!bool true
-has_grub_cfg                : !!bool true
-has_swapfile                : !!bool false
-has_systemd                 : !!bool false
-has_needed_packages         : !!bool true
-has_raid                    : !!bool false
-has_encryption              : !!bool true
+has_raid        : !!bool false
+has_encryption  : !!bool true
+has_lvm         : !!bool true
+has_swapfile    : !!bool false
 
-needed_packages : !!str lvm2
+# PROFILE
+profile : !!map
+  partitioning    : !!str luks_logical_volumes
+  installation    : !!str lvm
+  initialization  : !!str busybox_luks_lvm
+  devices_table   : !!str luks_logical_volumes
 
-# DEVICES
-devices   : !!seq
+# STORAGE
+devices : !!seq
   - !!map
     node  : !!str /dev/sda
   - !!map
     node  : !!str /dev/sdb
 
-# PARTITIONS
-partitions: !!seq
+partitions  : !!seq
   - !!map
-    node  : !!str /dev/sda1
-    type  : !!str mode_partition_type
-    size  : !!str mode_partition_size
+    node      : !!str /dev/sda1
+    has_boot  : !!bool true
   - !!map
-    node  : !!str /dev/sda2
-    type  : !!str Linux LVM
-    size  : !!str 100%FREE
+    node      : !!str /dev/sda2
+    has_boot  : !!bool false
+    type      : !!str Linux LVM
+    size      : !!str 100%FREE
   - !!map
-    node  : !!str /dev/sdb1
-    type  : !!str Linux LVM
-    size  : !!str 100%FREE
+    node      : !!str /dev/sdb1
+    has_boot  : !!bool false
+    type      : !!str Linux LVM
+    size      : !!str 100%FREE
 
-# EFI
-efi       : !!map
-  node    : !!str /dev/sda1
-  context : !!str partition
+# STEPS
+steps  : !!seq
+  - !!map
+    id              : !!int 1
+    encryption_ctx  : !!str Root volume
+    filesystem_ctx  : !!str Root container
+  - !!map
+    id              : !!int 2
+    encryption_ctx  : !!str Home volume
+    filesystem_ctx  : !!str Home container
 
 # ENCRYPTION
-encryption      : !!map
-  headerless    : !!bool false
-  steps         : !!seq
-    - !!map
-      id        : !!int 1
-      title     : !!str Encrypt the Root container
-    - !!map
-      id        : !!int 2
-      title     : !!str Encrypt the Home container
-  containers    : !!seq
-    - !!map
-      step_id           : !!int 1
-      keyfile_id        : !!int 1
-      is_headerless     : !!bool false
-      is_bootable       : !!bool true
-      has_password      : !!bool true
-      has_keyfile       : !!bool true
-      has_init_keyfile  : !!bool false
-      name              : !!str root
-      node              : !!str /dev/grp/cryptroot
-      type              : !!str luks1
-    - !!map
-      step_id           : !!int 2
-      keyfile_id        : !!int 2
-      is_headerless     : !!bool false
-      is_bootable       : !!bool false
-      has_password      : !!bool false
-      has_keyfile       : !!bool true
-      has_init_keyfile  : !!bool true
-      name              : !!str home
-      node              : !!str /dev/grp/crypthome
-      type              : !!str luks1
-  keyfiles      : !!seq
-    - !!map
-      id        : !!int 1
-      name      : !!str cryptroot
-      path      : !!str /etc/luks-keys/cryptroot.keyfile
-    - !!map
-      id        : !!int 2
-      name      : !!str crypthome
-      path      : !!str /etc/luks-keys/crypthome.keyfile
+containers  : !!seq
+  - !!map
+    id                  : !!int 1
+    step_id             : !!int 1
+    is_bootable         : !!bool true
+    name                : !!str root
+    node                : !!str /dev/grp/cryptroot
+    type                : !!str luks1
+    has_detached_header : !!bool false
+    has_keyfile         : !!bool true
+    keyfile             : !!str /etc/luks-keys/cryptroot.keyfile
+  - !!map
+    id                  : !!int 2
+    step_id             : !!int 2
+    is_bootable         : !!bool false
+    name                : !!str home
+    node                : !!str /dev/grp/crypthome
+    type                : !!str luks1
+    has_detached_header : !!bool false
+    has_keyfile         : !!bool true
+    keyfile             : !!str /etc/luks-keys/crypthome.keyfile
 
 # LOGICAL VOLUME MANAGER
-lvm         : !!map
-  template  : !!str luks-lvm
-  pv        : !!str /dev/sda2 /dev/sdb1
+lvm : !!map
+  pv  : !!str /dev/sd2 /dev/sdb1
+  vg  : !!str grp
+  lvs : !!seq
+    - !!map
+      node  : !!str /dev/grp/cryptroot
+      name  : !!str cryptroot
+      size  : !!str "23-32 GiB"
+    - !!map
+      node  : !!str /dev/grp/cryptswap
+      name  : !!str cryptswap
+      size  : !!str "> 512 MiB"
+    - !!map
+      node  : !!str /dev/grp/crypthome
+      name  : !!str crypthome
+      size  : !!str "100%FREE"
 
-# CONFIGURATIONS
-fstab_cfg     : !!str |
-                /dev/mapper/swap    none    swap    sw          0 0
-                /dev/mapper/home    /home   ext4    defaults    0 2
-
-crypttab_cfg  : !!str |
-                swap    /dev/grp/cryptswap     /dev/urandom          swap,cipher=aes-xts-plain64,size=256
-                home    /dev/grp/crypthome     /etc/luks-keys/crypthome.keyfile
-
-initramfs_cfg : !!str |
-                FILES=(/etc/luks-keys/cryptroot.keyfile)
-                HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
-
-grub_cfg      : !!str |
-                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=device_uuid:root:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
-                GRUB_ENABLE_CRYPTODISK=y
-
-# SCRIPTS
-sgdisk            : !!map
-  has_fixed_size  : !!bool true
-  script          : !!str |
-                    $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8e00 /dev/sda
-                    $ sgdisk -o -n=1:0:0 -t=1:8e00 /dev/sdb
+# FILESYSTEM
+filesystem  : !!map
+  name      : !!str ext4
+  configs   : !!seq
+    - !!map
+      step_id     : !!int 1
+      has_swap    : !!bool false
+      format_cmd  : !!str |
+                    $ mkfs.ext4 -L ROOT /dev/mapper/root
+      mount_cmd   : !!str |
+                    $ mount /dev/mapper/root /mnt
+    - !!map
+      step_id     : !!int 2
+      has_swap    : !!bool false
+      format_cmd  : !!str |
+                    $ mkfs.ext4 -L HOME /dev/mapper/home
+      mount_cmd   : !!str |
+                    $ mount /dev/mapper/home /mnt/home

@@ -1,7 +1,7 @@
 ---
 title     : !!str Preparation
 parent    : !!str Xfce4
-nav_order : !!int 3
+nav_order : !!int 1
 ---
 
 # {{ page.title }}
@@ -14,6 +14,6 @@ nav_order : !!int 3
 
 ---
 
-{% include gui/preparation/display-driver.md %}
+{% include gui/display-driver.md %}
 ---
-{% include gui/preparation/display-server.md %}
+{% include gui/display-server.md %}

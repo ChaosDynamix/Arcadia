@@ -16,16 +16,8 @@ nav_order : !!int 4
 
 {% assign scenario = site.data.system.lvm["luks_mirroring_raid"] %}
 
-{% include system/configuration/localization.md %}
+{% include system/base.md %}
 ---
-{% include system/configuration/network.md %}
+{% include system/keyfile.md %}
 ---
-{% include system/configuration/account.md %}
----
-{% include system/configuration/keyfile.md %}
----
-{% include system/configuration/initial-ramdisk.md %}
----
-{% include system/configuration/microcode.md %}
----
-{% include system/configuration/boot-loader.md %}
+{% include system/initialization.md %}

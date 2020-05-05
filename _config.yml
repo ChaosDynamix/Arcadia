@@ -47,20 +47,6 @@ defaults: !!seq
       layout  : !!str default
       context : !!str lvm
 
-  - !!map         # B TREE FILESYSTEM
-    scope         : !!map
-      path    : !!str "_documentation/system/btrfs"
-    values        : !!map
-      layout  : !!str default
-      context : !!str btrfs
-
-  - !!map         # EXT4
-    scope         : !!map
-      path    : !!str "_documentation/system/ext4"
-    values        : !!map
-      layout  : !!str default
-      context : !!str ext4
-
   - !!map         # DESKTOP ENVIRONMENT
     scope         : !!map
       path    : !!str "_documentation/gui/de"

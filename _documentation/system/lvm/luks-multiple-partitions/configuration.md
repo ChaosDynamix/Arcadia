@@ -16,18 +16,10 @@ nav_order : !!int 4
 
 {% assign scenario = site.data.system.lvm["luks_multiple_partitions"] %}
 
-{% include system/configuration/localization.md %}
+{% include system/base.md %}
 ---
-{% include system/configuration/network.md %}
+{% include system/keyfile.md %}
 ---
-{% include system/configuration/account.md %}
+{% include system/device-tables.md step=2 %}
 ---
-{% include system/configuration/keyfile.md %}
----
-{% include system/configuration/table.md %}
----
-{% include system/configuration/initial-ramdisk.md %}
----
-{% include system/configuration/microcode.md %}
----
-{% include system/configuration/boot-loader.md %}
+{% include system/initialization.md %}

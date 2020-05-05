@@ -16,4 +16,6 @@ nav_order : !!int 3
 
 {% assign scenario = site.data.system.lvm["luks_logical_volumes"] %}
 
-{% include system/installation/essential-packages.md %}
+{% include system/essential-packages.md %}
+---
+{% include system/device-tables.md step=1 %}

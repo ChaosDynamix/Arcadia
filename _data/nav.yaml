@@ -13,14 +13,6 @@ sidebar     : !!map
           name      : !!str lvm
           full_name : !!str Logical Volume Manager
           nav_order : !!int 1
-        - !!map
-          name      : !!str btrfs
-          full_name : !!str B-tree filesystem
-          nav_order : !!int 2
-        - !!map
-          name      : !!str ext4
-          full_name : !!str Ext4 filesystem
-          nav_order : !!int 3
 
     - !!map     # GRAPHICAL USER INTERFACE
       title     : !!str Graphical User Interface
@@ -46,54 +38,54 @@ includes : !!seq
     tabs  : !!seq
       - !!map
         title : !!str BitTorrent
-        path  : !!str system/preparation/installation-image/bittorrent.md
+        path  : !!str system/installation-image/bittorrent.md
       - !!map
         title : !!str Mirror site
-        path  : !!str system/preparation/installation-image/mirror-site.md
+        path  : !!str system/installation-image/mirror-site.md
 
   - !!map   # PARTITIONING
     title : !!str partitioning
     tabs  : !!seq
       - !!map
         title : !!str UEFI / GPT
-        path  : !!str system/storage/partitioning/uefi-gpt.md
+        path  : !!str system/partitioning/uefi-gpt.md
       - !!map
         title : !!str BIOS / GPT
-        path  : !!str system/storage/partitioning/bios-gpt.md
+        path  : !!str system/partitioning/bios-gpt.md
 
-  - !!map   # BOOT LOADER
-    title : !!str boot-loader
+  - !!map   # INITIALIZATION
+    title : !!str initialization
     tabs  : !!seq
       - !!map
         title : !!str UEFI
-        path  : !!str system/configuration/boot-loader/uefi.md
+        path  : !!str system/initialization/uefi.md
       - !!map
         title : !!str BIOS
-        path  : !!str system/configuration/boot-loader/bios.md
+        path  : !!str system/initialization/bios.md
 
   - !!map   # DISPLAY DRIVER
     title : !!str display-driver
     tabs  : !!seq
       - !!map
         title : !!str Nvidia
-        path  : !!str gui/preparation/display-driver/nvidia.md
+        path  : !!str gui/display-driver/nvidia.md
       - !!map
         title : !!str Amd
-        path  : !!str gui/preparation/display-driver/amd.md
+        path  : !!str gui/display-driver/amd.md
 
   - !!map   # DISPLAY SERVER
     title : !!str display-server
     tabs  : !!seq
       - !!map
         title : !!str Xorg
-        path  : !!str gui/preparation/display-server/xorg.md
+        path  : !!str gui/display-server/xorg.md
       - !!map
         title : !!str Wayland
-        path  : !!str gui/preparation/display-server/wayland.md
+        path  : !!str gui/display-server/wayland.md
 
   - !!map   # STATUS BAR
     title : !!str status-bar
     tabs  : !!seq
       - !!map
         title : !!str Polybar
-        path  : !!str gui/configuration/status-bar/polybar.md
+        path  : !!str gui/status-bar/polybar.md

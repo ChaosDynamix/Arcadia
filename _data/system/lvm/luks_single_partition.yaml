@@ -1,77 +1,88 @@
-has_fstab_cfg               : !!bool false
-has_crypttab_cfg            : !!bool false
-has_crypttab_initramfs_cfg  : !!bool false
-has_initramfs_cfg           : !!bool true
-has_grub_cfg                : !!bool true
-has_swapfile                : !!bool false
-has_systemd                 : !!bool false
-has_needed_packages         : !!bool true
-has_raid                    : !!bool false
-has_encryption              : !!bool true
+has_raid          : !!bool false
+has_encryption    : !!bool true
+has_lvm           : !!bool true
+has_swapfile      : !!bool false
 
-needed_packages : !!str lvm2
+# PROFILE
+profile : !!map
+  partitioning    : !!str luks_single_partition
+  installation    : !!str lvm
+  initialization  : !!str busybox_luks_lvm
+  devices_table   : !!str none
 
-# DEVICES
-devices   : !!seq
+# STORAGE
+devices : !!seq
   - !!map
     node  : !!str /dev/sda
 
-# PARTITIONS
-partitions: !!seq
+partitions  : !!seq
   - !!map
-    node  : !!str /dev/sda1
-    type  : !!str mode_partition_type
-    size  : !!str mode_partition_size
+    has_boot  : !!bool true
+    node      : !!str /dev/sda1
   - !!map
-    node  : !!str /dev/sda2
-    type  : !!str Linux LUKS partition
-    size  : !!str 100%FREE
+    has_boot  : !!bool false
+    node      : !!str /dev/sda2
+    type      : !!str Linux LUKS partition
+    size      : !!str 100%FREE
 
-# EFI
-efi       : !!map
-  node    : !!str /dev/sda1
-  context : !!str partition
+# STEPS
+steps  : !!seq
+  - !!map
+    id              : !!int 1
+    encryption_ctx  : !!str partition
+    filesystem_ctx  : !!str volumes
 
 # ENCRYPTION
-encryption      : !!map
-  steps         : !!seq
-    - !!map
-      id        : !!int 1
-      title     : !!str Encrypt the LUKS partition
-  containers    : !!seq
-    - !!map
-      step_id           : !!int 1
-      keyfile_id        : !!int 1
-      is_headerless     : !!bool false
-      is_bootable       : !!bool true
-      has_password      : !!bool true
-      has_keyfile       : !!bool true
-      has_init_keyfile  : !!bool false
-      name              : !!str cryptlvm
-      node              : !!str /dev/sda2
-      type              : !!str luks1
-  keyfiles      : !!seq
-    - !!map
-      id        : !!int 1
-      name      : !!str cryptlvm
-      path      : !!str /etc/luks-keys/cryptlvm.keyfile
+containers  : !!seq
+  - !!map
+    id                  : !!int 1
+    step_id             : !!int 1
+    is_bootable         : !!bool true
+    name                : !!str cryptlvm
+    node                : !!str /dev/sda2
+    type                : !!str luks1
+    has_detached_header : !!bool false
+    has_keyfile         : !!bool true
+    keyfile             : !!str /etc/luks-keys/cryptlvm.keyfile
 
 # LOGICAL VOLUME MANAGER
-lvm         : !!map
-  template  : !!str lvm-luks
-  pv        : !!str /dev/mapper/cryptlvm
+lvm : !!map
+  pv  : !!str /dev/mapper/cryptlvm
+  vg  : !!str grp
+  lvs : !!seq
+    - !!map
+      node  : !!str /dev/grp/root
+      name  : !!str root
+      size  : !!str "15-20 GiB"
+    - !!map
+      node  : !!str /dev/grp/swap
+      name  : !!str swap
+      size  : !!str "> 512 MiB"
+    - !!map
+      node  : !!str /dev/grp/var
+      name  : !!str var
+      size  : !!str "8-12 GiB"
+    - !!map
+      node  : !!str /dev/grp/home
+      name  : !!str home
+      size  : !!str "100%FREE - 5 GiB"
 
-# CONFIGURATIONS
-initramfs_cfg : !!str |
-                FILES=(/etc/luks-keys/cryptsystem.keyfile)
-                HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
-
-grub_cfg      : !!str |
-                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=device_uuid:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
-                GRUB_ENABLE_CRYPTODISK=y
-
-# SCRIPTS
-sgdisk            : !!map
-  has_fixed_size  : !!bool true
-  script          : !!str |
-                    $ sgdisk -o mode_sgdisk -n=2:0:0 -t=2:8309 /dev/sda
+# FILESYSTEM
+filesystem  : !!map
+  name    : !!str ext4
+  configs : !!seq
+    - !!map
+      step_id     : !!int 1
+      has_swap    : !!bool true
+      format_cmd  : !!str |
+                    $ mkfs.ext4 -L ROOT /dev/grp/root
+                    $ mkfs.ext4 -L VAR /dev/grp/var
+                    $ mkfs.ext4 -L HOME /dev/grp/home
+      mount_cmd   : !!str |
+                    $ mount /dev/grp/root /mnt
+                    $ mkdir /mnt/{var,home}
+                    $ mount /dev/grp/var /mnt/var
+                    $ mount /dev/grp/home /mnt/home
+      swap_cmd    : !!str |
+                    $ mkswap -L SWAP /dev/grp/swap
+                    $ swapon /dev/grp/swap
