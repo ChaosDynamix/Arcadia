@@ -85,34 +85,22 @@ lvm : !!map
 
 # FILESYSTEM
 ext4  : !!map
-  has_swap  : !!bool true
-  elements  : !!seq
+  commands  : !!seq
     - !!map
-      page        : !!str Storage
-      node        : !!str /dev/grp/root
-      label       : !!str ROOT
-      mountpoint  : !!str /mnt
-      has_dir     : !!bool false
-    - !!map
-      page        : !!str Storage
-      node        : !!str /dev/grp/swap
-      label       : !!str SWAP
-      mountpoint  : !!str none
-      has_dir     : !!bool false
-    - !!map
-      page        : !!str Storage
-      node        : !!str /dev/grp/var
-      label       : !!str VAR
-      mountpoint  : !!str /mnt/var
-      has_dir     : !!bool true
-      dir         : !!str var
-    - !!map
-      page        : !!str Storage
-      node        : !!str /dev/grp/home
-      label       : !!str HOME
-      mountpoint  : !!str /mnt/home
-      has_dir     : !!bool true
-      dir         : !!str home
+      page      : !!str Storage
+      format    : !!str |
+                  $ mkfs.ext4 -L ROOT /dev/grp/root
+                  $ mkfs.ext4 -L VAR /dev/grp/var
+                  $ mkfs.ext4 -L HOME /dev/grp/home
+      mount     : !!str |
+                  $ mount /dev/grp/root /mnt
+                  $ mkdir /mnt/{var,home}
+                  $ mount /dev/grp/var /mnt/var
+                  $ mount /dev/grp/home /mnt/home
+      has_swap  : !!bool true
+      swap      : !!str |
+                  $ mkswap -L SWAP /dev/grp/swap
+                  $ swapon /dev/grp/swap
 
 # TEXTS
 txts : !!seq

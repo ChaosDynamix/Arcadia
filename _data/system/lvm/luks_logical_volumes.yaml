@@ -105,21 +105,21 @@ lvm : !!map
 
 # FILESYSTEM
 ext4  : !!map
-  has_swap  : !!bool false
-  elements  : !!seq
+  commands  : !!seq
     - !!map
-      page        : !!str Storage
-      node        : !!str /dev/mapper/root
-      label       : !!str ROOT
-      mountpoint  : !!str /mnt
-      has_dir     : !!bool false
+      page      : !!str Storage
+      format    : !!str |
+                  $ mkfs.ext4 -L ROOT /dev/mapper/root
+      mount     : !!str |
+                  $ mount /dev/mapper/root /mnt
+      has_swap  : !!bool false
     - !!map
-      page        : !!str Configuration
-      node        : !!str /dev/mapper/home
-      label       : !!str HOME
-      mountpoint  : !!str /mnt/home
-      has_dir     : !!bool true
-      dir         : !!str home
+      page      : !!str Configuration
+      format    : !!str |
+                  $ mkfs.ext4 -L HOME /dev/mapper/home
+      mount     : !!str |
+                  $ mount /dev/mapper/home /mnt/home
+      has_swap  : !!bool false
 
 # TEXTS
 txts : !!seq
