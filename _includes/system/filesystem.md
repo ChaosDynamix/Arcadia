@@ -1,15 +1,15 @@
-{% include /system/filesystem/{{ scenario.filesystem.name }}.md step=include.step %}
+{% include /system/filesystem/{{ scenario.filesystem }}.md %}
 
 {% if include.step == 1 %}
 ---
 
-## Setup the EFI {% if scenario.has_raid %}Raid array{% else %}partition{% endif %}
+## Setup the EFI {{ txt.include.efi_ctx }}
 {: .d-inline-block}
 
 UEFI
 {: .label .label-blue}
 
-### Format the {% if scenario.has_raid %}Raid array{% else %}partition{% endif %}
+### Format the {{ txt.include.efi_ctx }}
 {: .mt-0}
 
 ```
@@ -21,7 +21,7 @@ $ mkfs.fat -F32 -n EFI {{ boot.node }}
 {%- endif %}
 ```
 
-### Mount the {% if scenario.has_raid %}Raid array{% else %}partition{% endif %}
+### Mount the {{ txt.include.efi_ctx }}
 
 ```
 $ mkdir /mnt/efi

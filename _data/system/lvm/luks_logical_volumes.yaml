@@ -1,16 +1,46 @@
-has_raid        : !!bool false
-has_encryption  : !!bool true
-has_lvm         : !!bool true
-has_swapfile    : !!bool false
+has_raid            : !!bool false
+has_encryption      : !!bool true
+has_lvm             : !!bool true
+has_swapfile        : !!bool false
+has_encrypted_boot  : !!bool true
+filesystem          : !!str ext4
 
-# PROFILE
-profile : !!map
-  partitioning    : !!str luks_logical_volumes
-  installation    : !!str lvm
-  initialization  : !!str busybox_luks_lvm
-  devices_table   : !!str luks_logical_volumes
+# DEVICE TABLES
+device_tables : !!map
+  has_crypttab_initramfs  : !!bool false
+  has_crypttab            : !!bool true
+  crypttab                : !!str |
+                            swap    /dev/grp/cryptswap     /dev/urandom          swap,cipher=aes-xts-plain64,size=256
+                            home    /dev/grp/crypthome     /etc/luks-keys/crypthome.keyfile
+  has_fstab               : !!bool true
+  fstab                   : !!str |
+                            /dev/mapper/swap    none    swap    sw          0 0
+                            /dev/mapper/home    /home   ext4    defaults    0 2
+
+# PACSTRAP
+pacstrap  : !!map
+  has_needed_packages : !!bool true
+  needed_packages     : !!str lvm2
+
+# MKINITCPIO
+mkinitcpio  : !!map
+  has_config  : !!bool true
+  config      : !!str |
+                FILES=(/etc/luks-keys/cryptroot.keyfile)
+                HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+
+# GRUB
+grub  : !!map
+  has_config  : !!bool true
+  config      : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=device_uuid:root:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptroot.keyfile root=/dev/mapper/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
 
 # STORAGE
+sgdisk  : !!str |
+          $ sgdisk -o _bootpart_ -n=2:0:0 -t=2:8309 /dev/sda
+          $ sgdisk -o -n=1:0:0 -t=1:8309 /dev/sdb
+
 devices : !!seq
   - !!map
     node  : !!str /dev/sda
@@ -32,22 +62,10 @@ partitions  : !!seq
     type      : !!str Linux LVM
     size      : !!str 100%FREE
 
-# STEPS
-steps  : !!seq
-  - !!map
-    id              : !!int 1
-    encryption_ctx  : !!str Root volume
-    filesystem_ctx  : !!str Root container
-  - !!map
-    id              : !!int 2
-    encryption_ctx  : !!str Home volume
-    filesystem_ctx  : !!str Home container
-
 # ENCRYPTION
 containers  : !!seq
   - !!map
-    id                  : !!int 1
-    step_id             : !!int 1
+    page                : !!str Storage
     is_bootable         : !!bool true
     name                : !!str root
     node                : !!str /dev/grp/cryptroot
@@ -56,8 +74,7 @@ containers  : !!seq
     has_keyfile         : !!bool true
     keyfile             : !!str /etc/luks-keys/cryptroot.keyfile
   - !!map
-    id                  : !!int 2
-    step_id             : !!int 2
+    page                : !!str Configuration
     is_bootable         : !!bool false
     name                : !!str home
     node                : !!str /dev/grp/crypthome
@@ -68,7 +85,7 @@ containers  : !!seq
 
 # LOGICAL VOLUME MANAGER
 lvm : !!map
-  pv  : !!str /dev/sd2 /dev/sdb1
+  pv  : !!str /dev/sda2 /dev/sdb1
   vg  : !!str grp
   lvs : !!seq
     - !!map
@@ -85,20 +102,33 @@ lvm : !!map
       size  : !!str "100%FREE"
 
 # FILESYSTEM
-filesystem  : !!map
-  name      : !!str ext4
-  configs   : !!seq
+ext4  : !!map
+  has_swap  : !!bool false
+  elements  : !!seq
     - !!map
-      step_id     : !!int 1
-      has_swap    : !!bool false
-      format_cmd  : !!str |
-                    $ mkfs.ext4 -L ROOT /dev/mapper/root
-      mount_cmd   : !!str |
-                    $ mount /dev/mapper/root /mnt
+      page        : !!str Storage
+      node        : !!str /dev/mapper/root
+      label       : !!str ROOT
+      mountpoint  : !!str /mnt
+      has_dir     : !!bool false
     - !!map
-      step_id     : !!int 2
-      has_swap    : !!bool false
-      format_cmd  : !!str |
-                    $ mkfs.ext4 -L HOME /dev/mapper/home
-      mount_cmd   : !!str |
-                    $ mount /dev/mapper/home /mnt/home
+      page        : !!str Configuration
+      node        : !!str /dev/mapper/home
+      label       : !!str HOME
+      mountpoint  : !!str /mnt/home
+      has_dir     : !!bool true
+      dir         : !!str home
+
+# TEXTS
+txts : !!seq
+  - !!map
+    page    : !!str Storage
+    include : !!map
+      encryption_ctx  : !!str Root volume
+      filesystem_ctx  : !!str Root container
+      efi_ctx         : !!str partition
+  - !!map
+    page    : !!str Configuration
+    include : !!map
+      encryption_ctx  : !!str Home volume
+      filesystem_ctx  : !!str Home container

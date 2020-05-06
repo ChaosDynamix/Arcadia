@@ -1,19 +1,12 @@
-{% assign keyfiles = scenario.containers | where: "is_bootable", true | map: "keyfile" | join: " " %}
-
 ## Setup the initial ramdisk images
 
+{% if scenario.mkinitcpio.has_config %}
 ### Edit the configuration
 
 ##### /etc/mkinitcpio.conf
 
 ```
-FILES=({{ keyfiles }})
-{%- case scenario.profile.initialization %}
-  {%- when "busybox_luks_lvm" %}
-HOOKS=(base udev autodetect modconf block encrypt{% if scenario.has_raid %} mdadm_udev{% endif %} lvm2 filesystems keyboard keymap fsck)
-  {%- when "systemd_luks_lvm" %}
-HOOKS=(base systemd autodetect modconf block sd-encrypt sd-lvm2 filesystems keyboard sd-vconsole fsck)
-{%- endcase %}
+{{ scenario.mkinitcpio.config -}}
 ```
 
 {% if scenario.has_raid %}
@@ -45,6 +38,7 @@ run_hook() {
 **Note**: The script create a local variable, check the arrays for potential inactive array, break if everything is fine, display a message, wait 10 seconds and start the arrays even if they are in degraded state.
 {: .fs-3 }
 {% endif %}
+{% endif %}
 
 ### Generate the images
 ```
@@ -71,7 +65,7 @@ $ pacman -S intel-ucode
 
 ## Setup the Boot loader
 
-### Install GRUB on your device{%- if scenario.has_raid %}s{% endif %}
+### Install GRUB on the device{% if scenario.has_raid %}s{% endif %}
 
 {% include tabs.html title="initialization" %}
 

@@ -1,13 +1,10 @@
-{% assign step = scenario.steps | where: "id", include.step | first %}
-{% assign step_containers = scenario.containers | where: "step_id", step.id %}
-
-{% case include.step %}
-  {% when 1 %}
-
+{% assign step_containers = scenario.containers | where: "page", page.title %}
 {% assign headerless_containers = step_containers | where: "has_detached_header", true %}
 {% assign bootable_containers = step_containers | where: "is_bootable", true %}
 
-## Encrypt the {{ step.encryption_ctx }}
+{% case page.title %}
+  {% when "Storage" %}
+## Encrypt the {{ txt.include.encryption_ctx }}
 
 {% if headerless_containers.size > 0 %}
 ### Create the header{% if headerless_containers.size > 1 %}s{% endif %}
@@ -47,8 +44,8 @@ $ cryptsetup open{% if container.has_detached_header %} --header {{ container.he
 **Note**: Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so you can identify them properly. Example: `cryptlvm7b38`.
 {: .fs-3 }
 {% endif %}
-  {% when 2 %}
-## Encrypt the {{ step.encryption_ctx }}
+  {% when "Configuration" %}
+## Encrypt the {{ txt.include.encryption_ctx }}
 
 ### Create the LUKS1 container{% if step_containers.size > 1 %}s{% endif %}
 

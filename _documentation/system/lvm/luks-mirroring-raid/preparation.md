@@ -15,6 +15,7 @@ nav_order : !!int 1
 ---
 
 {% assign scenario = site.data.system.lvm["luks_mirroring_raid"] %}
+{% assign txt = scenario.txts | where: "page", page.title | first %}
 
 {% include system/installation-image.md %}
 ---

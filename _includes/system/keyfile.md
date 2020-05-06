@@ -2,7 +2,7 @@
 {% assign keyfile_containers = scenario.containers | where: "has_keyfile", true %}
 
 {% if keyfile_containers.size > 0 %}
-## Setup the Keyfile{% if scenario.containers.size > 1 %}s{% endif %}
+## Setup the Keyfile{% if keyfile_containers.size > 1 %}s{% endif %}
 
 {% if bootable_containers.size > 1 %}
 Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so you can identify them properly. Example: `cryptlvm7b38.keyfile`.
@@ -13,7 +13,7 @@ Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so y
 $ mkdir -m 700 /etc/luks-keys
 ```
 
-### Generate the key{% if scenario.containers.size > 1 %}s{% endif %}
+### Generate the key{% if keyfile_containers.size > 1 %}s{% endif %}
 ```
 {%- for container in keyfile_containers %}
 $ dd bs=512 count=4 if=/dev/random of={{ container.keyfile }} iflag=fullblock

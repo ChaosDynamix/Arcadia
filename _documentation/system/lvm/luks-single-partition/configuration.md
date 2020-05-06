@@ -15,6 +15,7 @@ nav_order : !!int 4
 ---
 
 {% assign scenario = site.data.system.lvm["luks_single_partition"] %}
+{% assign txt = scenario.txts | where: "page", page.title | first %}
 
 {% include system/base.md %}
 ---

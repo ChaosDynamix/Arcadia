@@ -1,6 +1,7 @@
+{% if scenario.has_lvm %}
 ## Setup the Logical Volume Manager
 
-| Node          | Label         | Size recommendation |
+| Node          | Name          | Size recommendation |
 | :------------ | :------------ | :------------------ |
 {%- for lv in scenario.lvm.lvs %}
 | {{ lv.node }} | {{ lv.name }} | {{ lv.size }}       |
@@ -28,3 +29,6 @@ lvcreate -L SIZE {{ scenario.lvm.vg }} -n {{ lv.name }}
 
 **Note**: Replace SIZE accordingly.
 {: .fs-3}
+{% else %}
+## ERROR: No LVM in this scenario
+{% endif %}

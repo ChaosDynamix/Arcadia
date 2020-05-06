@@ -23,13 +23,6 @@
 pacstrap is designed to create a new system installation from scratch. The specified packages will be installed into a given directory after setting up some basic mountpoints. By default, the host system’s pacman signing keys and mirrorlist will be used to seed the chroot.
 
 ##### Example
-{% case scenario.profile.installation %}
-  {% when "lvm" %}
 ```
-$ pacstrap /mnt base linux linux-firmware lvm2 vim man-db man-pages
+$ pacstrap /mnt base linux linux-firmware{% if scenario.pacstrap.has_needed_packages %} {{ scenario.pacstrap.needed_packages }}{% endif %} vim man-db man-pages
 ```
-  {% when "raid_lvm" %}
-```
-$ pacstrap /mnt base linux linux-firmware mdadm lvm2 vim man-db man-pages
-```
-{% endcase %}

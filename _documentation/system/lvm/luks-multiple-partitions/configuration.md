@@ -15,11 +15,12 @@ nav_order : !!int 4
 ---
 
 {% assign scenario = site.data.system.lvm["luks_multiple_partitions"] %}
+{% assign txt = scenario.txts | where: "page", page.title | first %}
 
 {% include system/base.md %}
 ---
 {% include system/keyfile.md %}
 ---
-{% include system/device-tables.md step=2 %}
+{% include system/device-tables.md %}
 ---
 {% include system/initialization.md %}

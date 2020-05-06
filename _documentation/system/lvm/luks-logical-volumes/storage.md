@@ -15,6 +15,7 @@ nav_order : !!int 2
 ---
 
 {% assign scenario = site.data.system.lvm["luks_logical_volumes"] %}
+{% assign txt = scenario.txts | where: "page", page.title | first %}
 
 {% include system/secure-erase.md %}
 ---
@@ -22,6 +23,6 @@ nav_order : !!int 2
 ---
 {% include system/lvm.md %}
 ---
-{% include system/encryption.md step=1 %}
+{% include system/encryption.md %}
 ---
-{% include system/filesystem.md step=1 %}
+{% include system/filesystem.md %}

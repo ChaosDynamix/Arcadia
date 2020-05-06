@@ -5,9 +5,31 @@ $ pacman -S grub efibootmgr
 
 Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
 
-{% unless scenario.profile.initialization == "none" %}
-{% include system/initialization/configuration.md %}
-{% endunless %}
+### Edit the GRUB configuration
+{: .d-inline-block}
+
+Warning
+{: .label .label-red .mx-2}
+
+Before enabling TRIM on a device, make sure the device fully supports TRIM commands, or data loss can occur.
+{: .text-red-200}
+
+#### TRIM
+##### /etc/default/grub
+```
+{{ scenario.grub.config -}}
+```
+
+#### NO TRIM
+##### /etc/default/grub
+```
+{{ scenario.grub.config | replace: ":allow-discards", "" | replace: "rd.luks.options=discard ", "" -}}
+```
+
+{% if bootable_containers.size > 1 %}
+**Note**: Replace `device_uuid` with the UUID of your device.
+{: .fs-3 }
+{% endif %}
 
 ### Install GRUB in the EFI directory
 

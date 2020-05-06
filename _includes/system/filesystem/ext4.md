@@ -1,24 +1,47 @@
-{% assign step = scenario.steps | where: "id", include.step | first %}
-{% assign config = scenario.filesystem.configs | where: "step_id", step.id | first %}
+{% assign step_elements = scenario.ext4.elements | where: "page", page.title %}
+{% assign root = step_elements | where: "label", "ROOT" | first %}
+{% assign swap = step_elements | where: "label", "SWAP" | first %}
+{% assign dir_elements = step_elements | where: "has_dir", true %}
 
-## Setup the {{ step.filesystem_ctx }}
+## Setup the {{ txt.include.filesystem_ctx }}
 
-### Format the {{ step.filesystem_ctx }}
+| Node               | Label               | Mountpoint               |
+| :----------------- | :------------------ | :----------------------- |
+{%- for element in step_elements %}
+| {{ element.node }} | {{ element.label }} | {{ element.mountpoint }} |
+{%- endfor %}
+
+### Format the {{ txt.include.filesystem_ctx }}
 
 ```
-{{ config.format_cmd -}}
+{%- for element in step_elements %}
+  {%- unless element.label == "SWAP" %}
+$ mkfs.ext4 -L {{ element.label }} {{ element.node }}
+  {%- endunless %}
+{%- endfor %}
 ```
 
-### Mount the {{ step.filesystem_ctx }}
+### Mount the {{ txt.include.filesystem_ctx }}
 
 ```
-{{ config.mount_cmd -}}
+{%- unless root == nil %}
+$ mount {{ root.node }} {{ root.mountpoint }}
+{%- endunless %}
+{%- unless dir_elements.size == 0 %}
+  {%- unless page.title == "Configuration" %}
+$ mkdir /mnt/{% if dir_elements.size > 1 %}{ {{- dir_elements | map: "dir" | join: "," -}} }{% else %}{{ dir_elements[0].dir }}{% endif %}
+  {%- endunless %}
+  {%- for element in dir_elements %}
+$ mount {{ element.node }} {{ element.mountpoint }}
+  {%- endfor %}
+{%- endunless %}
 ```
 
-{% if config.has_swap %}
+{%- unless swap == nil %}
 ### Setup the Swap
 
 ```
-{{ config.swap_cmd -}}
+$ mkswap -L {{ swap.label }} {{ swap.node }}
+$ swapon {{ swap.node }}
 ```
-{% endif %}
+{%- endunless %}

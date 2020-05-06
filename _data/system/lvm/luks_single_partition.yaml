@@ -1,42 +1,57 @@
-has_raid          : !!bool false
-has_encryption    : !!bool true
-has_lvm           : !!bool true
-has_swapfile      : !!bool false
+has_raid            : !!bool false
+has_encryption      : !!bool true
+has_lvm             : !!bool true
+has_swapfile        : !!bool false
+has_encrypted_boot  : !!bool true
+filesystem          : !!str ext4
 
-# PROFILE
-profile : !!map
-  partitioning    : !!str luks_single_partition
-  installation    : !!str lvm
-  initialization  : !!str busybox_luks_lvm
-  devices_table   : !!str none
+# DEVICE TABLES
+device_tables : !!map
+  has_fstab_cfg               : !!bool false
+  has_crypttab_cfg            : !!bool false
+  has_crypttab_initramfs_cfg  : !!bool false
+
+# PACSTRAP
+pacstrap  : !!map
+  has_needed_packages : !!bool true
+  needed_packages     : !!str lvm2
+
+# MKINITCPIO
+mkinitcpio  : !!map
+  has_config  : !!bool true
+  config      : !!str |
+                FILES=(/etc/luks-keys/cryptlvm.keyfile)
+                HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
+
+# GRUB
+grub  : !!map
+  has_config  : !!bool true
+  config      : !!str |
+                GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=device_uuid:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
+                GRUB_ENABLE_CRYPTODISK=y
 
 # STORAGE
+sgdisk  : !!str |
+          $ sgdisk -o _bootpart_ -n=2:0:0 -t=2:8309 /dev/sda
+
 devices : !!seq
   - !!map
     node  : !!str /dev/sda
 
 partitions  : !!seq
   - !!map
-    has_boot  : !!bool true
     node      : !!str /dev/sda1
+    has_boot  : !!bool true
   - !!map
-    has_boot  : !!bool false
     node      : !!str /dev/sda2
+    has_boot  : !!bool false
     type      : !!str Linux LUKS partition
     size      : !!str 100%FREE
-
-# STEPS
-steps  : !!seq
-  - !!map
-    id              : !!int 1
-    encryption_ctx  : !!str partition
-    filesystem_ctx  : !!str volumes
 
 # ENCRYPTION
 containers  : !!seq
   - !!map
-    id                  : !!int 1
-    step_id             : !!int 1
+    page                : !!str Storage
     is_bootable         : !!bool true
     name                : !!str cryptlvm
     node                : !!str /dev/sda2
@@ -68,21 +83,41 @@ lvm : !!map
       size  : !!str "100%FREE - 5 GiB"
 
 # FILESYSTEM
-filesystem  : !!map
-  name    : !!str ext4
-  configs : !!seq
+ext4  : !!map
+  has_swap  : !!bool true
+  elements  : !!seq
     - !!map
-      step_id     : !!int 1
-      has_swap    : !!bool true
-      format_cmd  : !!str |
-                    $ mkfs.ext4 -L ROOT /dev/grp/root
-                    $ mkfs.ext4 -L VAR /dev/grp/var
-                    $ mkfs.ext4 -L HOME /dev/grp/home
-      mount_cmd   : !!str |
-                    $ mount /dev/grp/root /mnt
-                    $ mkdir /mnt/{var,home}
-                    $ mount /dev/grp/var /mnt/var
-                    $ mount /dev/grp/home /mnt/home
-      swap_cmd    : !!str |
-                    $ mkswap -L SWAP /dev/grp/swap
-                    $ swapon /dev/grp/swap
+      page        : !!str Storage
+      node        : !!str /dev/grp/root
+      label       : !!str ROOT
+      mountpoint  : !!str /mnt
+      has_dir     : !!bool false
+    - !!map
+      page        : !!str Storage
+      node        : !!str /dev/grp/swap
+      label       : !!str SWAP
+      mountpoint  : !!str none
+      has_dir     : !!bool false
+    - !!map
+      page        : !!str Storage
+      node        : !!str /dev/grp/var
+      label       : !!str VAR
+      mountpoint  : !!str /mnt/var
+      has_dir     : !!bool true
+      dir         : !!str var
+    - !!map
+      page        : !!str Storage
+      node        : !!str /dev/grp/home
+      label       : !!str HOME
+      mountpoint  : !!str /mnt/home
+      has_dir     : !!bool true
+      dir         : !!str home
+
+# TEXTS
+txts : !!seq
+  - !!map
+    page    : !!str Storage
+    include : !!map
+      encryption_ctx  : !!str LUKS partition
+      filesystem_ctx  : !!str volumes
+      efi_ctx         : !!str partition
