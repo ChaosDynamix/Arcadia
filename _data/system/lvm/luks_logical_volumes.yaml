@@ -126,11 +126,11 @@ txts : !!seq
   - !!map
     page    : !!str Storage
     include : !!map
-      encryption_ctx  : !!str Root volume
-      filesystem_ctx  : !!str Root container
+      encryption_ctx  : !!str Root logical volume
+      filesystem_ctx  : !!str Root LUKS container
       efi_ctx         : !!str partition
   - !!map
     page    : !!str Configuration
     include : !!map
-      encryption_ctx  : !!str Home volume
-      filesystem_ctx  : !!str Home container
+      encryption_ctx  : !!str Home logical volume
+      filesystem_ctx  : !!str Home LUKS container

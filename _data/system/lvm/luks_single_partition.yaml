@@ -108,5 +108,5 @@ txts : !!seq
     page    : !!str Storage
     include : !!map
       encryption_ctx  : !!str LUKS partition
-      filesystem_ctx  : !!str volumes
+      filesystem_ctx  : !!str LVM logical volumes
       efi_ctx         : !!str partition
