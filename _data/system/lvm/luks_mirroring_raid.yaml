@@ -78,6 +78,7 @@ containers  : !!seq
     name                : !!str cryptlvm
     node                : !!str /dev/md/lvm
     type                : !!str luks1
+    init_method         : !!str password
     has_detached_header : !!bool false
     has_keyfile         : !!bool true
     keyfile             : !!str /etc/luks-keys/cryptlvm.keyfile

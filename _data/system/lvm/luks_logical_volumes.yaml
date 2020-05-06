@@ -70,6 +70,7 @@ containers  : !!seq
     name                : !!str root
     node                : !!str /dev/grp/cryptroot
     type                : !!str luks1
+    init_method         : !!str password
     has_detached_header : !!bool false
     has_keyfile         : !!bool true
     keyfile             : !!str /etc/luks-keys/cryptroot.keyfile
@@ -79,6 +80,7 @@ containers  : !!seq
     name                : !!str home
     node                : !!str /dev/grp/crypthome
     type                : !!str luks1
+    init_method         : !!str keyfile
     has_detached_header : !!bool false
     has_keyfile         : !!bool true
     keyfile             : !!str /etc/luks-keys/crypthome.keyfile
