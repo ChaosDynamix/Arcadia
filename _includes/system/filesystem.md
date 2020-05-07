@@ -14,7 +14,7 @@ UEFI
 
 ```
 {%- if scenario.has_raid %}
-$ mkfs.fat -F32 -n EFI {{ scenario.raid.array.efi }}
+$ mkfs.fat -F32 -n EFI {{ scenario.raid.array.efi.name }}
 {%- else %}
 {%- assign boot = scenario.partitions | where: "has_boot", true | first %}
 $ mkfs.fat -F32 -n EFI {{ boot.node }}
@@ -26,7 +26,7 @@ $ mkfs.fat -F32 -n EFI {{ boot.node }}
 ```
 $ mkdir /mnt/efi
 {%- if scenario.has_raid %}
-$ mount {{ scenario.raid.array.efi }} /mnt/efi
+$ mount {{ scenario.raid.array.efi.name }} /mnt/efi
 {%- else %}
 {%- assign boot = scenario.partitions | where: "has_boot", true | first %}
 $ mount {{ boot.node }} /mnt/efi
