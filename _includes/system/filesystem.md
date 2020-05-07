@@ -1,6 +1,6 @@
 {% include /system/filesystem/{{ scenario.filesystem }}.md %}
 
-{% if include.step == 1 %}
+{% if page.title == "Storage" %}
 ---
 
 ## Setup the EFI {{ txt.include.efi_ctx }}
