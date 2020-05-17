@@ -131,4 +131,4 @@ txts : !!seq
     include : !!map
       encryption_ctx  : !!str System Raid array
       filesystem_ctx  : !!str LVM logical volumes
-      efi_ctx         : !!str EFI Raid array
+      efi_ctx         : !!str Raid array
