@@ -13,3 +13,5 @@ nav_order : !!int 2
 {:toc}
 
 ---
+
+{% include gui/xfce4.md %}

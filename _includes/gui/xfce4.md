@@ -1,5 +1,5 @@
 ## Install the packages
 
 ```
-$ pacman -S xfce4
+$ pacman -S xfce4 network-manager-applet
 ```
