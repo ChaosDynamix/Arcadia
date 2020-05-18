@@ -24,7 +24,7 @@ pacstrap is designed to create a new system installation from scratch. The speci
 
 ##### Example
 ```
-$ pacstrap /mnt base linux linux-firmware{% if scenario.pacstrap.has_needed_packages %} {{ scenario.pacstrap.needed_packages }}{% endif %} doas vim man-db man-pages linux-headers broadcom-wl-dkms
+$ pacstrap /mnt base linux linux-firmware{% if scenario.pacstrap.has_needed_packages %} {{ scenario.pacstrap.needed_packages }}{% endif %} doas vim man-db man-pages networkmanager linux-headers broadcom-wl-dkms
 ```
 
 ##### **Note**: the `broadcom-wl-dkms` and `linux-headers` package are only needed for broadcom wifi adapter like the BCM4360.
