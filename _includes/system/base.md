@@ -77,25 +77,30 @@ $ echo name > /etc/hostname
 127.0.1.1   myhostname.localdomain	myhostname
 ```
 
-### Connect to a wifi network
-```
-# List nearby wifi networks
-$ nmcli device wifi list
-
-# Connect to a wifi network
-$ nmcli device wifi connect SSID password password
-```
-
 ### Activate NetworkManager
 ```
 $ systemctl enable NetworkManager
 ```
 
-### Install and setup the Gnome keyring for the wifi passwords
+---
+
+## Setup the Wifi
 {: .d-inline-block}
 
 WIFI
 {: .label .label-blue}
+
+### List nearby wifi networks
+```
+$ nmcli device wifi list
+```
+
+### Connect to a wifi network
+```
+$ nmcli device wifi connect SSID password password
+```
+
+### Install and setup the Gnome keyring for the wifi passwords
 
 ```
 $ pacman -S gnome-keyring libsecret
