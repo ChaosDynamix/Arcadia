@@ -84,7 +84,7 @@ $ systemctl enable NetworkManager
 
 ---
 
-## Setup the Wifi
+## Setup the Wireless network
 {: .d-inline-block}
 
 WIFI
