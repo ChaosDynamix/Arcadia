@@ -77,12 +77,17 @@ $ echo name > /etc/hostname
 127.0.1.1   myhostname.localdomain	myhostname
 ```
 
-### Install a manager
-
-#### NETWORKMANAGER
-
+### Connect to a wifi network
 ```
-$ pacman -S networkmanager
+# List nearby wifi networks
+$ nmcli device wifi list
+
+# Connect to a wifi network
+$ nmcli device wifi connect SSID password password
+```
+
+### Activate NetworkManager
+```
 $ systemctl enable NetworkManager
 ```
 
@@ -167,7 +172,7 @@ SOLID STATE DRIVE
 $ lsblk --discard
 ```
 
-DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values. 
+DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values.
 
 ### Install the package
 ```
