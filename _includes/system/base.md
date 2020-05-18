@@ -153,3 +153,35 @@ $ passwd username
 ```
 password required pam_cracklib.so retry=2 minlen=10 difok=6 dcredit=-1 ucredit=-1 ocredit=-1 lcredit=-1
 ```
+
+---
+
+## Enable periodic TRIM
+{: .d-inline-block}
+
+SOLID STATE DRIVE
+{: .label .label-blue}
+
+### Check if your SSD has TRIM support
+```
+$ lsblk --discard
+```
+
+DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values. 
+
+### Install the package
+```
+$ pacman -S util-linux
+```
+
+### Activate util-linux
+```
+$ systelctl enable fstrim.timer
+```
+
+### Edit the LVM configuration
+
+##### /etc/lvm/lvm.conf
+```
+issue_discards = 1
+```
