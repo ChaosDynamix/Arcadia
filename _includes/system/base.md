@@ -186,7 +186,7 @@ $ pacman -S util-linux
 
 ### Activate util-linux
 ```
-$ systelctl enable fstrim.timer
+$ systemctl enable fstrim.timer
 ```
 
 ### Edit the LVM configuration

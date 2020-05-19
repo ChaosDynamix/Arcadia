@@ -46,15 +46,18 @@ If the output is a list of variables, the system is booted in UEFI without CSM m
 ## Setup the live environment network
 
 ### Ensure your network interface is listed and enabled
-
 ```
 $ ip link
 ```
 
 ### Check connectivity
-
 ```
 $ ping -c 3 archlinux.org
+```
+
+### Update the system clock
+```
+$ timedatectl set-ntp true
 ```
 
 ---

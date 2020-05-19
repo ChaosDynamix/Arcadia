@@ -1,3 +1,16 @@
+### Edit the pacman configuration
+
+##### /etc/pacman.conf
+```
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+```
+
+### Update the repositories
+```
+$ pacman -Syu
+```
+
 ### Get informations about your video card
 ```
 $ lspci -k | grep -A 2 -E "(VGA|3D)"
@@ -26,7 +39,7 @@ In order to run rootless Xorg, we need to manually activate Direct Rendering Man
 
 ##### /etc/mkinitcpio.conf
 ```
-HOOKS=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
 ##### /etc/default/grub
