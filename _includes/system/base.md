@@ -77,8 +77,9 @@ $ echo name > /etc/hostname
 127.0.1.1   myhostname.localdomain	myhostname
 ```
 
-### Activate NetworkManager
+### Install NetworkManager
 ```
+$ pacman -S networkmanager
 $ systemctl enable NetworkManager
 ```
 
@@ -89,6 +90,9 @@ $ systemctl enable NetworkManager
 
 WIFI
 {: .label .label-blue}
+
+WORK IN PROGRESS
+{: .label .label-yellow}
 
 ### List nearby wifi networks
 ```
@@ -179,12 +183,7 @@ $ lsblk --discard
 
 DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values.
 
-### Install the package
-```
-$ pacman -S util-linux
-```
-
-### Activate util-linux
+### Activate weekly fstrim service
 ```
 $ systemctl enable fstrim.timer
 ```

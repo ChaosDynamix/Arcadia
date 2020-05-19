@@ -43,7 +43,7 @@ MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 
 ##### /etc/default/grub
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="nvidia-drm.modeset=1"
+GRUB_CMDLINE_LINUX_DEFAULT="...nvidia-drm.modeset=1"
 ```
 
 To avoid the possibility of forgetting to update initramfs after an NVIDIA driver upgrade, you may want to use a pacman hook
@@ -57,7 +57,6 @@ Operation=Remove
 Type=Package
 Target=nvidia
 Target=linux
-# Change the linux part above and in the Exec line if a different kernel is used
 
 [Action]
 Description=Update Nvidia module in initcpio
@@ -66,3 +65,5 @@ When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
+
+##### **Note**: Change `linux` value for Target above and in the Exec line if a different kernel is used
