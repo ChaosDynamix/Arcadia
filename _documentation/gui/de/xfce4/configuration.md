@@ -13,3 +13,7 @@ nav_order : !!int 3
 {:toc}
 
 ---
+
+{% include gui/keyring.md %}
+---
+{% include gui/sound.md %}

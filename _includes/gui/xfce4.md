@@ -52,3 +52,5 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
     exec startx
 fi
 ```
+
+When connecting, if xorg does not launch, you may have connected too quickly before the system was ready. To be sure everything is fine, quit and reconnect, xorg should start as expected.

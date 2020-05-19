@@ -15,3 +15,7 @@ nav_order : !!int 3
 ---
 
 {% include gui/status-bar.md %}
+---
+{% include gui/keyring.md %}
+---
+{% include gui/sound.md %}
