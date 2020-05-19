@@ -1,6 +1,4 @@
-
-### Edit the pacman configuration
-
+### Edit the pacman configuration
 ##### /etc/pacman.conf
 ```
 [multilib]
