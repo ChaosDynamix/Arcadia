@@ -46,6 +46,13 @@ MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 GRUB_CMDLINE_LINUX_DEFAULT="...nvidia-drm.modeset=1"
 ```
 
+Update the configurations
+
+```
+$ mkinitcpio -p linux
+$ grub-mkconfig -o /boot/grub/grub.cfg
+```
+
 To avoid the possibility of forgetting to update initramfs after an NVIDIA driver upgrade, you may want to use a pacman hook
 
 ##### /etc/pacman.d/hooks/nvidia.hook
