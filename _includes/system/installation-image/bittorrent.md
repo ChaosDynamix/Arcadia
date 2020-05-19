@@ -22,7 +22,7 @@ $ transmission-daemon
 
 ### Add the torrent file in transmission
 ```
-$ transmission-remote -a archlinux-2020.03.01-x86_64.iso.torrent
+$ transmission-remote -a archlinux-year.month.day-x86_64.iso.torrent
 ```
 
 ### Check the progress of the download
