@@ -47,9 +47,11 @@ If the Bash profile does not exist, copy a skeleton version from `/etc/skel/.bas
 | Bash     | ~/.bash_profile |
 | Zsh      | ~/.zprofile     |
 
+**Note**: Arch Linux wiki say that `startx` should not be preceded by `exec`, but i dont know if it is true for our context.
+
 ```
 if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-    exec startx
+    startx
 fi
 ```
 
