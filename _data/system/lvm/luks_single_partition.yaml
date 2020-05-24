@@ -7,26 +7,26 @@ filesystem          : !!str ext4
 
 # DEVICE TABLES
 device_tables : !!map
-  has_fstab_cfg               : !!bool false
-  has_crypttab_cfg            : !!bool false
-  has_crypttab_initramfs_cfg  : !!bool false
+    has_fstab_cfg               : !!bool false
+    has_crypttab_cfg            : !!bool false
+    has_crypttab_initramfs_cfg  : !!bool false
 
 # PACSTRAP
 pacstrap  : !!map
-  has_needed_packages : !!bool true
-  needed_packages     : !!str lvm2
+    has_needed_packages : !!bool true
+    needed_packages     : !!str lvm2
 
 # MKINITCPIO
 mkinitcpio  : !!map
-  has_config  : !!bool true
-  config      : !!str |
+    has_config  : !!bool true
+    config      : !!str |
                 FILES=(/etc/luks-keys/cryptlvm.keyfile)
                 HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard keymap fsck)
 
 # GRUB
 grub  : !!map
-  has_config  : !!bool true
-  config      : !!str |
+    has_config  : !!bool true
+    config      : !!str |
                 GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=device_uuid:cryptlvm:allow-discards cryptkey=rootfs:/etc/luks-keys/cryptlvm.keyfile root=/dev/grp/root loglevel=3 quiet"
                 GRUB_ENABLE_CRYPTODISK=y
 
@@ -35,78 +35,78 @@ sgdisk  : !!str |
           $ sgdisk -o _bootpart_ -n=2:0:0 -t=2:8309 /dev/sda
 
 devices : !!seq
-  - !!map
-    node  : !!str /dev/sda
+    - !!map
+        node  : !!str /dev/sda
 
 partitions  : !!seq
-  - !!map
-    node      : !!str /dev/sda1
-    has_boot  : !!bool true
-  - !!map
-    node      : !!str /dev/sda2
-    has_boot  : !!bool false
-    type      : !!str Linux LUKS partition
-    size      : !!str 100%FREE
+    - !!map
+        node      : !!str /dev/sda1
+        has_boot  : !!bool true
+    - !!map
+        node      : !!str /dev/sda2
+        has_boot  : !!bool false
+        type      : !!str Linux LUKS partition
+        size      : !!str 100%FREE
 
 # ENCRYPTION
 containers  : !!seq
-  - !!map
-    page                : !!str Storage
-    is_bootable         : !!bool true
-    name                : !!str cryptlvm
-    node                : !!str /dev/sda2
-    type                : !!str luks1
-    init_method         : !!str password
-    has_detached_header : !!bool false
-    has_keyfile         : !!bool true
-    keyfile             : !!str /etc/luks-keys/cryptlvm.keyfile
+    - !!map
+        page                : !!str Storage
+        is_bootable         : !!bool true
+        name                : !!str cryptlvm
+        node                : !!str /dev/sda2
+        type                : !!str luks1
+        init_method         : !!str password
+        has_detached_header : !!bool false
+        has_keyfile         : !!bool true
+        keyfile             : !!str /etc/luks-keys/cryptlvm.keyfile
 
 # LOGICAL VOLUME MANAGER
 lvm : !!map
-  pv  : !!str /dev/mapper/cryptlvm
-  vg  : !!str grp
-  lvs : !!seq
-    - !!map
-      node  : !!str /dev/grp/root
-      name  : !!str root
-      size  : !!str "15-20 GiB"
-    - !!map
-      node  : !!str /dev/grp/swap
-      name  : !!str swap
-      size  : !!str "> 512 MiB"
-    - !!map
-      node  : !!str /dev/grp/var
-      name  : !!str var
-      size  : !!str "8-12 GiB"
-    - !!map
-      node  : !!str /dev/grp/home
-      name  : !!str home
-      size  : !!str "100%FREE - 5 GiB"
+    pv  : !!str /dev/mapper/cryptlvm
+    vg  : !!str grp
+    lvs : !!seq
+        - !!map
+            node  : !!str /dev/grp/root
+            name  : !!str root
+            size  : !!str "15-20 GiB"
+        - !!map
+            node  : !!str /dev/grp/swap
+            name  : !!str swap
+            size  : !!str "> 512 MiB"
+        - !!map
+            node  : !!str /dev/grp/var
+            name  : !!str var
+            size  : !!str "8-12 GiB"
+        - !!map
+            node  : !!str /dev/grp/home
+            name  : !!str home
+            size  : !!str "100%FREE - 5 GiB"
 
 # FILESYSTEM
 ext4  : !!map
-  commands  : !!seq
-    - !!map
-      page      : !!str Storage
-      format    : !!str |
-                  $ mkfs.ext4 -L ROOT /dev/grp/root
-                  $ mkfs.ext4 -L VAR /dev/grp/var
-                  $ mkfs.ext4 -L HOME /dev/grp/home
-      mount     : !!str |
-                  $ mount /dev/grp/root /mnt
-                  $ mkdir /mnt/{var,home}
-                  $ mount /dev/grp/var /mnt/var
-                  $ mount /dev/grp/home /mnt/home
-      has_swap  : !!bool true
-      swap      : !!str |
-                  $ mkswap -L SWAP /dev/grp/swap
-                  $ swapon /dev/grp/swap
+    commands  : !!seq
+        - !!map
+            page      : !!str Storage
+            format    : !!str |
+                      $ mkfs.ext4 -L ROOT /dev/grp/root
+                      $ mkfs.ext4 -L VAR /dev/grp/var
+                      $ mkfs.ext4 -L HOME /dev/grp/home
+            mount     : !!str |
+                      $ mount /dev/grp/root /mnt
+                      $ mkdir /mnt/{var,home}
+                      $ mount /dev/grp/var /mnt/var
+                      $ mount /dev/grp/home /mnt/home
+            has_swap  : !!bool true
+            swap      : !!str |
+                      $ mkswap -L SWAP /dev/grp/swap
+                      $ swapon /dev/grp/swap
 
 # TEXTS
 txts : !!seq
-  - !!map
-    page    : !!str Storage
-    include : !!map
-      encryption_ctx  : !!str LUKS partition
-      filesystem_ctx  : !!str LVM logical volumes
-      efi_ctx         : !!str partition
+    - !!map
+        page    : !!str Storage
+        include : !!map
+            encryption_ctx  : !!str LUKS partition
+            filesystem_ctx  : !!str LVM logical volumes
+            efi_ctx         : !!str partition

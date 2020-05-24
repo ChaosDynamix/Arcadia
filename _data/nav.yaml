@@ -2,30 +2,32 @@
 # SIDEBAR NAVIGATION               #
 ####################################
 
-sidebar     : !!map
-  sections  : !!seq
+sidebar         : !!map
+    sections    : !!seq
 
-    - !!map     # SYSTEM
-      title     : !!str System
-      nav_order : !!int 1
-      contexts  : !!seq
+        # SYSTEM
         - !!map
-          name      : !!str lvm
-          full_name : !!str Logical Volume Manager
-          nav_order : !!int 1
+            title       : !!str System
+            nav_order   : !!int 1
+            contexts    : !!seq
+                - !!map
+                    name      : !!str lvm
+                    full_name : !!str Logical Volume Manager
+                    nav_order : !!int 1
 
-    - !!map     # GRAPHICAL USER INTERFACE
-      title     : !!str Graphical User Interface
-      nav_order : !!int 2
-      contexts  : !!seq
+        # GRAPHICAL USER INTERFACE
         - !!map
-          name      : !!str de
-          full_name : !!str Desktop environment
-          nav_order : !!int 1
-        - !!map
-          name      : !!str wm
-          full_name : !!str Window manager
-          nav_order : !!int 2
+            title       : !!str Graphical User Interface
+            nav_order   : !!int 2
+            contexts    : !!seq
+                - !!map
+                    name        : !!str de
+                    full_name   : !!str Desktop environment
+                    nav_order   : !!int 1
+                - !!map
+                    name        : !!str wm
+                    full_name   : !!str Window manager
+                    nav_order   : !!int 2
 
 ####################################
 # INCLUDE TABS NAVIGATION          #
@@ -33,59 +35,65 @@ sidebar     : !!map
 
 includes : !!seq
 
-  - !!map   # INSTALLATION IMAGE
-    title : !!str installation-image
-    tabs  : !!seq
-      - !!map
-        title : !!str BitTorrent
-        path  : !!str system/installation-image/bittorrent.md
-      - !!map
-        title : !!str Mirror site
-        path  : !!str system/installation-image/mirror-site.md
+    # INSTALLATION IMAGE
+    - !!map
+        title   : !!str installation-image
+        tabs    : !!seq
+            - !!map
+                title   : !!str BitTorrent
+                path    : !!str system/installation-image/bittorrent.md
+            - !!map
+                title   : !!str Mirror site
+                path    : !!str system/installation-image/mirror-site.md
 
-  - !!map   # PARTITIONING
-    title : !!str partitioning
-    tabs  : !!seq
-      - !!map
-        title : !!str UEFI / GPT
-        path  : !!str system/partitioning/uefi-gpt.md
-      - !!map
-        title : !!str BIOS / GPT
-        path  : !!str system/partitioning/bios-gpt.md
+    # PARTITIONING
+    - !!map
+        title   : !!str partitioning
+        tabs    : !!seq
+            - !!map
+                title   : !!str UEFI / GPT
+                path    : !!str system/partitioning/uefi-gpt.md
+            - !!map
+                title   : !!str BIOS / GPT
+                path    : !!str system/partitioning/bios-gpt.md
 
-  - !!map   # INITIALIZATION
-    title : !!str initialization
-    tabs  : !!seq
-      - !!map
-        title : !!str UEFI
-        path  : !!str system/initialization/uefi.md
-      - !!map
-        title : !!str BIOS
-        path  : !!str system/initialization/bios.md
+    # INITIALIZATION
+    - !!map
+        title   : !!str initialization
+        tabs    : !!seq
+            - !!map
+                title   : !!str UEFI
+                path    : !!str system/initialization/uefi.md
+            - !!map
+                title   : !!str BIOS
+                path    : !!str system/initialization/bios.md
 
-  - !!map   # DISPLAY DRIVER
-    title : !!str display-driver
-    tabs  : !!seq
-      - !!map
-        title : !!str Nvidia
-        path  : !!str gui/display-driver/nvidia.md
-      - !!map
-        title : !!str Amd
-        path  : !!str gui/display-driver/amd.md
+    # DISPLAY DRIVER
+    - !!map
+        title   : !!str display-driver
+        tabs    : !!seq
+            - !!map
+                title   : !!str Nvidia
+                path    : !!str gui/display-driver/nvidia.md
+            - !!map
+                title   : !!str Amd
+                path    : !!str gui/display-driver/amd.md
 
-  - !!map   # DISPLAY SERVER
-    title : !!str display-server
-    tabs  : !!seq
-      - !!map
-        title : !!str Xorg
-        path  : !!str gui/display-server/xorg.md
-      - !!map
-        title : !!str Wayland
-        path  : !!str gui/display-server/wayland.md
+    # DISPLAY SERVER
+    - !!map
+        title   : !!str display-server
+        tabs    : !!seq
+            - !!map
+                title   : !!str Xorg
+                path    : !!str gui/display-server/xorg.md
+            - !!map
+                title   : !!str Wayland
+                path    : !!str gui/display-server/wayland.md
 
-  - !!map   # STATUS BAR
-    title : !!str status-bar
-    tabs  : !!seq
-      - !!map
-        title : !!str Polybar
-        path  : !!str gui/status-bar/polybar.md
+    # STATUS BAR
+    - !!map
+        title   : !!str status-bar
+        tabs    : !!seq
+            - !!map
+                title   : !!str Polybar
+                path    : !!str gui/status-bar/polybar.md

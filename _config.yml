@@ -9,54 +9,54 @@ remote_theme    : !!str pmarsceill/just-the-docs
 footer_content  : !!str "Copyright &copy; 2020 ChaosDynamix."
 search_enabled  : !!bool true
 aux_links       : !!map
-  "Github": !!seq
-    - "//github.com/ChaosDynamix/Andromeda"
+    "Github": !!seq
+        - "//github.com/ChaosDynamix/Andromeda"
 
 # MARKDOWN SETTINGS
 markdown  : !!str kramdown
 kramdown  : !!map
-  toc_levels              : "2"
-  syntax_highlighter_opts : !!map
-    default_lang  : !!str bash
+    toc_levels              : "2"
+    syntax_highlighter_opts : !!map
+        default_lang  : !!str bash
 
 # EXCLUDE
 exclude: !!seq
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - Makefile
-  - README.md
+    - Gemfile
+    - Gemfile.lock
+    - node_modules
+    - vendor
+    - Makefile
+    - README.md
 
 # COLLECTIONS
 collections : !!map
 
-  # DOCUMENTATION
-  documentation : !!map
-    name      : !!str documentation
-    output    : !!bool true
-    permalink : !!str /:collection/:path
+    # DOCUMENTATION
+    documentation : !!map
+        name      : !!str documentation
+        output    : !!bool true
+        permalink : !!str /:collection/:path
 
 # DEFAULTS
 defaults: !!seq
 
-  - !!map         # LOGICAL VOLUME MANAGER
-    scope         : !!map
-      path    : !!str "_documentation/system/lvm"
-    values        : !!map
-      layout  : !!str default
-      context : !!str lvm
+    - !!map         # LOGICAL VOLUME MANAGER
+        scope         : !!map
+            path    : !!str "_documentation/system/lvm"
+        values        : !!map
+            layout  : !!str default
+            context : !!str lvm
 
-  - !!map         # DESKTOP ENVIRONMENT
-    scope         : !!map
-      path    : !!str "_documentation/gui/de"
-    values        : !!map
-      layout  : !!str default
-      context : !!str de
+    - !!map         # DESKTOP ENVIRONMENT
+        scope         : !!map
+            path    : !!str "_documentation/gui/de"
+        values        : !!map
+            layout  : !!str default
+            context : !!str de
 
-  - !!map         # WINDOW MANAGER
-    scope         : !!map
-      path    : !!str "_documentation/gui/wm"
-    values        : !!map
-      layout  : !!str default
-      context : !!str wm
+    - !!map         # WINDOW MANAGER
+        scope         : !!map
+            path    : !!str "_documentation/gui/wm"
+        values        : !!map
+            layout  : !!str default
+            context : !!str wm

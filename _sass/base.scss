@@ -4,24 +4,24 @@
 // stylelint-disable selector-no-type, selector-max-type
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 ::selection {
-  color: $white;
-  background: $link-color;
+    color: $white;
+    background: $link-color;
 }
 
 html {
-  @include fs-4;
+    @include fs-4;
 }
 
 body {
-  font-family: $body-font-family;
-  font-size: inherit;
-  line-height: $body-line-height;
-  color: $body-text-color;
-  background-color: $body-background-color;
+    font-family: $body-font-family;
+    font-size: inherit;
+    line-height: $body-line-height;
+    color: $body-text-color;
+    background-color: $body-background-color;
 }
 
 p,
@@ -37,97 +37,97 @@ form,
 hr,
 noscript,
 table {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 h1,
 h2,
 h6 {
-  margin-top: 1.2em;
-  margin-bottom: 0.8em;
-  font-weight: 500;
-  line-height: $body-heading-line-height;
-  color: $body-heading-color;
+    margin-top: 1.2em;
+    margin-bottom: 0.8em;
+    font-weight: 500;
+    line-height: $body-heading-line-height;
+    color: $body-heading-color;
 }
 
 h3 {
-  margin-top: 2rem;
-  margin-bottom: 0.8em;
-  font-weight: 500;
-  line-height: $body-heading-line-height;
-  color: $body-heading-color;
+    margin-top: 2rem;
+    margin-bottom: 0.8em;
+    font-weight: 500;
+    line-height: $body-heading-line-height;
+    color: $body-heading-color;
 }
 
 h4 {
-  margin-top: 1.5rem;
-  margin-bottom: 0.8em;
-  font-weight: 500;
-  line-height: $body-heading-line-height;
-  color: $body-heading-color;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8em;
+    font-weight: 500;
+    line-height: $body-heading-line-height;
+    color: $body-heading-color;
 }
 
 h5 {
-  margin-top: 1.2em;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-  line-height: $body-heading-line-height;
-  color: $body-text-color;
+    margin-top: 1.2em;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+    line-height: $body-heading-line-height;
+    color: $body-text-color;
 }
 
 h2 + h3,
 h2 + h4 {
-  margin-top: 1.2rem;
+    margin-top: 1.2rem;
 }
 
 p {
-  margin-bottom: 1em;
+    margin-bottom: 1em;
 }
 
 a {
-  color: $link-color;
-  text-decoration: none;
+    color: $link-color;
+    text-decoration: none;
 }
 
 a:not([class]) {
-  text-decoration: none;
-  background-image: linear-gradient($border-color 0%, $border-color 100%);
-  background-repeat: repeat-x;
-  background-position: 0 100%;
-  background-size: 1px 1px;
-
-  &:hover {
-    background-image: linear-gradient(
-      rgba($link-color, 0.45) 0%,
-      rgba($link-color, 0.45) 100%
-    );
+    text-decoration: none;
+    background-image: linear-gradient($border-color 0%, $border-color 100%);
+    background-repeat: repeat-x;
+    background-position: 0 100%;
     background-size: 1px 1px;
-  }
+
+    &:hover {
+        background-image: linear-gradient(
+        rgba($link-color, 0.45) 0%,
+        rgba($link-color, 0.45) 100%
+        );
+        background-size: 1px 1px;
+    }
 }
 
 code {
-  font-family: $mono-font-family;
-  font-size: 12px;
-  line-height: $body-line-height;
+    font-family: $mono-font-family;
+    font-size: 12px;
+    line-height: $body-line-height;
 }
 
 figure,
 pre {
-  margin: 0;
+    margin: 0;
 }
 
 li {
-  margin: 0.25em 0;
+    margin: 0.25em 0;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 hr {
-  height: 1px;
-  padding: 0;
-  margin: $sp-6 0;
-  background-color: $border-color;
-  border: 0;
+    height: 1px;
+    padding: 0;
+    margin: $sp-6 0;
+    background-color: $border-color;
+    border: 0;
 }
