@@ -32,26 +32,36 @@ $ pacman -S vulkan-icd-loader lib32-vulkan-icd-loader
 $ pacman -S nvidia lib32-nvidia-utils
 ```
 
-### Activate (DMS) Kernel Mode Setting
+---
+
+## Activate (DMS) Kernel Mode Setting
 
 In order to run rootless Xorg, we need to manually activate Direct Rendering Manager Kernel Mode Setting.
+
+### Early KMS start
 
 ##### /etc/mkinitcpio.conf
 ```
 MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
+### Late KMS start
+
 ##### /etc/default/grub
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="...nvidia-drm.modeset=1"
 ```
 
-Update the configurations
+**Note**: The 3 dots represents the rest of your command, do not delete any argument.
+{: .fs-3}
 
+### Generate the images and update Grub configuration
 ```
 $ mkinitcpio -p linux
 $ grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+### Create a pacman hook
 
 To avoid the possibility of forgetting to update initramfs after an NVIDIA driver upgrade, you may want to use a pacman hook
 
@@ -73,4 +83,5 @@ NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
 
-##### **Note**: Change `linux` value for Target above and in the Exec line if a different kernel is used
+**Note**: Change `linux` value for Target above and in the Exec line if a different kernel is used
+{: .fs-3}
