@@ -27,3 +27,15 @@ If asked during the boot (by pressing a key), you can temporarily select and boo
 1. Change the boot order and put your USB device in the first position
 1. Save changes and reboot
 1. Select `boot Arch Linux (X86_64)` or `Arch Linux archiso X86_64 UEFI CD`
+
+### References
+
+1. [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
+1. [Wikipedia - Dd](https://en.wikipedia.org/wiki/Dd_(Unix))
+1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
+1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
+1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+1. [ArchWiki - USB flash installation media](https://wiki.archlinux.org/index.php/USB_flash_installation_media)
+1. [ArchWiki - Dd](https://wiki.archlinux.org/index.php/Dd)
+1. [ManPage - Dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
+{: .fs-3}

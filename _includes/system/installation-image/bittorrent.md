@@ -45,3 +45,17 @@ Replace the name of the file accordingly
 ```
 $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
 ```
+
+### References
+
+1. [Wikipedia - BitTorrent](https://en.wikipedia.org/wiki/BitTorrent)
+1. [Wikipedia - Transmission](https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client))
+1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
+1. [ArchWiki - Transmission](https://wiki.archlinux.org/index.php/Transmission)
+1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
+1. [ArchWiki - GnuPG](https://wiki.archlinux.org/index.php/GnuPG)
+1. [ManPage - Transmission-daemon](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/transmission-cli/transmission-daemon.1.en)
+1. [ManPage - Transmission-remote](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/transmission-cli/transmission-remote.1.en)
+1. [ManPage - Watch](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/procps-ng/watch.1.en)
+1. [ManPage - Gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)
+{: .fs-3}

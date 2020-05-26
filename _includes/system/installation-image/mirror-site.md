@@ -48,3 +48,15 @@ Replace the name of the file accordingly
 ```
 $ gpg --keyserver-options auto-key-retrieve --verify archlinux-year.month.day-x86_64.iso.sig
 ```
+
+### References
+
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+1. [Wikipedia - Cheksum](https://en.wikipedia.org/wiki/Checksum)
+1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
+1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
+1. [ArchWiki - GnuPG](https://wiki.archlinux.org/index.php/GnuPG)
+1. [ManPage - Md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
+1. [ManPage - Sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
+1. [ManPage - Gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)
+{: .fs-3}

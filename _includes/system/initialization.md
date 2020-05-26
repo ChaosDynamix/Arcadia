@@ -26,11 +26,11 @@ add_runscript
 ```
 #!/usr/bin/ash
 run_hook() {
-  local seconds=10
-  mdadm --detail --scan | grep -q INACTIVE_ARRAY || return 0
-  echo "Waiting $seconds seconds for incomplete mdadm arrays..."
-  sleep $seconds
-  mdadm -IRs
+    local seconds=10
+    mdadm --detail --scan | grep -q INACTIVE_ARRAY || return 0
+    echo "Waiting $seconds seconds for incomplete mdadm arrays..."
+    sleep $seconds
+    mdadm -IRs
 }
 # vim: set ft=sh ts=4 sw=4 et:
 ```
