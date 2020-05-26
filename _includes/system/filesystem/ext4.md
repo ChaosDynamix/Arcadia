@@ -1,6 +1,6 @@
 {% assign step_command = scenario.ext4.commands | where: "page", page.title | first %}
 
-## Setup the {{ txt.include.filesystem_ctx }}
+## Setup the filesystems
 
 ### Format the {{ txt.include.filesystem_ctx }}
 

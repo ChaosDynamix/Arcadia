@@ -28,6 +28,7 @@ $ arch-chroot /mnt
 
 ### References
 
+1. [ArchWiki - Chroot](https://wiki.archlinux.org/index.php/Chroot)
 1. [ManPage - Arch-chroot](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/arch-chroot.8.en)
 {: .fs-3}
 
