@@ -48,3 +48,13 @@ $ cryptsetup open{% if container.init_method == "keyfile" %} -d {{ container.key
 **Note**: Replace `UUID` with the first 4 alphanumeric characters of the devices UUID so you can identify them properly. Example: `cryptlvm7b38`.
 {: .fs-3 }
 {% endif %}
+
+### References
+
+1. [Wikipedia - Encryption](https://en.wikipedia.org/wiki/Encryption)
+1. [Wikipedia - Dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)
+1. [Wikipedia - LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup)
+1. [ArchWiki - Dm-crypt/Device encryption](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption)
+1. [ArchWiki - Dm-crypt/Encrypting an entire system](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system)
+1. [ManPage - Cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
+{: .fs-3}

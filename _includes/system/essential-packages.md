@@ -26,3 +26,10 @@ pacstrap is designed to create a new system installation from scratch. The speci
 ```
 $ pacstrap /mnt base linux linux-firmware{% if scenario.pacstrap.has_needed_packages %} {{ scenario.pacstrap.needed_packages }}{% endif %} sudo vim man-db man-pages
 ```
+
+### References
+
+1. [ArchWiki - Kernel](https://wiki.archlinux.org/index.php/Kernel)
+1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
+1. [ManPage - Pacstrap](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/pacstrap.8.en)
+{: .fs-3}

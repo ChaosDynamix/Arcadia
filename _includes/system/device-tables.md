@@ -10,6 +10,14 @@ It can be used to persist a manually mounted filesystem hierarchy and is often u
 $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
+### References
+
+1. [Wikipedia - Fstab](https://en.wikipedia.org/wiki/Fstab)
+1. [ArchWiki - Fstab](https://wiki.archlinux.org/index.php/Fstab)
+1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
+1. [ManPage - Genfstab](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/genfstab.8.en)
+{: .fs-3}
+
 ---
 
 ## Enter the system
@@ -17,6 +25,12 @@ $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 $ arch-chroot /mnt
 ```
+
+### References
+
+1. [ManPage - Arch-chroot](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/arch-chroot.8.en)
+{: .fs-3}
+
   {% when "Configuration" %}
     {% if scenario.device_tables.has_fstab or scenario.device_tables.has_crypttab or scenario.device_tables.has_crypttab_initramfs %}
 ## Edit the configuration of the device tables

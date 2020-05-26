@@ -33,3 +33,12 @@ $ cryptsetup close to_be_wiped{% if scenario.devices.size > 1 %}{{ index }}{% en
 {% else %}
 ## ERROR: No encryption in this scenario
 {% endif %}
+
+### References
+
+1. [Wikipedia - Dd](https://en.wikipedia.org/wiki/Dd_(Unix))
+1. [ArchWiki - Dm-crypt/Drive preparation](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)
+1. [ArchWiki - Dd](https://wiki.archlinux.org/index.php/Dd)
+1. [ManPage - Cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
+1. [ManPage - Dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
+{: .fs-3}

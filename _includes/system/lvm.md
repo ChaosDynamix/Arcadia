@@ -32,3 +32,14 @@ lvcreate -L SIZE {{ scenario.lvm.vg }} -n {{ lv.name }}
 {% else %}
 ## ERROR: No LVM in this scenario
 {% endif %}
+
+
+### References
+
+1. [Wikipedia - LVM](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux))
+1. [ArchWiki - LVM](https://wiki.archlinux.org/index.php/LVM)
+1. [ArchWiki - Dm-crypt/Encrypting an entire system](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system)
+1. [ManPage - Pvcreate](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/lvm2/pvcreate.8.en)
+1. [ManPage - Vgcreate](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/lvm2/vgcreate.8.en)
+1. [ManPage - Lvcreate](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/lvm2/lvcreate.8.en)
+{: .fs-3}
