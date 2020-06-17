@@ -1,7 +1,7 @@
 # GLOBAL SETTINGS
-title           : !!str Andromeda
-description     : !!str Andromeda is one of the many guides to install and configure Arch Linux.
-baseurl         : !!str "/Andromeda"
+title           : !!str Arcadia
+description     : !!str Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS
+baseurl         : !!str "/Arcadia"
 github_username : !!str ChaosDynamix
 
 # THEME SETTINGS
@@ -10,7 +10,7 @@ footer_content  : !!str "Copyright &copy; 2020 ChaosDynamix."
 search_enabled  : !!bool true
 aux_links       : !!map
     "Github": !!seq
-        - "//github.com/ChaosDynamix/Andromeda"
+        - "//github.com/ChaosDynamix/Arcadia"
 
 # MARKDOWN SETTINGS
 markdown  : !!str kramdown
