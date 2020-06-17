@@ -1,6 +1,6 @@
 <div align="center">
 	<h1>Arcadia</h1>
-	<p>Arcadia is one of the many guides to install and configure Arch Linux, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
+	<p>Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS.
 	</p>
 	<p>
 		<a href="https://chaosdynamix.github.io/Arcadia/">
