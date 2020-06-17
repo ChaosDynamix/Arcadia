@@ -5,7 +5,7 @@ nav_exclude     : !!bool true
 search_exclude  : !!bool true
 ---
 
-Andromeda is one of the many guides to install and configure Arch Linux.
+Arcadia is one of the many guides to install and configure Arch Linux.
 {: .fs-8}
 
 ---
