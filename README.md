@@ -1,9 +1,9 @@
 <div align="center">
-	<h1>Andromeda</h1>
-	<p>Andromeda is one of the many guides to install and configure Arch Linux, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
+	<h1>Arcadia</h1>
+	<p>Arcadia is one of the many guides to install and configure Arch Linux, so it may not be for you. However, it can be interesting for users who want inspiration or more details on the procedure and the configuration used.
 	</p>
 	<p>
-		<a href="https://chaosdynamix.github.io/Andromeda/">
+		<a href="https://chaosdynamix.github.io/Arcadia/">
 			<img src="https://img.shields.io/badge/-Show the guide-brightgreen?style=for-the-badge" alt="Guide page link" />
 		</a>
 	</p>
