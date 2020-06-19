@@ -5,7 +5,7 @@ nav_exclude     : !!bool true
 search_exclude  : !!bool true
 ---
 
-Arcadia is one of the many guides to install and configure Arch Linux.
+Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS.
 {: .fs-8}
 
 ---
