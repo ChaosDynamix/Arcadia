@@ -15,10 +15,9 @@ What is the problem that need to be fixed.
 ### Solution
 What is the better solution that can fix this problem. 
 
-#### To do
-- [ ] step
-- [ ] step
-- [ ] step
+- [ ] todo
+- [ ] todo
+- [ ] todo
 
 ### Alternate solutions (optional)
 - solution
