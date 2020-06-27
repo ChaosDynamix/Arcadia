@@ -1,7 +1,7 @@
 ---
 name: Feature
 about: Feature related issue
-title: Project | Title
+title: ''
 labels: Feature
 assignees: ChaosDynamix
 
@@ -9,13 +9,20 @@ assignees: ChaosDynamix
 
 ## Feature
 
-### Description
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+### Problem
+What is the problem that need to be fixed.
 
 ### Solution
-A clear and concise description of what you want to happen.
+What is the better solution that can fix this problem. 
 
-### To do
-- [ ] item
-- [ ] item
-- [ ] item
+#### To do
+- [ ] step
+- [ ] step
+- [ ] step
+
+### Alternate solutions (optional)
+- solution
+- solution
+
+### Branch (optional)
+The name of the branch used for this issue.
