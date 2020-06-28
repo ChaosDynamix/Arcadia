@@ -1,6 +1,7 @@
 ---
-title     : !!str Luks on multiple partitions
-nav_order : !!int 2
+title     	: !!str Luks on multiple partitions
+nav_order 	: !!int 2
+has_children	: !!bool true
 ---
 
 # {{ page.title }}

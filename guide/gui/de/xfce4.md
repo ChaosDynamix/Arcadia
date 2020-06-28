@@ -1,6 +1,6 @@
 ---
-title     : !!str Xfce4
-nav_order : !!int 1
+title     	: !!str Xfce4
+nav_exclude	: !!bool true
 ---
 
 # {{ page.title }}
