@@ -7,7 +7,7 @@ github_username : !!str ChaosDynamix
 # THEME SETTINGS
 remote_theme    : !!str pmarsceill/just-the-docs
 footer_content  : !!str "Copyright &copy; 2020 ChaosDynamix."
-search_enabled  : !!bool true
+search_enabled  : !!bool false
 aux_links       : !!map
     "Github": !!seq
         - "//github.com/ChaosDynamix/Arcadia"
