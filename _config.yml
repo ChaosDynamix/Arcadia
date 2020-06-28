@@ -28,35 +28,26 @@ exclude: !!seq
     - Makefile
     - README.md
 
-# COLLECTIONS
-collections : !!map
-
-    # DOCUMENTATION
-    documentation : !!map
-        name      : !!str documentation
-        output    : !!bool true
-        permalink : !!str /:collection/:path
-
 # DEFAULTS
 defaults: !!seq
 
     - !!map         # LOGICAL VOLUME MANAGER
         scope         : !!map
-            path    : !!str "_documentation/system/lvm"
+            path    : !!str "_guide/system/lvm"
         values        : !!map
             layout  : !!str default
             context : !!str lvm
 
     - !!map         # DESKTOP ENVIRONMENT
         scope         : !!map
-            path    : !!str "_documentation/gui/de"
+            path    : !!str "_guide/gui/de"
         values        : !!map
             layout  : !!str default
             context : !!str de
 
     - !!map         # WINDOW MANAGER
         scope         : !!map
-            path    : !!str "_documentation/gui/wm"
+            path    : !!str "_guide/gui/wm"
         values        : !!map
             layout  : !!str default
             context : !!str wm

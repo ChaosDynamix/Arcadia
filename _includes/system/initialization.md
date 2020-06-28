@@ -67,7 +67,6 @@ $ pacman -S intel-ucode
 
 ### Install GRUB on the device{% if scenario.has_raid %}s{% endif %}
 
-{% include tabs.html title="initialization" %}
 
 ### Generate GRUB configuration
 
