@@ -1,6 +1,6 @@
 ---
-title     : !!str Bspwm
-nav_order : !!int 1
+title     	: !!str Bspwm
+nav_exclude	: !!bool true
 ---
 
 # {{ page.title }}
