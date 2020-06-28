@@ -2,8 +2,6 @@
 
 Select the partitioning mode corresponding of the boot mode verification in the preparation step.
 
-{% include tabs.html title="partitioning" %}
-
 ### Check the partitioning of the device{% if scenario.devices.size > 1 %}s{% endif %}
 
 Verify that the layout is the same as the table above. The code represent the partition type.
