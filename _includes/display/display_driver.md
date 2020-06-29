@@ -1,3 +1,7 @@
+## Install a display driver
+
+#### NVIDIA
+
 ### Edit the pacman configuration
 ##### /etc/pacman.conf
 ```
