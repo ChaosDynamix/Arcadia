@@ -1,6 +1,6 @@
 <div align="center">
 	<h1>Arcadia</h1>
-	<p>Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS and LVM.
+	<p>Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS with LVM and EXT4.
 	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Arcadia">
