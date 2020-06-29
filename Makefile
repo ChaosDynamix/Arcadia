@@ -1,5 +1,5 @@
 SHELL = /bin/sh
-JEKYLL_VERSION = 3.8.5
+JEKYLL_VERSION = 3.8.7
 
 serve:
 	docker run --rm \
