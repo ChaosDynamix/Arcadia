@@ -13,3 +13,12 @@ nav_order : !!int 5
 {:toc}
 
 ---
+
+{% include display/display_driver.md %}
+---
+{% include display/display_server.md %}
+---
+{% include sound/sound_server.md %}
+---
+{% include desktop/desktop_xfce4.md %}
+

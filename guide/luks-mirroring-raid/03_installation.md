@@ -14,9 +14,9 @@ nav_order : !!int 3
 
 ---
 
-{% assign scenario = site.data.system.lvm["luks_mirroring_raid"] %}
+{% assign scenario = site.data["luks_mirroring_raid"] %}
 {% assign txt = scenario.txts | where: "page", page.title | first %}
 
-{% include system/essential-packages.md %}
+{% include system/system_packages.md %}
 ---
-{% include system/device-tables.md %}
+{% include storage/storage_tables.md %}

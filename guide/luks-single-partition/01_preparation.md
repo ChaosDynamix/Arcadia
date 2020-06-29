@@ -14,11 +14,21 @@ nav_order : !!int 1
 
 ---
 
-{% assign scenario = site.data.system.lvm["luks_single_partition"] %}
+{% assign scenario = site.data["luks_single_partition"] %}
 {% assign txt = scenario.txts | where: "page", page.title | first %}
 
-{% include system/installation-image.md %}
+{% include media/media_image.md %}
 ---
-{% include system/installation-media.md %}
+{% include media/media_flash.md %}
 ---
-{% include system/live-environment.md %}
+{% include media/media_boot.md %}
+---
+{% include media/media_keyboard.md %}
+---
+{% include media/media_mode.md %}
+---
+{% include media/media_network.md %}
+---
+{% include media/media_keyring.md %}
+---
+{% include media/media_mirrorlist.md %}

@@ -14,11 +14,19 @@ nav_order : !!int 4
 
 ---
 
-{% assign scenario = site.data.system.lvm["luks_single_partition"] %}
+{% assign scenario = site.data["luks_single_partition"] %}
 {% assign txt = scenario.txts | where: "page", page.title | first %}
 
-{% include system/base.md %}
+{% include system/system_localization.md %}
 ---
-{% include system/keyfile.md %}
+{% include system/system_network.md %}
 ---
-{% include system/initialization.md %}
+{% include system/system_users.md %}
+---
+{% include storage/storage_keyfiles.md %}
+---
+{% include system/system_initramfs.md %}
+---
+{% include system/system_microcode.md %}
+---
+{% include system/system_boot-loader.md %}
