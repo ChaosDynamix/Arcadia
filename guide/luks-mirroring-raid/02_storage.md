@@ -14,17 +14,24 @@ nav_order : !!int 2
 
 ---
 
-{% assign scenario = site.data.system.lvm["luks_mirroring_raid"] %}
+{% assign scenario = site.data["luks_mirroring_raid"] %}
 {% assign txt = scenario.txts | where: "page", page.title | first %}
 
-{% include system/secure-erase.md %}
+{% include storage/storage_secure-erase.md %}
 ---
-{% include system/partitioning.md %}
+{% include storage/storage_partitioning.md %}
 ---
-{% include system/raid.md %}
+{% include storage/storage_raid.md %}
 ---
-{% include system/encryption.md %}
+{% include storage/storage_encryption.md %}
 ---
-{% include system/lvm.md %}
+{% include storage/storage_lvm.md %}
 ---
-{% include system/filesystem.md %}
+{% include storage/storage_ext4.md %}
+---
+{% include storage/storage_efi.md %}
+
+
+
+
+

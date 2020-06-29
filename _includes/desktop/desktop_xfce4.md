@@ -36,4 +36,4 @@ exec startxfce4
 
 ---
 
-{% include gui/autostart.md %}
+{% include desktop/desktop_autostart.md %}
