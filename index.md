@@ -2,10 +2,9 @@
 title           : !!str Home
 layout          : !!str default
 nav_exclude     : !!bool true
-search_exclude  : !!bool true
 ---
 
-Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS.
+Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS with LVM and EXT4.
 {: .fs-8}
 
 ---
