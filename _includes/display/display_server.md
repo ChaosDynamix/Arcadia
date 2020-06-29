@@ -1,3 +1,7 @@
+## Install a display server
+
+#### XORG
+
 ### Install the packages
 ```
 $ pacman -S xorg-{server,xinit,xrandr}

@@ -1,9 +1,22 @@
+## Setup the Boot loader
+
+### Install GRUB on the device{% if scenario.has_raid %}s{% endif %}
+
 ### Install GRUB package
+
+#### UEFI
+
+Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
+
 ```
 $ pacman -S grub efibootmgr
 ```
 
-Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
+#### BIOS
+
+```
+$ pacman -S grub
+```
 
 ### Edit the GRUB configuration
 {: .d-inline-block}
@@ -31,7 +44,21 @@ Before enabling TRIM on a device, make sure the device fully supports TRIM comma
 {: .fs-3 }
 {% endif %}
 
-### Install GRUB in the EFI directory
+### Install Grub
+
+#### BIOS
+
+```
+{%- if scenario.has_raid %}
+$ grub-install --target=i386-pc --recheck /dev/sda
+$ grub-install --target=i386-pc --recheck /dev/sdb
+{%- else %}
+{%- assign boot = scenario.partitions | where: "has_boot", true | first %}
+$ grub-install --target=i386-pc --recheck {{ boot.node | slice: 0,8 }}
+{%- endif %}
+```
+
+#### UEFI
 
 {%- if scenario.has_raid %}
 ```
@@ -62,3 +89,9 @@ $ efibootmgr --bootorder X,Y
 $ grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id="Arch Linux" --recheck
 ```
 {%- endif %}
+
+### Generate GRUB configuration
+
+```
+$ grub-mkconfig -o /boot/grub/grub.cfg
+```

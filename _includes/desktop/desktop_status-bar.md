@@ -1,3 +1,7 @@
+## Install a status bar
+
+#### POLYBAR
+
 ### Install the Arch User Repository needed packages
 ```
 $ pacman -S base-devel git
