@@ -1,9 +1,9 @@
 {% if scenario.has_encryption %}
 ## Secure erase the device{% if scenario.devices.size > 1 %}s{% endif %}
-{: .d-inline-block}
+{: .d-inline-block .mt-0}
 
 IRREVERSIBLE DATA ERASE
-{: .label .label-red .mx-2}
+{: .label .label-red}
 
 Before setting up encryption on a mass storage device, consider securely wiping it first. This consists of overwriting the entire device with a stream of zero bytes or random bytes, and is done for one or both of the following reasons
 
@@ -35,6 +35,7 @@ $ cryptsetup close to_be_wiped{% if scenario.devices.size > 1 %}{{ index }}{% en
 {% endif %}
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Dd](https://en.wikipedia.org/wiki/Dd_(Unix))
 1. [ArchWiki - Dm-crypt/Drive preparation](https://wiki.archlinux.org/index.php/Dm-crypt/Drive_preparation#Secure_erasure_of_the_hard_disk_drive)

@@ -1,10 +1,8 @@
 ## Partition the device{% if scenario.devices.size > 1 %}s{% endif %}
 
-Select the partitioning mode corresponding of the boot mode verification in the preparation step.
+Select the partitioning mode corresponding of the boot mode verification result in the preparation step.
 
-### Partition scheme
-
-#### BIOS / GPT
+### BIOS / GPT
 
 | Partition node       | Partition type       | Partition size       |
 | :------------------- | :------------------- | :------------------- |
@@ -16,7 +14,11 @@ Select the partitioning mode corresponding of the boot mode verification in the 
   {%- endif %}
 {%- endfor %}
 
-#### UEFI / GPT
+```
+{{ scenario.sgdisk | replace: "_bootpart_", "-n=1:0:+1M -t=1:ef02" -}}
+```
+
+### UEFI / GPT
 
 | Partition node       | Partition type       | Partition size       |
 | :------------------- | :------------------- | :------------------- |
@@ -31,17 +33,6 @@ Select the partitioning mode corresponding of the boot mode verification in the 
 | {{ partition.node }} | {{ partition.type }} | {{ partition.size }} |
   {%- endif %}     
 {%- endfor %}
-
-### Sgdisk script
-
-
-#### BIOS / GPT
-
-```
-{{ scenario.sgdisk | replace: "_bootpart_", "-n=1:0:+1M -t=1:ef02" -}}
-```
-
-#### UEFI / GPT
 
 ```
 {% if scenario.has_raid %}{{ scenario.sgdisk | replace: "_bootpart_", "-n=1:0:+260M -t=1:fd00" }}{% else %}{{ scenario.sgdisk | replace: "_bootpart_", "-n=1:0:+260M -t=1:ef00" }}{% endif -%}
@@ -58,6 +49,7 @@ $ gdisk -l {{ device.node }}
 ```
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Disk partitioning](https://en.wikipedia.org/wiki/Disk_partitioning)
 1. [Wikipedia - Partition table](https://en.wikipedia.org/wiki/Partition_table)

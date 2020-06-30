@@ -35,6 +35,7 @@ lvcreate -L SIZE {{ scenario.lvm.vg }} -n {{ lv.name }}
 
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - LVM](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux))
 1. [ArchWiki - LVM](https://wiki.archlinux.org/index.php/LVM)

@@ -1,10 +1,13 @@
 {% if page.title == "Storage" %}
 
-### Setup the EFI {{ txt.include.efi_ctx }}
-{: .d-inline-block}
+## Setup the EFI {{ txt.include.efi_ctx }}
+{: .d-inline-block .mt-0}
 
 UEFI
 {: .label .label-blue}
+
+Skip this step if your boot mode is BIOS or UEFI with CSM mode.
+{: .fs-3}
 
 ```
 {%- if scenario.has_raid %}
@@ -25,12 +28,11 @@ $ mount {{ boot.node }} /mnt/efi
 
 
 ### References
+{: .text-delta .pt-4}
 
 1. [ArchWiki - Filesystems](https://wiki.archlinux.org/index.php/File_systems)
-1. [ArchWiki - Dm-crypt/Encrypting an entire system](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system)
+1. [ArchWiki - EFI system partition](https://wiki.archlinux.org/index.php/EFI_system_partition)
 1. [ManPage - Mkfs](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkfs.8.en)
 1. [ManPage - Mount](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/mount.2.en)
-1. [ManPage - Mkswap](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/mkswap.8.en)
-1. [ManPage - Swapon](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/swapon.2.en)
 1. [ManPage - Mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
 {: .fs-3}
