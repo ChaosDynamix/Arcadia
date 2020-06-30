@@ -1,4 +1,4 @@
-## Verify the boot mode
+## Verify the boot mode of the live environment
 
 ### List the EFI variables
 
@@ -7,6 +7,7 @@ $ ls /sys/firmware/efi/efivars
 ```
 
 If the output is a list of variables, the system is booted in UEFI without CSM mode. If the directory does not exist, the system may be booted in BIOS or UEFI with CSM mode.
+{: .fs-3}
 
 | Firmware           | Result | Partitioning mode |
 | :----------------- | :----- | :---------------- |
@@ -15,6 +16,7 @@ If the output is a list of variables, the system is booted in UEFI without CSM m
 | BIOS               | False  | BIOS / GPT        |
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
 1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)

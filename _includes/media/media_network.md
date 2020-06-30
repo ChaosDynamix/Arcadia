@@ -16,6 +16,7 @@ $ timedatectl set-ntp true
 ```
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Computer network](https://en.wikipedia.org/wiki/Computer_network)
 1. [ArchWiki - Network configuration](https://wiki.archlinux.org/index.php/Network_configuration)

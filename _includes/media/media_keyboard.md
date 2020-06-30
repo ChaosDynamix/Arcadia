@@ -6,24 +6,20 @@ The default console keymap is US. Skip this step if your keyboard layout match t
 
 ### List the keymaps
 
-#### ALL THE KEYMAPS
+Search for the keymap corresponding to your keyboard.
+
 ```
 $ ls /usr/share/kbd/keymaps/**/*.map.gz | less
 ```
 
-#### SPECIFIC KEYMAP
-```
-$ ls /usr/share/kbd/keymaps/**/*.map.gz | grep -i search_term
-```
-
 ### Load the correct keymap
 
-##### Example
 ```
 $ loadkeys fr-latin9
 ```
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
 1. [ArchWiki - Keyboard configuration](https://wiki.archlinux.org/index.php/Linux_console/Keyboard_configuration)
