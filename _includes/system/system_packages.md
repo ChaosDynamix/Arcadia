@@ -22,12 +22,12 @@
 
 pacstrap is designed to create a new system installation from scratch. The specified packages will be installed into a given directory after setting up some basic mountpoints. By default, the host system’s pacman signing keys and mirrorlist will be used to seed the chroot.
 
-##### Example
 ```
 $ pacstrap /mnt base linux linux-firmware{% if scenario.pacstrap.has_needed_packages %} {{ scenario.pacstrap.needed_packages }}{% endif %} sudo vim man-db man-pages
 ```
 
 ### References
+{: .text-delta .pt-4}
 
 1. [ArchWiki - Kernel](https://wiki.archlinux.org/index.php/Kernel)
 1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide)
