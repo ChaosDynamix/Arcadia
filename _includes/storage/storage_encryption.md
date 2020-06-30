@@ -15,11 +15,13 @@ $ dd if=/dev/zero of={{ container.header }} bs=16M count=1
 ```
 {% endif %}
 
-### Create the LUKS1 container{% if step_containers.size > 1 %}s{% endif %}
+
 
 {% if bootable_containers.size > 0 %}
-GRUB does not support LUKS2 headers to unlock encrypted `/boot` partition so you need to specify `--type luks1` on encrypted device that GRUB need to access.
+Grub boot loader does not support LUKS2 headers to unlock encrypted `/boot` partition so you need to specify `--type luks1` on encrypted device that GRUB need to access.
 {% endif %}
+
+### Create the LUKS1 container{% if step_containers.size > 1 %}s{% endif %}
 
 {% if password_containers.size > 0 %}
 Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
@@ -50,6 +52,7 @@ $ cryptsetup open{% if container.init_method == "keyfile" %} -d {{ container.key
 {% endif %}
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Encryption](https://en.wikipedia.org/wiki/Encryption)
 1. [Wikipedia - Dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)
