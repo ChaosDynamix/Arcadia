@@ -11,6 +11,7 @@ $ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
 ### References
+{: .text-delta .pt-4}
 
 1. [Wikipedia - Fstab](https://en.wikipedia.org/wiki/Fstab)
 1. [ArchWiki - Fstab](https://wiki.archlinux.org/index.php/Fstab)
@@ -27,6 +28,7 @@ $ arch-chroot /mnt
 ```
 
 ### References
+{: .text-delta .pt-4}
 
 1. [ArchWiki - Chroot](https://wiki.archlinux.org/index.php/Chroot)
 1. [ManPage - Arch-chroot](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/arch-install-scripts/arch-chroot.8.en)
