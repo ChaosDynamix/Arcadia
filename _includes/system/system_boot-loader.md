@@ -1,19 +1,16 @@
 ## Setup the Boot loader
 
-### Install GRUB on the device{% if scenario.has_raid %}s{% endif %}
-
 ### Install GRUB package
 
 #### UEFI
-
-Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
-
 ```
 $ pacman -S grub efibootmgr
 ```
 
-#### BIOS
+Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
+{: .fs-3}
 
+#### BIOS
 ```
 $ pacman -S grub
 ```
@@ -24,27 +21,22 @@ $ pacman -S grub
 Warning
 {: .label .label-red .mx-2}
 
-Before enabling TRIM on a device, make sure the device fully supports TRIM commands, or data loss can occur.
-{: .text-red-200}
-
-#### TRIM
 ##### /etc/default/grub
-```
-{{ scenario.grub.config -}}
-```
+{: .mt-2}
 
-#### NO TRIM
-##### /etc/default/grub
 ```
 {{ scenario.grub.config | replace: ":allow-discards", "" | replace: "rd.luks.options=discard ", "" -}}
 ```
+
+If you install Arch Linux on a Solid State Drive, make sure this device fully supports TRIM commands and add `:allow-discard` after the container name (busybox) or `rd.luks.options=discard` (systemd) in the command above.
+{: .fs-3}
 
 {% if bootable_containers.size > 1 %}
 **Note**: Replace `device_uuid` with the UUID of your device.
 {: .fs-3 }
 {% endif %}
 
-### Install Grub
+### Install GRUB on the device{% if scenario.has_raid %}s{% endif %}
 
 #### BIOS
 
