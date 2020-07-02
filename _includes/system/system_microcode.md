@@ -11,13 +11,3 @@ $ pacman -S amd-ucode
 ```
 $ pacman -S intel-ucode
 ```
-
----
-
-## Reboot the computer
-
-```
-$ exit
-$ umount -R /mnt
-$ reboot
-```
