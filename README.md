@@ -3,8 +3,8 @@
 	<p>Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS with LVM and EXT4.
 	</p>
 	<p>
-		<a href="https://github.com/ChaosDynamix/Arcadia">
-			<img src="https://img.shields.io/badge/-Guide is offline-red?style=for-the-badge" alt="Guide page link" />
+		<a href="https://chaosdynamix.github.io/Arcadia/">
+			<img src="https://img.shields.io/badge/-Show the guide-blue?style=for-the-badge" alt="Guide page link" />
 		</a>
 	</p>
 </div>
