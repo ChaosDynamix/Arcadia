@@ -2,6 +2,7 @@
 title     	: !!str Luks on logical volumes
 nav_order 	: !!int 4
 has_children	: !!bool true
+permalink	: !!str /luks-logical-volumes
 ---
 
 # {{ page.title }}
