@@ -1,8 +1,12 @@
-## Install a status bar
+## Install the status bar
+{: .d-inline-block .mt-0}
 
-#### POLYBAR
+POLYBAR
+{: .label .label-blue}
 
-### Install the Arch User Repository needed packages
+### Install the Arch User Repository needed dependencies
+{: .mt-2}
+
 ```
 $ pacman -S base-devel git
 ```
