@@ -31,7 +31,7 @@ exclude: !!seq
 defaults: !!seq
 
     - !!map         # GUIDE
-        scope         : !!map
-            path    : !!str "guide/"
-        values        : !!map
-            layout  : !!str default
+        scope   : !!map
+            path      : !!str "guide/"
+        values  : !!map
+            layout    : !!str default

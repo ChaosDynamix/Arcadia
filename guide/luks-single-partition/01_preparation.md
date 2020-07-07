@@ -2,6 +2,7 @@
 title     : !!str Preparation
 parent    : !!str Luks on single partition
 nav_order : !!int 1
+permalink : !!str /luks-single-partition/preparation
 ---
 
 # {{ page.title }}

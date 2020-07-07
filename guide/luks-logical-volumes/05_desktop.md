@@ -2,6 +2,7 @@
 title	  : !!str Desktop
 parent	  : !!str Luks on logical volumes
 nav_order : !!int 5
+permalink : !!str /luks-logical-volumes/desktop
 ---
 
 # {{ page.title }}

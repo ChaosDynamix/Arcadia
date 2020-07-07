@@ -2,6 +2,7 @@
 title     : !!str Configuration
 parent    : !!str Luks on single partition
 nav_order : !!int 4
+permalink : !!str /luks-single-partition/configuration
 ---
 
 # {{ page.title }}
