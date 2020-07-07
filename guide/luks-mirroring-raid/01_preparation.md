@@ -2,6 +2,7 @@
 title     : !!str Preparation
 parent    : !!str Luks on mirroring Raid
 nav_order : !!int 1
+permalink : !!str /luks-mirroring-raid/preparation
 ---
 
 # {{ page.title }}

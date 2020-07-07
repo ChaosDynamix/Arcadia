@@ -2,6 +2,7 @@
 title     : !!str Configuration
 parent    : !!str Luks on logical volumes
 nav_order : !!int 4
+permalink : !!str /luks-logical-volumes/configuration
 ---
 
 # {{ page.title }}

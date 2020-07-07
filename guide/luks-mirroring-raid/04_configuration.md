@@ -2,6 +2,7 @@
 title     : !!str Configuration
 parent    : !!str Luks on mirroring Raid
 nav_order : !!int 4
+permalink : !!str /luks-mirroring-raid/configuration
 ---
 
 # {{ page.title }}

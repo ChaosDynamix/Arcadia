@@ -2,6 +2,7 @@
 title     : !!str Preparation
 parent    : !!str Luks on logical volumes
 nav_order : !!int 1
+permalink : !!str /luks-logical-volumes/preparation
 ---
 
 # {{ page.title }}

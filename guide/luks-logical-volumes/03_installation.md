@@ -2,6 +2,7 @@
 title     : !!str Installation
 parent    : !!str Luks on logical volumes
 nav_order : !!int 3
+permalink : !!str /luks-logical-volumes/installation
 ---
 
 # {{ page.title }}

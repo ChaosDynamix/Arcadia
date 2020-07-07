@@ -2,6 +2,7 @@
 title	  : !!str Desktop
 parent	  : !!str Luks on mirroring Raid
 nav_order : !!int 5
+permalink : !!str /luks-mirroring-raid/desktop
 ---
 
 # {{ page.title }}

@@ -2,6 +2,7 @@
 title     : !!str Installation
 parent    : !!str Luks on mirroring Raid
 nav_order : !!int 3
+permalink : !!str /luks-mirroring-raid/installation
 ---
 
 # {{ page.title }}

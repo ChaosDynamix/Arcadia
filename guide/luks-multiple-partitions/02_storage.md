@@ -2,6 +2,7 @@
 title     : !!str Storage
 parent    : !!str Luks on multiple partitions
 nav_order : !!int 2
+permalink : !!str /luks-multiple-partitions/storage
 ---
 
 # {{ page.title }}

@@ -2,6 +2,7 @@
 title     : !!str Configuration
 parent    : !!str Luks on multiple partitions
 nav_order : !!int 4
+permalink : !!str /luks-multiple-partitions/configuration
 ---
 
 # {{ page.title }}

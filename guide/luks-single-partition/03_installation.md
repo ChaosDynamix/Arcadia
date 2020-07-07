@@ -2,6 +2,7 @@
 title     : !!str Installation
 parent    : !!str Luks on single partition
 nav_order : !!int 3
+permalink : !!str /luks-single-partition/installation
 ---
 
 # {{ page.title }}

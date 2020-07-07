@@ -2,6 +2,7 @@
 title	  : !!str Desktop
 parent	  : !!str Luks on single partition
 nav_order : !!int 5
+permalink : !!str /luks-single-partition/desktop
 ---
 
 # {{ page.title }}
