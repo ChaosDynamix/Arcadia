@@ -1,10 +1,12 @@
 ## Enable periodic TRIM
-{: .d-inline-block}
+{: .d-inline-block .mt-0}
 
 SOLID STATE DRIVE
 {: .label .label-blue}
 
 ### Check if your SSD has TRIM support
+{: .mt-2}
+
 ```
 $ lsblk --discard
 ```

@@ -21,6 +21,8 @@ nav_order : !!int 4
 ---
 {% include system/system_network.md %}
 ---
+{% include storage/storage_trim.md %}
+---
 {% include system/system_users.md %}
 ---
 {% include storage/storage_keyfiles.md %}

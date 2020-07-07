@@ -1,8 +1,12 @@
-## Install a display server
+## Install the display server
+{: .d-inline-block .mt-0}
 
-#### XORG
+XORG
+{: .label .label-blue}
 
 ### Install the packages
+{: .mt-2}
+
 ```
 $ pacman -S xorg-{server,xinit,xrandr}
 ```

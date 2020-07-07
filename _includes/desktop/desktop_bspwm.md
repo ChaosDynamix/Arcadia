@@ -1,14 +1,14 @@
 ## Install the packages
 
 ```
-$ pacman -S bspwm sxhkd rxvt-unicode
+$ pacman -S bspwm sxhkd xterm
 ```
 
-| Package      | Description       |
-| :----------- | :---------------- |
-| bspwm        | Window manager    |
-| sxhkd        | Hotkey daemon     |
-| rxvt-unicode | Terminal emulator |
+| Package | Description       |
+| :------ | :---------------- |
+| bspwm   | Window manager    |
+| sxhkd   | Hotkey daemon     |
+| xterm   | Terminal emulator |
 
 ---
 
@@ -47,6 +47,9 @@ If you have a non-qwerty keyboard or a non-standard layout configuration, you sh
 
 ##### ~/.config/bspwm/bspwmrc
 ```
+# Activate the num lock key
+numlockx &
+
 # Load the correct keyboard layout
 setxkbmap -model pc104 -layout fr -variant latin9 &
 
@@ -67,4 +70,4 @@ exec bspwm
 
 ---
 
-{% include gui/autostart.md %}
+{% include desktop/desktop_autostart.md %}

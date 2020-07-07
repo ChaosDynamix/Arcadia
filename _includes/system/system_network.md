@@ -1,24 +1,18 @@
-## Enable periodic TRIM
-{: .d-inline-block}
+## Setup the network
+{: .d-inline-block .mt-0}
 
-SOLID STATE DRIVE
+NETWORKMANAGER
 {: .label .label-blue}
 
-### Check if your SSD has TRIM support
-```
-$ lsblk --discard
+### Install the package
+{: .mt-2}
+
+```bash
+$ pacman -S networkmanager
 ```
 
-DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values.
+### Activate the service
 
-### Activate weekly fstrim service
-```
-$ systemctl enable fstrim.timer
-```
-
-### Edit the LVM configuration
-
-##### /etc/lvm/lvm.conf
-```
-issue_discards = 1
+```bash
+$ systemctl enable NetworkManager 
 ```
