@@ -2,6 +2,7 @@
 title     	: !!str Luks on multiple partitions
 nav_order 	: !!int 2
 has_children	: !!bool true
+permalink	: !!str /luks-multiple-partitions
 ---
 
 # {{ page.title }}

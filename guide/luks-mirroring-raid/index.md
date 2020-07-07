@@ -2,6 +2,7 @@
 title     	: !!str Luks on mirroring Raid
 nav_order 	: !!int 3
 has_children	: !!bool true
+permalink	: !!str /luks-mirroring-raid
 ---
 
 # {{ page.title }}

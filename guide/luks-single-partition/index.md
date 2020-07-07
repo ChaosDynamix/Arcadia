@@ -2,6 +2,7 @@
 title     	: !!str Luks on single partition
 nav_order 	: !!int 1
 has_children	: !!bool true
+permalink	: !!str /luks-single-partition
 ---
 
 # {{ page.title }}
