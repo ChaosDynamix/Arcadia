@@ -1,4 +1,4 @@
-## Autostart {{ page.parent }} at login
+## Autostart the desktop at login
 
 ### Edit the configuration of your shell
 
@@ -16,3 +16,4 @@ fi
 ```
 
 When connecting, if xorg does not launch, you may have connected too quickly before the system was ready. To be sure everything is fine, quit and reconnect, xorg should start as expected.
+{: .fs-3}

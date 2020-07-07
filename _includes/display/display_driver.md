@@ -1,8 +1,12 @@
-## Install a display driver
+## Install the display driver
+{: .d-inline-block .mt-0}
 
-#### NVIDIA
+NVIDIA
+{: .label .label-blue}
 
 ### Edit the pacman configuration
+{: .mt-2}
+
 ##### /etc/pacman.conf
 ```
 [multilib]

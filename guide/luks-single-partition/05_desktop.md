@@ -20,5 +20,5 @@ nav_order : !!int 5
 ---
 {% include sound/sound_server.md %}
 ---
-{% include desktop/desktop_xfce4.md %}
+{% include desktop/desktop_bspwm.md %}
 
