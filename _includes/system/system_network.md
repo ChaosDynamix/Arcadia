@@ -20,7 +20,7 @@ myhostname
 127.0.1.1    myhostname.localdomain    myhostname
 ```
 
-### Install the package
+### Install a network manager
 
 #### NETWORKMANAGER
 
@@ -28,7 +28,7 @@ myhostname
 $ pacman -S networkmanager
 ```
 
-### Activate the service
+### Activate the manager service
 
 #### NETWORKMANAGER
 
