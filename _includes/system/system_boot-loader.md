@@ -28,7 +28,7 @@ Warning
 {{ scenario.grub.config | replace: ":allow-discards", "" | replace: "rd.luks.options=discard ", "" -}}
 ```
 
-If you install Arch Linux on a Solid State Drive, make sure this device fully supports TRIM commands and add `:allow-discard` after the container name (busybox) or `rd.luks.options=discard` (systemd) in the command above.
+If you install Arch Linux on a Solid State Drive, make sure this device fully supports TRIM commands and add `:allow-discards` after the container name (busybox) or `rd.luks.options=discard` (systemd) in the command above.
 {: .fs-3}
 
 {% if bootable_containers.size > 1 %}
