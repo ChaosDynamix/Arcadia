@@ -21,7 +21,6 @@ myhostname
 ```
 
 ### Install the package
-{: .mt-2}
 
 #### NETWORKMANAGER
 
