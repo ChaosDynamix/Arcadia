@@ -12,16 +12,5 @@ assignees: ChaosDynamix
 ### Problem
 What is the problem that need to be fixed.
 
-### Solution
-What is the better solution that can fix this problem. 
-
-- [ ] todo
-- [ ] todo
-- [ ] todo
-
-### Alternate solutions (optional)
-- solution
-- solution
-
-### Branch (optional)
+### Branch
 The name of the branch used for this issue.
