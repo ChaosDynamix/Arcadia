@@ -9,7 +9,7 @@ assignees: ChaosDynamix
 
 ## Improvement
 
-### Feature problem
+### Problem
 What is the feature that should be improved.
 
 ### Branch
