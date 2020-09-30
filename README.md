@@ -1,4 +1,4 @@
-<div align="center" height="200px">
+<div align="center">
 	<h1>Arcadia</h1>
 	<p>Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS with LVM and EXT4.
 	</p>
@@ -7,6 +7,7 @@
 			<img src="https://img.shields.io/badge/-Show the website-blue?style=for-the-badge" alt="Website page link" />
 		</a>
 	</p>
+	<p>---</p>
 </div>
 
 <div align="center">
