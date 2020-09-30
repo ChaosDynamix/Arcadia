@@ -1,4 +1,4 @@
-<div align="center" style="margin-bottom: 32px;">
+<div align="center" height="200px">
 	<h1>Arcadia</h1>
 	<p>Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS with LVM and EXT4.
 	</p>
@@ -9,7 +9,7 @@
 	</p>
 </div>
 
-<div align="center" style="margin-bottom: 24px;">
+<div align="center">
 	<h2>This project is in early stage</h2>
 	<p>Please do not  follow the guide for the moment until this section disappear. The guide will not work or will be incomplete. Use it at your own risk.
 	</p>
