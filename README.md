@@ -9,11 +9,15 @@
 	</p>
 </div>
 
+---
+
 <div align="center">
 	<h2>This project is in early stage</h2>
 	<p>Please do not  follow the guide for the moment until this section disappear. The guide will not work or will be incomplete. Use it at your own risk.
 	</p>
 </div>
+
+---
 
 <div align="center">
 	<h2>How to run the project</h2>
