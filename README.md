@@ -4,7 +4,7 @@
 	</p>
 	<p>
 		<a href="https://chaosdynamix.github.io/Arcadia/">
-			<img src="https://img.shields.io/badge/-Show the guide-blue?style=for-the-badge" alt="Guide page link" />
+			<img src="https://img.shields.io/badge/-Show the website-blue?style=for-the-badge" alt="Website page link" />
 		</a>
 	</p>
 </div>
@@ -15,26 +15,13 @@
 	</p>
 </div>
 
----
-
-### Run the project
-
-1. Install the dependencies : `docker` and `make`.
-1. Clone the repository in the folder of your choice with : `git clone https://github.com/ChaosDynamix/Arcadia.git`.
-1. Move to the project directory : `cd Arcadia`.
-1. Create the docker image : `make image`.
-1. Run the temporary docker container : `make container`.
-1. Open your browser at the address : `http://0.0.0.0:4000/Arcadia`.
-
-#### Alternative
-
-You can also run the project **without** docker :
-
-1. Install the dependencies : `ruby`, `rubygems`, `gcc` and `make`.
-1. Install bundler : `gem install bundler`.
-1. Clone the repository in the folder of your choice with : `git clone https://github.com/ChaosDynamix/Arcadia.git`.
-1. Move to the project directory : `cd Arcadia`.
-1. Install the gems : `bundle install`
-1. Launch jekyll : `bundle exec jekyll serve`.
-1. Open your browser at the address : `http://0.0.0.0:4000/Arcadia`.
-
+<div align="center">
+	<h2>How to run the project</h2>
+	<p>Arcadia is a Jekyll project running with or without docker. A guide is available in wiki section of this repository. 
+	</p>
+	<p>
+		<a href="https://github.com/ChaosDynamix/Arcadia/wiki">
+			<img src="https://img.shields.io/badge/-Show the guide-blue?style=for-the-badge" alt="Guide page link" />
+		</a>
+	</p>
+</div>
