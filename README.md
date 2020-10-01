@@ -21,7 +21,7 @@
 	<p>Arcadia is a Jekyll project running with or without docker. A guide is available in wiki section of this repository. 
 	</p>
 	<p>
-		<a href="https://github.com/ChaosDynamix/Arcadia/wiki">
+		<a href="https://github.com/ChaosDynamix/Arcadia/wiki/How-to-run-the-project">
 			<img src="https://img.shields.io/badge/-Show the guide-blue?style=for-the-badge" alt="Guide page link" />
 		</a>
 	</p>
