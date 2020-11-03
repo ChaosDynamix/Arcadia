@@ -1,16 +1,16 @@
 ---
-name: Feature
-about: Suggest an idea for the project
+name: Update
+about: Suggest an update for the project
 title: ''
 labels: ''
 assignees: ChaosDynamix
 
 ---
 
-## Feature
+## Update
 
 ### Problem
-What is the problem that need to be fixed.
+What is the feature that should be improved.
 
 ### Branch
 The issue will be solved in the `<branch-name>` branch based on `master`.

@@ -1,8 +1,8 @@
 ---
 name: Bug
-about: Bug related issue
+about: Report a bug in the project
 title: ''
-labels: Bug
+labels: ''
 assignees: ChaosDynamix
 
 ---
@@ -27,4 +27,4 @@ A clear and concise description of what you expected to happen.
  - Version: <version>
 
 ### Branch
-The name of the branch used for this issue.
+The issue will be solved in the `<branch-name>` branch based on `master`.
