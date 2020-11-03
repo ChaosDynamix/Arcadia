@@ -18,7 +18,7 @@
 
 <div align="center">
 	<h2>How to run the project</h2>
-	<p>Arcadia is a Jekyll/Nodejs project running with or without docker. A guide is available in wiki section of this repository. 
+	<p>Arcadia use Jekyll & Nodejs to run the project. A guide for docker/docker-compose is available in the wiki section of this repository. You can also run the project without docker by installing jekyll and nodejs on your system. 
 	</p>
 	<p>
 		<a href="https://github.com/ChaosDynamix/Arcadia/wiki/How-to-run-the-project">
