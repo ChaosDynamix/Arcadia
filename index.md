@@ -4,7 +4,7 @@ layout          : !!str default
 nav_exclude     : !!bool true
 ---
 
-# Personal Linux distributions installation guides
+# Personal guides for installing several Linux distributions such as Arch Linux, Gentoo and NixOS
 {: .fs-9}
 
 ---
