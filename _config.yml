@@ -5,33 +5,36 @@ baseurl         : !!str "/Arcadia"
 github_username : !!str ChaosDynamix
 
 # THEME SETTINGS
-remote_theme    : !!str pmarsceill/just-the-docs
-search_enabled  : !!bool false
-aux_links       : !!map
-    "Github": !!seq
-        - "//github.com/ChaosDynamix/Arcadia"
+remote_theme   : !!str pmarsceill/just-the-docs
+search_enabled : !!bool false
+aux_links      : !!map
+  "Github": !!seq
+    - "//github.com/ChaosDynamix/Arcadia"
 
 # MARKDOWN SETTINGS
-markdown  : !!str kramdown
-kramdown  : !!map
-    toc_levels              : "2"
-    syntax_highlighter_opts : !!map
-        default_lang  : !!str bash
+markdown : !!str kramdown
+kramdown : !!map
+  toc_levels              : "2"
+  syntax_highlighter_opts : !!map
+    default_lang : !!str bash
 
 # EXCLUDE
-exclude: !!seq
-    - Gemfile
-    - Gemfile.lock
-    - node_modules
-    - vendor
-    - Makefile
-    - README.md
+exclude : !!seq
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - Dockerfile
+  - docker-compose.yml
+  - package.json
+  - package-lock.json
+  - node_modules
+  - vendor
 
 # DEFAULTS
-defaults: !!seq
+defaults : !!seq
 
-    - !!map         # GUIDE
-        scope   : !!map
-            path      : !!str "guide/"
-        values  : !!map
-            layout    : !!str default
+  - !!map
+    scope  : !!map
+      path   : !!str "guide/"
+    values : !!map
+      layout : !!str default
