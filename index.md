@@ -4,10 +4,22 @@ layout          : !!str default
 nav_exclude     : !!bool true
 ---
 
-Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS with LVM and EXT4.
-{: .fs-8}
+# Personal Linux distributions installation guides
+{: .fs-9}
 
 ---
 
-## Early stage
-Please do not follow the guide for the moment until this section disappear. The guide will not work or will be incomplete. Use it at your own risk.
+## The goal
+
+The goal of this project is to share and backup my installation guides for several Linux distributions. This project might not be helpfull for you.
+
+## The distributions
+
+The following distributions are covered by this project.
+
+- Arch Linux
+- Gentoo (TODO)
+- NixOS (TODO)
+
+## Caution
+This project should be used at your own risk, always check the official documentation and the provided sources when using these guides.
