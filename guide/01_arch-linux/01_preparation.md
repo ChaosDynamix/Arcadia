@@ -1,0 +1,274 @@
+---
+title     : !!str Preparation
+parent    : !!str Arch Linux
+nav_order : !!int 1
+permalink : !!str /arch-linux/preparation
+---
+
+# {{ page.title }}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+1. TOC
+{:toc}
+
+---
+
+## Download and verify the Arch Linux ISO image
+
+| Required files                            | Description |
+| :---------------------------------------- | :---------- |
+| archlinux-year.month.day-x86_64.iso       | ISO image   |
+| archlinux-year.month.day-x86_64.iso.txt   | Checksum    |
+| archlinux-year.month.day-x86_64.iso.sig   | Signature   |
+
+### Identify the best mirrors for your location
+1. Open your browser and go to the [Arch Linux pacman mirrorlist generator](https://www.archlinux.org/mirrorlist/)
+1. Filter the mirrors according to **your country** (or a country close to yours) and **HTTPS** protocol
+1. Generate the list
+
+### Download the ISO image
+1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
+1. Under the HTTP Direct Downloads section, select a **HTTPS** mirror site of your generated list
+1. Download the Arch Linux ISO image `archlinux-year.day.month-x86_64.iso`
+
+### Download the checksum and signature
+1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
+1. Under the HTTP Direct Downloads section, copy the **SHA-1** checksum in your clipboard
+1. Under the HTTP Direct Downloads section, download the **PGP** signature.
+
+### Verify the integrity of the ISO image
+
+The creation of the checksum file must be made in the same folder containing the ISO image and the Signature file.
+
+```
+echo "<PAST_SHA1_CHECKSUM_HERE> archlinux-year.month.day-x86_64.iso" > archlinux-year.month.day-x86_64.iso.txt
+sha1sum -c archlinux-year.month.day-x86_64.iso.txt
+```
+
+**Note**: Replace `<PAST_SHA1_CHECKSUM_HERE>` with the SHA-1 checksum copied in the Arch Linux download page.
+{: .fs-3}
+
+### Verify the authenticity of the ISO image
+```
+gpg --keyserver-options auto-key-retrieve --keyserver pool.sks-keyservers.net --verify archlinux-year.month.day-x86_64.iso.sig
+```
+
+**Note**: Arch Linux users can run the following command instead : `pacman-key -v archlinux-year.month.day-x86_64.iso.sig`
+{: .fs-3}
+
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+1. [Wikipedia - Cheksum](https://en.wikipedia.org/wiki/Checksum)
+1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
+1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
+1. [ArchWiki - GnuPG](https://wiki.archlinux.org/index.php/GnuPG#Use_a_keyserver)
+1. [ManPage - Md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
+1. [ManPage - Sha1sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sha1sum.1.en)
+1. [ManPage - Gpg](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/gnupg/gpg.1.en)
+1. [SKS keyservers](https://sks-keyservers.net/)
+{: .fs-3}
+
+---
+
+## Flash the USB flash device
+
+### Identify the correct USB flash device
+```
+fdisk -l
+```
+
+### Copy the Arch Linux ISO image on the USB flash device
+```
+cp path/to/archlinux-year.month.day-x86_64.iso /dev/sdx
+sync
+```
+
+**Note**: Replace `path/to/archlinux-year.month.day-x86_64.iso` and `/dev/sdx` accordingly.
+{: .fs-3}
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - USB flash drive](https://en.wikipedia.org/wiki/USB_flash_drive)
+1. [ArchWiki - USB flash installation media](https://wiki.archlinux.org/index.php/USB_flash_installation_media)
+1. [ArchWiki - Core utilities](https://wiki.archlinux.org/index.php/Core_utilities)
+1. [ManPage - Cp](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/cp.1.en)
+1. [ManPage - Sync](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/sync.1.en)
+{: .fs-3}
+
+---
+
+## Boot the USB flash device
+
+In order to boot on the USB device, you need to modify the firmware configuration with the firmware setup utility.
+
+1. Turn on your computer
+1. When asked, press the key to enter your firmware setup utility
+1. Change the boot order and put your USB device in the first position
+1. Save changes and reboot
+1. Select `boot Arch Linux (X86_64)` or `Arch Linux archiso X86_64 UEFI CD`
+
+**Note**: If asked during the boot (by pressing a key), you can temporarily select and boot on a device. Don't follow this procedure if you are in this scenario.
+{: .fs-3}
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
+1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
+1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+{: .fs-3}
+
+---
+
+## Verify the keyboard layout
+
+The default console keymap is US. **Skip this step if your keyboard layout match the default one**.
+
+![Representation of the US default keyboard layout for Arch Linux](https://upload.wikimedia.org/wikipedia/commons/5/51/KB_United_States-NoAltGr.svg)
+
+### Load the correct keyboard layout
+```
+loadkeys fr-latin9
+```
+
+**Note**: The command above load the French keyboard layout. You can list all the available keyboard layouts with the command `ls /usr/share/kbd/keymaps/**/*.map.gz | less`
+{: .fs-3}
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
+1. [ArchWiki - Keyboard configuration](https://wiki.archlinux.org/index.php/Linux_console/Keyboard_configuration)
+1. [ManPage - Ls](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/ls.1.en)
+1. [ManPage - Less](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/less/less.1.en)
+1. [ManPage - Grep](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/grep/grep.1.en)
+1. [ManPage - Loadkeys](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/kbd/loadkeys.1.en)
+{: .fs-3}
+
+---
+
+## Verify the boot mode of the live environment
+
+### List the EFI variables
+```
+ls /sys/firmware/efi/efivars
+```
+
+| Firmware / mode    | Result            |
+| :----------------- | :---------------- |
+| UEFI               | List of variables |
+| UEFI with CSM mode | No directory      |
+| BIOS               | No directory      |
+
+This guide focus on the UEFI mode.
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - Firmware](https://en.wikipedia.org/wiki/Firmware)
+1. [Wikipedia - BIOS](https://en.wikipedia.org/wiki/BIOS)
+1. [Wikipedia - UEFI](https://en.wikipedia.org/wiki/Unified_Extensible_Firmware_Interface)
+1. [ArchWiki - UEFI](https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface)
+1. [ManPage - Ls](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/ls.1.en)
+{: .fs-3}
+
+---
+
+## Setup the live environment network
+
+### Ensure your network interface is listed and enabled
+```
+ip link
+```
+
+**Note**: The UP in `<BROADCAST,MULTICAST,UP,LOWER_UP>` is what indicates the interface is up, not the later `state DOWN`.
+{: .fs-3}
+
+### Check connectivity
+```
+ping -c 3 archlinux.org
+```
+
+### Update the system clock
+```
+timedatectl set-ntp true
+```
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - Computer network](https://en.wikipedia.org/wiki/Computer_network)
+1. [ArchWiki - Network configuration](https://wiki.archlinux.org/index.php/Network_configuration)
+1. [ArchWiki - System time](https://wiki.archlinux.org/index.php/System_time)
+1. [ManPage - Ip](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/man-pages/ip.7.en)
+1. [ManPage - Ping](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/iputils/ping.8.en)
+1. [ManPage - Timedatectl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/timedatectl.1.en)
+{: .fs-3}
+
+---
+
+## Update the Arch Linux keyring
+
+The arch linux keyring holds all the signatures related to the packages. During the installation, a package is verified against this keyring to ensure that the downloaded file is properly signed. This keyring need to be updated in order to delete revoked keys and add new trusted keys.
+
+### Update the keys
+
+```
+pacman -Sy archlinux-keyring
+```
+
+**Note**: If you are not in a live environment context, avoid refreshing the package list without upgrading the system. In practice, do not run `pacman -Sy package_name` instead of `pacman -Syu package_name`, as this could lead to dependency issues.
+{: .fs-3}
+
+### References
+{: .text-delta .pt-4}
+
+1. [Wikipedia - Keyring](https://en.wikipedia.org/wiki/Keyring_(cryptography))
+1. [ArchWiki - Keyring package](https://wiki.archlinux.org/index.php/DeveloperWiki:Keyring_Package)
+1. [ArchWiki - Pacman](https://wiki.archlinux.org/index.php/Pacman)
+{: .fs-3}
+
+---
+
+## Generate the mirrorlist
+
+### Install the reflector package
+
+Reflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file `/etc/pacman.d/mirrorlist`.
+
+```
+pacman -S reflector
+```
+
+### Launch the reflector script with your arguments
+
+```
+reflector -c FR -a 15 -p https --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+**Note**: Check the man page of the reflector package for more informations about the arguments.
+{: .fs-3}
+
+### Check the result of the script
+```
+cat /etc/pacman.d/mirrorlist
+```
+
+**Note**: If the script worked as intended, the header of the file should be : **Arch Linux mirrorlist generated by Reflector**.
+{: .fs-3}
+
+### References
+{: .text-delta .pt-4}
+
+1. [ArchWiki - Mirrors](https://wiki.archlinux.org/index.php/Mirrors)
+1. [ArchWiki - Reflector](https://wiki.archlinux.org/index.php/Reflector)
+1. [ArchWiki - Pacman](https://wiki.archlinux.org/index.php/Pacman)
+1. [ManPage - Reflector](https://jlk.fjfi.cvut.cz/arch/manpages/man/community/reflector/reflector.1.en) 
+1. [ManPage - Cat](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/cat.1.en)
+{: .fs-3}
