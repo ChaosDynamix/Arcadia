@@ -13,13 +13,32 @@ nav_exclude     : !!bool true
 
 The goal of this project is to share and backup my installation guides for several Linux distributions. This project might not be helpfull for you.
 
+---
+
+## Requirements
+
+- Nvidia graphical card
+- UEFI firmware without CSM mode
+
+---
+
 ## The distributions
 
 The following distributions are covered by this project.
 
 - Arch Linux
 - Gentoo (TODO)
+- Debian (TODO)
 - NixOS (TODO)
+
+---
+
+## Specificities
+
+- Full disk encryption
+- Rootless Xorg
+
+---
 
 ## Caution
 This project should be used at your own risk, always check the official documentation and the provided sources when using these guides.
