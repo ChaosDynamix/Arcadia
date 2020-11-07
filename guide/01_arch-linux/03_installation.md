@@ -31,7 +31,7 @@ Pacstrap is designed to create a new system installation from scratch. The speci
 pacstrap /mnt base linux-lts linux-firmware opendoas neovim man-db man-pages
 ```
 
-**Note**: The packages above are my preference choices only.
+**Note**: `base` package is mandatory. `linux-firmware` package is recommended. The other packages are based on my personal choices.
 {: .fs-3}
 
 ### References
@@ -338,16 +338,16 @@ chmod 600 /etc/luks-keys/cryptroot.keyfile
 chmod 600 /boot/initramfs-linux-lts*
 ```
 
-**Note**: If you selected a different kernel, replace `/boot/initramfs-linux-lts*` with yours (e.g. `/boot/initramfs-linux*`)
-{: .fs-3}
+**Caution**: If you are running a different kernel, replace `/boot/initramfs-linux-lts*` in the above command. 
+{: .fs-3 .text-red-200}
 
 ### Add the keyfile in the container
 ```
 cryptsetup luksAddKey /dev/nvme0n1p2 /etc/luks-keys/cryptroot.keyfile
 ```
 
-**Note**: If you dont use a NVMe drive, replace `nvme0n1p2` with your drive name and partition number (e.g. `sda2`)
-{: .fs-3}
+**Caution**: Replace `/dev/nvme0n1p2` if you dont have a NVMe device or if the namespace is not the same.
+{: .fs-3 .text-red-200}
 
 ### Add the keyfile in `/etc/crypttab.initramfs`
 ```
@@ -433,8 +433,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="rd.luks.options=discard loglevel=3 quiet"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
-**CAUTION**:  If your drive is a NOT a Solid State Drive, remove `rd.luks.options=discard` in the command above. 
-{: .fs-3}
+**Caution**:  If your storage device is a NOT a Solid State Drive, remove `rd.luks.options=discard` in the command above. 
+{: .fs-3 .text-red-200}
 
 ### Install Grub
 ```
