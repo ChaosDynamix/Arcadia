@@ -17,6 +17,9 @@ permalink : !!str /arch-linux/preparation
 
 ## Download and verify the Arch Linux ISO image
 
+Replace every occurence of `year.month.day` in the filenames with the current Arch Linux current release name found in the official download page.
+{: .text-red-200}
+
 | Required files                            | Description |
 | :---------------------------------------- | :---------- |
 | archlinux-year.month.day-x86_64.iso       | ISO image   |
@@ -43,16 +46,18 @@ permalink : !!str /arch-linux/preparation
 The creation of the checksum file must be made in the same folder containing the ISO image and the Signature file.
 
 ```
-echo "<PAST_SHA1_CHECKSUM_HERE> archlinux-year.month.day-x86_64.iso" > archlinux-year.month.day-x86_64.iso.txt
+echo "<CHECKSUM> archlinux-year.month.day-x86_64.iso" > archlinux-year.month.day-x86_64.iso.txt
 sha1sum -c archlinux-year.month.day-x86_64.iso.txt
 ```
 
-**Note**: Replace `<PAST_SHA1_CHECKSUM_HERE>` with the SHA-1 checksum copied in the Arch Linux download page.
+**Note**: Replace `<CHECKSUM>` with the SHA-1 checksum copied in the Arch Linux download page.
 {: .fs-3}
 
 ### Verify the authenticity of the ISO image
 ```
-gpg --keyserver-options auto-key-retrieve --keyserver pool.sks-keyservers.net --verify archlinux-year.month.day-x86_64.iso.sig
+gpg --keyserver-options auto-key-retrieve \
+    --keyserver pool.sks-keyservers.net \
+    --verify archlinux-year.month.day-x86_64.iso.sig
 ```
 
 **Note**: Arch Linux users can run the following command instead : `pacman-key -v archlinux-year.month.day-x86_64.iso.sig`
@@ -113,7 +118,7 @@ In order to boot on the USB device, you need to modify the firmware configuratio
 1. Save changes and reboot
 1. Select `boot Arch Linux (X86_64)` or `Arch Linux archiso X86_64 UEFI CD`
 
-**Note**: If asked during the boot (by pressing a key), you can temporarily select and boot on a device. Don't follow this procedure if you are in this scenario.
+**Note**: If asked during the boot sequence (by pressing a key), you can temporarily select and boot on a device. Don't follow this procedure if you are in this scenario.
 {: .fs-3}
 
 ### References
@@ -137,7 +142,7 @@ The default console keymap is US. **Skip this step if your keyboard layout match
 loadkeys fr-latin9
 ```
 
-**Note**: The command above load the French keyboard layout. You can list all the available keyboard layouts with the command `ls /usr/share/kbd/keymaps/**/*.map.gz | less`
+**Note**: The command above load the French keyboard layout. If you need an other keyboard layout, list all the available keyboard layouts with the command `ls /usr/share/kbd/keymaps/**/*.map.gz | less` and replace `fr-latin9` in the above command.
 {: .fs-3}
 
 ### References
@@ -155,7 +160,8 @@ loadkeys fr-latin9
 
 ## Verify the boot mode of the live environment
 
-### List the EFI variables
+UEFI firmware is required to follow this guide. This guide don't cover BIOS and UEFI-CSM modes. Make sure that EFI variables are available with the following command.
+
 ```
 ls /sys/firmware/efi/efivars
 ```
@@ -165,8 +171,6 @@ ls /sys/firmware/efi/efivars
 | UEFI               | List of variables |
 | UEFI with CSM mode | No directory      |
 | BIOS               | No directory      |
-
-This guide focus on the UEFI mode.
 
 ### References
 {: .text-delta .pt-4}
@@ -223,7 +227,7 @@ The arch linux keyring holds all the signatures related to the packages. During 
 pacman -Sy archlinux-keyring
 ```
 
-**Note**: If you are not in a live environment context, avoid refreshing the package list without upgrading the system. In practice, do not run `pacman -Sy package_name` instead of `pacman -Syu package_name`, as this could lead to dependency issues.
+**Note**: Running `pacman -Sy` instead of `pacman -Syu` is not recommended as this could lead to dependency issues. However we are not able to update the live environment due to it's immutable state.
 {: .fs-3}
 
 ### References
@@ -249,7 +253,11 @@ pacman -S reflector
 ### Launch the reflector script with your arguments
 
 ```
-reflector -c FR -a 15 -p https --sort rate --save /etc/pacman.d/mirrorlist
+reflector --country France \
+          --age 15 \
+          --protocol https \
+          --sort rate \
+          --save /etc/pacman.d/mirrorlist
 ```
 
 **Note**: Check the man page of the reflector package for more informations about the arguments.
