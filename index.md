@@ -4,41 +4,27 @@ layout          : !!str default
 nav_exclude     : !!bool true
 ---
 
-# Personal guides for installing several Linux distributions such as Arch Linux, Gentoo and NixOS
+# Personal guides for installing specific Linux distributions with UEFI mode and encryption.
 {: .fs-9}
-
----
-
-## The goal
-
-The goal of this project is to share and backup my installation guides for several Linux distributions. This project might not be helpfull for you.
-
----
-
-## Requirements
-
-- Nvidia graphical card
-- UEFI firmware without CSM mode
-
----
-
-## The distributions
-
-The following distributions are covered by this project.
-
-- Arch Linux
-- Gentoo (TODO)
-- Debian (TODO)
-- NixOS (TODO)
-
----
-
-## Specificities
-
-- Full disk encryption
-- Rootless Xorg
 
 ---
 
 ## Caution
 This project should be used at your own risk, always check the official documentation and the provided sources when using these guides.
+
+---
+
+## Hardware requirements
+
+### UEFI system
+
+The project guides are intended for the UEFI without CSM mode. Guid partition table will be used for the storage device preparation.
+
+### NVMe storage device
+
+The project guides are intended for NVMe storage devices. If you dont have a NVMe drive, dont enable TRIM feature and replace all the occurence of the NVMe filenames (e.g. `/dev/nvme0n1p1`).
+
+### USB storage device
+
+USB storage devices are used as the live environment system for installing the linux distribution.
+
