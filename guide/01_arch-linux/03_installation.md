@@ -226,7 +226,7 @@ echo KEYMAP=fr-latin9 > /etc/vconsole.conf
 
 ---
 
-## Setup the network
+## Setup the network informations
 
 ### Set the hostname in `/etc/hostname`
 
@@ -242,13 +242,30 @@ myhostname
 127.0.1.1    myhostname.localdomain    myhostname
 ```
 
-### Install and activate the network manager
+---
 
-This guide use a network manager called `networkmanager`, you can use a different one if you want to. Check [this page](https://wiki.archlinux.org/index.php/Network_configuration#Network_managers) for more infos.
+## Setup the network manager
 
+This guide use a network manager called `systemd-networkd`, you can use a different one if you want to. Check [the network managers ArchWiki page](https://wiki.archlinux.org/index.php/Network_configuration#Network_managers) for more informations.
+
+### Enable the network manager
 ```
-pacman -S networkmanager
-systemctl enable NetworkManager
+systemctl enable systemd-networkd.service
+systemctl enable systemd-resolved.service
+```
+
+### List the network device
+```
+networkctl list
+```
+
+### Create the configuration in `/etc/systemd/20-wired.network`
+```
+[Match]
+Name=eno1
+
+[Network]
+DHCP=yes
 ```
 
 #### References
