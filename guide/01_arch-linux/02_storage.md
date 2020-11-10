@@ -48,7 +48,7 @@ fdisk -l
 
 | Partition node | Partition type       | Partition size          |
 | :------------- | :------------------- | :---------------------- |
-| /dev/nvme0n1p1 | EFI system partition | 260 MiB                 |
+| /dev/nvme0n1p1 | EFI system partition | 550 MiB                 |
 | /dev/nvme0n1p2 | Linux LUKS partition | All the space remaining |
 
 ### Launch the Sgdisk script
@@ -57,7 +57,7 @@ Sgdisk is the command-line version of gdisk program. GPT fdisk (aka gdisk) is a 
 
 ```
 sgdisk --clear \
-       --new 1:0:+260M \
+       --new 1:0:+550M \
        --new 2:0:0 \
        --typecode 1:ef00 \
        --typecode 2:8309 \
@@ -81,13 +81,11 @@ sgdisk --clear \
 
 ## Encrypt the root partition
 
-Grub boot loader does not support LUKS2 headers to unlock encrypted `/boot` partition so you need to specify `--type luks1` on the encrypted device that GRUB need to access.
-
 Replace every occurence of `/dev/nvme0n1p2` with your device name.
 
-### Create the LUKS1 container
+### Create the LUKS2 container
 ```
-cryptsetup --type luks1 luksFormat /dev/nvme0n1p2
+cryptsetup luksFormat /dev/nvme0n1p2
 ```
 
 **Caution**: Replace `/dev/nvme0n1p2` if you dont have a NVMe device or if the namespace is not the same.
@@ -96,7 +94,7 @@ cryptsetup --type luks1 luksFormat /dev/nvme0n1p2
 **Note**: Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
 {: .fs-3}
 
-### Open the LUKS1 container
+### Open the LUKS2 container
 ```
 cryptsetup open /dev/nvme0n1p2 cryptroot
 ```
@@ -121,12 +119,12 @@ cryptsetup open /dev/nvme0n1p2 cryptroot
 
 | Partition node | Filesystem | Label |
 | :------------- | :--------- | :---- |
-| /dev/nvme0n1p1 | Fat32      | EFI   |
+| /dev/nvme0n1p1 | Fat32      | BOOT  |
 | /dev/nvme0n1p2 | Ext4       | ROOT  |
 
 ```
 mkfs.ext4 -L ROOT /dev/mapper/cryptroot
-mkfs.fat -F32 -n EFI /dev/nvme0n1p1
+mkfs.fat -F32 -n BOOT /dev/nvme0n1p1
 ```
 
 **Caution**: Replace `/dev/nvme0n1p1` if you dont have a NVMe device or if the namespace is not the same.
@@ -148,13 +146,13 @@ mkfs.fat -F32 -n EFI /dev/nvme0n1p1
 
 | Partition node | Mountpoint | Create directory ? |
 | :------------- | :--------- | :----------------- |
-| /dev/nvme0n1p1 | /mnt/efi   | yes                |
+| /dev/nvme0n1p1 | /mnt/boot  | yes                |
 | /dev/nvme0n1p2 | /mnt       | no                 |
 
 ```
 mount /dev/mapper/cryptroot /mnt
-mkdir /mnt/efi
-mount /dev/nvme0n1p1 /mnt/efi
+mkdir /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
 ```
 
 **Caution**: Replace `/dev/nvme0n1p1` if you dont have a NVMe device or if the namespace is not the same.
