@@ -285,8 +285,10 @@ DHCP=yes
 SOLID STATE DRIVE
 {: .label .label-blue}
 
+A trim command (known as TRIM in the ATA command set, and UNMAP in the SCSI command set) allows an operating system to inform a solid-state drive (SSD) which blocks of data are no longer considered in use and can be wiped internally.
+{: .mt-0}
+
 ### Check if your Solid State Drive has TRIM support
-{: .mt-2}
 
 DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values.
 
@@ -337,61 +339,24 @@ passwd username
 
 ---
 
-## Setup the keyfile
-
-### Create the keys directory
-```
-mkdir -m 700 /etc/luks-keys
-```
-
-### Generate the key
-```
-dd bs=512 count=4 if=/dev/random of=/etc/luks-keys/cryptroot.keyfile iflag=fullblock
-```
-
-### Change the permissions
-```
-chmod 600 /etc/luks-keys/cryptroot.keyfile
-chmod 600 /boot/initramfs-linux-lts*
-```
-
-**Caution**: If you are running a different kernel, replace `/boot/initramfs-linux-lts*` in the above command. 
-{: .fs-3 .text-red-200}
-
-### Add the keyfile in the container
-```
-cryptsetup luksAddKey /dev/nvme0n1p2 /etc/luks-keys/cryptroot.keyfile
-```
-
-**Caution**: Replace `/dev/nvme0n1p2` if you dont have a NVMe device or if the namespace is not the same.
-{: .fs-3 .text-red-200}
-
-### Add the keyfile in `/etc/crypttab.initramfs`
-```
-cryptroot    UUID=device_UUID    /etc/luks-keys/cryptroot.keyfile
-```
-
-**Note**: Replace `device_UUID` with the UUID of your device. UUID can be found with `lsblk -f`
-{: .fs-3 }
-
-#### References
-{: .text-delta .pt-4}
-
-1. [ArchWiki - Dm-crypt / Device encryption](https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption)
-1. [ArchWiki - Dm-crypt / System configuration](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#crypttab)
-1. [ManPage - Mkdir](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/mkdir.1.en)
-1. [ManPage - Dd](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/dd.1.en)
-1. [ManPage - Chmod](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/chmod.1.en)
-1. [ManPage - cryptsetup](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/cryptsetup/cryptsetup.8.en)
-{: .fs-3}
-
----
-
 ## Setup the initial ramdisk images
+
+The initial ramdisk is in essence a very small environment (early userspace) which loads various kernel modules and sets up necessary things before handing over control to init.
+
+This makes it possible to have, for example, encrypted root file systems and root file systems on a software RAID array. mkinitcpio allows for easy extension with custom hooks, has autodetection at runtime, and many other features.
+
+### Copy the UUID of the root partition in `/etc/crypttab.initramfs`
+```
+blkid /dev/nvme0n1p2 > /etc/crypttab.initramfs
+```
+
+### Edit the configuration in `/etc/crypttab.initramfs`
+```
+cryptroot       UUID=device_UUID
+```
 
 ### Edit the configuration in `/etc/mkinitcpio.conf`
 ```
-FILES=(/etc/luks-keys/cryptroot.keyfile)
 HOOKS=(base systemd autodetect modconf block sd-vconsole sd-encrypt filesystems keyboard fsck)
 ```
 
@@ -404,7 +369,9 @@ mkinitcpio -p linux-lts
 {: .text-delta .pt-4}
 
 1. [ArchWiki - Mkinitcpio](https://wiki.archlinux.org/index.php/Mkinitcpio)
+1. [ArchWiki - Dm-crypt / System configuration](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#Using_sd-encrypt_hook)
 1. [ManPage - Mkinitcpio](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/mkinitcpio/mkinitcpio.8.en)
+1. [ManPage - Blkid](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/blkid.8.en)
 {: .fs-3}
 
 ---
@@ -432,41 +399,44 @@ pacman -S intel-ucode
 
 ---
 
-## Setup the boot loader
+## Setup the Systemd boot manager
 
-This guide only cover the **GRUB** boot loader and the **UEFI** mode.
+systemd-boot, previously called gummiboot, is a simple UEFI boot manager which executes configured EFI images. The default entry is selected by a configured pattern (glob) or an on-screen menu to be navigated via arrow-keys. It is included with systemd, which is installed on an Arch system by default.
 
-### Install Grub package
+### Install the EFI boot manager
 ```
-pacman -S grub efibootmgr
-```
-
-**Note**: Efibootmgr is a userspace application used to modify the UEFI Boot Manager. This application can create and destroy boot entries, change the boot order, change the next running boot option, and more.
-{: .fs-3}
-
-### Edit the configuration in `/etc/default/grub`
-```
-GRUB_CMDLINE_LINUX_DEFAULT="rd.luks.options=discard loglevel=3 quiet"
-GRUB_ENABLE_CRYPTODISK=y
+bootctl install
 ```
 
-**Caution**:  If your storage device is a NOT a Solid State Drive, remove `rd.luks.options=discard` in the command above. 
-{: .fs-3 .text-red-200}
+### Edit the loader configuration in `/boot/loader/loader.conf`
+```
+default         arch.conf
+timeout         5
+console-mode    keep
+editor          no
+```
 
-### Install Grub
+### Copy the UUID of the root filesystem in `/boot/loader/entries/arch.conf`
 ```
-grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id="Arch Linux"
+blkid /dev/mapper/cryptroot > /boot/loader/entries/arch.conf
 ```
 
-### Generate the Grub configuration
+### Edit the entry configuration in `/boot/loader/entries/arch.conf`
 ```
-grub-mkconfig -o /boot/grub/grub.cfg
+title       Arch Linux
+linux       /vmlinuz-linux-lts
+initrd      /intel-ucode.img
+initrd      /initramfs-linux-lts.img
+options     rd.luks.options=discard root="UUID=root_filesystem" quiet rw
 ```
 
 #### References
 {: .text-delta .pt-4}
 
-1. [ArchWiki - Grub](https://wiki.archlinux.org/index.php/GRUB)
+1. [ArchWiki - Systemd-boot](https://wiki.archlinux.org/index.php/Systemd-boot)
+1. [ArchWiki - Dm-crypt / System configuration](https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#Using_sd-encrypt_hook)
+1. [ManPage - Bootctl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/bootctl.1.en)
+1. [ManPage - Blkid](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/blkid.8.en)
 {: .fs-3}
 
 ---
