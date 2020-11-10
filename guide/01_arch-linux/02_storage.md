@@ -64,9 +64,6 @@ sgdisk --clear \
        /dev/nvme0n1
 ```
 
-**Caution**: Replace `/dev/nvme0n1` if you dont have a NVMe device or if the namespace is not the same.
-{: .fs-3 .text-red-200}
-
 ### References
 {: .text-delta .pt-4}
 
@@ -88,9 +85,6 @@ Replace every occurence of `/dev/nvme0n1p2` with your device name.
 cryptsetup luksFormat /dev/nvme0n1p2
 ```
 
-**Caution**: Replace `/dev/nvme0n1p2` if you dont have a NVMe device or if the namespace is not the same.
-{: .fs-3 .text-red-200}
-
 **Note**: Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
 {: .fs-3}
 
@@ -98,9 +92,6 @@ cryptsetup luksFormat /dev/nvme0n1p2
 ```
 cryptsetup open /dev/nvme0n1p2 cryptroot
 ```
-
-**Caution**: Replace `/dev/nvme0n1p2` if you dont have a NVMe device or if the namespace is not the same.
-{: .fs-3 .text-red-200}
 
 ### References
 {: .text-delta .pt-4}
@@ -127,9 +118,6 @@ mkfs.ext4 -L ROOT /dev/mapper/cryptroot
 mkfs.fat -F32 -n BOOT /dev/nvme0n1p1
 ```
 
-**Caution**: Replace `/dev/nvme0n1p1` if you dont have a NVMe device or if the namespace is not the same.
-{: .fs-3 .text-red-200}
-
 ### References
 {: .text-delta .pt-4}
 
@@ -154,9 +142,6 @@ mount /dev/mapper/cryptroot /mnt
 mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 ```
-
-**Caution**: Replace `/dev/nvme0n1p1` if you dont have a NVMe device or if the namespace is not the same.
-{: .fs-3 .text-red-200}
 
 ### References
 {: .text-delta .pt-4}
