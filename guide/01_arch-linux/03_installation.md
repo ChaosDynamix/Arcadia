@@ -268,8 +268,10 @@ systemctl enable NetworkManager
 SOLID STATE DRIVE
 {: .label .label-blue}
 
+A trim command (known as TRIM in the ATA command set, and UNMAP in the SCSI command set) allows an operating system to inform a solid-state drive (SSD) which blocks of data are no longer considered in use and can be wiped internally.
+{: .mt-0}
+
 ### Check if your Solid State Drive has TRIM support
-{: .mt-2}
 
 DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns must show non-zero values.
 
@@ -321,6 +323,10 @@ passwd username
 ---
 
 ## Setup the initial ramdisk images
+
+The initial ramdisk is in essence a very small environment (early userspace) which loads various kernel modules and sets up necessary things before handing over control to init.
+
+This makes it possible to have, for example, encrypted root file systems and root file systems on a software RAID array. mkinitcpio allows for easy extension with custom hooks, has autodetection at runtime, and many other features.
 
 ### Copy the UUID of the root partition in `/etc/crypttab.initramfs`
 ```
@@ -376,7 +382,9 @@ pacman -S intel-ucode
 
 ---
 
-## Setup the boot loader
+## Setup the Systemd boot manager
+
+systemd-boot, previously called gummiboot, is a simple UEFI boot manager which executes configured EFI images. The default entry is selected by a configured pattern (glob) or an on-screen menu to be navigated via arrow-keys. It is included with systemd, which is installed on an Arch system by default.
 
 ### Install the EFI boot manager
 ```

@@ -48,7 +48,7 @@ fdisk -l
 
 | Partition node | Partition type       | Partition size          |
 | :------------- | :------------------- | :---------------------- |
-| /dev/nvme0n1p1 | EFI system partition | 260 MiB                 |
+| /dev/nvme0n1p1 | EFI system partition | 550 MiB                 |
 | /dev/nvme0n1p2 | Linux LUKS partition | All the space remaining |
 
 ### Launch the Sgdisk script
@@ -57,7 +57,7 @@ Sgdisk is the command-line version of gdisk program. GPT fdisk (aka gdisk) is a 
 
 ```
 sgdisk --clear \
-       --new 1:0:+260M \
+       --new 1:0:+550M \
        --new 2:0:0 \
        --typecode 1:ef00 \
        --typecode 2:8309 \
@@ -83,7 +83,7 @@ sgdisk --clear \
 
 Replace every occurence of `/dev/nvme0n1p2` with your device name.
 
-### Create the LUKS1 container
+### Create the LUKS2 container
 ```
 cryptsetup luksFormat /dev/nvme0n1p2
 ```
@@ -94,7 +94,7 @@ cryptsetup luksFormat /dev/nvme0n1p2
 **Note**: Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
 {: .fs-3}
 
-### Open the LUKS1 container
+### Open the LUKS2 container
 ```
 cryptsetup open /dev/nvme0n1p2 cryptroot
 ```
