@@ -35,6 +35,6 @@ defaults : !!seq
 
   - !!map
     scope  : !!map
-      path   : !!str "guide/"
+      path   : !!str "guides/"
     values : !!map
       layout : !!str default
