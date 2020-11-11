@@ -1,13 +1,13 @@
 ---
-name: Bug
-about: Report a bug in the project
+name: Fix
+about: Report a bug/error in the project
 title: ''
 labels: ''
 assignees: ChaosDynamix
 
 ---
 
-## Bug
+## Fix
 
 ### Problem
 What is the problem that need to be fixed.
