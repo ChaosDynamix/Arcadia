@@ -15,33 +15,39 @@ permalink : !!str /arch-linux/preparation
 
 ---
 
-## Download and verify the Arch Linux ISO image
+## Download the Arch Linux ISO image, checksum and signature
 
-Replace every occurence of `year.month.day` in the filenames with the current Arch Linux current release name found in the official download page.
-{: .text-red-200}
-
-| Required files                            | Description |
-| :---------------------------------------- | :---------- |
-| archlinux-year.month.day-x86_64.iso       | ISO image   |
-| archlinux-year.month.day-x86_64.iso.txt   | Checksum    |
-| archlinux-year.month.day-x86_64.iso.sig   | Signature   |
-
-### Identify the best mirrors for your location
+### Identify the closest mirrors for your location
 1. Open your browser and go to the [Arch Linux pacman mirrorlist generator](https://www.archlinux.org/mirrorlist/)
 1. Filter the mirrors according to **your country** (or a country close to yours) and **HTTPS** protocol
 1. Generate the list
 
-### Download the ISO image
+### Download the ISO image, checksum and signature
 1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, select a **HTTPS** mirror site of your generated list
+1. Under the HTTP Direct Downloads section :
+    1. Copy the **SHA-1** checksum in your clipboard
+    1. Download the **PGP** signature.
+    1. Click on a **HTTPS** mirror site of your generated list
 1. Download the Arch Linux ISO image `archlinux-year.day.month-x86_64.iso`
 
-### Download the checksum and signature
-1. Open your browser and go to the [Arch Linux download page](https://www.archlinux.org/download/)
-1. Under the HTTP Direct Downloads section, copy the **SHA-1** checksum in your clipboard
-1. Under the HTTP Direct Downloads section, download the **PGP** signature.
+### References
+{: .text-delta .pt-4}
 
-### Verify the integrity of the ISO image
+1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
+1. [Wikipedia - Cheksum](https://en.wikipedia.org/wiki/Checksum)
+1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
+{: .fs-3}
+
+---
+
+## Verify the Arch Linux ISO image
+
+| Required files in the same folder         | Description |
+| :---------------------------------------- | :---------- |
+| `archlinux-year.month.day-x86_64.iso`     | ISO image   |
+| `archlinux-year.month.day-x86_64.iso.sig` | Signature   |
+
+### Create the checksum and verify the integrity of the ISO image
 
 The creation of the checksum file must be made in the same folder containing the ISO image and the Signature file.
 
@@ -67,9 +73,6 @@ gpg --keyserver-options auto-key-retrieve \
 ### References
 {: .text-delta .pt-4}
 
-1. [Wikipedia - Mirror site](https://en.wikipedia.org/wiki/Mirror_site)
-1. [Wikipedia - Cheksum](https://en.wikipedia.org/wiki/Checksum)
-1. [Wikipedia - Digital signature](https://en.wikipedia.org/wiki/Digital_signature)
 1. [ArchWiki - Installation guide](https://wiki.archlinux.org/index.php/Installation_guide#Verify_signature)
 1. [ArchWiki - GnuPG](https://wiki.archlinux.org/index.php/GnuPG#Use_a_keyserver)
 1. [ManPage - Md5sum](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/md5sum.1.en)
