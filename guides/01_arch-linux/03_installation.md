@@ -316,16 +316,19 @@ systemctl enable fstrim.timer
 Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.
 
 ### Add a root password
-
 ```
 passwd
 ```
 
 ### Create a user
-
 ```
 useradd -m -G wheel -s /bin/bash username
 passwd username
+```
+
+### Create the configuration of Doas in `/etc/doas.conf`
+```
+permit :wheel
 ```
 
 #### References
