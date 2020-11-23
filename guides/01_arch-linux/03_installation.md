@@ -28,7 +28,7 @@ permalink : !!str /arch-linux/installation
 Pacstrap is designed to create a new system installation from scratch. The specified packages will be installed into a given directory after setting up some basic mountpoints. By default, the host system’s pacman signing keys and mirrorlist will be used to seed the chroot.
 
 ```
-pacstrap /mnt base linux-lts linux-firmware opendoas neovim man-db man-pages
+pacstrap /mnt base base-devel linux-lts linux-firmware neovim man-db man-pages
 ```
 
 **Note**: `base` package is mandatory. `linux-firmware` package is recommended. The other packages are based on my personal choices.
@@ -326,9 +326,9 @@ useradd -m -G wheel -s /bin/bash username
 passwd username
 ```
 
-### Create the configuration of Doas in `/etc/doas.conf`
+### Uncomment the following line in the Sudo configuration with `EDITOR=nvim visudo`
 ```
-permit :wheel
+%wheel ALL=(ALL) ALL
 ```
 
 #### References
