@@ -1,7 +1,7 @@
 ---
 title     : !!str Installation
 parent    : !!str Arch Linux
-nav_order : !!int 3
+nav_order : !!int 2
 permalink : !!str /arch-linux/installation
 ---
 
