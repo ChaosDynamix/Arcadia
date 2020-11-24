@@ -1,13 +1,13 @@
 ---
-name: Default
-about: Default template for an issue
+name: Feature request
+about: Suggest a feature for the project
 title: ''
 labels: ''
 assignees: ChaosDynamix
 
 ---
 
-## Type
+## Feature request
 
 ### Problem
 What is the problem that you propose to solve.
