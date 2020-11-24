@@ -1,5 +1,5 @@
 ---
-name: Fix
+name: Bug report
 about: Report a bug/error in the project
 title: ''
 labels: ''
@@ -7,7 +7,7 @@ assignees: ChaosDynamix
 
 ---
 
-## Fix
+## Bug report
 
 ### Problem
 What is the problem that need to be fixed.
