@@ -291,18 +291,11 @@ pacman -Sy archlinux-keyring
 
 ---
 
-## Generate the mirrorlist
-
-### Install the reflector package
+## Generate the mirrorlist with Reflector
 
 Reflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file `/etc/pacman.d/mirrorlist`.
 
-```
-pacman -S reflector
-```
-
-### Launch the reflector script with your arguments
-
+### Run the reflector script
 ```
 reflector --country France \
           --age 15 \
