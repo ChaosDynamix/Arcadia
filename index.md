@@ -22,6 +22,9 @@ The project guides are intended for the UEFI without CSM mode. Guid partition ta
 ### Intel processors
 The project guides are intended for the Intel processors. Amd processors can run Arch Linux but are not covered in those guides.
 
+### Nvidia graphical cards (proprietary driver)
+A recent Nvidia GPU is required if you want to follow the display server and driver section of the guides.
+
 ### NVMe storage device
 The project guides are intended for NVMe storage devices. If you dont have a NVMe drive, dont enable TRIM feature and replace all the occurence of the NVMe filenames (e.g. `/dev/nvme0n1p1`).
 
