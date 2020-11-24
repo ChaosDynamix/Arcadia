@@ -33,4 +33,4 @@ Arch Linux is an independently developed, x86-64 general-purpose GNU/Linux distr
 | Initialization manager | Systemd          |
 | Network manager        | Systemd-networkd |
 | Boot manager           | Systemd-boot     |
-| Privilege elevation    | Opendoas         |
+| Privilege elevation    | Sudo             |
