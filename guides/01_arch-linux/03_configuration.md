@@ -1,7 +1,7 @@
 ---
 title     : !!str Configuration
 parent    : !!str Arch Linux
-nav_order : !!int 4
+nav_order : !!int 3
 permalink : !!str /arch-linux/configuration
 ---
 
