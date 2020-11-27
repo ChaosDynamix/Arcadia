@@ -19,5 +19,5 @@ permalink : !!str /arch-linux/configuration
 
 ---
 
-{% include arch-linux/installation/dsp_driver.md %}
+{% include arch-linux/configuration/dsp_driver.md %}
 
