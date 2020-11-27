@@ -1,9 +1,9 @@
 ## Create the filesystems
 
-| Partition node | Filesystem | Label |
-| :------------- | :--------- | :---- |
-| /dev/nvme0n1p1 | Fat32      | BOOT  |
-| /dev/nvme0n1p2 | Ext4       | ROOT  |
+| Node                  | Filesystem | Label |
+| :-------------------- | :--------- | :---- |
+| /dev/nvme0n1p1        | Fat32      | BOOT  |
+| /dev/mapper/cryptroot | Ext4       | ROOT  |
 
 ```
 mkfs.ext4 -L ROOT /dev/mapper/cryptroot
@@ -24,10 +24,10 @@ mkfs.fat -F32 -n BOOT /dev/nvme0n1p1
 
 ## Mount the filesystems
 
-| Partition node | Mountpoint | Create directory ? |
-| :------------- | :--------- | :----------------- |
-| /dev/nvme0n1p1 | /mnt/boot  | yes                |
-| /dev/nvme0n1p2 | /mnt       | no                 |
+| Node                  | Mountpoint | Create directory ? |
+| :-------------------- | :--------- | :----------------- |
+| /dev/nvme0n1p1        | /mnt/boot  | yes                |
+| /dev/mapper/cryptroot | /mnt       | no                 |
 
 ```
 mount /dev/mapper/cryptroot /mnt
