@@ -1,32 +1,32 @@
-## Verify the Arch Linux ISO image
+## Arch Linux ISO image verification
 
-| Required files in the same folder         | Description |
-| :---------------------------------------- | :---------- |
-| `archlinux-year.month.day-x86_64.iso`     | ISO image   |
-| `archlinux-year.month.day-x86_64.iso.sig` | Signature   |
+The goal of this section is to verify if the previously downloaded ISO image is strictly identical and has the same signature as the ISO image created by the Arch Linux team. Although this is extremely rare, it is possible that a mirror provide a modified and therefore dangerous ISO image.
 
-### Create the checksum and verify the integrity of the ISO image
+Before starting, verify that you have the 3 files below in the **same folder**. The commands displayed in this section must be running in this folder.
 
-The creation of the checksum file must be made in the same folder containing the ISO image and the Signature file.
+| Filename                                  | Description    |
+| :---------------------------------------- | :------------- |
+| `archlinux-year.day.month-x86_64.iso`     | ISO image      |
+| `archlinux-year.day.month-x86_64.iso.txt` | SHA-1 checksum |
+| `archlinux-year.day.month-x86_64.iso.sig` | Signature      |
+
+### Verify the integrity of the Arch Linux ISO image
 
 ```
-echo "<CHECKSUM> archlinux-year.month.day-x86_64.iso" > archlinux-year.month.day-x86_64.iso.txt
 sha1sum -c archlinux-year.month.day-x86_64.iso.txt
 ```
 
-**Note**: Replace `<CHECKSUM>` with the SHA-1 checksum copied in the Arch Linux download page.
-{: .fs-3}
+### Verify the authenticity of the Arch Linux ISO image
 
-### Verify the authenticity of the ISO image
+Arch Linux users can skip the command displayed below and run the following command instead `pacman-key -v archlinux-year.month.day-x86_64.iso.sig`.
+
+This command differ from the official Arch Linux installation guide. The keyserver is explicitly declared as we dont know the GnuPG default keyserver configured by your Linux distribution.
+
 ```
 gpg --keyserver-options auto-key-retrieve \
     --keyserver pool.sks-keyservers.net \
     --verify archlinux-year.month.day-x86_64.iso.sig
 ```
-
-**Note**: Arch Linux users can run the following command instead : `pacman-key -v archlinux-year.month.day-x86_64.iso.sig`
-{: .fs-3}
-
 
 ### References
 {: .text-delta .pt-4}
