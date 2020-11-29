@@ -23,7 +23,7 @@ permalink : !!str /arch-linux/preparation
 
 ---
 
-{% include arch-linux/preparation/usb_flash.md %}
+{% include arch-linux/preparation/usb_preparation.md %}
 
 ---
 
