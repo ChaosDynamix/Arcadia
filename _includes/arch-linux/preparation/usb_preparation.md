@@ -1,6 +1,6 @@
 ## USB flash device preparation
 
-Make sure that the USB flash device used as the installation medium work properly and is fairly recent in order to avoid data corruption.
+To avoid data corruption, The USB flash device used as the installation medium have to work properly and should be fairly recent. Before starting this section, make sure your USB flash device is plugged into a working USB port on your computer. 
 
 ### Identify your USB flash device
 
