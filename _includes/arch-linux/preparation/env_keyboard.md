@@ -1,16 +1,16 @@
-## Verify the keyboard layout
+## Live environment keyboard
 
-The default console keymap is US. **Skip this step if your keyboard layout match the default one**.
+The default console keymap is US. **Skip this section if your keyboard layout match the default one**.
 
 ![Representation of the US default keyboard layout for Arch Linux](https://upload.wikimedia.org/wikipedia/commons/5/51/KB_United_States-NoAltGr.svg)
 
 ### Load the correct keyboard layout
+
+The command below load the French keyboard layout. If you need an other keyboard layout, list all the available keyboard layouts with the command `ls /usr/share/kbd/keymaps/**/*.map.gz | less` and replace `fr-latin9` in the above command.
+
 ```
 loadkeys fr-latin9
 ```
-
-**Note**: The command above load the French keyboard layout. If you need an other keyboard layout, list all the available keyboard layouts with the command `ls /usr/share/kbd/keymaps/**/*.map.gz | less` and replace `fr-latin9` in the above command.
-{: .fs-3}
 
 ### References
 {: .text-delta .pt-4}
