@@ -1,6 +1,6 @@
 # GLOBAL SETTINGS
 title           : !!str Arcadia
-description     : !!str Arcadia is a website that presents several scenarios for installing Arch Linux on LUKS
+description     : !!str Arcadia is a website that presents a personal guide for installing Arch Linux on LUKS and UEFI
 baseurl         : !!str "/Arcadia"
 github_username : !!str ChaosDynamix
 
@@ -35,6 +35,6 @@ defaults : !!seq
 
   - !!map
     scope  : !!map
-      path   : !!str "guides/"
+      path   : !!str "guide/"
     values : !!map
       layout : !!str default
