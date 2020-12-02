@@ -13,12 +13,3 @@ services : !!map
       bash -c "bundle install &&
                bundle exec jekyll serve --host 0.0.0.0 --port 4000"
 
-  webpack : !!map
-    image       : !!str node:alpine
-    user        : !!str node
-    working_dir : !!str /home/node/app
-    environment : !!seq
-      - !!str NODE_ENV=development
-    volumes     : !!seq
-      - !!str ./:/home/node/app
-    command     : !!str ls
