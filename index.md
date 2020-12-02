@@ -4,30 +4,55 @@ layout          : !!str default
 nav_exclude     : !!bool true
 ---
 
-# Personal guides for installing specific Linux distributions with UEFI mode and encryption.
+# Personal guide for installing Arch Linux on LUKS and UEFI.
 {: .fs-9}
+
+Arch Linux is an independently developed, x86-64 general-purpose GNU/Linux distribution that strives to provide the latest stable versions of most software by following a rolling-release model. The default installation is a minimal base system, configured by the user to only add what is purposely required. 
+{: .fs-5 .fw-300}
 
 ---
 
 ## Caution
-This project should be used at your own risk, always check the official documentation and the provided sources when using these guides.
+This project should be used at your own risk, always check the official documentation and the provided sources when using thise guide.
 
 ---
 
 ## Hardware requirements
+{: .text-delta .pt-4}
 
-### UEFI system
-The project guides are intended for the UEFI without CSM mode. Guid partition table will be used for the storage device preparation.
+| Hardware            | Requirement      |
+| :------------------ | :--------------- |
+| Firmware            | UEFI             |
+| CPU                 | Intel            |
+| GPU                 | Nvidia           |
+| Storage device      | NVMe             |
+| Installation medium | USB flash device |
+| Network type        | Ethernet         |
 
-### Intel processors
-The project guides are intended for the Intel processors. Amd processors can run Arch Linux but are not covered in those guides.
+---
 
-### Nvidia graphical cards (proprietary driver)
-A recent Nvidia GPU is required if you want to follow the display server and driver section of the guides.
+## Storage device scheme
+{: .text-delta .pt-4}
 
-### NVMe storage device
-The project guides are intended for NVMe storage devices. If you dont have a NVMe drive, dont enable TRIM feature and replace all the occurence of the NVMe filenames (e.g. `/dev/nvme0n1p1`).
+``` text
++------------------------+------------------------+
+| EFI partition          | LUKS type partition    |
++------------------------+------------------------+
+                         | LUKS1 container        |
+                         +------------------------+
+                         | EXT4 filesystem        |
+                         +------------------------+
+```
 
-### USB storage device
-USB storage devices are used as the live environment system for installing the linux distribution.
+---
 
+## System components
+{: .text-delta .pt-4}
+
+| Component              | Name             |
+| :--------------------- | :--------------- |
+| Kernel                 | Linux-lts        |
+| Initialization manager | Systemd          |
+| Network manager        | Systemd-networkd |
+| Boot manager           | Systemd-boot     |
+| Privilege elevation    | Sudo             |
