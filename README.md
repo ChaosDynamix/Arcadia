@@ -1,6 +1,6 @@
 <div align="center">
 	<h1>Arcadia</h1>
-	<p>Arcadia is a website that presents several personal guides for installing Arch Linux, Gentoo or NixOS.
+	<p>Arcadia is a website that presents a personal guide for installing Arch Linux on LUKS and UEFI.
 	</p>
 	<p>
 		<a href="https://chaosdynamix.github.io/Arcadia/">
@@ -12,7 +12,7 @@
 
 <div align="center">
 	<h2>Caution</h2>
-	<p>This project should be used at your own risk, always check the official documentation and the provided sources when using these guides.
+	<p>This project should be used at your own risk, always check the official documentation and the provided sources when using this guide.
 	</p>
 </div>
 
