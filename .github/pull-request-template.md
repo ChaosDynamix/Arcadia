@@ -4,9 +4,9 @@ What kind of change does this Pull Request introduce ?
 - [ ] Refactoring
 - [ ] Style
 - [ ] Fix
-- [ ] Core update
-    - [ ] Ruby / Gems
-    - [ ] Nodejs / Packages
+- [ ] Core or dependencies update
+    - [ ] Ruby gems
+    - [ ] Nodejs modules
 
 ## What is the current behavior ?
 Issue number: <ISSUE_NUMBER>
