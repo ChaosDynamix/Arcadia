@@ -1,6 +1,6 @@
 ## Pull Request type
 
-Replace :x: with :heavy_check_mark: to select the change types.
+Replace :x: with :heavy_check_mark: to select the changes types and delete this line before the creation of the pull request.
 
 What kind of change does this Pull Request introduce ?
 - :x: Feature
