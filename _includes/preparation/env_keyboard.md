@@ -27,7 +27,7 @@ Now that you have a lot more informations about your keyboard, list all the cons
 ls /usr/share/kbd/keymaps/**/*.map.gz | less
 ```
 
-The naming conventions of console keymaps are somewhat arbitrary 
+The naming conventions of console keymaps are somewhat arbitrary
 
 - **Language codes**: where the language code is the same as its country code (e.g. de for German, or fr for French).
 - **Country codes**: where variations of the same language are used in different countries (e.g.uk for United Kingdom English, or us for United States English); a list of country codes can also be found in wikipedia:ISO 3166-1#Officially assigned code elements.
