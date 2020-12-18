@@ -29,5 +29,6 @@ A clear and concise description of what you expected to happen.
 ### Solution (optional)
 What is the solution that could solve this problem.
 
-### Branch
-The name of working and origin branches (e.g. `docs-readme-fix-typo` from `master`).
+### Branches
+Working branch: `<BRANCH_NAME>`
+Origin branch: `<BRANCH_NAME>`
