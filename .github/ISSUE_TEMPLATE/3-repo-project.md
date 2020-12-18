@@ -1,14 +1,14 @@
 ---
-name: Documentation project
-about: Suggest a feature/update or report a error for the documentation of the repository.
-title: '(docs) description'
+name: Repository project
+about: Suggest a feature/update or report a error for the repository (git/github).
+title: '(repo) description'
 labels: ''
 assignees: ChaosDynamix
 
 ---
 
-# Documentation project
-This issue will affect the Documentation Github project. 
+# Repository project
+This issue will affect the Repository Github project. 
 
 ## Problem
 What is the problem that you propose to solve.
