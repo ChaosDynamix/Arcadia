@@ -8,6 +8,7 @@ assignees: ChaosDynamix
 ---
 
 # Guide project
+This issue will affect the Guide Github project. 
 
 ## Problem
 What is the problem that you propose to solve.

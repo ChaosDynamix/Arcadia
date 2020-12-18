@@ -8,6 +8,7 @@ assignees: ChaosDynamix
 ---
 
 # Gatsby project
+This issue will affect the Gatsby Github project. 
 
 ## Problem
 What is the problem that you propose to solve.

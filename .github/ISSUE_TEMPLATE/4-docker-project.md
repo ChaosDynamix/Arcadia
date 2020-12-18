@@ -8,6 +8,7 @@ assignees: ChaosDynamix
 ---
 
 # Docker project
+This issue will affect the Docker Github project. 
 
 ## Problem
 What is the problem that you propose to solve.

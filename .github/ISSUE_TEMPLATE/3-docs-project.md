@@ -8,6 +8,7 @@ assignees: ChaosDynamix
 ---
 
 # Documentation project
+This issue will affect the Documentation Github project. 
 
 ## Problem
 What is the problem that you propose to solve.

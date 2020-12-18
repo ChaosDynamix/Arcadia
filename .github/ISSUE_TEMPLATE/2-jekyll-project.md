@@ -8,6 +8,7 @@ assignees: ChaosDynamix
 ---
 
 # Jekyll project
+This issue will affect the Jekyll Github project. 
 
 ## Problem
 What is the problem that you propose to solve.
