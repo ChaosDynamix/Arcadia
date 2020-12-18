@@ -9,26 +9,26 @@ assignees: ChaosDynamix
 
 # Jekyll project
 
-### Problem
+## Problem
 What is the problem that you propose to solve.
 
-### Steps to reproduce 
+## Steps to reproduce 
 1. step
 2. step
 3. step
 
-### Expected behavior
+## Expected behavior
 A clear and concise description of what you expected to happen.
 
-### Platform (optional)
+## Platform (optional)
  - Device: <device>
  - OS: <os>
  - Browser: <browser>
  - Version: <version>
 
-### Solution (optional)
+## Solution (optional)
 What is the solution that could solve this problem.
 
-### Branches
+## Branches
 - Working branch: `<branch-name>`
 - Origin branch: `<branch-name>`
