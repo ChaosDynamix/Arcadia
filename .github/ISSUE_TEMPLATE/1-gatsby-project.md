@@ -32,6 +32,5 @@ What is the solution that could solve this problem.
 ### Branches
 Working branch
 : `<BRANCH_NAME>`
-
 Origin branch
 : `<BRANCH_NAME>`

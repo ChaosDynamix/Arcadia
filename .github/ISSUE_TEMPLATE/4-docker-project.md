@@ -30,5 +30,7 @@ A clear and concise description of what you expected to happen.
 What is the solution that could solve this problem.
 
 ### Branches
-Working branch: `<BRANCH_NAME>`
-Origin branch: `<BRANCH_NAME>`
+Working branch
+: `<BRANCH_NAME>`
+Origin branch
+: `<BRANCH_NAME>`
