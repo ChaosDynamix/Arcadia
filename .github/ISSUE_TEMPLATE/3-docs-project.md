@@ -30,7 +30,5 @@ A clear and concise description of what you expected to happen.
 What is the solution that could solve this problem.
 
 ### Branches
-| Type           | Name            |
-| :------------- | :-------------- |
-| Working branch | `<branch-name>` |
-| Origin branch  | `<branch-name>` |
+- Working branch: `<branch-name>`
+- Origin branch: `<branch-name>`
