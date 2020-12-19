@@ -6,7 +6,7 @@ There is 3 main types of keyboard layouts :
 - **Visual layout**: The arrangement of the legends (labels, markings, engravings) that appear on those keys
 - **Functional layout**: The arrangement of the key-meaning association or keyboard mapping, determined in software, of all the keys of a keyboard
 
-As you can see, this section refers to the functional layout of the keyboard which is refering to the mapping between **the physical keys**, such as the A key, and **software events**, such as the letter "A" appearing on the screen.
+As you can see, this section refers to the functional layout of the keyboard which is the mapping between **the physical keys**, such as the A key, and **software events**, such as the letter "A" appearing on the screen.
 
 The goal of this section is to search and load the correct console keyboard mapping (keymap) for your keyboard so that pressing a key will produce the expected result, corresponding to the legend of the physical key on your keyboard.
 
