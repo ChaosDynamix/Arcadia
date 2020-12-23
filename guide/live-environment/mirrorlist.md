@@ -14,6 +14,8 @@ parent    : !!str Live environment
 1. TOC
 {:toc}
 
+---
+
 ## Generate the mirrorlist with Reflector
 
 Reflector is a script which can retrieve the latest mirror list from the MirrorStatus page, filter the most up-to-date mirrors, sort them by speed and overwrite the file `/etc/pacman.d/mirrorlist`.

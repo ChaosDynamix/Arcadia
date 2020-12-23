@@ -14,6 +14,8 @@ parent    : !!str Graphical interface
 1. TOC
 {:toc}
 
+---
+
 ## Setup the display driver
 
 ### Install the Nvidia proprietary driver

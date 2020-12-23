@@ -14,6 +14,8 @@ parent    : !!str Live environment
 1. TOC
 {:toc}
 
+---
+
 ## Live environment console keymap
 
 There is 3 main types of keyboard layouts :

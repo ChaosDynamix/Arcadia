@@ -14,6 +14,8 @@ parent    : !!str Live environment
 1. TOC
 {:toc}
 
+---
+
 ## Verify the boot mode of the live environment
 
 UEFI firmware is required to follow this guide. This guide don't cover BIOS and UEFI-CSM modes. Make sure that EFI variables are available with the following command.

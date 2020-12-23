@@ -14,6 +14,8 @@ parent    : !!str Storage
 1. TOC
 {:toc}
 
+---
+
 ## Create the partition table and the partitions
 
 ### Identify the device file of your storage device

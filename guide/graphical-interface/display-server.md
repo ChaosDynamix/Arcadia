@@ -14,6 +14,8 @@ parent    : !!str Graphical interface
 1. TOC
 {:toc}
 
+---
+
 ## Setup the display server
 
 ### Install the Xorg server

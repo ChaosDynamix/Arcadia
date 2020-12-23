@@ -14,6 +14,8 @@ parent    : !!str System
 1. TOC
 {:toc}
 
+---
+
 ## Setup the timezone
 
 This following command create an `/etc/localtime` symlink that points to a zoneinfo file under `/usr/share/zoneinfo/`.

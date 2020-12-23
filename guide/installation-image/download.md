@@ -14,6 +14,8 @@ parent    : !!str Installation image
 1. TOC
 {:toc}
 
+---
+
 ## Arch Linux ISO image download
 
 In this first step, we will download the Arch Linux ISO image and the files needed to verify its integrity and authenticity. 

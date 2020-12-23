@@ -14,6 +14,8 @@ parent    : !!str System
 1. TOC
 {:toc}
 
+---
+
 ## Setup the localization
 
 ### Select the needed locales in `/etc/locale.gen`

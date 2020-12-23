@@ -14,6 +14,8 @@ parent    : !!str System
 1. TOC
 {:toc}
 
+---
+
 ## Setup the initial ramdisk images
 
 The initial ramdisk is in essence a very small environment (early userspace) which loads various kernel modules and sets up necessary things before handing over control to init.

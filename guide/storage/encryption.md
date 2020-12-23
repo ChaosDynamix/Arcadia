@@ -14,6 +14,8 @@ parent    : !!str Storage
 1. TOC
 {:toc}
 
+---
+
 ## Encrypt the root partition
 
 Replace every occurence of `/dev/nvme0n1p2` with your device name.

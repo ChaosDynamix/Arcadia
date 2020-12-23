@@ -14,6 +14,8 @@ parent    : !!str System
 1. TOC
 {:toc}
 
+---
+
 ## Setup the network informations
 
 ### Set the hostname in `/etc/hostname`

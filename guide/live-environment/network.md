@@ -14,6 +14,8 @@ parent    : !!str Live environment
 1. TOC
 {:toc}
 
+---
+
 ## Verify the internet connection of the live environment
 
 ### Ensure your network interface is listed and enabled
