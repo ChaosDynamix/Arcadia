@@ -8,6 +8,9 @@ parent    : !!str Installation image
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to verify the Arch Linux ISO image with the files needed to verify it's integrity and authenticity. This step is very important!
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

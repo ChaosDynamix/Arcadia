@@ -8,6 +8,9 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to setup the initialization configuration of the system using initial ramdisk images and the systemd boot manager.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

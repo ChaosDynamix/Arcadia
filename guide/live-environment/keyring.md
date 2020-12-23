@@ -8,6 +8,9 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to update the Arch Linux keyring. Updating the keyring is made by deleting revoked keys and adding new trusted keys.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

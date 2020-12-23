@@ -8,6 +8,9 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to setup the optional swapfile of the system and activate the TRIM timer. The TRIM timer is strongly recommended if you have a compatible NVMe storage device.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

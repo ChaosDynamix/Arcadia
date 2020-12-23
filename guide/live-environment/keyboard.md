@@ -8,6 +8,9 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how a keyboard layout is defined and how you can load the correct keymap if your keyboard layout is not the same as the Arch Linux default one.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

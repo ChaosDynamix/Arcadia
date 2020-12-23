@@ -8,6 +8,9 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to setup the localization related configurations of the system.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

@@ -8,6 +8,9 @@ parent    : !!str Storage
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to create and mount the filesystems required by Arch Linux.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

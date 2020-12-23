@@ -8,6 +8,9 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to verify the network of the live environment, set the system clock using NTP protocol and allow SSH connection on the computer.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

@@ -8,6 +8,9 @@ parent    : !!str Graphical interface
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to install the Xorg display server and it's related tools.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

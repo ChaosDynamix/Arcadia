@@ -8,6 +8,9 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to generate a mirrorlist for the Arch Linux installation. The mirrorlist provides mirror servers which are used to download the packages of the system using pacman.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

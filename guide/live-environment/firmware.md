@@ -8,6 +8,9 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to verify the boot mode of your computer. This guide only cover the UEFI boot mode.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

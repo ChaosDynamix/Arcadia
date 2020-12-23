@@ -8,6 +8,9 @@ parent    : !!str Storage
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to setup the system partition encryption of the NVMe storage device. Encryption is made with the cryptsetup program and LUKS2.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 

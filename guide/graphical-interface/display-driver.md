@@ -8,6 +8,9 @@ parent    : !!str Graphical interface
 # {{ page.title }}
 {: .no_toc }
 
+This page describes how to install and configure the Nvidia proprietary driver on the system.
+{: .fs-5 .fw-300}
+
 ## Table of contents
 {: .no_toc .text-delta }
 
