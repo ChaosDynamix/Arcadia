@@ -6,3 +6,11 @@ parent    : !!str System
 ---
 
 {% include installation/sys_pacstrap.md %}
+
+---
+
+{% include installation/str_fstab.md %}
+
+---
+
+{% include installation/sys_chroot.md %}
