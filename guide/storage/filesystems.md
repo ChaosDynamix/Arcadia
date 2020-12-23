@@ -5,6 +5,15 @@ permalink : !!str /storage/filesystems
 parent    : !!str Storage
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Create the filesystems
 
 | Node                  | Filesystem | Label |

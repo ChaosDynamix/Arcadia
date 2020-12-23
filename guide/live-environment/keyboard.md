@@ -5,6 +5,15 @@ permalink : !!str /live-environment/keyboard
 parent    : !!str Live environment
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Live environment console keymap
 
 There is 3 main types of keyboard layouts :

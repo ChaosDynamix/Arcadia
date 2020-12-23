@@ -5,6 +5,15 @@ permalink : !!str /graphical-interface/display-driver
 parent    : !!str Graphical interface
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Setup the display driver
 
 ### Install the Nvidia proprietary driver

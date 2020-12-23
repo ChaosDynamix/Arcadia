@@ -5,6 +5,15 @@ permalink : !!str /system/network
 parent    : !!str System
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Setup the network informations
 
 ### Set the hostname in `/etc/hostname`

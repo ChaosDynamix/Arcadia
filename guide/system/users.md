@@ -5,6 +5,15 @@ permalink : !!str /system/users
 parent    : !!str System
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Setup the users
 
 Passwords must be complex enough to not be easily guessed from e.g. personal information, or cracked using methods like social engineering or brute-force attacks. The tenets of strong passwords are based on length and randomness.

@@ -5,6 +5,15 @@ permalink : !!str /live-environment/network
 parent    : !!str Live environment
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Verify the internet connection of the live environment
 
 ### Ensure your network interface is listed and enabled

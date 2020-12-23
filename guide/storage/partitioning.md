@@ -5,6 +5,15 @@ permalink : !!str /storage/partitioning
 parent    : !!str Storage
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Create the partition table and the partitions
 
 ### Identify the device file of your storage device

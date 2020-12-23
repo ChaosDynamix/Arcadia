@@ -5,6 +5,15 @@ permalink : !!str /system/localization
 parent    : !!str System
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Setup the localization
 
 ### Select the needed locales in `/etc/locale.gen`

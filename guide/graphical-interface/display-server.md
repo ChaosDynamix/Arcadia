@@ -5,6 +5,15 @@ permalink : !!str /graphical-interface/display-server
 parent    : !!str Graphical interface
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Setup the display server
 
 ### Install the Xorg server

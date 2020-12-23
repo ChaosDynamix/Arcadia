@@ -5,6 +5,15 @@ permalink : !!str /storage/encryption
 parent    : !!str Storage
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Encrypt the root partition
 
 Replace every occurence of `/dev/nvme0n1p2` with your device name.

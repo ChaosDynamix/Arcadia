@@ -5,6 +5,15 @@ permalink : !!str /installation-image/verification
 parent    : !!str Installation image
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Arch Linux ISO image verification
 
 The goal of this section is to verify if the previously downloaded ISO image is strictly identical and has the same signature as the ISO image created by the Arch Linux team. Although this is extremely rare, it is possible that a mirror provide a modified and therefore dangerous ISO image.

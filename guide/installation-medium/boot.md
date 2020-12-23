@@ -5,6 +5,15 @@ permalink : !!str /installation-medium/boot
 parent    : !!str Installation medium
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## USB flash device boot
 
 Now that your USB flash device is prepared, we need to make sure that your computer is ready and properly configured to boot on the USB flash device.

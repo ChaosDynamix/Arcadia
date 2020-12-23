@@ -5,6 +5,15 @@ permalink : !!str /installation-medium/preparation
 parent    : !!str Installation medium
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## USB flash device preparation
 
 To avoid data corruption, The USB flash device used as the installation medium have to work properly and should be fairly recent. Before starting this section, make sure your USB flash device is plugged into a working USB port on your computer. 

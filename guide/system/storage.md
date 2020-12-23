@@ -5,6 +5,15 @@ permalink : !!str /system/storage
 parent    : !!str System
 ---
 
+# {{ page.title }}
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 ## Setup the swapfile
 {: .d-inline-block .mt-0}
 
