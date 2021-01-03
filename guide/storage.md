@@ -8,5 +8,5 @@ has_children : true
 # {{ page.title }}
 {: .fs-9}
 
-This section describes how to setup the storage in order to install Arch Linux.
+This section describes how to prepare the storage for the Arch Linux installation.
 {: .fs-5 .fw-300}

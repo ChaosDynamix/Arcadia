@@ -8,7 +8,7 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to setup the users of the system and how to allow them to gain temporary privileges using the sudo program.
+This page describes how to add a password on the root user and how to create an unprivileged user with temporary root privileges.
 {: .fs-5 .fw-300}
 
 ## Table of contents

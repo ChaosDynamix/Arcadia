@@ -8,7 +8,7 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to setup the timezone related configurations of the system.
+This page describes how to setup the timezone configuration of the system and synchronize the hardware clock with the system clock.
 {: .fs-5 .fw-300}
 
 ## Table of contents

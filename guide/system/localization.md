@@ -8,7 +8,7 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to setup the localization related configurations of the system.
+This page describes how to generate the locales, set the language of the system and set a keymap for the console.
 {: .fs-5 .fw-300}
 
 ## Table of contents

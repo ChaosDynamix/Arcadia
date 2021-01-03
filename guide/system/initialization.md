@@ -8,7 +8,7 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to setup the initialization configuration of the system using initial ramdisk images and the systemd boot manager.
+This page describes how to generate the initial ramdisk images and configure the systemd boot manager for UEFI and the Intel microcode.
 {: .fs-5 .fw-300}
 
 ## Table of contents

@@ -8,7 +8,7 @@ parent    : !!str Storage
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to create a partition table and the partitions needed for the NVMe storage device.
+This page describes how to create a partition table and the partitions needed to install Arch Linux on a NVMe storage device.
 {: .fs-5 .fw-300}
 
 ## Table of contents

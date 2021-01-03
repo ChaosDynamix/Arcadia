@@ -8,7 +8,7 @@ parent    : !!str Installation medium
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to prepare the installation medium (USB flash device) with a verified Arch Linux ISO image. The preparation is done by flashing the USB flash device with the cp command.
+This page describes how to prepare the installation medium (USB flash device) with a verified Arch Linux ISO image.
 {: .fs-5 .fw-300}
 
 ## Table of contents

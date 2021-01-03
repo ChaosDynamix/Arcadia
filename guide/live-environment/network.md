@@ -8,7 +8,7 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to verify the network of the live environment, set the system clock using NTP protocol and allow SSH connection on the computer.
+This page describes how to verify the network of the live environment, set the system clock using NTP protocol and allow an optional SSH connection on the computer you want to install Arch Linux on.
 {: .fs-5 .fw-300}
 
 ## Table of contents

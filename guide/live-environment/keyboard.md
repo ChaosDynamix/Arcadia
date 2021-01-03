@@ -8,7 +8,7 @@ parent    : !!str Live environment
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how a keyboard layout is defined and how you can load the correct keymap if your keyboard layout is not the same as the Arch Linux default one.
+This page describes how to search and load a correct keymap for your keyboard layout. You can skip this step if your keyboard layout match the default Arch Linux keymap.
 {: .fs-5 .fw-300}
 
 ## Table of contents

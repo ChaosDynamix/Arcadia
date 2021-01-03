@@ -8,7 +8,7 @@ parent    : !!str Installation medium
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to boot the installation medium (USB flash device) on your computer. All the steps before the actual boot of the computer are recommended.
+This page describes how to boot a prepared installation medium (USB flash device) on your computer.
 {: .fs-5 .fw-300}
 
 ## Table of contents

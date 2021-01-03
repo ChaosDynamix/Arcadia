@@ -8,7 +8,7 @@ parent    : !!str System
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to install the base packages of Arch Linux. This step also describes how to generate the fstab and enter the system using the chroot command.
+This page describes how to install the base packages of Arch Linux. This page also describes how to generate the fstab and enter the system using the chroot command.
 {: .fs-5 .fw-300}
 
 ## Table of contents
