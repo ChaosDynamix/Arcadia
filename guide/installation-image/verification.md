@@ -8,7 +8,7 @@ parent    : !!str Installation image
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to verify the Arch Linux ISO image with the files needed to verify it's integrity and authenticity. This step is very important!
+This page describes how to verify the integrity and the authenticity of the downloaded Arch Linux ISO image.
 {: .fs-5 .fw-300}
 
 ## Table of contents
