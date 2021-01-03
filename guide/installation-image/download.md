@@ -8,7 +8,7 @@ parent    : !!str Installation image
 # {{ page.title }}
 {: .no_toc }
 
-This page describes how to download the Arch Linux ISO image and the files needed to verify it's integrity and authenticity. This guide use a mirror site to achieve the download but you can also use Bittorrent instead.
+This page describes how to download the official ISO image, the checksum and the signature of the Arch Linux latest release.
 {: .fs-5 .fw-300}
 
 ## Table of contents
