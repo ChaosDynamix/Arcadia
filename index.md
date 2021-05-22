@@ -52,7 +52,7 @@ This project should be used at your own risk, always check the official document
 | Component              | Name             |
 | :--------------------- | :--------------- |
 | Kernel                 | Linux-lts        |
-| Initialization manager | Systemd          |
+| Initialization manager | Busybox          |
 | Network manager        | Systemd-networkd |
 | Boot manager           | Systemd-boot     |
 | Privilege elevation    | Sudo             |
