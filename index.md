@@ -49,10 +49,10 @@ This project should be used at your own risk, always check the official document
 ## System components
 {: .text-delta .pt-4}
 
-| Component              | Name             |
-| :--------------------- | :--------------- |
-| Kernel                 | Linux-lts        |
-| Initialization manager | Busybox          |
-| Network manager        | Systemd-networkd |
-| Boot manager           | Systemd-boot     |
-| Privilege elevation    | Sudo             |
+| Component              | Name            |
+| :--------------------- | :-------------- |
+| Kernel                 | Linux-lts       |
+| Initialization manager | Busybox         |
+| Network manager        | Network Manager |
+| Boot manager           | Systemd-boot    |
+| Privilege elevation    | Sudo            |
