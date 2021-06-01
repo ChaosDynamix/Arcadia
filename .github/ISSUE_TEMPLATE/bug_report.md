@@ -16,16 +16,16 @@ assignees: ChaosDynamix
 ### Description
 A clear and concise description of the problem...
 
-## Exception or error message
+### Exception or error message
 ```
 paste the message here...
 ```
 
-## Environment
+### Environment
 - **Operating system**:
 - **Platform(s)**:
 - **Package(s)**
 
-## Branches
+### Branches
 - Working branch: `<username>/description`
 - Origin branch: `master`
