@@ -10,8 +10,8 @@ assignees: ChaosDynamix
 
 ### Affected section(s)
 - :heavy_check_mark: Build system
+- :x: Documentation
 - :x: Website
-- :x: Repository
 
 ### Description
 A clear and concise description of the problem...
