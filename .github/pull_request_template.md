@@ -1,10 +1,7 @@
 ## Pull request type
-- :heavy_check_mark: Feature
-- :x: Fix
-- :x: Build
-- :x: Refactoring
+- :heavy_check_mark: Build system
 - :x: Documentation
-- :x: Guide
+- :x: Website
 
 ## What is the current behavior ?
 issue number: #
