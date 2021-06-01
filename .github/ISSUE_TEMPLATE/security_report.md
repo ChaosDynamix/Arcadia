@@ -19,4 +19,4 @@ A clear and concise description of the problem...
 
 ### Branches
 - Working branch: `<username>/description`
-- Origin branch: `main`
+- Origin branch: `master`

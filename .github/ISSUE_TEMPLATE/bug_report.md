@@ -28,4 +28,4 @@ paste the message here...
 
 ## Branches
 - Working branch: `<username>/description`
-- Origin branch: `main`
+- Origin branch: `master`

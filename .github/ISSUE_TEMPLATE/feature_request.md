@@ -24,4 +24,4 @@ Have you considered any alternative solutions or workarounds?
 
 ### Branches
 - Working branch: `<username>/description`
-- Origin branch: `main`
+- Origin branch: `master`

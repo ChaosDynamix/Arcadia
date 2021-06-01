@@ -21,4 +21,4 @@ A new version is available for the packages:
 
 ### Branches
 - Working branch: `<username>/description`
-- Origin branch: `main`
+- Origin branch: `master`
