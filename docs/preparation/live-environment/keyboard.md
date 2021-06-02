@@ -1,26 +1,11 @@
 ---
-title     : !!str Keyboard
-nav_order : !!int 1
-permalink : !!str /live-environment/keyboard
-parent    : !!str Live environment
+title: Keyboard
 ---
 
-# {{ page.title }}
-{: .no_toc }
-
+# Keyboard
 This page describes how to search and load a correct keymap for your keyboard layout. You can skip this step if your keyboard layout match the default Arch Linux keymap.
-{: .fs-5 .fw-300}
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## Live environment console keymap
-
 There is 3 main types of keyboard layouts :
 
 - **Physical layout**: The actual positioning of the keys on a keyboard
@@ -36,7 +21,6 @@ The default Arch Linux console keymap is "US" which is represented by the visual
 ![Representation of the default Arch Linux keymap](https://upload.wikimedia.org/wikipedia/commons/5/51/KB_United_States-NoAltGr.svg)
 
 ### Search for the correct console keymap
-
 Searching for a keymap can be tedious as you may not know where the keyboard is from and/or how it is designed.
 
 1. Go to the [Wikipedia - Keyboard layout page](https://en.wikipedia.org/wiki/Keyboard_layout).
@@ -55,7 +39,6 @@ The naming conventions of console keymaps are somewhat arbitrary
 - **Keyboard layouts**: where the layout is not related to a particular country or language (e.g. dvorak for the Dvorak keyboard layout).
 
 ### Load the correct console keymap
-
 Make sure to replace `fr` in the command below if your keymap is different.
 
 ```
@@ -63,11 +46,8 @@ loadkeys fr
 ```
 
 ### References
-{: .text-delta .pt-4}
-
 1. [Wikipedia - Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
 1. [ArchWiki - Keyboard configuration](https://wiki.archlinux.org/index.php/Linux_console/Keyboard_configuration)
 1. [ManPage - Ls](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/coreutils/ls.1.en)
 1. [ManPage - Less](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/less/less.1.en)
 1. [ManPage - Loadkeys](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/kbd/loadkeys.1.en)
-{: .fs-3}

@@ -1,28 +1,13 @@
 ---
-title     : !!str Partitioning
-nav_order : !!int 1
-permalink : !!str /storage/partitioning
-parent    : !!str Storage
+title: Partitioning
 ---
 
-# {{ page.title }}
-{: .no_toc }
-
+# Partitioning
 This page describes how to create a partition table and the partitions needed to install Arch Linux on a NVMe storage device.
-{: .fs-5 .fw-300}
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
----
 
 ## Create the partition table and the partitions
 
 ### Identify the device file of your storage device
-
 | Device type                           | Device file         | Partition file          |
 | :------------------------------------ | :------------------ | :---------------------- |
 | SCSI/PATA/SATA & USB/IEEE 1394 device | sda, sdb...         | sda1, sda2...           |
@@ -37,7 +22,6 @@ fdisk -l
 ```
 
 ### Launch the Sgdisk script
-
 | Partition node | Partition type       | Partition size          |
 | :------------- | :------------------- | :---------------------- |
 | /dev/nvme0n1p1 | EFI system partition | 550 MiB                 |
@@ -55,8 +39,6 @@ sgdisk --clear \
 ```
 
 ### References
-{: .text-delta .pt-4}
-
 1. [Wikipedia - Device file](https://en.wikipedia.org/wiki/Device_file)
 1. [Wikipedia - Disk partitioning](https://en.wikipedia.org/wiki/Disk_partitioning)
 1. [Wikipedia - Partition table](https://en.wikipedia.org/wiki/Partition_table)
@@ -64,4 +46,3 @@ sgdisk --clear \
 1. [ArchWiki - GPT fdisk](https://wiki.archlinux.org/index.php/GPT_fdisk)
 1. [ManPage - Fdisk](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/util-linux/fdisk.8.en)
 1. [ManPage - Sgdisk](https://jlk.fjfi.cvut.cz/arch/manpages/man/extra/gptfdisk/sgdisk.8.en)
-{: .fs-3}
