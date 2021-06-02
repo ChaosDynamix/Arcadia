@@ -3,8 +3,8 @@
     <h1>Arcadia</h1>
     <p>Arcadia is a website that presents a personal guide for installing Arch Linux on LUKS and UEFI.</p>
     <p>
-        <a href="https://chaosdynamix.github.io/Arcadia/">
-            <img src="https://img.shields.io/badge/-Site under maintenance-blue?style=for-the-badge" alt="Website page link" />
+        <a href="https://chaosdynamix.github.io/Arcadia-v2/">
+            <img src="https://img.shields.io/badge/-Website under maintenance-blue?style=for-the-badge" alt="Website page link" />
         </a>
     </p>
     <p>---</p>
