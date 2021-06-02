@@ -1,7 +1,7 @@
 <!-- Main section -->
 <div align="center">
     <h1>Arcadia</h1>
-    <p>Arcadia is a website that presents a personal guide for installing Arch Linux on LUKS and UEFI.</p>
+    <p>Arcadia is a personal documentation for installing and configuring Arch Linux on a specific hardware configuration.</p>
     <p>
         <a href="https://chaosdynamix.github.io/Arcadia-v2/">
             <img src="https://img.shields.io/badge/-Website under maintenance-blue?style=for-the-badge" alt="Website page link" />
