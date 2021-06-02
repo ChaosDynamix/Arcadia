@@ -2,6 +2,8 @@
 site_name: Arcadia
 site_url: https://chaosdynamix.github.io/arcadia/
 site_author: Chaosdynamix
+site_description: >-
+  Arcadia is a personal documentation for installing and configuring Arch Linux on a specific hardware configuration
 
 # Repository
 repo_name: chaosdynamix/arcadia
