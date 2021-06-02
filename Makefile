@@ -23,5 +23,5 @@ server:
 website:
 	docker run --rm -it
 	           --volume $(LOCAL_DIR):$(DOCKER_DIR)
-		       $(DOCKER_IMG)
+	           $(DOCKER_IMG)
 	           build
