@@ -1,0 +1,51 @@
+# Project
+site_name: Arcadia
+site_url: https://chaosdynamix.github.io/arcadia/
+site_author: Chaosdynamix
+
+# Repository
+repo_name: chaosdynamix/arcadia
+repo_url: https://github.com/chaosdynamix/arcadia
+
+# Copyright
+copyright: Copyright &copy; 2020 - 2021 Chaosdynamix
+
+# Theme
+theme:
+  name: material
+
+# Navigation
+nav:
+
+  - Home: index.md
+
+  - Preparation:
+    - Installation image:
+      - Download: preparation/installation-image/download.md
+      - Verification: preparation/installation-image/verification.md
+    - Installation medium:
+      - Preparation: preparation/installation-medium/preparation.md
+      - Boot: preparation/installation-medium/boot.md
+    - Live environment:
+      - Keyboard: preparation/live-environment/keyboard.md
+      - Firmware: preparation/live-environment/firmware.md
+      - Network: preparation/live-environment/network.md
+      - Keyring: preparation/live-environment/keyring.md
+      - Mirrorlist: preparation/live-environment/mirrorlist.md
+    - Storage:
+      - Partitioning: preparation/storage/partitioning.md
+      - Encryption: preparation/storage/encryption.md
+      - Filesystems: preparation/storage/filesystems.md
+
+  - Installation:
+    - System:
+      - Base: installation/system/base.md
+      - Storage: installation/system/storage.md
+      - Timezone: installation/system/timezone.md
+      - Localization: installation/system/localization.md
+      - Network: installation/system/network.md
+      - Users and groups: installation/system/users-groups.md
+      - Initialization: installation/system/initialization.md
+    - Graphical interface:
+      - Display driver: installation/graphical-interface/display-driver.md
+      - Display server: installation/graphical-interface/display-server.md
