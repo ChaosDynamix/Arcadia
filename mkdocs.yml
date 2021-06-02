@@ -7,9 +7,6 @@ site_author: Chaosdynamix
 repo_name: chaosdynamix/arcadia
 repo_url: https://github.com/chaosdynamix/arcadia
 
-# Copyright
-copyright: Copyright &copy; 2020 - 2021 Chaosdynamix
-
 # Theme
 theme:
   name: material
