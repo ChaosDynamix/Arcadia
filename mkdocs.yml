@@ -10,6 +10,7 @@ repo_url: https://github.com/chaosdynamix/arcadia
 # Theme
 theme:
   name: material
+  favicon: _assets/favicon.ico
 
 # Navigation
 nav:
