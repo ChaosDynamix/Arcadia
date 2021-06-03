@@ -14,14 +14,14 @@ DOCKER_IMG = squidfunk/mkdocs-material
 
 # Start the development server
 server:
-	docker run --rm -it
-	           --publish $(LOCAL_PORT):$(DOCKER_PORT)
-	           --volume $(LOCAL_DIR):$(DOCKER_DIR)
+	docker run --rm -it \
+	           --publish $(LOCAL_PORT):$(DOCKER_PORT) \
+	           --volume $(LOCAL_DIR):$(DOCKER_DIR) \
 	           $(DOCKER_IMG)
 
 # Build the website in the `site` directory
 website:
-	docker run --rm -it
-	           --volume $(LOCAL_DIR):$(DOCKER_DIR)
-	           $(DOCKER_IMG)
+	docker run --rm -it \
+	           --volume $(LOCAL_DIR):$(DOCKER_DIR) \
+	           $(DOCKER_IMG) \
 	           build
