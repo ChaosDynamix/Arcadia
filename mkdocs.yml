@@ -17,6 +17,13 @@ theme:
     scheme: slate
     primary: teal
   favicon: _assets/favicon.ico
+# Markdown extensions
+markdown_extensions:
+  - admonition
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
 
 # Navigation
 nav:
