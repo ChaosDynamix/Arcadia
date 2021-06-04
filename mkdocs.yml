@@ -13,6 +13,9 @@ repo_url: https://github.com/chaosdynamix/arcadia
 # Theme
 theme:
   name: material
+  palette:
+    scheme: slate
+    primary: teal
   favicon: _assets/favicon.ico
 
 # Navigation
