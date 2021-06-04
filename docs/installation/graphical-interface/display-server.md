@@ -11,5 +11,8 @@ This page describes how to install the Xorg display server and it's related tool
 ```
 sudo pacman -S xorg-{server,xinit,xrandr}
 ```
-### References
-1. [ArchWiki - Xorg](https://wiki.archlinux.org/index.php/Xorg)
+
+---
+
+??? info "References"
+    - [ArchWiki - Xorg](https://wiki.archlinux.org/index.php/Xorg)

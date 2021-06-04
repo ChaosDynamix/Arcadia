@@ -19,19 +19,23 @@ myhostname
 127.0.1.1    myhostname.localdomain    myhostname
 ```
 
+---
+
 ## Install and activate Network Manager
 
 ### Installation
-```
+``` bash
 pacman -S networkmanager
 ```
 
 ### Activation
-```
+``` bash
 systemctl enable NetworkManager.service
 ```
 
-#### References
-1. [ArchWiki - Network Manager](https://wiki.archlinux.org/title/NetworkManager)
-1. [ArchWiki - Network configuration](https://wiki.archlinux.org/index.php/Network_configuration)
-1. [ManPage - Systemctl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/systemctl.1.en)
+---
+
+??? info "References"
+    - [ArchWiki - Network Manager](https://wiki.archlinux.org/title/NetworkManager)
+    - [ArchWiki - Network configuration](https://wiki.archlinux.org/index.php/Network_configuration)
+    - [ManPage - Systemctl](https://jlk.fjfi.cvut.cz/arch/manpages/man/core/systemd/systemctl.1.en)
