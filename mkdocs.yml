@@ -17,6 +17,8 @@ theme:
     scheme: slate
     primary: teal
   favicon: _assets/favicon.ico
+  icon:
+    repo: fontawesome/brands/github
 # Markdown extensions
 markdown_extensions:
   - admonition
