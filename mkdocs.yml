@@ -19,6 +19,10 @@ theme:
   favicon: _assets/favicon.ico
   icon:
     repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+
 # Markdown extensions
 markdown_extensions:
   - admonition
